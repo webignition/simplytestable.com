@@ -1,5 +1,5 @@
 {
-    "hash": "c2639bd4ac21bfd8d3fd08e114f2f759",
+    "hash": "cef8609893ac5118a7a265cb8565a55a",
     "packages": [
         {
             "package": "doctrine/common",
@@ -64,8 +64,8 @@
         {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
-            "source-reference": "0410297526eacc3aa2146b55bc4e30e6fd3a50ed",
-            "commit-date": "1346167888"
+            "source-reference": "86b637e9f64ddcbd17d9eda944384812b5836254",
+            "commit-date": "1346695911"
         },
         {
             "package": "monolog/monolog",
