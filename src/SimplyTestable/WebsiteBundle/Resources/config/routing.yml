@@ -1,3 +1,7 @@
-simply_testable_website_homepage:
-    pattern:  /hello/{name}
+homepage:
+    pattern:  /
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:index }
+
+roadmap:
+    pattern:  /roadmap/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:roadmap }

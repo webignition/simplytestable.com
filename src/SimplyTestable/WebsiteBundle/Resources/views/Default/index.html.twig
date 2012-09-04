@@ -1,1 +1,83 @@
-Hello {{ name }}!
+{% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="//twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+{% endblock %}       
+
+{% block body %}
+<div class="container">
+    <div class="hero-unit">
+        <div class="row">
+            <div id="logo"></div>
+            <div class="span12">
+                <div class="row">
+                    <div class="span6 intro">
+                        <div class="leader">
+                            <h1>
+                                Simple automated<br /> front-end web testing
+                            </h1>    
+                            <p>
+                                Take the pain out of routine front-end web testing.
+                            </p>
+                            <p>
+                                One-click testing of your entire site.
+                            </p>                            
+                        </div>
+                        <div class="content">
+                            <p>
+                                Frustrated by the lack of straightforward
+                                tools for testing entire websites as needed daily
+                                by web developers and test engineers?
+                            </p>
+                            <p>
+                                We are a collection of web developers and test
+                                engineers changing that.
+                            </p>
+                            <p>
+                                Development started July 2012. Launching October 2012.
+                            </p>  
+                        </div>
+                    </div>
+                    <div class="span5 stay-updated">
+                        <form class="well newsletter" action="http://simplytestable.us5.list-manage.com/subscribe/post?u=ac75e33d993d2b502e333ddd0&amp;id=311aedc7f4" method="post">
+                            <h2>
+                                <i class="icon-envelope"></i> 
+                                Get updates
+                            </h2>
+                            <p>
+                                Get advanced invites to beta access and updates on new features.
+                            </p>
+                            <p>
+                                You won't get inundated, we'll send updates about once a week and you can unsubscribe at any time if this bothers you.                                
+                            </p>
+                            <label for="email">Email address</label>
+                            <input id="email" type="email" value="" name="EMAIL" class="span3" placeholder="Enter your email address…" />
+                            <button type="submit" class="btn btn-large btn-primary">Submit <i class="icon-caret-right"></i></button>
+                        </form>
+
+                        <div id="twitter-status" class="well">
+                            <i class=icon-twitter></i>
+                            <div id="tweet">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id enim quam, sed posuere risus. Ut porta rhoncus dignissim. Pellentesque sed.
+                            </div>
+                            <a href="//twitter.com/simplytestable">Follow @simplytestable &raquo;</a>
+                        </div>
+
+                        <div class="blog-link well">
+                            <i class=icon-bullhorn></i>
+                            Follow the story at <a href="http://blog.simplytestable.com/">blog.simplytestable.com &raquo;</a>
+                        </div>
+                            
+                        <div class="roadmap-link well">
+                            <i class=icon-off></i>
+                            See history and future development plans in the <a href="{{ path('roadmap') }}">roadmap &raquo;</a>                            
+                        </div>                            
+
+                    </div>                        
+                </div>
+            </div>
+        </div>               
+    </div>
+</div>
+{% endblock %}

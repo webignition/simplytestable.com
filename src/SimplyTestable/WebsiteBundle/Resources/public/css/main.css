@@ -1,0 +1,258 @@
+[class^="icon-"], [class*=" icon-"] {
+    background-image: none;
+}
+
+.btn [class^="icon-"] {
+    margin-top: 2px;
+}
+
+.hero-unit h1 {
+    font-size: 50px;
+    margin-bottom:20px;
+}
+
+body.roadmap .hero-unit h1 {
+    font-size:40px;
+}
+
+.hero-unit h1 a {
+    color: #555;
+    text-decoration: none;
+}
+
+body {
+    padding-top:60px;
+}
+
+body.homepage form.newsletter label {
+    display:none;
+}
+
+body.homepage form.newsletter button {
+    vertical-align: top;
+}
+
+body.homepage form.newsletter button i {
+    vertical-align: bottom;
+}
+
+body.homepage form.newsletter #email {
+    padding: 9px 14px;
+    width:68%;
+    margin:0;
+}
+
+body.homepage h2 {
+    background-color: #08C;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    border-radius: 6px;
+    padding: 6px 16px;
+    margin-bottom: 10px;
+}
+
+body.homepage h2 i {
+    font-size: 36px;
+    line-height: 36px;
+    width: auto;
+    height: auto;    
+}
+
+body.homepage .stay-updated form p {
+    color: #555;
+    font-size: 13px;
+    line-height: 18px;    
+}
+
+#twitter-status {
+    height:80px;
+}
+
+#tweet {
+    opacity:0;
+    height:60px;
+}
+
+#twitter-status .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    width: auto;
+    height: 70px;
+    float: left;
+    font-size: 58px;
+    display: inline-block;
+    margin: 0 10px 0 0;    
+}
+
+#tweet .time {
+    opacity:0.4;
+}
+
+body.homepage .content {
+    margin-top:40px;
+}
+
+body.homepage .content p {
+    color:#111;
+    margin-bottom: 18px;
+}
+
+body .container {
+    position:relative;
+}
+
+#logo {
+    position:absolute;
+    background: url('/bundles/simplytestablewebsite/images/logo100-bold-bordered.png') transparent no-repeat top left;
+    width:100px;
+    height:100px;
+    top: 60px;
+    left:-50px;
+}
+
+body.homepage .blog-link {
+    padding: 30px 19px;
+}
+
+body.homepage .blog-link i {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    width: auto;
+    height: 70px;
+    float: left;
+    font-size: 58px;
+    display: inline-block;
+    margin: 0 10px 0 0;    
+}
+
+body.homepage .roadmap-link i {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    width: auto;
+    height: 70px;
+    float: left;
+    font-size: 58px;
+    display: inline-block;
+    margin: 0 10px 0 0;    
+}
+
+.content .sidebar h2 {
+    background-color: #08C;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 0px 10px;
+    margin-bottom: 10px;  
+    
+    font-size:16px;
+}
+
+.content .sidebar h2 i {
+    width: auto;
+    height: auto;  
+    
+    font-size:16px;
+    line-height: 16px;
+    
+    margin-right:4px;
+}
+
+.content .sidebar .newsletter #email {
+    width: 66%;
+    margin: 0;
+}
+
+.roadmap .timeline {
+    list-style: none;
+    margin: 0;    
+}
+
+.roadmap .timeline .event {
+    position:relative;
+    height:220px;
+    font-size:40px;
+    line-height: 40px;
+}
+
+.roadmap .timeline time {
+    position:absolute;
+    left:0;
+    text-align: right;
+    width:200px;
+    opacity:0.8;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.roadmap .timeline .detail {
+    position:absolute;
+    left: 220px;
+}
+
+.roadmap .timeline .future {
+    opacity:0.6;
+}
+
+.roadmap .timeline .past {
+    opacity:0.6;
+}
+
+.roadmap .timeline time span {
+    display:block;
+}
+
+.roadmap .timeline h3 {
+    font-weight: normal;
+    font-size:40px;
+    margin-bottom:16px;
+    margin-top:0;
+}
+
+.roadmap .timeline .detail a,
+.roadmap .timeline .detail p {
+    font-size:16px;
+    line-height: 25px;
+}
+
+.roadmap .timeline .detail a {
+    font-size:16px;
+    line-height: 16px;
+}
+
+.roadmap .timeline blockquote {
+    border-left-color: #bbb;
+    font-style: italic;
+}
+
+.roadmap .timeline .indicator {
+    position: absolute;
+    top: 36%;    
+    left: 0;
+    text-align: right;
+    display: block;
+    width: 180px;    
+}
+
+.roadmap .timeline .indicator i {
+    width: auto;
+    height: auto;
+    font-size: 24px;
+    line-height: 24px;
+    position:absolute;
+}    
+
+.roadmap .timeline .next .indicator i.highlighted {
+    color:yellow;
+}
+
+.roadmap .timeline .past .indicator i.highlighted {
+    color:green;
+}
+
+.roadmap .timeline .future .indicator i.highlighted {
+    color:#0088cc;
+}
+
+.newsletter form label {
+    display: none;
+}
