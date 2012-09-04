@@ -1,0 +1,3 @@
+simply_testable_website_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:index }
