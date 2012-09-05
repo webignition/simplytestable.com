@@ -1,4 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function() {  
+    
+    $('body.homepage .carousel').carousel('pause');
+    
     $('body.roadmap .timeline').each(function () {
         var futureEvents = [];
         var pastEvents = [];

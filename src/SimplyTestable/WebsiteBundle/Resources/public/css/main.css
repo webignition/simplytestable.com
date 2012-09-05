@@ -6,6 +6,106 @@
     margin-top: 2px;
 }
 
+.navbar .brand {
+    background: url('/bundles/simplytestablewebsite/images/st30.png') transparent no-repeat 5px 4px;
+    color: #08C;
+    padding-left: 40px;
+}
+
+.navbar-inverse .brand:hover {
+    color:#0ae;
+}
+
+.navbar .nav > li {
+    padding-top:2px;
+    position:relative;
+}
+
+.navbar .nav > li i.icon {
+    position: absolute;
+    top: 14px;
+    left: -4px;    
+}
+
+.navbar .nav > li:hover i.icon {
+    color:#eee;
+}
+
+body {
+    margin-top:0;
+}
+
+body.homepage #landing-strip {
+    background-color:#eee;
+    border-bottom:1px solid #ddd;
+    padding-top:80px;
+    padding-bottom:30px;
+}
+
+body.homepage #landing-strip .container {
+
+}
+
+body.homepage #landing-strip .intro {
+    padding-left:60px;
+}
+
+body.homepage #landing-strip h1 {
+    font-size: 40px;
+    margin-bottom: 20px;    
+}
+
+body.homepage #landing-strip p {
+    font-size:18px;
+    line-height: 22px;
+}
+
+.carousel-control {
+    top:50%;
+}
+
+/*.outer {
+    width:80%;
+    margin:0 10%;
+}*/
+
+body.homepage .hero-unit .carousel h4 {
+    font-size:14px;
+    line-height: 20px;    
+}
+
+body.homepage .hero-unit .carousel p {
+    font-size:14px;
+    line-height: 20px;
+    color:#fff;
+}
+
+body.homepage .features {
+    list-style: none;
+    margin-left: 30px;
+}
+
+body.homepage .features .feature {
+    list-style-type: none;
+    position:relative;    
+}
+
+body.homepage .features .icon {
+    position:absolute;
+    left:-30px;
+    line-height: 20px;
+}
+
+body.homepage .features .icon-star {
+    color:yellow;
+}
+
+body.homepage input {
+    padding: 9px 9px 8px 9px;
+    width:310px;
+}
+
+
 .hero-unit h1 {
     font-size: 50px;
     margin-bottom:20px;
@@ -20,9 +120,9 @@ body.roadmap .hero-unit h1 {
     text-decoration: none;
 }
 
-body {
-    padding-top:60px;
-}
+/*body {
+    margin-top:80px;
+}*/
 
 body.homepage form.newsletter label {
     display:none;
@@ -89,13 +189,25 @@ body.homepage .stay-updated form p {
 }
 
 body.homepage .content {
-    margin-top:40px;
+    margin-top:20px;
 }
 
-body.homepage .content p {
+body.homepage form {
+    margin: 50px 0 0 0;
+}
+
+body.homepage form .icon {
+    font-size: 102px;
+    width: auto;
+    height: auto;
+    margin: -14px 20px 0 -40px;
+    color: #08C;
+}
+
+/*body.homepage .content p {
     color:#111;
     margin-bottom: 18px;
-}
+}*/
 
 body .container {
     position:relative;
@@ -106,7 +218,6 @@ body .container {
     background: url('/bundles/simplytestablewebsite/images/logo100-bold-bordered.png') transparent no-repeat top left;
     width:100px;
     height:100px;
-    top: 60px;
     left:-50px;
 }
 
