@@ -1,5 +1,5 @@
 {
-    "hash": "cef8609893ac5118a7a265cb8565a55a",
+    "hash": "1e71195a8225dfa035f99f6ec6f2e663",
     "packages": [
         {
             "package": "doctrine/common",
@@ -10,8 +10,8 @@
         {
             "package": "doctrine/dbal",
             "version": "2.3.x-dev",
-            "source-reference": "adb28e4e1f959d515971b8e8b7f05a01913a7b91",
-            "commit-date": "1346249329"
+            "source-reference": "239630b61f03f39d198441eced1bfffb7b0e61d1",
+            "commit-date": "1346866589"
         },
         {
             "package": "doctrine/doctrine-bundle",
@@ -28,8 +28,8 @@
         {
             "package": "doctrine/orm",
             "version": "2.3.x-dev",
-            "source-reference": "bbf527a27356414bfa9bf520f018c5cb7af67c77",
-            "commit-date": "1346250986"
+            "source-reference": "4d9f24b2eef3af3a3e76c773994c19bbb0706f88",
+            "commit-date": "1346869007"
         },
         {
             "package": "jms/aop-bundle",
@@ -76,8 +76,8 @@
         {
             "package": "monolog/monolog",
             "version": "dev-master",
-            "source-reference": "1.2.1",
-            "commit-date": "1346241200"
+            "source-reference": "a929570bb7688b39fefe4106f0ecf0ac35f37647",
+            "commit-date": "1346873566"
         },
         {
             "package": "sensio/distribution-bundle",
@@ -88,8 +88,8 @@
         {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
-            "source-reference": "a86d2c0d7212851cc4e971abdff13b89eb063861",
-            "commit-date": "1346246961"
+            "source-reference": "749aa6bbb2fac33091804d56a35339dc4c65f4a6",
+            "commit-date": "1346859132"
         },
         {
             "package": "sensio/framework-extra-bundle",
@@ -172,8 +172,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "41ffd006e57b0955d44a2b07fd898689c0d63a56",
-            "commit-date": "1346482338"
+            "source-reference": "00ec9b53911c0ff288439ac911d0f0edde176b6c",
+            "commit-date": "1346859854"
         },
         {
             "package": "twig/extensions",
@@ -184,8 +184,8 @@
         {
             "package": "twig/extensions",
             "version": "dev-master",
-            "source-reference": "v1.0.0-alpha",
-            "commit-date": "1346166263"
+            "source-reference": "f904575642b1213db69b4a98f08397e722ba1cae",
+            "commit-date": "1346770278"
         },
         {
             "package": "twig/twig",
@@ -198,6 +198,42 @@
             "version": "dev-master",
             "source-reference": "459720ff3b74ee0c0d159277c6f2f5df89d8a4f6",
             "commit-date": "1346397138"
+        },
+        {
+            "package": "webignition/absolute-url-deriver",
+            "version": "dev-master",
+            "source-reference": "d84d6f74fe55429d4e19f7ede4d81fd3090738cc",
+            "commit-date": "1343344065"
+        },
+        {
+            "package": "webignition/http-client",
+            "version": "dev-master",
+            "source-reference": "17d70c76703029ea0b318c727e930b3c772a32a5",
+            "commit-date": "1344029348"
+        },
+        {
+            "package": "webignition/internet-media-type",
+            "version": "0.4"
+        },
+        {
+            "package": "webignition/quoted-string",
+            "version": "0.2"
+        },
+        {
+            "package": "webignition/string-parser",
+            "version": "0.1"
+        },
+        {
+            "package": "webignition/url",
+            "version": "1.2"
+        },
+        {
+            "package": "webignition/web-json-model",
+            "version": "0.1.1"
+        },
+        {
+            "package": "webignition/web-resource-model",
+            "version": "0.4"
         }
     ],
     "packages-dev": null,

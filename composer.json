@@ -17,7 +17,10 @@
         "sensio/framework-extra-bundle": "2.1.*",
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*"
+        "jms/di-extra-bundle": "1.1.*",
+        "webignition/http-client":"*",
+        "webignition/web-json-model":">=0.1,<2.0",
+        "webignition/url":">=1.1,<2.0"        
     },
     "scripts": {
         "post-install-cmd": [

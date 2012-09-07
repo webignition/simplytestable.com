@@ -1,7 +1,3 @@
-parameters:
-#    simply_testable_website.example.class: SimplyTestable\WebsiteBundle\Example
-
 services:
-#    simply_testable_website.example:
-#        class: %simply_testable_website.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  simplytestable.services.httpClient:
+    class:  webignition\Http\Client\Client

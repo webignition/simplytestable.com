@@ -5,3 +5,7 @@ homepage:
 roadmap:
     pattern:  /roadmap/
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:roadmap }
+    
+core_application_proxy:
+  pattern: /core-application-proxy/
+  defaults: { _controller: SimplyTestableWebsiteBundle:CoreApplicationProxy:index }  

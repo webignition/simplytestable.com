@@ -19,7 +19,7 @@
                                 Simple automated<br /> front-end web testing
                             </h1>    
                             <p>
-                                Take the pain out of routine front-end web testing.
+                                Save time and take the pain out of routine front-end web testing.
                                 One-click testing of your entire site.
                             </p>                            
                         </div>
@@ -36,7 +36,7 @@
                                 </li>                                
                             </ul>
 
-                            <form method="post" action="/app_dev.php/test/start/">                
+                            <form method="post" action="//gears.simplytestable.com/test/start/">                
                                 <div class="fields input-append">
                                     <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …">            
                                     <button type="submit" class="btn btn-primary btn-large">Test your site now</button>            
@@ -50,25 +50,126 @@
                                 <div class="item active">
                                     <img src="/bundles/simplytestablewebsite/images/carousel/01-progress.png" />
                                 </div>
-
-                                <div class="item">
-                                    <img src="http://placehold.it/570x400" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="http://placehold.it/570x400" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="http://placehold.it/570x400" alt="">
-                                </div> 
-
+                                <!--
+                                                                <div class="item">
+                                                                    <img src="http://placehold.it/570x400" alt="">
+                                                                </div>
+                                                                <div class="item">
+                                                                    <img src="http://placehold.it/570x400" alt="">
+                                                                </div>
+                                                                <div class="item">
+                                                                    <img src="http://placehold.it/570x400" alt="">
+                                                                </div> 
+                                -->
                             </div>
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                             <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
                         </div>                         
                     </div>
-                </div>
+                </div>                
             </div>
         </div>              
     </div>
 </div>
+
+<div id="recent-site-tests">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12 iconified-section">
+                <i class="icon section-icon icon-cog"></i>
+                <h3>Recent full site tests</h3>
+                <div class="inner" id="recent-site-tests-list">
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<div id="future-development">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12 iconified-section">
+                <i class="icon section-icon icon-time"></i>
+                
+                <div class="inner">
+                    <div class="span4">                        
+                        <h3>Futute Development</h3>
+                        <p>
+                            This is the alpha release of Simply Testable, a brand
+                            new front-end web testing service.
+                        </p>
+                        <p>
+                            We don't wait until we hit perfection. We're developing,
+                            changing, improving and releasing features all the time.
+                        </p>
+                        
+                        <p>
+                            The service currently validates the HTML markup for
+                            your entire site. We're not stopping there; this is
+                            just the start.
+                        </p>
+                        <h3>Tell us what to make</h3>
+                        <p>
+                            Need to test something we don't yet cover?
+                            <a href="https://simplytestable.uservoice.com/">Tell us what to make</a>                                                                
+                        </p>                         
+                    </div>
+                    <div class="span4">
+                        <h3>Technical verification</h3>
+                        <ul class="feature-list">
+                            <li class="completed">
+                                <p><i class="icon icon-ok"></i> HTML validation</p>
+                            </li>
+                            <li>
+                                <p><i class="icon icon-time"></i> CSS validation</p>
+                            </li>     
+                            <li>
+                                <p><i class="icon icon-time"></i> JavaScript quality checks with <a href="http://en.wikipedia.org/wiki/JSLint">JSLint</a></p>
+                            </li>
+                        </ul>                        
+                    </div>
+                    <div class="span4">
+                         <h3>Overall site quality</h3>
+                        <ul class="feature-list">                           
+                            <li>
+                                <p><i class="icon icon-time"></i> Find broken links</p>
+                            </li>                             
+                            <li>
+                                <p><i class="icon icon-time"></i> Image <code>alt</code> attribute quality</p>
+                            </li>                                
+                            <li>
+                                <p><i class="icon icon-time"></i> Check for presence of <a href="http://www.robotstxt.org/robotstxt.html">robots.txt</a></p>
+                            </li>                             
+                            <li>
+                                <p><i class="icon icon-time"></i> Check for presence of a <a href="http://en.wikipedia.org/wiki/Favicon">favicon</a></p>
+                            </li>                         
+                        </ul>                                               
+                    </div>
+                    <div class="span4">
+                                             
+                    </div>                        
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>
+
+
+
+            <!--
+            <div class="span4">
+                <h3>Pages validated:</h3>
+                <span id="html-validation-completed-count">
+                    15924
+                </span>
+            </div>
+            -->
+            
+            <!--
+            <div class="span4">
+                3
+            </div>            
+            -->            
+
+
 {% endblock %}
