@@ -36,12 +36,8 @@
                                 </li>                                
                             </ul>
 
-                            <form method="post" action="//gears.simplytestable.com/test/start/">                
-                                <div class="fields input-append">
-                                    <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …">            
-                                    <button type="submit" class="btn btn-primary btn-large">Test your site now</button>            
-                                </div>
-                            </form>
+{% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
+                                
                         </div>                        
                     </div>
                     <div class="span6">
@@ -93,7 +89,7 @@
                 
                 <div class="inner">
                     <div class="span4">                        
-                        <h3>Futute Development</h3>
+                        <h3>Future Development</h3>
                         <p>
                             This is the alpha release of Simply Testable, a brand
                             new front-end web testing service.

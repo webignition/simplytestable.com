@@ -35,39 +35,39 @@ body {
     margin-top:0;
 }
 
-body.homepage #landing-strip {
+#landing-strip {
     background-color:#eee;
     border-bottom:1px solid #ddd;
     padding-top:80px;
     padding-bottom:30px;
+    margin-bottom: 60px;
 }
 
-body.homepage #landing-strip .container {
-
-}
-
-body.homepage #landing-strip .intro {
+#landing-strip .intro {
     padding-left:60px;
 }
 
-body.homepage #landing-strip h1 {
+#landing-strip h1 {
     font-size: 40px;
     margin-bottom: 20px;    
 }
 
-body.homepage #landing-strip p {
+#landing-strip p {
     font-size:18px;
     line-height: 22px;
+}
+
+body.homepage #landing-strip {
+    margin-bottom: 0;
+}
+
+#landing-strip.carousel {
+    margin-bottom:0;
 }
 
 .carousel-control {
     top:50%;
 }
-
-/*.outer {
-    width:80%;
-    margin:0 10%;
-}*/
 
 body.homepage .hero-unit .carousel h4 {
     font-size:14px;
@@ -100,12 +100,6 @@ body.homepage .features .icon-star {
     color:yellow;
 }
 
-body.homepage input {
-    padding: 9px 9px 8px 9px;
-    width:310px;
-}
-
-
 .hero-unit h1 {
     font-size: 50px;
     margin-bottom:20px;
@@ -115,14 +109,10 @@ body.roadmap .hero-unit h1 {
     font-size:40px;
 }
 
-.hero-unit h1 a {
+.content h1 a {
     color: #555;
     text-decoration: none;
 }
-
-/*body {
-    margin-top:80px;
-}*/
 
 body.homepage form.newsletter label {
     display:none;
@@ -192,8 +182,25 @@ body.homepage .content {
     margin-top:20px;
 }
 
-body.homepage form {
-    margin: 50px 0 0 0;
+#start-new-test-form {
+    margin-bottom:0;
+
+}
+
+#start-new-test-form input {
+    padding: 9px 9px 8px 9px;
+}
+
+body.homepage #start-new-test-form {
+    margin-top:50px;
+}
+
+body.homepage #start-new-test-form input {
+    width:50%;
+}
+
+body.content #start-new-test-form input {
+    width:60%;
 }
 
 body.homepage form .icon {
