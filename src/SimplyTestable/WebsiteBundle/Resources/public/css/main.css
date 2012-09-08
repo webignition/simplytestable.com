@@ -154,29 +154,42 @@ body.homepage .stay-updated form p {
     line-height: 18px;    
 }
 
-#twitter-status {
+#landing-twitter-status {
     height:80px;
 }
 
-#tweet {
+.tweet-container .tweet {
     opacity:0;
-    height:60px;
+    height:70px;
 }
 
-#twitter-status .icon-twitter {
-    color: #08C;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    width: auto;
-    height: 70px;
-    float: left;
+#landing-twitter-status .icon-twitter {
+    height: 80px;
     font-size: 58px;
-    display: inline-block;
-    margin: 0 10px 0 0;    
+    margin: 0 10px 0 0;     
+    display: inline-block;       
+    float: left;     
 }
 
-#tweet .time {
+.tweet-container .time {
     opacity:0.4;
 }
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
+}
+
 
 body.homepage .content {
     margin-top:20px;
@@ -508,4 +521,26 @@ body.homepage .roadmap-link i {
     padding: 30px 0;
 /*    padding-top:80px;
     padding-bottom:30px;*/
+}
+
+#footer .stay-updated ul {
+    list-style: none;
+    margin:0;
+}
+
+#footer .stay-updated ul li {
+    list-style-type: none;
+    margin-bottom:6px;
+    padding-left:20px;
+}
+
+#footer .stay-updated ul li .icon {
+    float:left;
+    margin-left:-20px;
+}
+
+#footer .stay-updated ul li .subtext {
+    opacity: 0.6;
+/*    font-size:12px;
+    line-height: 16px;*/
 }
