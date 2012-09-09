@@ -34,19 +34,19 @@
 </script>        
     </head>
     
-    {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}    
+    {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}
     
     <!--[if lt IE 7]>
-    <body class="ltIE7 {{ body_class }}">
+    <body class="ltIE7 {{ body_class }} {% block body_ltIE7_class %} {% endblock %}">
     <![endif]-->                                
     <!--[if IE 7]>
-    <body class="IE7 {{ body_class }}">
+    <body class="IE7 {{ body_class }} {% block body_IE7_class %} {% endblock %}">
     <![endif]-->
     <!--[if IE 8]>
-    <body class="IE8 {{ body_class }}">
+    <body class="IE8 {{ body_class }} {% block body_IE8_class %} {% endblock %}">
     <![endif]-->
     <!--[if IE 9]>
-    <body class="IE9 {{ body_class }}">
+    <body class="IE9 {{ body_class }} {% block body_IE9_class %} {% endblock %}">
     <![endif]-->
     <!--[if !IE]> -->
     <body class="{{ body_class }} {% block body_class %} {% endblock %}">
