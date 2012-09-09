@@ -33,7 +33,25 @@
 
 </script>        
     </head>
-    <body  class="{% block body_class %} {{ app.request.get('_route') | replace({'_' : '-'}) }} {% endblock %}">
+    
+    {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}    
+    
+    <!--[if lt IE 7]>
+    <body class="ltIE7 {{ body_class }}">
+    <![endif]-->                                
+    <!--[if IE 7]>
+    <body class="IE7 {{ body_class }}">
+    <![endif]-->
+    <!--[if IE 8]>
+    <body class="IE8 {{ body_class }}">
+    <![endif]-->
+    <!--[if IE 9]>
+    <body class="IE9 {{ body_class }}">
+    <![endif]-->
+    <!--[if !IE]> -->
+    <body class="{{ body_class }}">
+    <!-- <![endif]-->
+
         
         {% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %} 
         
