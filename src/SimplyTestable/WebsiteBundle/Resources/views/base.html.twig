@@ -49,7 +49,7 @@
     <body class="IE9 {{ body_class }}">
     <![endif]-->
     <!--[if !IE]> -->
-    <body class="{{ body_class }}">
+    <body class="{{ body_class }} {% block body_class %} {% endblock %}">
     <!-- <![endif]-->
 
         
