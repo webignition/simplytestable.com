@@ -249,6 +249,7 @@ body .container {
     color:#08c;
     font-size:100px; 
     top:36px;
+    line-height: 55px;
 }
 
 body.homepage .blog-link {
