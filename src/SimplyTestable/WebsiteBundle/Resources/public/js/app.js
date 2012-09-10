@@ -180,14 +180,33 @@ $(document).ready(function() {
             return true;
         };
         
-        var isFuture = function (eventTime) {
+        var isFuture = function (eventTime) {            
             return eventTime.getTime() > now.getTime();
+        };
+        
+        var parseEventTimeParts = function (timeAttribute) {
+            var monthPart = timeAttribute.substring(5, 7);
+            if (monthPart.length == 2 && monthPart.substr(0, 1) == 0) {
+                monthPart = monthPart.substr(1, 1);
+            }
+            
+            var dayPart = timeAttribute.substring(8, 10);
+            if (dayPart.length == 2 && dayPart.substr(0, 1) == 0) {
+                dayPart = dayPart.substr(1, 1);
+            }
+            
+            return {
+                'year':parseInt(timeAttribute.substring(0, 4), 10),
+                'month':parseInt(monthPart, 10) - 1,
+                'day':parseInt(dayPart, 10) - 1
+            }
         };
         
         $('.event', this).each(function () {
             var event = $(this);
-            var eventTime = new Date($('time', event).attr('datetime'));
-            
+            var eventTimeParts = parseEventTimeParts($('time', event).attr('datetime'));
+            var eventTime = new Date(eventTimeParts.year, eventTimeParts.month, eventTimeParts.day);
+
             if (isToday(eventTime)) {
                 currentEvents.push(event);
                 event.addClass('next');
@@ -199,14 +218,14 @@ $(document).ready(function() {
                 event.addClass('past');
             }
         });
-//        
-//        if (currentEvents.length === 0) {
-//            if (futureEvents.length > 0) {
-//                futureEvents[futureEvents.length - 1].removeClass('future').addClass('next');
-//            } else if (pastEvents.length > 0) {
-//                pastEvents[0].removeClass('future').addClass('next');
-//            }            
-//        }
+        
+        if (currentEvents.length === 0) {
+            if (futureEvents.length > 0) {
+                futureEvents[futureEvents.length - 1].removeClass('future').addClass('next');
+            } else if (pastEvents.length > 0) {
+                pastEvents[0].removeClass('future').addClass('next');
+            }            
+        }
 //        
 //        $('.next', this).each(function () {
 //            var event = $(this);
