@@ -91,8 +91,6 @@ end
 
 def vendor_is_github_zipball(url)
   return url.include?("/zipball/")
-  
-  return get_filename_from_url(url) == "master"
 end
 
 def vendor_is_repository(url)
