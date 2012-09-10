@@ -1,5 +1,5 @@
 {
-    "hash": "1e71195a8225dfa035f99f6ec6f2e663",
+    "hash": "b7bc08aad15ff18d11022d2bb1c94dc4",
     "packages": [
         {
             "package": "doctrine/common",
@@ -22,14 +22,26 @@
         {
             "package": "doctrine/doctrine-bundle",
             "version": "dev-master",
-            "source-reference": "v1.0.0",
-            "commit-date": "1347052701"
+            "source-reference": "d3c930599723c8343472a5791b0f5909a4111a73",
+            "commit-date": "1347289964"
         },
         {
             "package": "doctrine/orm",
             "version": "2.3.x-dev",
             "source-reference": "4d9f24b2eef3af3a3e76c773994c19bbb0706f88",
             "commit-date": "1346869007"
+        },
+        {
+            "package": "garetjax/phpbrowscap",
+            "version": "dev-master",
+            "source-reference": "5d98900bb1205482e31002dbfa002a2b54fb9dd3",
+            "commit-date": "1342987968"
+        },
+        {
+            "package": "jbi/browscap-bundle",
+            "version": "dev-master",
+            "source-reference": "e31b1754c70ff75b8a07f6eb4fd471b1bcc9c5e4",
+            "commit-date": "1339480184"
         },
         {
             "package": "jms/aop-bundle",
@@ -148,8 +160,8 @@
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "source-reference": "v2.1.0-RC2",
-            "commit-date": "1345557954"
+            "source-reference": "b7318480e6f8bf5579d6b3cd856850302e7ba8d8",
+            "commit-date": "1347283885"
         },
         {
             "package": "symfony/swiftmailer-bundle",
@@ -166,8 +178,8 @@
         {
             "package": "symfony/symfony",
             "version": "2.1.x-dev",
-            "source-reference": "e7059b44c78ca8e1e892adb4d93b5a482f4eb9b3",
-            "commit-date": "1346926323"
+            "source-reference": "597819eff13e2df3671cf3f838f9c1e2664b426e",
+            "commit-date": "1347286221"
         },
         {
             "package": "twig/extensions",
