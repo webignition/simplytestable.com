@@ -549,7 +549,7 @@ body.outdated-browser #landing-strip {
     margin-bottom:0;  
 }
 
-body.outdated-browser #ie-logo-main {
+body.outdated-browser #ie-logo-256 {
     background: url('/bundles/simplytestablewebsite/images/browser_logos-256.png') transparent no-repeat -1165px 0px;
     width:256px;
     height:256px;
