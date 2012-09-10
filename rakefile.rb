@@ -69,7 +69,7 @@ def fetch_dependencies
             system("cd " + dependency_directory + " && rm -Rf " + get_filename_from_url(url))            
           end
 
-          if vendor_is_github_master(url)
+          if vendor_is_github_zipball(url)
             system("cd " + dependency_directory + " && unzip -q " + get_filename_from_url(url))
             system("cd " + dependency_directory + " && rm -Rf " + get_filename_from_url(url))
             system("cd " + dependency_directory + " && mv *-* latest ")
@@ -89,7 +89,9 @@ def get_extension_from_filename_from_url(url)
   url.split(".").last
 end
 
-def vendor_is_github_master(url)
+def vendor_is_github_zipball(url)
+  return url.include?("/zipball/")
+  
   return get_filename_from_url(url) == "master"
 end
 
@@ -114,7 +116,7 @@ def vendor_is_archive(url)
     return true
   end  
   
-  return vendor_is_github_master(url)
+  return vendor_is_github_zipball(url)
 end
 
 def get_composer

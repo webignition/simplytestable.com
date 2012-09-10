@@ -2,3 +2,4 @@ src/SimplyTestable/WebsiteBundle/Resources/public/vendor:
   twitter-bootstrap: http://twitter.github.com/bootstrap/assets/bootstrap.zip
   font-awesome: https://github.com/FortAwesome/Font-Awesome/zipball/master
   css3-mediaqueries: https://github.com/livingston/css3-mediaqueries-js.git
+  modernizr: https://github.com/Modernizr/Modernizr/zipball/v2.6.2
