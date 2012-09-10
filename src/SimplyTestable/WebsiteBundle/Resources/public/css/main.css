@@ -362,7 +362,7 @@ body.homepage .roadmap-link i {
 
 .roadmap .timeline .detail {
     float:left;
-    width:75%;
+    width:70%;
     margin-left:2%;
 }
 
@@ -566,10 +566,10 @@ body.homepage .roadmap-link i {
     .roadmap .timeline h3 {
         font-size:40px;
         line-height: 40px;
-    }    /*
+    }
     
-    .roadmap .timeline .event {
-        height:200px;
-    }    */
+    .roadmap .timeline .detail {
+        width:75%;
+    }    
     
 }
