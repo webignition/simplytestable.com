@@ -13,100 +13,102 @@
 </p>    
 {% endblock %}
 
-{% block inner_content %}      
-    <ol class="timeline">
-        <li class="event" id="mvp-launch">
-            <time datetime="2012-10-10">October 10 <span>2012</span></time>
-            <div class="detail">
-                <h3>MVP Launch</h3>
+{% block inner_content %}    
+<div class="timeline">
+    <div class="event" id="mvp-launch">
+        <time datetime="2012-10-10">October 10 <span>2012</span></time>
+        <div class="detail">
+            <h3>MVP Launch</h3>
+            <p>
+                We launch our <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">minimal viable product</a>,
+                    the minimum amount of work requried to get a product released. This will be no means by the final product.
+            </p>
+            <p>
+                    It'll lack personalised accounts, it will all be free and there will be available
+                only a small subset of the tests we plan to cover. <strong>But it will work and it will be real</strong>.
+            </p>
+        </div>
+    </div>        
+    <div class="event" id="public-alpha">
+        <time datetime="2012-09-22">September 26 <span>2012</span></time>
+        <div class="detail">
+            <h3>Public Alpha</h3>
+            <p>
+                Planned for "not long after" the local working prototype is
+                ready.
+            </p>
+            <p>
+                This will be a public version of the local working prototype.
+                It will lack features but those features that are present
+                will work.
+            </p>
+        </div>
+    </div>         
+    <div class="event" id="private-alpha">
+        <time datetime="2012-09-12">September 12 <span>2012</span></time>
+        <div class="detail">
+            <h3>Private Alpha</h3>
+            <p>
+                In the <a href="http://us5.campaign-archive2.com/?u=ac75e33d993d2b502e333ddd0&id=7741c7a1fa">August 2012 #3</a>
+                newsletter I said:
+            </p>
+            <blockquote>
                 <p>
-                    We launch our <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">minimal viable product</a>,
-                     the minimum amount of work requried to get a product released. This will be no means by the final product.
-                </p>
+                    I expect to have a private alpha online prior to the public alpha release on around September 12.
+                    Now that I've said that I'm going to have to put that in the roadmap and stick to it.
+                </p>  
+            </blockquote> 
+        </div>
+    </div>          
+    <div class="event" id="internal-prototype">
+        <time datetime="2012-08-22">August 22 <span>2012</span></time>
+        <div class="detail">
+            <h3>Internal Prototype</h3>
+            <p>
+                In the <a href="http://us5.campaign-archive2.com/?u=ac75e33d993d2b502e333ddd0&id=0dfa713ed6">August 2012 #1</a>
+                newsletter I said:
+            </p>
+            <blockquote>
                 <p>
-                     It'll lack personalised accounts, it will all be free and there will be available
-                    only a small subset of the tests we plan to cover. <strong>But it will work and it will be real</strong>.
-                </p>
-            </div>
-        </li>        
-        <li class="event" id="public-alpha">
-            <time datetime="2012-09-22">September 26 <span>2012</span></time>
-            <div class="detail">
-                <h3>Public Alpha</h3>
+                    I hope to have a local working prototype in around four weeks with an alpha live on the Internet not long after.
+                </p>  
+            </blockquote>                                   
+        </div>
+    </div>
+    <div class="event" id="first-test-results">
+        <time datetime="2012-08-16">August 16 <span>2012</span></time>
+        <div class="detail">
+            <h3>First Test Results</h3>
+            <p>
+                In <a href="http://blog.simplytestable.com/first-test-results/">&ldquo;First Test Results&rdquo;</a>
+                I mentioned:
+            </p>
+            <blockquote>
                 <p>
-                    Planned for "not long after" the local working prototype is
-                    ready.
-                </p>
-                <p>
-                    This will be a public version of the local working prototype.
-                    It will lack features but those features that are present
-                    will work.
-                </p>
-            </div>
-        </li>         
-        <li class="event" id="private-alpha">
-            <time datetime="2012-09-12">September 12 <span>2012</span></time>
-            <div class="detail">
-                <h3>Private Alpha</h3>
-                <p>
-                    In the <a href="http://us5.campaign-archive2.com/?u=ac75e33d993d2b502e333ddd0&id=7741c7a1fa">August 2012 #3</a>
-                    newsletter I said:
-                </p>
-                <blockquote>
-                    <p>
-                        I expect to have a private alpha online prior to the public alpha release on around September 12.
-                        Now that I've said that I'm going to have to put that in the roadmap and stick to it.
-                    </p>  
-                </blockquote> 
-            </div>
-        </li>          
-        <li class="event" id="internal-prototype">
-            <time datetime="2012-08-22">August 22 <span>2012</span></time>
-            <div class="detail">
-                <h3>Internal Prototype</h3>
-                <p>
-                    In the <a href="http://us5.campaign-archive2.com/?u=ac75e33d993d2b502e333ddd0&id=0dfa713ed6">August 2012 #1</a>
-                    newsletter I said:
-                </p>
-                <blockquote>
-                    <p>
-                        I hope to have a local working prototype in around four weeks with an alpha live on the Internet not long after.
-                    </p>  
-                </blockquote>                                   
-            </div>
-        </li>
-        <li class="event" id="first-test-results">
-            <time datetime="2012-08-16">August 16 <span>2012</span></time>
-            <div class="detail">
-                <h3>First Test Results</h3>
-                <p>
-                    In <a href="http://blog.simplytestable.com/first-test-results/">&ldquo;First Test Results&rdquo;</a>
-                    I mentioned:
-                </p>
-                <blockquote>
-                    <p>
-                        I reached a significant milestone today: the first real test was run.
-                    </p>  
-                </blockquote> 
-                <p>
-                    With the backend distributed test system working, development
-                    of the frontend begins. This is when things start getting useful.
-                </p>
-            </div>
-        </li>        
-        <li class="event" id="the-beginning">
-            <time datetime="2012-07-06">July 6 <span>2012</span></time>
-            <div class="detail">
-                <h3>The Beginning</h3>
-                <p>
-                    Shortly after being made redundant, I take it upon myself
-                    to indulge in my interest in automated web testing and
-                    build a public test tool that I wish existed.
-                </p>
-                <p>
-                    <a href="http://blog.simplytestable.com/the-beginning/">Read &ldquo;The Beginning&rdquo; &raquo;</a>
-                </p>                
-            </div>
-        </li>            
-    </ol>
+                    I reached a significant milestone today: the first real test was run.
+                </p>  
+            </blockquote> 
+            <p>
+                With the backend distributed test system working, development
+                of the frontend begins. This is when things start getting useful.
+            </p>
+        </div>
+    </div>        
+    <div class="event" id="the-beginning">
+        <time datetime="2012-07-06">July 6 <span>2012</span></time>
+        <div class="detail">
+            <h3>The Beginning</h3>
+            <p>
+                Shortly after being made redundant, I take it upon myself
+                to indulge in my interest in automated web testing and
+                build a public test tool that I wish existed.
+            </p>
+            <p>
+                <a href="http://blog.simplytestable.com/the-beginning/">Read &ldquo;The Beginning&rdquo; &raquo;</a>
+            </p>                
+        </div>
+    </div>            
+</div>
+
+<div class="clearfix"></div>
 {% endblock %}
