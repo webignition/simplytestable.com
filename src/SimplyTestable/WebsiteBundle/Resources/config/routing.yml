@@ -6,6 +6,10 @@ roadmap:
     pattern:  /roadmap/
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:roadmap }
     
+outdated_browser:
+    pattern:  /outdated-browser/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:outdatedBrowser }    
+    
 core_application_proxy:
   pattern: /core-application-proxy/
   defaults: { _controller: SimplyTestableWebsiteBundle:CoreApplicationProxy:index }  
