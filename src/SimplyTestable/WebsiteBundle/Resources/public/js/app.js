@@ -150,9 +150,9 @@ $(document).ready(function() {
         
         requestRecentTestData();
 
-//        window.setInterval(function () {
-//            requestRecentTestData();
-//        }, 1000);
+        window.setInterval(function () {
+            requestRecentTestData();
+        }, 1000);
     }   
     
     
