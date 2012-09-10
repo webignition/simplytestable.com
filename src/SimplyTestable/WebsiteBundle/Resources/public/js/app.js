@@ -226,27 +226,27 @@ $(document).ready(function() {
                 pastEvents[0].removeClass('future').addClass('next');
             }            
         }
-//        
-//        $('.next', this).each(function () {
-//            var event = $(this);
-//            var time = $('time', event);
-//            
-//            time.after('<span class="indicator"><i class="icon-star highlighted"></i><i class="icon-star-empty"></i></div>');
-//        });        
-//        
-//        $('.past', this).each(function () {
-//            var event = $(this);
-//            var time = $('time', event);
-//            
-//            time.after('<span class="indicator"><i class="icon-ok highlighted"></i></div>');
-//        });        
-//        
-//        $('.future', this).each(function () {
-//            var event = $(this);
-//            var time = $('time', event);
-//            
-//            time.after('<span class="indicator"><i class="icon-off highlighted"></i></div>');
-//        });        
+        
+        $('.next', this).each(function () {
+            var event = $(this);
+            var time = $('time', event);
+            
+            time.after('<span class="indicator"><i class="icon-star highlighted"></i><i class="icon-star-empty"></i></div>');
+        });        
+        
+        $('.past', this).each(function () {
+            var event = $(this);
+            var time = $('time', event);
+            
+            time.after('<span class="indicator"><i class="icon-ok highlighted"></i></div>');
+        });        
+        
+        $('.future', this).each(function () {
+            var event = $(this);
+            var time = $('time', event);
+            
+            time.after('<span class="indicator"><i class="icon-off highlighted"></i></div>');
+        });        
     });
         
     getTwitters('footer-tweet', { 

@@ -303,43 +303,7 @@ body.homepage .roadmap-link i {
 /*
 
 
-.roadmap .timeline .future {
-    opacity:0.6;
-}
 
-.roadmap .timeline .past {
-    opacity:0.6;
-}
-
-.roadmap .timeline .indicator {
-    position: absolute;
-    top: 36%;    
-    left: 0;
-    text-align: right;
-    display: block;
-    width: 160px;    
-}
-
-.roadmap .timeline .indicator i {
-    width: auto;
-    height: auto;
-    font-size: 24px;
-    line-height: 24px;
-    position:absolute;
-    right:0;
-}    
-
-.roadmap .timeline .next .indicator i.highlighted {
-    color:yellow;
-}
-
-.roadmap .timeline .past .indicator i.highlighted {
-    color:green;
-}
-
-.roadmap .timeline .future .indicator i.highlighted {
-    color:#0088cc;
-}
 */
 
 .roadmap .timeline {
@@ -349,6 +313,7 @@ body.homepage .roadmap-link i {
 .roadmap .timeline .event {
     float:left;
     margin-bottom:30px;
+    position:relative;
 }
 
 .roadmap .timeline time {
@@ -392,6 +357,44 @@ body.homepage .roadmap-link i {
 .roadmap .timeline blockquote {
     border-left-color: #bbb;
     font-style: italic;
+}
+
+.roadmap .timeline .indicator {
+    position: absolute;
+    top: 64px;    
+    left: 0;
+    text-align: right;
+    display: block;
+    width: 160px;    
+}
+
+.roadmap .timeline .future {
+    opacity:0.6;
+}
+
+.roadmap .timeline .past {
+    opacity:0.6;
+}
+
+.roadmap .timeline .indicator i {
+    width: auto;
+    height: auto;
+    font-size: 24px;
+    line-height: 24px;
+    position:absolute;
+    right:0;
+}    
+
+.roadmap .timeline .next .indicator i.highlighted {
+    color:yellow;
+}
+
+.roadmap .timeline .past .indicator i.highlighted {
+    color:green;
+}
+
+.roadmap .timeline .future .indicator i.highlighted {
+    color:#0088cc;
 }
 
 .newsletter form label {
