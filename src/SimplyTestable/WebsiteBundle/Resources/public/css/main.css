@@ -549,14 +549,10 @@ body.outdated-browser #landing-strip {
     margin-bottom:0;  
 }
 
-body.outdated-browser #ie-logo-256 {
-    background: url('/bundles/simplytestablewebsite/images/browser_logos-256.png') transparent no-repeat -1165px 0px;
-    width:256px;
-    height:256px;
-}
-
-body.IE7 #ie-logo-256 {
-    width:240px;
+body.outdated-browser #ie-logo-main {
+    background: url('/bundles/simplytestablewebsite/images/browser_logos-128.png') transparent no-repeat -572px 0px;
+    width:128px;
+    height:128px;
 }
 
 body.outdated-browser .browser-128 {
