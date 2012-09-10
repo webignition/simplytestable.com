@@ -30,8 +30,8 @@ class DefaultController extends Controller
     }
     
     public function isUsingOldIE() {
-        //$browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser($this->getRequest()->server->get('HTTP_USER_AGENT'));
-        $browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser('Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.0; fr-FR)');
+        $browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser($this->getRequest()->server->get('HTTP_USER_AGENT'));
+        //$browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser('Mozilla/5.0 (compatible; MSIE 7.0; Windows NT 6.0; fr-FR)');
         return ($browserInfo->Browser == 'IE' && $browserInfo->MajorVer < 8);     
     }
 }
