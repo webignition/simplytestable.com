@@ -603,7 +603,12 @@ body.outdated-browser #ie-logo-128 {
     background-position: -572px 0px;    
 }
 
-body.outdated-browser #content p {
+body.IE7 #outdated-browser-content .icon-download {
+    margin-top:-24px;
+    padding-top: 24px;
+}
+
+body.outdated-browser #outdated-browser-content p {
 font-size: 18px;
 line-height: 24px;
 }
