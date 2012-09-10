@@ -318,11 +318,13 @@ body.homepage .roadmap-link i {
     opacity:0.8;
     font-size: 20px;
     line-height: 30px;
+    top:0;
 }
 
 .roadmap .timeline .detail {
     position:absolute;
     left: 180px;
+    top:0;
 }
 
 .roadmap .timeline .future {
@@ -333,9 +335,8 @@ body.homepage .roadmap-link i {
     opacity:0.6;
 }
 
-.roadmap .timeline time b {
+.roadmap .timeline time span {
     display:block;
-    font-weight: normal;
 }
 
 .roadmap .timeline h3 {
