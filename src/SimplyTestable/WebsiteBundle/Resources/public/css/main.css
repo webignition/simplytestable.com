@@ -308,8 +308,6 @@ body.homepage .roadmap-link i {
 .roadmap .timeline .event {
     position:relative;
     height:220px;
-    font-size:30px;
-    line-height: 30px;
 }
 
 .roadmap .timeline time {
@@ -335,8 +333,9 @@ body.homepage .roadmap-link i {
     opacity:0.6;
 }
 
-.roadmap .timeline time span {
+.roadmap .timeline time b {
     display:block;
+    font-weight: normal;
 }
 
 .roadmap .timeline h3 {
