@@ -231,21 +231,21 @@ $(document).ready(function() {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-star highlighted"></i><i class="icon-star-empty"></i></div>');
+            time.after('<span class="indicator"><i class="icon-star highlighted"></i><i class="icon-star-empty"></i></span>');
         });        
         
         $('.past', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-ok highlighted"></i></div>');
+            time.after('<span class="indicator"><i class="icon-ok highlighted"></i></span>');
         });        
         
         $('.future', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-off highlighted"></i></div>');
+            time.after('<span class="indicator"><i class="icon-off highlighted"></i></span>');
         });        
     });
         
