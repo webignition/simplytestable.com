@@ -107,8 +107,8 @@ $(document).ready(function() {
                     $('<div class="wrapper" />').append(
                         '<a class="url" href="'+this.website+'">'+getOutputDomainFromWebsiteUrl(this.website)+'</a>'
                     ).append(
-                        $('<span class="results" />').append(
-                            $('<a href="http://gears.simplytestable.com/'+this.website+'/'+this.id+'/results/">').append(
+                        $('<div class="results" />').append(
+                            $('<a href="http://gears.simplytestable.com/'+this.website+'/'+this.id+'/results/" />').append(
                                 $('<span class="badge badge-'+getStateLabelClass(this.state)+'"> <i class="icon state-icon '+getStateIcon(this.state)+'"></i> #'+this.id+' <i class="icon action-icon icon-caret-right"></i> </span>')
                             )
                         )
@@ -150,9 +150,9 @@ $(document).ready(function() {
         
         requestRecentTestData();
 
-        window.setInterval(function () {
-            requestRecentTestData();
-        }, 1000);
+//        window.setInterval(function () {
+//            requestRecentTestData();
+//        }, 1000);
     }   
     
     
