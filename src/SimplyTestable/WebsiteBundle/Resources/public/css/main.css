@@ -39,7 +39,7 @@ body {
     background-color:#eee;
     border-bottom:1px solid #ddd;
     padding-top:80px;
-    padding-bottom:30px;
+    padding-bottom:20px;
     margin-bottom: 60px;
 }
 
@@ -48,7 +48,8 @@ body {
 }
 
 #landing-strip h1 {
-    font-size: 40px;
+    font-size: 24px;
+    line-height: 24px;
     margin-bottom: 20px;    
 }
 
@@ -110,7 +111,7 @@ body.roadmap .hero-unit h1 {
 }
 
 .content h1 a {
-    color: #555;
+    color: #333;
     text-decoration: none;
 }
 
@@ -155,16 +156,16 @@ body.homepage .stay-updated form p {
 }
 
 #landing-twitter-status {
-    height:80px;
+    height:100px;
 }
 
 .tweet-container .tweet {
     opacity:0;
-    height:70px;
+    height:90px;
 }
 
 #landing-twitter-status .icon-twitter {
-    height: 80px;
+    height: 100px;
     font-size: 58px;
     margin: 0 10px 0 0;     
     display: inline-block;       
@@ -205,7 +206,7 @@ body.homepage .content {
 }
 
 body.homepage #start-new-test-form {
-    margin-top:50px;
+    margin-top:14px;
 }
 
 body.homepage #start-new-test-form input {
@@ -213,7 +214,7 @@ body.homepage #start-new-test-form input {
 }
 
 body.content #start-new-test-form input {
-    width:60%;
+    width:282px;
 }
 
 body.homepage form .icon {
@@ -223,11 +224,6 @@ body.homepage form .icon {
     margin: -14px 20px 0 -40px;
     color: #08C;
 }
-
-/*body.homepage .content p {
-    color:#111;
-    margin-bottom: 18px;
-}*/
 
 body .container {
     position:relative;
@@ -312,15 +308,15 @@ body.homepage .roadmap-link i {
 .roadmap .timeline .event {
     position:relative;
     height:220px;
-    font-size:40px;
-    line-height: 40px;
+    font-size:30px;
+    line-height: 30px;
 }
 
 .roadmap .timeline time {
     position:absolute;
     left:0;
     text-align: right;
-    width:200px;
+    width:160px;
     opacity:0.8;
     font-size: 20px;
     line-height: 30px;
@@ -328,7 +324,7 @@ body.homepage .roadmap-link i {
 
 .roadmap .timeline .detail {
     position:absolute;
-    left: 220px;
+    left: 180px;
 }
 
 .roadmap .timeline .future {
@@ -345,7 +341,8 @@ body.homepage .roadmap-link i {
 
 .roadmap .timeline h3 {
     font-weight: normal;
-    font-size:40px;
+    font-size:30px;
+    line-height: 30px;
     margin-bottom:16px;
     margin-top:0;
 }
@@ -372,7 +369,7 @@ body.homepage .roadmap-link i {
     left: 0;
     text-align: right;
     display: block;
-    width: 200px;    
+    width: 160px;    
 }
 
 .roadmap .timeline .indicator i {
@@ -537,4 +534,43 @@ body.homepage .roadmap-link i {
     opacity: 0.6;
 /*    font-size:12px;
     line-height: 16px;*/
+}
+
+@media (min-width: 1200px) {
+    .tweet-container .tweet {
+        height:60px;
+    }    
+    
+    #landing-strip h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    body.homepage #start-new-test-form {
+        margin-top:74px;
+    } 
+    
+    #landing-twitter-status {
+        height:70px;
+    }   
+    
+    #landing-twitter-status .icon-twitter {
+        height: 70px;  
+    }  
+    
+    body.content #start-new-test-form input {
+        width:392px;
+    }  
+    
+    .roadmap .timeline h3 {
+        font-size:40px;
+        line-height: 40px;
+    }    
+    
+    .roadmap .timeline .event {
+        height:200px;
+        font-size:40px;
+        line-height: 40px;
+    }    
+    
 }
