@@ -415,18 +415,13 @@ body.homepage .roadmap-link i {
     
 }
 
-/*.iconified-section .inner {
-    margin-left:-30px;
-}*/
-
-/*#recent-site-tests ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-}*/
+#recent-site-tests .site {
+    position:relative;
+    padding-right:3%;  
+}
 
 #recent-site-tests .site .wrapper {
-    padding: 14px 0px 14px 0px;
+    padding: 20px 0;
 }
 
 #recent-site-tests .site .icon {
@@ -445,10 +440,6 @@ body.homepage .roadmap-link i {
     padding: 4px 4px 4px 8px;
 }
 
-#recent-site-tests .site {
-    position:relative;
-}
-
 #recent-site-tests .site .url {
     text-decoration: none;
     font-size:16px;
@@ -456,7 +447,7 @@ body.homepage .roadmap-link i {
 
 #recent-site-tests .site .results {
     position: absolute;
-    right: 5px;    
+    right: 10%;    
 }
 
 #recent-site-tests .site .results a {
@@ -465,8 +456,8 @@ body.homepage .roadmap-link i {
 
 #recent-site-tests .site .total .test-count {
     color: #666;
-    font-size: 50px;
-    line-height: 50px;
+    font-size: 40px;
+    line-height: 40px;
     display: block;    
 }
 

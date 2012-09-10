@@ -114,11 +114,11 @@ $(document).ready(function() {
                         )
                     ).append(
                         $('<div class="row-fluid meta">').append(
-                            $(' <div class="span5 total">').append(
+                            $(' <div class="span4 total">').append(
                                 '<span class="test-count">'+getTotalTaskCount(this.task_count_by_state)+'</span><span class="subtext">tests overall</span>'
                             )
                         ).append(
-                            $(' <div class="span3 total">').append(
+                            $(' <div class="span4 total">').append(
                                 '<span class="test-count">'+getCompletionPercent(this.task_count_by_state)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
                             )
                         ).append(
