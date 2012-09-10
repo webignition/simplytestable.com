@@ -555,6 +555,10 @@ body.outdated-browser #ie-logo-256 {
     height:256px;
 }
 
+body.ie7 #ie-logo-256 {
+    width:240px;
+}
+
 body.outdated-browser .browser-128 {
     background-color: transparent;
     background-image: url('/bundles/simplytestablewebsite/images/browser_logos-128.png');
