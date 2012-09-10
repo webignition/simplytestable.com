@@ -421,7 +421,7 @@ body.homepage .roadmap-link i {
 }
 
 #recent-site-tests .site .wrapper {
-    padding: 20px 0;
+    padding: 20px 0;    
 }
 
 #recent-site-tests .site .icon {
@@ -447,7 +447,8 @@ body.homepage .roadmap-link i {
 
 #recent-site-tests .site .results {
     position: absolute;
-    right: 10%;    
+    right: 10%;   
+    top:20px;
 }
 
 #recent-site-tests .site .results a {
