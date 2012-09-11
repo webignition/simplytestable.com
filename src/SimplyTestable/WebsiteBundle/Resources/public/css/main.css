@@ -6,6 +6,10 @@
     margin-top: 2px;
 }
 
+.btn [class^="icon-"] {
+    display:inline-block;
+}
+
 .navbar .brand {
     background: url('/bundles/simplytestablewebsite/images/st30.png') transparent no-repeat 5px 4px;
     color: #08C;
@@ -439,6 +443,7 @@ body.homepage .roadmap-link i {
 
 #recent-site-tests .badge {
     padding: 4px 4px 4px 8px;
+    display:inline-block;
 }
 
 #recent-site-tests .site .url {
