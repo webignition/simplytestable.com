@@ -3,13 +3,21 @@
 {% block javascripts %}
 {{ parent() }}
 <script src="//twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+
+    <!--[if IE 6]>
+    <link href="/bundles/simplytestablewebsite/vendor/bootstrap-ie6/Bootstrap-IE6/ie6.js" rel="stylesheet">
+    <![endif]-->  
 {% endblock %} 
 
 {% block stylesheets %}
 {{ parent() }}
-    <!--[if lt IE 8]>
+    <!--[if IE 7]>
     <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome-ie7.css" rel="stylesheet">
-    <![endif]-->  
+    <![endif]--> 
+    
+    <!--[if IE 6]>
+    <link href="/bundles/simplytestablewebsite/vendor/bootstrap-ie6/Bootstrap-IE6/ie6.css" rel="stylesheet">
+    <![endif]-->     
 {% endblock %}
 
 {% block title %}

@@ -1,2 +1,3 @@
 src/SimplyTestable/WebsiteBundle/Resources/public/vendor:
   css3-mediaqueries: https://github.com/livingston/css3-mediaqueries-js.git
+  bootstrap-ie6: https://github.com/empowering-communities/Bootstrap-IE6.git
