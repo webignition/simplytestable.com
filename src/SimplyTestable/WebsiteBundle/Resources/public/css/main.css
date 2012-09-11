@@ -549,20 +549,6 @@ body.outdated-browser #landing-strip {
     margin-bottom:0;  
 }
 
-body.outdated-browser #ie-logo-256 {
-    background: url('/bundles/simplytestablewebsite/images/browser_logos-256.png') transparent no-repeat -1165px 0px;
-    width:256px;
-    height:256px;
-}
-
-body.outdated-browser .browser-128 {
-    background-color: transparent;
-    background-image: url('/bundles/simplytestablewebsite/images/browser_logos-128.png');
-    background-position: 0px 0px;
-    width:128px;
-    height:128px;
-}
-
 body.outdated-browser .browsers a {
     display: block;
     width:128px;
@@ -570,33 +556,9 @@ body.outdated-browser .browsers a {
     margin-bottom:30px;    
 }
 
-body.outdated-browser span.browser-128 {
-    display: block;
-}
-
 body.outdated-browser .browsers span.name {
     display: block;
     margin-top: 10px;
-}
-
-body.outdated-browser #chrome-logo-128 {
-    background-position: -10px 0px;    
-}
-
-body.outdated-browser #ff-logo-128 {
-    background-position: -156px 0px;    
-}
-
-body.outdated-browser #opera-logo-128 {
-    background-position: -296px 0px;    
-}
-
-body.outdated-browser #safari-logo-128 {
-    background-position: -432px 0px;    
-}
-
-body.outdated-browser #ie-logo-128 {
-    background-position: -572px 0px;    
 }
 
 body.IE7 #outdated-browser-content .icon-download {
