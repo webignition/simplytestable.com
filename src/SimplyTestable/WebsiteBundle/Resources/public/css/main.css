@@ -496,20 +496,20 @@ body.homepage .roadmap-link i {
     
 }
 
-#future-development .feature-list {
+#features .feature-list {
     list-style:none;
     margin:0;
 }
 
-#future-development .feature-list li {
+#features .feature-list li {
     list-style-type:none;
 }
 
-#future-development .feature-list li .icon {
+#features .feature-list li .icon {
     color:#08c;
 }
 
-#future-development .feature-list li.completed .icon {
+#features .feature-list li.completed .icon {
     color:#468847;
 }
 
@@ -576,6 +576,11 @@ font-size: 18px;
 line-height: 24px;
 }
 
+#future-development h3 {
+    font-size: 18px;
+    line-height: 24px;        
+}
+
 @media (min-width: 1200px) {
     .tweet-container .tweet {
         height:60px;
@@ -609,6 +614,11 @@ line-height: 24px;
     
     .roadmap .timeline .detail {
         width:75%;
-    }    
+    }  
+    
+    #future-development h3 {
+        font-size: 24px;
+        line-height: 32px;        
+    }
     
 }
