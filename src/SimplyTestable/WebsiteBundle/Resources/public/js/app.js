@@ -169,7 +169,7 @@ $(document).ready(function() {
                 return false;
             }
             
-            if (eventTime.getDay() != now.getDay()) {
+            if (eventTime.getMonth() != now.getMonth()) {
                 return false;
             }
 
@@ -198,7 +198,7 @@ $(document).ready(function() {
             return {
                 'year':parseInt(timeAttribute.substring(0, 4), 10),
                 'month':parseInt(monthPart, 10) - 1,
-                'day':parseInt(dayPart, 10) - 1
+                'day':parseInt(dayPart, 10)
             }
         };
         
