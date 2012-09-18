@@ -23,7 +23,20 @@ $(document).ready(function() {
         };
         
         var getQueuedTaskCount = function (taskCountByState) {
-            return taskCountByState['queued-for-assignment'] + taskCountByState['queued'];
+            var statesToCount = [
+                'queued-for-assignment',
+                'queued'
+            ];
+            
+            var queuedTaskCount = 0;
+            
+            for (var stateIndex = 0; stateIndex < statesToCount.length; stateIndex++) {
+                if (taskCountByState[statesToCount[stateIndex]] != undefined) {
+                    queuedTaskCount += taskCountByState[statesToCount[stateIndex]];
+                }
+            }
+            
+            return queuedTaskCount;
         };  
         
         var getFinishedTaskCount = function (taskCountByState) {
