@@ -151,7 +151,7 @@ $(document).ready(function() {
         };
         
         var requestRecentTestData = function () {
-            $.get('/core-application-proxy/?url=http://app.simplytestable.com/tests/list/3/', function(data) {
+            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/', function(data) {
                 updateRecentTests(data);
             }, "json");               
         };
