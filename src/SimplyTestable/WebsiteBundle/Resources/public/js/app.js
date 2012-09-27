@@ -1,5 +1,19 @@
 $(document).ready(function() {       
     if ($('body.homepage').length) {
+        var taskFinishedStates = [
+            'cancelled',
+            'completed',
+            'failed-no-retry-available',
+            'failed-retry-available',
+            'failed-retry-limit-reached',
+            'skipped'
+        ]; 
+
+        var queuedStates = [
+            'queued-for-assignment',
+            'queued'            
+        ];
+        
         var getOutputDomainFromWebsiteUrl = function (websiteUrl) {
             var outputDomain = websiteUrl.replace('http://', '').replace('https://', '')
             
@@ -10,52 +24,60 @@ $(document).ready(function() {
             return outputDomain;
         };
         
-        var getTotalTaskCount = function (taskCountByState) {
-            var totalTaskCount = 0;
-            
-            for (var stateName in taskCountByState) {
-                if (taskCountByState.hasOwnProperty(stateName)) {
-                    totalTaskCount += taskCountByState[stateName];
+        var isFinishedState = function (stateName) {
+            for (var stateIndex = 0; stateIndex < taskFinishedStates.length; stateIndex++) {
+                if (stateName == taskFinishedStates[stateIndex]) {
+                    return true;
                 }
             }
             
-            return totalTaskCount;
+            return false;
         };
         
-        var getQueuedTaskCount = function (taskCountByState) {
-            var statesToCount = [
-                'queued-for-assignment',
-                'queued'
-            ];
+        var getFinishedTaskCount = function(taskCountByState) {
+            var finishedTaskCount = 0;
             
+            for (var stateName in taskCountByState) {
+                if (taskCountByState.hasOwnProperty(stateName)) {
+                    if (isFinishedState(stateName)) {
+                        finishedTaskCount += taskCountByState[stateName];
+                    }
+                }
+            }
+            
+            return finishedTaskCount;
+        };
+     
+        var getQueuedTaskCount = function (taskCountByState) {            
             var queuedTaskCount = 0;
             
-            for (var stateIndex = 0; stateIndex < statesToCount.length; stateIndex++) {
-                if (taskCountByState[statesToCount[stateIndex]] != undefined) {
-                    queuedTaskCount += taskCountByState[statesToCount[stateIndex]];
+            for (var stateIndex = 0; stateIndex < queuedStates.length; stateIndex++) {
+                if (taskCountByState[queuedStates[stateIndex]] != undefined) {
+                    queuedTaskCount += taskCountByState[queuedStates[stateIndex]];
                 }
             }
             
             return queuedTaskCount;
-        };  
+        };   
         
-        var getFinishedTaskCount = function (taskCountByState) {
-            return taskCountByState['completed'] + taskCountByState['cancelled'];
-        };  
-        
-        var getCompletionPercent = function (taskCountByState) {
-            if (taskCountByState['completed'] == 0) {
+        var getCompletionPercent = function (remoteTestSummary) {
+            if (remoteTestSummary.task_count === 0) {
                 return 0;
             }
             
-            var finishedTaskCount = taskCountByState['completed'] + taskCountByState['cancelled'];
-            var totalTaskCount = getTotalTaskCount(taskCountByState);
+            var finishedCount = getFinishedTaskCount(remoteTestSummary.task_count_by_state);
             
-            if (finishedTaskCount == totalTaskCount) {
+            if (finishedCount == remoteTestSummary.task_count) {
                 return 100;
-            }            
+            }
             
-            return ((finishedTaskCount / totalTaskCount) * 100).toFixed(1);
+            var requiredPrecision = Math.floor(Math.log(remoteTestSummary.task_count) / Math.log(10)) - 1;
+            
+            if (requiredPrecision == 0) {
+                return Math.floor((finishedCount / remoteTestSummary.task_count) * 100);
+            }
+
+            return ((finishedCount / remoteTestSummary.task_count) * 100).toPrecision(requiredPrecision + 1);
         };
         
         var getStateIcon = function (state) {
@@ -114,8 +136,7 @@ $(document).ready(function() {
            var recentSiteTestsList = $('#recent-site-tests-list');
            recentSiteTestsList.html('');
             
-            $(data).each(function () {
-                
+            $(data).each(function () {                
                 var siteListItem = $('<div class="site span4" />').append(
                     $('<div class="wrapper" />').append(
                         '<a class="url" href="'+this.website+'">'+getOutputDomainFromWebsiteUrl(this.website)+'</a>'
@@ -128,11 +149,11 @@ $(document).ready(function() {
                     ).append(
                         $('<div class="row-fluid meta">').append(
                             $(' <div class="span4 total">').append(
-                                '<span class="test-count">'+getTotalTaskCount(this.task_count_by_state)+'</span><span class="subtext">tests overall</span>'
+                                '<span class="test-count">'+this.task_count+'</span><span class="subtext">tests overall</span>'
                             )
                         ).append(
                             $(' <div class="span4 total">').append(
-                                '<span class="test-count">'+getCompletionPercent(this.task_count_by_state)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
+                                '<span class="test-count">'+getCompletionPercent(this)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
                             )
                         ).append(
                             $('<div class="span4 detail">').append(
@@ -157,9 +178,9 @@ $(document).ready(function() {
         };
 
 
-        $.get('/core-application-proxy/?url=http://app.simplytestable.com/tasks/HTML%20validation/completed/count/', function(data) {
-            $('#html-validation-completed-count').text(data);
-        }, "json");
+//        $.get('/core-application-proxy/?url=http://app.simplytestable.com/tasks/HTML%20validation/completed/count/', function(data) {
+//            $('#html-validation-completed-count').text(data);
+//        }, "json");
         
         requestRecentTestData();
 
