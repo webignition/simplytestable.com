@@ -10,8 +10,12 @@
 <div id="landing-strip">
     <div class="container">
         <div class="row-fluid">
-            <div class="span12">
-                <div id="logo"></div>
+            <div class="span12">            
+                <div id="logo">           
+                {% if app.request.get('_route') != 'homepage' %}                
+                    <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
+                {% endif %}                
+                </div>             
                 <div class="row-fluid">                    
                     <div class="span6 intro">
                         <div class="leader">

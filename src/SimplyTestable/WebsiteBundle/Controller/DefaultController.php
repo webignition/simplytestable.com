@@ -10,6 +10,8 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
+        //100 / 0;
+        
         if ($this->isUsingOldIE()) {
             return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
         }

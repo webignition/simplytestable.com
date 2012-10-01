@@ -16,7 +16,11 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span12">
-                <div id="logo"></div>
+                <div id="logo">           
+                {% if app.request.get('_route') != 'homepage' %}                
+                    <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
+                {% endif %}                
+                </div>   
                 <div class="row-fluid">                    
                     <div class="span6 intro">
                         <div class="leader">
@@ -80,8 +84,10 @@
                     </div>
                 </div>
                 <div class="span4 sidebar">
-                    {% include 'SimplyTestableWebsiteBundle:Partials:about.html.twig' %}
-                    {% include 'SimplyTestableWebsiteBundle:Partials:newsletter.html.twig' %}
+                    {% block sidebar %}
+                        {% include 'SimplyTestableWebsiteBundle:Partials:about.html.twig' %}
+                        {% include 'SimplyTestableWebsiteBundle:Partials:newsletter.html.twig' %}
+                    {% endblock %}                   
                 </div>                        
             </div>
         </div>

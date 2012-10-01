@@ -23,6 +23,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    exception_controller:  SimplyTestable\WebsiteBundle\Controller\ExceptionController::showAction    
 
 # Assetic Configuration
 assetic:
@@ -54,8 +55,9 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
+    auth_mode: %mailer_auth_mode%
     transport: %mailer_transport%
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
-    spool:     { type: memory }
+    spool:     { type: memory }    
