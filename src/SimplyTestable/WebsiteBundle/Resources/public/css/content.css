@@ -1,0 +1,156 @@
+#landing-strip {
+    background-color:#eee;
+    border-bottom:1px solid #ddd;
+    padding-top:80px;
+    padding-bottom:20px;
+    margin-bottom: 60px;
+}
+
+#landing-strip .intro {
+    padding-left:60px;
+}
+
+#landing-strip h1 {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 20px;    
+}
+
+#landing-strip p {
+    font-size:18px;
+    line-height: 22px;
+}
+
+body.content h1 a {
+    color: #333;
+    text-decoration: none;
+}
+
+#landing-twitter-status {
+    height:100px;
+}
+
+.tweet-container .tweet {
+    opacity:0;
+    height:90px;
+}
+
+#landing-twitter-status .icon-twitter {
+    height: 100px;
+    font-size: 58px;
+    margin: 0 10px 0 0;     
+    display: inline-block;       
+    float: left;     
+}
+
+.tweet-container .time {
+    opacity:0.4;
+}
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
+}
+
+#start-new-test-form {
+    margin-bottom:0;
+}
+
+#start-new-test-form input {
+    padding: 9px 9px 8px 9px;
+}
+
+body.content #start-new-test-form input {
+    width:282px;
+}
+
+body.content .sidebar h2 {
+    background-color: #08C;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 0px 10px;
+    margin-bottom: 10px;  
+    
+    font-size:16px;
+}
+
+body.content .sidebar h2 i {
+    width: auto;
+    height: auto;  
+    
+    font-size:16px;
+    line-height: 16px;
+    
+    margin-right:4px;
+}
+
+body.content .sidebar .newsletter #email {
+    width: 66%;
+    margin: 0;
+}
+
+body.content .newsletter form label {
+    display: none;
+}
+
+#logo a {
+    text-indent: -5000em;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+@media (min-width: 1200px) {
+    .tweet-container .tweet {
+        height:60px;
+    }    
+    
+    #landing-strip h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    body.homepage #start-new-test-form {
+        margin-top:74px;
+    } 
+    
+    #landing-twitter-status {
+        height:70px;
+    }   
+    
+    #landing-twitter-status .icon-twitter {
+        height: 70px;  
+    }  
+    
+    body.content #start-new-test-form input {
+        width:392px;
+    }  
+    
+    .roadmap .timeline h3 {
+        font-size:40px;
+        line-height: 40px;
+    }
+    
+    .roadmap .timeline .detail {
+        width:75%;
+    }  
+    
+    #future-development h3 {
+        font-size: 24px;
+        line-height: 32px;        
+    }    
+}
