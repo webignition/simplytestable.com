@@ -1,0 +1,26 @@
+body.error .inner .icon {
+    color: #08C;
+    width: auto;
+    font-size: 100px;
+    position: absolute;
+    left: -38px;
+}
+
+body.error .inner section {
+    margin-left:60px;
+    height:400px;
+}
+
+body.error .inner section h2  {
+    margin-bottom:30px;
+}
+
+body.error .inner section h2 em {
+    font-style: normal;
+    opacity: 0.7;    
+}
+
+body.error .inner section p {
+    line-height: 40px;
+    font-size:30px;
+}
