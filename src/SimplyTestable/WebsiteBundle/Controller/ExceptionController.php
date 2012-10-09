@@ -56,7 +56,8 @@ class ExceptionController extends Controller
                 'exception'      => $exception,
                 'logger'         => $logger,
                 'currentContent' => $currentContent,
-                'requestUri' => $this->container->get('request')->getRequestUri()
+                'requestUri' => $this->container->get('request')->getRequestUri(),
+                'testimonial' => $this->getTestimonialService()->getRandom()
             )
         );
     }
@@ -156,4 +157,13 @@ class ExceptionController extends Controller
         
         return $subject;
     }
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\TestimonialService
+     */
+    private function getTestimonialService() {
+        return $this->get('simplytestable.services.testimonialService');
+    }    
 }
