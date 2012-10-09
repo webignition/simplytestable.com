@@ -15,7 +15,7 @@ class TestimonialService {
         array(
             'content' => 'Simply Testable saves us time and effort when it comes to web testing and QA. It\'s quick to run, even on our larger sites, and the reports are invaluable. Simply Testable is now a regular part of our QA process.',
             'name' => 'Matcha Labs',
-            'url' => 'https://matchalabs.com/'            
+            'url' => 'http://www.matchalabs.com/'            
         )
     );
     
