@@ -97,3 +97,38 @@ body .container {
 #footer .stay-updated ul li .subtext {
     opacity: 0.6;
 }
+
+#footer #love .icon {
+    color:#d33a1c;
+}
+
+#footer #love blockquote {
+    margin:20px 0 0 0;
+    padding:0;
+    position:relative;
+}
+
+#footer #love blockquote p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+#footer #love blockquote .quotemark {
+    font-size: 70px;
+    opacity:0.7;
+    display:inline-block;
+    margin-bottom: -14px;
+}
+
+#footer #love blockquote .quotemark-left {
+    
+}
+
+#footer #love blockquote .quotemark-right {
+margin-bottom: -28px;    
+}
+
+#footer #love footer {
+    margin-left:30px;
+}

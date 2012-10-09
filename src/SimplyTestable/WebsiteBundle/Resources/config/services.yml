@@ -1,3 +1,6 @@
 services:
   simplytestable.services.httpClient:
     class:  webignition\Http\Client\Client
+    
+  simplytestable.services.testimonialService:
+    class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
