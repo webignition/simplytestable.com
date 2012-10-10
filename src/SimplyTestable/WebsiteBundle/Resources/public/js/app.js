@@ -76,6 +76,14 @@ $(document).ready(function() {
             if (requiredPrecision == 0) {
                 return Math.floor((finishedCount / remoteTestSummary.task_count) * 100);
             }
+            
+            if (requiredPrecision > 4) {
+                requiredPrecision = 4;
+            }
+            
+            if (requiredPrecision < 1) {
+                requiredPrecision = 1;
+            }
 
             return ((finishedCount / remoteTestSummary.task_count) * 100).toPrecision(requiredPrecision + 1);
         };
