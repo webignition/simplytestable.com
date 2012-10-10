@@ -216,7 +216,8 @@ body.homepage #start-new-test-form input {
     list-style-type:none;
 }
 
-#features .feature-list li .icon {
+#features .feature-list li .icon,
+.feature-planned .icon {
     color:#08c;
 }
 
@@ -227,6 +228,10 @@ body.homepage #start-new-test-form input {
 #future-development h3 {
     font-size: 18px;
     line-height: 24px;        
+}
+
+.planned-improvements {
+    margin-top:20px;
 }
 
 @media (min-width: 1200px) {
@@ -240,7 +245,7 @@ body.homepage #start-new-test-form input {
     }
     
     body.homepage #start-new-test-form {
-        margin-top:74px;
+        margin-top:40px;
     } 
     
     #landing-twitter-status {
