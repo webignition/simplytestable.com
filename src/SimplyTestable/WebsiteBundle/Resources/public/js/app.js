@@ -6,7 +6,8 @@ $(document).ready(function() {
             'failed-no-retry-available',
             'failed-retry-available',
             'failed-retry-limit-reached',
-            'skipped'
+            'skipped',
+            'no-sitemap'
         ]; 
 
         var queuedStates = [
@@ -61,6 +62,10 @@ $(document).ready(function() {
         };   
         
         var getCompletionPercent = function (remoteTestSummary) {
+            if (isFinishedState(remoteTestSummary.state)) {
+                return 100;
+            }
+
             if (remoteTestSummary.task_count === 0) {
                 return 0;
             }
