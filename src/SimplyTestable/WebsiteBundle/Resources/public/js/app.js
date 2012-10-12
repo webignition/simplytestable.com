@@ -149,7 +149,21 @@ $(document).ready(function() {
            var recentSiteTestsList = $('#recent-site-tests-list');
            recentSiteTestsList.html('');
             
-            $(data).each(function () {                
+            $(data).each(function () { 
+                var maximumStandardDigitLength = 4;
+                var standardDigitSize = 40;
+                var taskCount = this.task_count;
+
+                var taskCountElement = $('<span class="test-count">'+taskCount+'</span>');
+                var taskCountDigitLength = taskCount.length;
+                
+                if (taskCountDigitLength > maximumStandardDigitLength) {
+                    var fontSize = (standardDigitSize - ((taskCountDigitLength - maximumStandardDigitLength) * 5)) + 'px';
+                    taskCountElement.css({
+                        'font-size':fontSize
+                    });
+                }
+                
                 var siteListItem = $('<div class="site span4" />').append(
                     $('<div class="wrapper" />').append(
                         '<a class="url" href="'+this.website+'">'+getOutputDomainFromWebsiteUrl(this.website)+'</a>'
@@ -162,7 +176,9 @@ $(document).ready(function() {
                     ).append(
                         $('<div class="row-fluid meta">').append(
                             $(' <div class="span4 total">').append(
-                                '<span class="test-count">'+this.task_count+'</span><span class="subtext">tests overall</span>'
+                                taskCountElement
+                            ).append(
+                                '<span class="subtext">tests overall</span>'
                             )
                         ).append(
                             $(' <div class="span4 total">').append(
