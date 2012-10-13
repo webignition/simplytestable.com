@@ -82,8 +82,8 @@ $(document).ready(function() {
                 return Math.floor((finishedCount / remoteTestSummary.task_count) * 100);
             }
             
-            if (requiredPrecision > 4) {
-                requiredPrecision = 4;
+            if (requiredPrecision > 2) {
+                requiredPrecision = 2;
             }
             
             if (requiredPrecision < 1) {
@@ -213,9 +213,9 @@ $(document).ready(function() {
         
         requestRecentTestData();
 
-        window.setInterval(function () {
-            requestRecentTestData();
-        }, 1000);
+//        window.setInterval(function () {
+//            requestRecentTestData();
+//        }, 1000);
     }   
     
     
