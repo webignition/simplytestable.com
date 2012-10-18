@@ -215,7 +215,7 @@ $(document).ready(function() {
 
         window.setInterval(function () {
             requestRecentTestData();
-        }, 1000);
+        }, 3000);
     }   
     
     
