@@ -18,7 +18,7 @@
         <script type="text/javascript" src="/bundles/simplytestablewebsite/js/app.js"></script>
         {% endblock %}        
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        
+{% if app.environment == 'prod' %}        
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -32,8 +32,8 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-</script> 
-
+</script>        
+        
 <script type="text/javascript">
   var GoSquared = {};
   GoSquared.acct = "GSN-258432-Q";
@@ -50,7 +50,9 @@
       w.addEventListener("load", gs, false) :
       w.attachEvent("onload", gs);
   })(window);
-</script>
+</script> 
+
+{% endif %}
     </head>
     
     {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}
