@@ -4,3 +4,8 @@ services:
     
   simplytestable.services.testimonialService:
     class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
+    
+  simplytestable.services.cachevalidatorheadersservice:
+    class:   SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService  
+    arguments:
+        entityManager: "@doctrine.orm.entity_manager"     

@@ -1,12 +1,10 @@
 <?php
 
 namespace SimplyTestable\WebsiteBundle\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-
-class DefaultController extends Controller
-{
+class DefaultController extends BaseController
+{   
     
     public function indexAction()
     {        
@@ -14,10 +12,29 @@ class DefaultController extends Controller
             return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
         }
         
-        return $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
+        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
+        
+        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
+        
+        return $this->getCachableResponse(
+            $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
             'testimonial' => $this->getTestimonialService()->getRandom()
-        ));
+            )),
+            $cacheValidatorHeaders
+        );         
     }
+
+    public function havingProblemsAction() {
+        if ($this->isUsingOldIE()) {
+            return $this->forward('SimplyTestableWebsiteBundle:Default:havingProblems');
+        }
+        
+        return $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig');
+    }    
     
     public function roadmapAction() {
         if ($this->isUsingOldIE()) {
