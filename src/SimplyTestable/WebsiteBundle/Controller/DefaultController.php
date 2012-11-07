@@ -49,8 +49,12 @@ class DefaultController extends BaseController
     }
     
     public function isUsingOldIE() {
-        $browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser($this->getRequest()->server->get('HTTP_USER_AGENT'));                
-        return ($browserInfo->Browser == 'IE' && $browserInfo->MajorVer < 8);     
+        try {
+            $browserInfo =  $this->container->get('jbi_browscap.browscap')->getBrowser($this->getRequest()->server->get('HTTP_USER_AGENT'));                
+            return ($browserInfo->Browser == 'IE' && $browserInfo->MajorVer < 8);                 
+        } catch (\Exception $e) {
+            return false;
+        }
     }
     
     
