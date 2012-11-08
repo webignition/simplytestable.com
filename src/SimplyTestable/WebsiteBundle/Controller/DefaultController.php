@@ -7,7 +7,7 @@ class DefaultController extends BaseController
 {   
     
     public function indexAction()
-    {
+    {        
         if ($this->isUsingOldIE()) {
             return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
         }
@@ -22,7 +22,9 @@ class DefaultController extends BaseController
         
         return $this->getCachableResponse(
             $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
-                'testimonial' => $this->getTestimonialService()->getRandom()
+                'testimonial' => $this->getTestimonialService()->getRandom(),
+                'user' => $this->getUser(),
+                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
             )),
             $cacheValidatorHeaders
         );         
@@ -64,23 +66,6 @@ class DefaultController extends BaseController
      */
     private function getTestimonialService() {
         return $this->get('simplytestable.services.testimonialService');
-    }
-    
-    /**
-     * 
-     * @return \SimplyTestable\WebClientBundle\Model\User
-     */
-    public function getUser() {
-        return $this->getUserService()->getUser();
-    }    
-    
-    
-    /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\UserService
-     */
-    protected function getUserService() {
-        return $this->get('simplytestable.services.userservice');
     }
     
     

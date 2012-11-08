@@ -7,13 +7,34 @@
                     <a class="brand" href="{{ path('homepage') }}">
                         SimplyTestable
                     </a>
+                    {% if is_logged_in %}
+                    <div class="pull-right">                        
+                        <form class="form-inline sign-out-form" method="post" action="{{ path('sign_out_submit') }}">
+                            <p class="navbar-text">                                
+                                <!--<a href="{# path('user', {'email':user.username}) #}" class="navbar-link">-->
+                                    <i class="icon icon-user"></i>
+                                    {{ user.username }}
+                                <!--</a>-->
+                                <button class="btn btn-small btn-primary" type="submit">
+                                    Sign out
+                                    <i class="icon icon-caret-right"></i>
+                                </button>
+                            </p>                        
+                        </form>                              
+                    </div> 
                     <ul class="nav pull-right">
-                        <li class="active"><i class="icon icon-play-circle"></i> <a href="//gears.simplytestable.com/">Start a new website test</a></li>
-                        <!--
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        -->
-                    </ul> 
+                        <li class=""><i class="icon icon-play-circle"></i> <a href="http://gears.simplytestable.com/">Start a new website test</a></li>
+                        <li class=""><i class="icon icon-cog"></i> <a href="http://gears.simplytestable.com/#recent-site-tests">Recent tests</a></li>
+                    </ul>                        
+
+                    {% else %}                        
+                    <p class="navbar-text pull-right">                        
+                        <a href="http://gears.simplytestable.com/signin/" class="navbar-link user-link"><i class="icon icon-user"></i> Sign in</a>
+                    </p>  
+                    <ul class="nav pull-right">
+                        <li class=""><i class="icon icon-play-circle"></i> <a href="http://gears.simplytestable.com/">Start a new website test</a></li>
+                    </ul>                    
+                    {% endif %} 
                 </div>
             </div>
         </div>

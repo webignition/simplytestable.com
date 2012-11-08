@@ -50,6 +50,24 @@ class BaseController extends Controller
      */
     protected function getCacheValidatorHeadersService() {
         return $this->container->get('simplytestable.services.cachevalidatorheadersservice');
-    }     
+    } 
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebClientBundle\Model\User
+     */
+    public function getUser() {
+        return $this->getUserService()->getUser();
+    }    
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\UserService
+     */
+    protected function getUserService() {
+        return $this->get('simplytestable.services.userservice');
+    }    
 }
 

@@ -234,6 +234,21 @@ body.homepage #start-new-test-form input {
     margin-top:20px;
 }
 
+.navbar .user-link,
+.navbar form.sign-out-form .icon-user {
+    border-left: 1px solid #999;
+    padding-left:10px;
+}
+
+.navbar  form.sign-out-form {
+    margin:0;
+    padding:0;
+}
+
+.navbar form.sign-out-form button {
+    margin:0 0 0 6px;
+}
+
 @media (min-width: 1200px) {
     .tweet-container .tweet {
         height:60px;

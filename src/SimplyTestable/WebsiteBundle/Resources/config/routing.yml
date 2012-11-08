@@ -13,3 +13,7 @@ outdated_browser:
 core_application_proxy:
   pattern: /core-application-proxy/
   defaults: { _controller: SimplyTestableWebsiteBundle:CoreApplicationProxy:index }  
+  
+sign_out_submit:
+    pattern:  /signout/
+    defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }     
