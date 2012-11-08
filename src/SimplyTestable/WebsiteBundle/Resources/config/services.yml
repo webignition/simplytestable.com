@@ -9,3 +9,15 @@ services:
     class:   SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService  
     arguments:
         entityManager: "@doctrine.orm.entity_manager"     
+        
+    
+  simplytestable.services.userservice:
+    class:  SimplyTestable\WebsiteBundle\Services\UserService        
+    arguments:
+        session: "@session"
+        userSerializerService: "@simplytestable.services.userserializerservice"
+        
+  simplytestable.services.userserializerservice:
+    class:  SimplyTestable\WebsiteBundle\Services\UserSerializerService        
+    arguments:
+        key: %secret%   
