@@ -1,7 +1,0 @@
-parameters:
-  web_client:
-    urls:
-      base: http://web.client.simplytestable.com
-      start_test: /
-      recent_tests: /#recent-tests
-      sign_in: /signin/      
