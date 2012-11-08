@@ -25,6 +25,7 @@ class DefaultController extends BaseController
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'web_client' => $this->container->getParameter('web_client'),                
             )),
             $cacheValidatorHeaders
         );         
