@@ -11,6 +11,14 @@ class User {
     
     
     /**
+     *
+     * @var string
+     */
+    private $password = null;    
+        
+    
+    
+    /**
      * 
      * @param string $username
      * @return SimplyTestable\WebsiteBundle\Model\User
@@ -28,6 +36,26 @@ class User {
     public function getUsername() {
         return $this->username;
     }
+    
+    
+    /**
+     * 
+     * @param string $password
+     * @return SimplyTestable\WebsiteBundle\Model\User
+     */
+    public function setPassword($password) {
+        $this->password = $password;
+        return $this;
+    }
+    
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getPassword() {
+        return $this->password;
+    }    
     
     
     /**

@@ -38,6 +38,7 @@ class UserSerializerService {
     public function serialize(User $user) {        
         return array(
             'username' => $this->encrypt($user->getUsername(), $this->getSurrogateKey()),
+            'password' => $this->encrypt($user->getPassword(), $this->getSurrogateKey()),
             'key' => $this->encrypt($this->getSurrogateKey(), $this->key),
             'iv' => $this->getIv(),
         );
@@ -55,7 +56,8 @@ class UserSerializerService {
         $this->surrogateKey = $this->decrypt($serializedUser['key'], $this->key);
         
         $user = new User();
-        $user->setUsername(trim($this->decrypt($serializedUser['username'], $this->getSurrogateKey())));
+        $user->setUsername(trim($this->decrypt($serializedUser['username'], $this->getSurrogateKey())));        
+        $user->setPassword(trim($this->decrypt($serializedUser['password'], $this->getSurrogateKey())));
         
         return $user;
     }
