@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "1.0.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.1.*",
+        "swiftmailer/swiftmailer": "4.2.*",
         "symfony/swiftmailer-bundle": "2.1.*",
         "symfony/monolog-bundle": "2.1.*",
         "sensio/distribution-bundle": "2.1.*",
