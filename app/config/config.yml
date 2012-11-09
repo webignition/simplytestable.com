@@ -19,7 +19,7 @@ framework:
     trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:
       cookie_domain: .simplytestable.com
-      save_path: "/tmp"
+      save_path: "%simplytestable_session_savepath%"
 
 # Twig Configuration
 twig:
