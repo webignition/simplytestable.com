@@ -132,3 +132,7 @@ margin-bottom: -28px;
 #footer #love footer {
     margin-left:30px;
 }
+
+.navbar .btn {
+    margin-top: 0;
+}
