@@ -6,3 +6,4 @@ parameters:
       recent_tests: /#recent-tests
       sign_in: /signin/
       sign_up: /signup/
+      start_test_submit: /test/start/
