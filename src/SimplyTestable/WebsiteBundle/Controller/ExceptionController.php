@@ -132,7 +132,8 @@ class ExceptionController extends Controller
         $message->setBody($this->renderView('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
             'status_code' => $exception->getStatusCode(),
             'status_text' => '"status text"',
-            'exception' => $exception
+            'exception' => $exception,
+            'remote_addr' => $_SERVER['REMOTE_ADDR']
         )));
         
         $this->get('mailer')->send($message);        
