@@ -138,6 +138,7 @@ body.homepage #start-new-test-form input {
 
 #recent-site-tests .site .wrapper {
     padding: 20px 0;    
+    overflow:hidden;
 }
 
 #recent-site-tests .site .icon {
@@ -160,12 +161,17 @@ body.homepage #start-new-test-form input {
 #recent-site-tests .site .url {
     text-decoration: none;
     font-size:16px;
+    display: block;
+    white-space: nowrap;
+    width: 98%;
+    overflow: hidden;    
 }
 
 #recent-site-tests .site .results {
     position: absolute;
     right: 10%;   
     top:20px;
+    border-left: 5px solid #fff;
 }
 
 #recent-site-tests .site .results a {
