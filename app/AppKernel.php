@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new SimplyTestable\WebsiteBundle\SimplyTestableWebsiteBundle(),
-            new Jbi\BrowscapBundle\JbiBrowscapBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),            
         );
 
