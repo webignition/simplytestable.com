@@ -1,6 +1,22 @@
-<form id="start-new-test-form" method="post" action="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test_submit'] }}">                
-    <div class="fields input-append">
-        <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …">            
-        <button type="submit" class="btn btn-primary btn-large">Test your site now</button>            
-    </div>
-</form>
+<div id="start-new-test-form">
+    <i class="icon section-icon icon-play-circle"></i>
+    <form  method="post" action="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test_submit'] }}">                
+        <div class="fields input-append">
+            <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …" />            
+            <button type="submit" class="btn btn-primary btn-large">Test your site now</button>            
+        </div>
+
+        <div id="test-options">
+            <span class="test-options-set">
+                <label class="checkbox">
+                    <input type="checkbox" value="1" name="html-validation" checked /> HTML validation
+                </label>                  
+            </span>
+            <span class="test-options-set">
+                <label class="checkbox">
+                    <input type="checkbox" value="1" name="css-validation" checked /> CSS validation
+                </label>                
+            </span>
+        </div>
+    </form>
+</div>
