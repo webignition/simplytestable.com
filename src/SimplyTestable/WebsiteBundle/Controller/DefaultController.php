@@ -39,12 +39,28 @@ class DefaultController extends BaseController
         return $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig');
     }    
     
-    public function roadmapAction() {
+    public function roadmapAction() {        
         if ($this->isUsingOldIE()) {
             return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
+        }        
+        
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
+        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
+        
+        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
         }
         
-        return $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig');
+        return $this->getCachableResponse(
+            $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig', array(
+                'testimonial' => $this->getTestimonialService()->getRandom(),
+                'user' => $this->getUser(),
+                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'web_client' => $this->container->getParameter('web_client'),                
+            )),
+            $cacheValidatorHeaders
+        );
     }
     
     public function outdatedBrowserAction() {
