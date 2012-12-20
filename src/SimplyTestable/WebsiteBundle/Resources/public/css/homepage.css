@@ -284,7 +284,17 @@ body.homepage #start-new-test-form .test-options-set {
 
 body.homepage #start-new-test-form .test-options-set:hover {
     background-color:#e5e5e5;    
-}    
+}  
+
+body.homepage .intro strong {
+    font-weight: normal;
+    color:#000;
+}
+
+body.homepage .carousel-inner {    
+    border-radius: 2px;
+    box-shadow: 0px 0px 4px 1px #4c4b4a; 
+}
 
 @media (min-width: 1200px) {
     .tweet-container .tweet {
