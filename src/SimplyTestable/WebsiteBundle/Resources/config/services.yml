@@ -20,4 +20,10 @@ services:
   simplytestable.services.userserializerservice:
     class:  SimplyTestable\WebsiteBundle\Services\UserSerializerService        
     arguments:
-        key: %secret%   
+        key: %secret% 
+        
+  simplytestable.services.notfoundredirectservice:
+    class:  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService   
+    arguments:
+        web_client_parameters: %web_client% 
+        not_found_redirect_map: %not_found_redirect_map%

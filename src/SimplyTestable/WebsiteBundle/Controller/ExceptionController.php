@@ -36,7 +36,11 @@ class ExceptionController extends Controller
      * @throws \InvalidArgumentException When the exception template does not exist
      */
     public function showAction(FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html')
-    {   
+    {
+        if ($this->getNotFoundRedirectService()->hasRedirectFor($this->container->get('request')->getRequestUri())) {
+            return $this->redirect($this->getNotFoundRedirectService()->getRedirectFor($this->container->get('request')->getRequestUri()));
+        }
+        
         if (!$this->container->get('kernel')->isDebug()) {
             $this->sendDeveloperEmail($exception);
         }       
@@ -166,5 +170,14 @@ class ExceptionController extends Controller
      */
     private function getTestimonialService() {
         return $this->get('simplytestable.services.testimonialService');
-    }    
+    }
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService
+     */
+    private function getNotFoundRedirectService() {
+        return $this->get('simplytestable.services.notfoundredirectservice');
+    }
 }
