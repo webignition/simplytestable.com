@@ -24,3 +24,22 @@ body.error .inner section p {
     line-height: 40px;
     font-size:30px;
 }
+
+body.error #start-new-test-form .icon-play-circle {
+    display:none;
+}
+
+body.error #test-options .test-options-set {
+    border-radius: 5px;
+    padding: 10px;   
+    display:inline-block;
+    width:24%;    
+}
+
+body.error #test-options .test-options-set input {
+    width:auto;
+}
+
+body.error #test-options .test-options-set:hover {
+    background-color:#e5e5e5;    
+} 
