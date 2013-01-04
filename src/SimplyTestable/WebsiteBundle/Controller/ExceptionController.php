@@ -137,7 +137,8 @@ class ExceptionController extends Controller
             'status_code' => $exception->getStatusCode(),
             'status_text' => '"status text"',
             'exception' => $exception,
-            'remote_addr' => $_SERVER['REMOTE_ADDR']
+            'remote_addr' => $_SERVER['REMOTE_ADDR'],
+            'user_agent' => $_SERVER['HTTP_USER_AGENT']
         )));
         
         $this->get('mailer')->send($message);        

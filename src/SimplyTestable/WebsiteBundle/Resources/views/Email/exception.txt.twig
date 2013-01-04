@@ -1,5 +1,6 @@
 {% autoescape false %}
 [remote_add] {{ remote_addr }}
+[user_agent] {{ user_agent }}
 [exception] {{ status_code ~ ' | ' ~ (status_text|raw) ~ ' | ' ~ exception.class }}
 [message] {{ exception.message }}
 
