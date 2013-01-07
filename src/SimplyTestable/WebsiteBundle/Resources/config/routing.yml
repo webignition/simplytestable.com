@@ -1,6 +1,13 @@
 homepage:
     pattern:  /
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:index }
+    
+homepage_redirect_01:
+    pattern:  /index.php
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /
+        permanent: true 
 
 roadmap:
     pattern:  /roadmap/
