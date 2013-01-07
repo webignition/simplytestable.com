@@ -37,16 +37,8 @@ class NotFoundRedirectService {
      * @return boolean
      */
     public function hasRedirectFor($requestUri) {
-        $this->setNormalisedRequestUri($requestUri);            
-        if (isset($this->notFoundRedirectMap[$this->getNormalisedRequestUri()])) {
-            return true;
-        }
-        
-        if (isset($this->notFoundRedirectMap[$this->getNormalisedRequestUri().'/'])) {
-            return true;
-        }
-        
-        return $this->hasRedirectFor($requestUri.'/');
+        $this->setNormalisedRequestUri($requestUri);           
+        return isset($this->notFoundRedirectMap[$this->getNormalisedRequestUri()]);
     }
     
     
@@ -121,6 +113,10 @@ class NotFoundRedirectService {
     private function setNormalisedRequestUri($requestUri) {
         if (preg_match('/^\/app_dev.php/', $requestUri) > 0) {
             $requestUri = preg_replace('/^\/app_dev.php/', '', $requestUri);
+        }
+        
+        if (substr($requestUri, strlen($requestUri) - 1) === '/') {
+            $requestUri = substr($requestUri, 0, strlen($requestUri) - 1);
         }
         
         $this->normalisedRequestUri = $requestUri;
