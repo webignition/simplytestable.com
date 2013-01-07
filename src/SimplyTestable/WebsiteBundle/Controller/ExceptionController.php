@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use webignition\Url\Url;
 
 /**
  * ExceptionController.
@@ -39,6 +40,11 @@ class ExceptionController extends Controller
     {
         if ($this->getNotFoundRedirectService()->hasRedirectFor($this->container->get('request')->getRequestUri())) {
             return $this->redirect($this->getNotFoundRedirectService()->getRedirectFor($this->container->get('request')->getRequestUri()));
+        }
+        
+        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $this->container->get('request')->getRequestUri());
+        if ($this->isNotFoundException($exception) && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
+            return $this->redirect('http:' . $normalisedRequestUrl);
         }
         
         if (!$this->container->get('kernel')->isDebug()) {
@@ -64,6 +70,26 @@ class ExceptionController extends Controller
                 'testimonial' => $this->getTestimonialService()->getRandom()
             )
         );
+    }
+    
+    /**
+     * 
+     * @param string $url
+     * @return boolean
+     */
+    private function isProtocolRelativeRequestUrl($url) {
+        $urlObject = new Url($url);
+        return $urlObject->isProtocolRelative();
+    }
+    
+    
+    /**
+     * 
+     * @param \Symfony\Component\HttpKernel\Exception\FlattenException $exception
+     * @return boolean
+     */
+    private function isNotFoundException(FlattenException $exception) {
+        return $exception->getStatusCode() == 404;
     }
 
     /**
