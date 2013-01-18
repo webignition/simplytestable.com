@@ -3,7 +3,8 @@
     <form  method="post" action="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test_submit'] }}">                
         <div class="fields input-append">
             <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …" />            
-            <button type="submit" class="btn btn-primary btn-large">Test your site now</button>            
+            <button type="submit" class="btn btn-primary btn-large" name="full-single" value="full">Test full site</button>
+            <button type="submit" class="btn btn-large" name="full-single" value="single">Test single URL</button>
         </div>
 
         <div id="test-options">
