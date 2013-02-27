@@ -296,6 +296,13 @@ body.homepage .carousel-inner {
     box-shadow: 0px 0px 4px 1px #4c4b4a; 
 }
 
+body.homepage .feature-list li .content {
+    display: block;
+    width: 90%;
+    margin-left: 23px;
+    margin-top: -20px;    
+}
+
 @media (min-width: 1200px) {
     .tweet-container .tweet {
         height:60px;
