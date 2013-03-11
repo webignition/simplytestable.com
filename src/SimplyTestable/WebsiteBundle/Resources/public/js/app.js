@@ -213,9 +213,9 @@ $(document).ready(function() {
         
         requestRecentTestData();
 
-//        window.setInterval(function () {
-//            requestRecentTestData();
-//        }, 3000);
+        window.setInterval(function () {
+            requestRecentTestData();
+        }, 3000);
     }   
     
     
