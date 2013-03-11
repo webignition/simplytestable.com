@@ -180,7 +180,7 @@ body.homepage #start-new-test-form input {
 
 #recent-site-tests .site .total .test-count {
     color: #666;
-    font-size: 40px;
+    font-size: 36px;
     line-height: 40px;
     display: block;    
 }
@@ -205,8 +205,12 @@ body.homepage #start-new-test-form input {
 
 #recent-site-tests .site .detail .figure {
     display:inline-block;
-    width:30px;
+    width:32px;
     text-align: right;
+}
+
+#recent-site-tests .site .detail .figure-wide {
+    width:36px;
 }
 
 #recent-site-tests .site .detail .caption {

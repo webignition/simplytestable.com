@@ -182,15 +182,15 @@ $(document).ready(function() {
                             )
                         ).append(
                             $(' <div class="span4 total">').append(
-                                '<span class="test-count">'+getCompletionPercent(this)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
+                                '<span class="test-count percent-count">'+getCompletionPercent(this)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
                             )
                         ).append(
                             $('<div class="span4 detail">').append(
-                                '<div><span class="queued-count figure">'+getQueuedTaskCount(this.task_count_by_state)+'</span> <span class="caption">queued</span></div>'
+                                '<div><span class="queued-count figure figure-wide">'+getQueuedTaskCount(this.task_count_by_state)+'</span> <span class="caption">queued</span></div>'
                             ).append(
                                 '<div><span class="in-progress-count figure">'+this.task_count_by_state['in-progress']+'</span> <span class="caption">in progress</span></div>'
                             ).append(
-                                '<div><span class="finished-count figure">'+getFinishedTaskCount(this.task_count_by_state)+'</span> <span class="caption">finished</span></div>'
+                                '<div><span class="finished-count figure figure-wide">'+getFinishedTaskCount(this.task_count_by_state)+'</span> <span class="caption">finished</span></div>'
                             )
                         )
                     )
@@ -213,9 +213,9 @@ $(document).ready(function() {
         
         requestRecentTestData();
 
-        window.setInterval(function () {
-            requestRecentTestData();
-        }, 3000);
+//        window.setInterval(function () {
+//            requestRecentTestData();
+//        }, 3000);
     }   
     
     
