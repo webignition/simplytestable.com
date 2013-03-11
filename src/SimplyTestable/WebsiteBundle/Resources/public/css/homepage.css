@@ -164,7 +164,8 @@ body.homepage #start-new-test-form input {
     display: block;
     white-space: nowrap;
     width: 98%;
-    overflow: hidden;    
+    overflow: hidden;   
+    margin-bottom:6px;
 }
 
 #recent-site-tests .site .results {
