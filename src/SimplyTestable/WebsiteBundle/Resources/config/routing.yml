@@ -17,3 +17,66 @@ core_application_proxy:
 sign_out_submit:
     pattern:  /signout/
     defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }     
+    
+redirect_limit_test_1:
+    pattern:  /redirect-limit-test/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_2
+        permanent: true
+
+redirect_limit_test_2:
+    pattern:  /redirect-limit-test/2/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_3
+        permanent: true            
+        
+redirect_limit_test_3:
+    pattern:  /redirect-limit-test/3/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_4
+        permanent: true        
+        
+redirect_limit_test_4:
+    pattern:  /redirect-limit-test/4/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_5
+        permanent: true            
+        
+redirect_limit_test_5:
+    pattern:  /redirect-limit-test/5/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_6
+        permanent: true  
+        
+redirect_limit_test_6:
+    pattern:  /redirect-limit-test/7/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_7
+        permanent: true  
+        
+redirect_limit_test_7:
+    pattern:  /redirect-limit-test/7/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: roadmap
+        permanent: true        
+        
+redirect_loop_test_1:
+    pattern:  /redirect-loop-test/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_loop_test_2
+        permanent: true        
+        
+redirect_loop_test_2:
+    pattern:  /redirect-loop-test/2/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_loop_test_1
+        permanent: true          
