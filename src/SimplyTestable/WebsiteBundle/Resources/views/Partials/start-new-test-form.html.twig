@@ -1,38 +1,7 @@
 <div id="start-new-test-form">
-    <i class="icon section-icon icon-play-circle"></i>
-    <form  method="post" action="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test_submit'] }}">                
-        <div class="fields input-append">
-            <input class="input-xlarge" name="website" id="input-website" type="text" placeholder="Enter website homepage URL …" />            
-            <button type="submit" class="btn btn-primary btn-large" name="full-single" value="full">Test full site</button>
-            <button type="submit" class="btn btn-large" name="full-single" value="single">Test single URL</button>
-        </div>
-
-        <div id="test-options">
-            <span class="test-options-set">
-                <label class="checkbox">
-                    <input type="checkbox" value="1" name="html-validation" checked /> HTML validation
-                </label>                  
-            </span>
-            <span class="test-options-set">
-                <label class="checkbox">
-                    <input type="checkbox" value="1" name="css-validation" checked /> CSS validation
-                </label>                
-            </span>
-            <span class="test-options-set">
-                <label class="checkbox">
-                    <input type="checkbox" value="1" name="js-static-analysis" checked /> JS static analysis
-                </label>                
-            </span>                
-        </div>
-            
-        <input type="hidden" value="1" name="css-validation-ignore-warnings" />
-        <input type="hidden" name="css-validation-vendor-extensions" value="warn" />
-        <input type="hidden" value="1" name="css-validation-ignore-common-cdns" />
-        <input type="hidden" name="css-validation-domains-to-ignore" value="" />
-        
-        <input type="hidden" value="1" name="js-static-analysis-ignore-common-cdns" />
-        <input type="hidden" name="js-static-analysis-domains-to-ignore" value="" />
-            
-        <a href="{{ web_client['urls']['base'] }}">Advanced new test form (fine tune your test) <i class="icon icon-caret-right"></i></a>
-    </form>
+    <a href="{{ web_client['urls']['base'] }}" class="btn btn-large btn-success">        
+        <b>Test your full web site now</b>
+        <span class="byline">Free and easy. Get started in seconds.</span>
+        <i class="icon icon-caret-right"></i>
+    </a>
 </div>

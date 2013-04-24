@@ -136,3 +136,24 @@ margin-bottom: -28px;
 .navbar .btn {
     margin-top: 0;
 }
+
+#start-new-test-form a  {
+    position: relative;
+    padding-right: 40px;
+    text-align: left;
+}
+
+#start-new-test-form a .icon {
+    position: absolute;
+    right: 10px;
+    font-size:30px;
+    top:15px;
+}
+
+#start-new-test-form a .byline {
+    display: block;
+    font-size: 13px;
+    text-align: left;
+    font-style: normal; 
+    opacity: 0.8;
+}

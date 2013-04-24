@@ -54,7 +54,7 @@ redirect_limit_test_5:
         permanent: true  
         
 redirect_limit_test_6:
-    pattern:  /redirect-limit-test/7/
+    pattern:  /redirect-limit-test/6/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_7

@@ -260,26 +260,6 @@ body.homepage #start-new-test-form input {
     margin:0 0 0 6px;
 }
 
-body.homepage #start-new-test-form #test-options input  {
-    width:auto;
-}
-
-body.homepage #start-new-test-form .section-icon {
-/*    position:absolute;
-    width:100px;
-    height:100px;
-    left:-50px;    
-    color:#08c;
-    font-size:100px; */
-    top:auto;
-/*    line-height: 55px;*/
-}
-
-body.homepage #start-new-test-form label {
-/*    width:24%;
-    display:inline-block;*/
-}
-
 body.homepage #start-new-test-form .test-options-set {
     border-radius: 5px;
     padding: 10px;   

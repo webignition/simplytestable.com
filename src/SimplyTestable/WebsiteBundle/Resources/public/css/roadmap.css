@@ -89,21 +89,11 @@
     color:#0088cc;
 }
 
-.roadmap #start-new-test-form .icon-play-circle {
-    display:none;
+#start-new-test-form a .icon {
+    top:6px;
 }
 
-.roadmap #test-options .test-options-set {
-    border-radius: 5px;
-    padding: 10px;   
-    display:inline-block;
-    width:24%;    
+#start-new-test-form a .byline {
+    display: inline;
+    padding-left:10px;
 }
-
-.roadmap #test-options .test-options-set input {
-    width:auto;
-}
-
-.roadmap #test-options .test-options-set:hover {
-    background-color:#e5e5e5;    
-} 
