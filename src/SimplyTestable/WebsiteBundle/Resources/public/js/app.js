@@ -7,7 +7,8 @@ $(document).ready(function() {
             'failed-retry-available',
             'failed-retry-limit-reached',
             'skipped',
-            'no-sitemap'
+            'failed-no-sitemap',
+            'rejected'
         ]; 
 
         var queuedStates = [
@@ -61,7 +62,7 @@ $(document).ready(function() {
             return queuedTaskCount;
         };   
         
-        var getCompletionPercent = function (remoteTestSummary) {
+        var getCompletionPercent = function (remoteTestSummary) {            
             if (isFinishedState(remoteTestSummary.state)) {
                 return 100;
             }
@@ -142,6 +143,10 @@ $(document).ready(function() {
             
             if (state == 'cancelled') {
                 return 'success';
+            }
+            
+            if (state == 'rejected') {
+                return 'success';                
             }
         };        
         
