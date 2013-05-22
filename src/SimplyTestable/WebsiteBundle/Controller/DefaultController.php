@@ -72,7 +72,12 @@ class DefaultController extends BaseController
      * @return boolean
      */
     public function isUsingOldIE() {        
-        return $this->isUsingIE6() || $this->isUsingIE7();           
+        if ($this->isUsingIE6() || $this->isUsingIE7()) {
+            $this->get('logger')->err('Detected old IE for ['.$_SERVER['HTTP_USER_AGENT'].']');            
+            return true;
+        }
+        
+        return false;
     }
     
     
