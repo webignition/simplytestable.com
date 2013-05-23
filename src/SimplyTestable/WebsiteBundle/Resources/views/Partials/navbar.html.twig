@@ -6,6 +6,9 @@
                 <div class="span12">
                     <a class="brand" href="{{ path('homepage') }}">
                         SimplyTestable
+                        {% if app.request.get('_route') != 'homepage' %}
+                        <span>automated front-end web testing</span>
+                        {% endif %}
                     </a>
                     {% if is_logged_in %}
                     <div class="pull-right">                        

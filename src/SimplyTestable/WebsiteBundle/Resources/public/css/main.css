@@ -16,6 +16,7 @@
     padding-left: 40px;
 }
 
+/*.navbar-inverse .brand span,*/
 .navbar-inverse .brand:hover {
     color:#0ae;
 }

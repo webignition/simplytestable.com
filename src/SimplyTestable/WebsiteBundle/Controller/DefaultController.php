@@ -30,6 +30,30 @@ class DefaultController extends BaseController
             $cacheValidatorHeaders
         );         
     }
+    
+    public function plansAction() {
+        if ($this->isUsingOldIE()) {
+            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
+        }
+        
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
+        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
+        
+        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
+        if ($response->isNotModified($this->getRequest())) {
+//            return $response;
+        }
+        
+        return $this->getCachableResponse(
+            $this->render('SimplyTestableWebsiteBundle:Default:plans.html.twig', array(
+                'testimonial' => $this->getTestimonialService()->getRandom(),
+                'user' => $this->getUser(),
+                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'web_client' => $this->container->getParameter('web_client'),                
+            )),
+            $cacheValidatorHeaders
+        );            
+    }
 
     public function havingProblemsAction() {
         if ($this->isUsingOldIE()) {

@@ -1,0 +1,435 @@
+#logo a {
+    text-indent: -5000em;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+#landing-strip {
+    background-color:#eee;
+    border-bottom:1px solid #ddd;
+    padding-top:80px;
+    padding-bottom:20px;
+    margin-bottom: 60px;
+}
+
+#landing-strip .intro {
+    padding-left:60px;
+}
+
+body.plans h1 {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 20px;   
+    text-align: center;
+    margin-bottom:40px;    
+}
+
+/*#landing-strip p {
+    font-size:18px;
+    line-height: 22px;
+}*/
+
+.pricing-table .plan-name span {
+    position: relative;
+    display: block;
+/*    background-color: red;*/
+    margin-left: -20px;
+    margin-right: -20px;
+    background-color: #0099dd;
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+.pricing-table .plan-business span {
+    background-color: #00aaee;
+}
+
+.pricing-table .plan .plan-name {
+    padding-bottom: 0;
+    padding-top: 5px;
+}
+
+.pricing-table .plan-name span i {
+    font-style: normal;
+    font-size: 12px;
+    opacity: 0.8;   
+    position: absolute;
+    width: 100px;
+    text-align: left;
+    margin-left: 6px;
+    bottom: 16px;    
+}
+
+body.plans .row-get-started {
+    margin-top:40px;
+}
+
+.pricing-table h2 {
+    font-weight: normal;
+}
+
+.pricing-table .plan .plan-name {
+    background: #0088cc;
+}
+
+.pricing-table .plan .plan-name h2 {
+    color: #fdfdfd;
+}
+
+.pricing-table .plan .plan-name p {
+    opacity: 0.8;
+    margin-top: -10px;
+}
+
+.pricing-table .plan-business {
+    margin-top: -10px;
+  -moz-box-shadow: 0 0 6px 2px #b0b2ab;
+  -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
+  box-shadow: 0 0 8px 3px #b0b2ab;    
+}
+
+.pricing-table .plan-business .plan-name {
+    background: #0099dd;
+    border: 2px solid #00aaee; 
+    border-bottom: none;
+}
+
+.pricing-table .plan-business ul {
+    border: 2px solid #ddd;
+    border-top: none;
+/*    padding-bottom: 20px;*/
+}
+
+.pricing-table .plan-business .plan-name h2 {
+    color: #ffffff;
+    margin-top:18px;
+    font-size:36px;
+}
+
+.pricing-table .plan-business .plan-name p {
+    opacity: 1;
+}
+
+.pricing-table .plan-business .btn-plan-select {
+    margin: 10px 0;
+}
+
+
+/*
+body.homepage #landing-strip {
+    margin-bottom: 0;
+}
+
+body.homepage #landing-strip.carousel {
+    margin-bottom:0;
+}
+
+body.homepage .features {
+    list-style: none;
+    margin-left: 30px;
+}
+
+body.homepage .features .feature {
+    list-style-type: none;
+    position:relative;    
+}
+
+body.homepage .features .icon {
+    position:absolute;
+    left:-30px;
+    line-height: 20px;
+}
+
+body.homepage .features .icon-star {
+    color:yellow;
+}
+
+body.homepage h2 {
+    background-color: #08C;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    border-radius: 6px;
+    padding: 6px 16px;
+    margin-bottom: 10px;
+}
+
+body.homepage h2 i {
+    font-size: 36px;
+    line-height: 36px;
+    width: auto;
+    height: auto;    
+}
+
+#landing-twitter-status {
+    height:100px;
+}
+
+.tweet-container .tweet {
+    opacity:0;
+    height:90px;
+}
+
+#landing-twitter-status .icon-twitter {
+    height: 100px;
+    font-size: 58px;
+    margin: 0 10px 0 0;     
+    display: inline-block;       
+    float: left;     
+}
+
+.tweet-container .time {
+    opacity:0.4;
+}
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
+}
+
+body.homepage .content {
+    margin-top:20px;
+}
+
+#start-new-test-form {
+    margin-bottom:0;
+}
+
+#start-new-test-form input {
+    padding: 9px 9px 8px 9px;
+}
+
+body.homepage #start-new-test-form {
+    margin-top:14px;
+}
+
+body.homepage #start-new-test-form input {
+    width:46%;
+}
+
+#recent-site-tests h3 {        
+    margin: 0 0 0 -30px;
+    padding: 10px 0 10px 30px;       
+}
+
+#recent-site-tests {
+    border-bottom: 1px solid #DDD;    
+}
+
+
+#recent-site-tests .site {
+    position:relative;
+    padding-right:3%;  
+}
+
+#recent-site-tests .site .wrapper {
+    padding: 20px 0;    
+    overflow:hidden;
+}
+
+#recent-site-tests .site .icon {
+    font-size:20px;
+}
+
+#recent-site-tests .site .state-icon {
+    margin-right:4px;
+}
+
+#recent-site-tests .site .action-icon {
+    margin-left:4px;
+}
+
+#recent-site-tests .badge {
+    padding: 4px 4px 4px 8px;
+    display:inline-block;
+}
+
+#recent-site-tests .site .url {
+    text-decoration: none;
+    font-size:16px;
+    display: block;
+    white-space: nowrap;
+    width: 98%;
+    overflow: hidden;   
+    margin-bottom:6px;
+}
+
+#recent-site-tests .site .results {
+    position: absolute;
+    right: 10%;   
+    top:20px;
+    border-left: 5px solid #fff;
+}
+
+#recent-site-tests .site .results a {
+    text-decoration: none;
+}
+
+#recent-site-tests .site .total .test-count {
+    color: #666;
+    font-size: 36px;
+    line-height: 40px;
+    display: block;    
+}
+
+#recent-site-tests .site .total .subtext {
+    color:#aaa;
+}
+
+#recent-site-tests .site .total .percent {
+    font-size:14px;
+    line-height:14px;
+    font-weight: normal;
+}
+
+#recent-site-tests .site .detail {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    padding-right: 3px;
+    margin-top: 5px;    
+}
+
+#recent-site-tests .site .detail .figure {
+    display:inline-block;
+    width:32px;
+    text-align: right;
+}
+
+#recent-site-tests .site .detail .figure-wide {
+    width:36px;
+}
+
+#recent-site-tests .site .detail .caption {
+    
+}
+
+#features .feature-list {
+    list-style:none;
+    margin:0;
+}
+
+#features .feature-list li {
+    list-style-type:none;
+}
+
+#features .feature-list li .icon,
+.feature-planned .icon {
+    color:#08c;
+}
+
+#features .feature-list li.completed .icon {
+    color:#468847;
+}
+
+#future-development h3 {
+    font-size: 18px;
+    line-height: 24px;        
+}
+
+.planned-improvements {
+    margin-top:20px;
+}
+
+.navbar .user-link,
+.navbar form.sign-out-form .icon-user {
+    border-left: 1px solid #999;
+    padding-left:10px;
+}
+
+.navbar  form.sign-out-form {
+    margin:0;
+    padding:0;
+}
+
+.navbar form.sign-out-form button {
+    margin:0 0 0 6px;
+}
+
+body.homepage #start-new-test-form .test-options-set {
+    border-radius: 5px;
+    padding: 10px;   
+    display:inline-block;
+    width:34%;
+}
+
+body.homepage #start-new-test-form .test-options-set:hover {
+    background-color:#e5e5e5;    
+}  
+
+body.homepage .intro strong {
+    font-weight: normal;
+    color:#000;
+}
+
+body.homepage .carousel-inner {    
+    border-radius: 2px;
+    box-shadow: 0px 0px 4px 1px #4c4b4a; 
+}
+
+body.homepage .feature-list li .content {
+    display: block;
+    width: 90%;
+    margin-left: 23px;
+    margin-top: -20px;    
+}
+
+*/
+
+@media (min-width: 1200px) {
+    .tweet-container .tweet {
+        height:60px;
+    }    
+    
+    #landing-strip h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    body.homepage #start-new-test-form {
+        margin-top:40px;
+    } 
+    
+    #landing-twitter-status {
+        height:70px;
+    }   
+    
+    #landing-twitter-status .icon-twitter {
+        height: 70px;  
+    }  
+    
+    body.content #start-new-test-form input {
+        width:392px;
+    }  
+    
+    .roadmap .timeline h3 {
+        font-size:40px;
+        line-height: 40px;
+    }
+    
+    .roadmap .timeline .detail {
+        width:75%;
+    }  
+    
+    #future-development h3 {
+        font-size: 24px;
+        line-height: 32px;        
+    } 
+    
+    body.homepage #start-new-test-form .test-options-set {
+        width:26%;
+    }    
+}

@@ -1,6 +1,10 @@
 homepage:
     pattern:  /
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:index }
+    
+plans:
+    pattern:  /plans/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:plans }    
 
 roadmap:
     pattern:  /roadmap/
@@ -79,4 +83,4 @@ redirect_loop_test_2:
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_loop_test_1
-        permanent: true          
+        permanent: true

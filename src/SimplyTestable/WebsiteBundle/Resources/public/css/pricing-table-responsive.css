@@ -1,0 +1,40 @@
+/* 
+ * Copyright 2013 Soundarapandian
+ * Pricing table built on Twitter Bootstrap.
+
+  Responsive styles for pricing table tested in the 
+  below device simulations.
+  Apple iPhone
+    320x480 Portrait
+    480x320 Landscape
+  Apple iPhone 5
+    320x568 Portrait
+    568x320 Landscape
+  Small Tablet
+    600x800 Portrait
+    800x600 Landscape
+  Tablet
+    768x1024 Portrait
+    1024x768 Landscape
+  Widescreen
+    1280x800 Landscape
+    800x1280 Portrait
+*/
+
+@media (max-width: 320px) {
+  .pricing-three-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing-table .plan {
+    margin-bottom: 20px;
+  }
+  .pricing-variable-height .plan {
+    margin-left: 0;
+  }
+  .pricing-three-column {
+    width: 100%;
+  }
+}
