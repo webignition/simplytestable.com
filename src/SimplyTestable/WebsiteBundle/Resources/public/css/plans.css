@@ -13,12 +13,12 @@
     border-bottom:1px solid #ddd;
     padding-top:80px;
     padding-bottom:20px;
-    margin-bottom: 60px;
+/*    margin-bottom: 60px;*/
 }
 
-#landing-strip .intro {
+/*#landing-strip .intro {
     padding-left:60px;
-}
+}*/
 
 body.plans h1 {
     font-size: 24px;
@@ -33,7 +33,12 @@ body.plans h1 {
     line-height: 22px;
 }*/
 
+.pricing-table .plan .plan-name span {
+    font-size: 26px;
+}
+
 .pricing-table .plan-name span {
+    font-size:26px;
     position: relative;
     display: block;
 /*    background-color: red;*/
@@ -86,6 +91,7 @@ body.plans .row-get-started {
 }
 
 .pricing-table .plan-business {
+    background-color: #fff;
     margin-top: -10px;
   -moz-box-shadow: 0 0 6px 2px #b0b2ab;
   -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
@@ -164,21 +170,9 @@ body.homepage h2 i {
     height: auto;    
 }
 
-#landing-twitter-status {
-    height:100px;
-}
-
-.tweet-container .tweet {
+*/.tweet-container .tweet {
     opacity:0;
     height:90px;
-}
-
-#landing-twitter-status .icon-twitter {
-    height: 100px;
-    font-size: 58px;
-    margin: 0 10px 0 0;     
-    display: inline-block;       
-    float: left;     
 }
 
 .tweet-container .time {
@@ -198,7 +192,7 @@ body.homepage h2 i {
     color: #08C;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
     width: auto;       
-}
+}/*
 
 body.homepage .content {
     margin-top:20px;
@@ -220,104 +214,8 @@ body.homepage #start-new-test-form input {
     width:46%;
 }
 
-#recent-site-tests h3 {        
-    margin: 0 0 0 -30px;
-    padding: 10px 0 10px 30px;       
-}
 
-#recent-site-tests {
-    border-bottom: 1px solid #DDD;    
-}
-
-
-#recent-site-tests .site {
-    position:relative;
-    padding-right:3%;  
-}
-
-#recent-site-tests .site .wrapper {
-    padding: 20px 0;    
-    overflow:hidden;
-}
-
-#recent-site-tests .site .icon {
-    font-size:20px;
-}
-
-#recent-site-tests .site .state-icon {
-    margin-right:4px;
-}
-
-#recent-site-tests .site .action-icon {
-    margin-left:4px;
-}
-
-#recent-site-tests .badge {
-    padding: 4px 4px 4px 8px;
-    display:inline-block;
-}
-
-#recent-site-tests .site .url {
-    text-decoration: none;
-    font-size:16px;
-    display: block;
-    white-space: nowrap;
-    width: 98%;
-    overflow: hidden;   
-    margin-bottom:6px;
-}
-
-#recent-site-tests .site .results {
-    position: absolute;
-    right: 10%;   
-    top:20px;
-    border-left: 5px solid #fff;
-}
-
-#recent-site-tests .site .results a {
-    text-decoration: none;
-}
-
-#recent-site-tests .site .total .test-count {
-    color: #666;
-    font-size: 36px;
-    line-height: 40px;
-    display: block;    
-}
-
-#recent-site-tests .site .total .subtext {
-    color:#aaa;
-}
-
-#recent-site-tests .site .total .percent {
-    font-size:14px;
-    line-height:14px;
-    font-weight: normal;
-}
-
-#recent-site-tests .site .detail {
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    padding-right: 3px;
-    margin-top: 5px;    
-}
-
-#recent-site-tests .site .detail .figure {
-    display:inline-block;
-    width:32px;
-    text-align: right;
-}
-
-#recent-site-tests .site .detail .figure-wide {
-    width:36px;
-}
-
-#recent-site-tests .site .detail .caption {
-    
-}
-
-#features .feature-list {
+*/#features .feature-list {
     list-style:none;
     margin:0;
 }
@@ -333,7 +231,7 @@ body.homepage #start-new-test-form input {
 
 #features .feature-list li.completed .icon {
     color:#468847;
-}
+}/*
 
 #future-development h3 {
     font-size: 18px;
@@ -402,14 +300,6 @@ body.homepage .feature-list li .content {
     body.homepage #start-new-test-form {
         margin-top:40px;
     } 
-    
-    #landing-twitter-status {
-        height:70px;
-    }   
-    
-    #landing-twitter-status .icon-twitter {
-        height: 70px;  
-    }  
     
     body.content #start-new-test-form input {
         width:392px;

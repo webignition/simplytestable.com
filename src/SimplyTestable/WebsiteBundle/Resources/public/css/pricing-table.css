@@ -23,10 +23,10 @@
 }
 
 .pricing-table .plan:hover {
-  background-color: #fff;
+/*  background-color: #fff;
   -moz-box-shadow: 0 0 12px 3px #b0b2ab;
   -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
-  box-shadow: 0 0 12px 3px #b0b2ab;
+  box-shadow: 0 0 12px 3px #b0b2ab;*/
 }
 
 .pricing-table .plan .plan-name {
