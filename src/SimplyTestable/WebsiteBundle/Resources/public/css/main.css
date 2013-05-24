@@ -36,6 +36,37 @@
     color:#eee;
 }
 
+.navbar .user-link,
+.navbar form.sign-out-form .icon-user {
+    padding-left:10px;
+}
+
+.navbar  form.sign-out-form {
+    margin:1px 0 0 0;
+    padding:0;
+}
+
+.navbar form.sign-out-form button {
+    margin:0 0 0 6px;
+}
+
+.navbar-user-link {
+    border-left: 1px solid #999;
+}
+
+.navbar-user-link:hover {
+    text-decoration: none;
+}
+
+.navbar-inverse .nav .active,
+.navbar-inverse .nav .active>a,
+.navbar-inverse .nav .active>a:hover,
+.navbar-inverse .nav .active>a:focus {
+    color:#fff;
+    background-color: transparent;    
+}
+    
+
 body {
     margin-top:0;
 }
