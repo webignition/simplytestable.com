@@ -189,3 +189,14 @@ margin-bottom: -28px;
     font-style: normal; 
     opacity: 0.8;
 }
+
+#landing-strip {
+    background-color:#eee;
+    border-bottom:1px solid #ddd;
+    padding-top:80px;
+    padding-bottom:20px;
+}
+
+.iconified-section .span4 {
+    width:31%;
+}

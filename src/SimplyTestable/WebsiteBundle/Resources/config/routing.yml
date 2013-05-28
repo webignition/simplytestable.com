@@ -4,7 +4,11 @@ homepage:
     
 plans:
     pattern:  /plans/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:plans }    
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:plans }       
+    
+features:
+    pattern:  /features/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:features }
 
 roadmap:
     pattern:  /roadmap/

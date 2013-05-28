@@ -1,0 +1,46 @@
+.intro-feature h2 {
+    background-image: url('/bundles/simplytestablewebsite/images/trifecta.png');
+    background-repeat: no-repeat;
+    height:64px; 
+    text-indent: 64px;
+    font-size:28px;
+    padding-top:10px;
+}
+
+.intro-html h2 {
+    background-position: 0px 0px;
+}
+
+.intro-css h2 {
+    background-position: 0px -1000px;
+}
+
+.intro-js h2 {
+    background-position: 0px -2000px;    
+}
+
+#features {
+    margin-top: 30px;
+}
+
+/*#features p.intro {
+    font-size:16px;
+    line-height: 24px;
+}*/
+
+.checklist {
+    list-style:none;
+    margin:0;    
+}
+
+.checklist li {
+    list-style-type:none;    
+}
+
+.checklist li .icon {
+    color:#468847;    
+}
+
+.checklist li p {
+    
+}

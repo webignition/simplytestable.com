@@ -1,0 +1,144 @@
+{% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
+
+{% block stylesheets %}      
+{{ parent() }}
+<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/features.css" />
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="//twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+{% endblock %} 
+
+{% block body %}
+
+<div id="landing-strip">
+    <div class="container">   
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>Test in minutes what would take hours by hand. Automate it.</h1>
+                <p>
+                    
+                </p>
+                <p>
+                    note: 1 - test types, 2 - reports                    
+                </p>
+            </div>
+        </div> 
+        <div class="clearfix"></div>        
+
+
+    </div>
+</div>
+
+<div id="features">
+    <div class="container">
+<!--          
+        <div class="row-fluid">
+            <div class="span12">
+                <h2>Front-end quality checks</h2>
+              
+                <p class="intro">Run a set of web front-end quality checks against either
+                    your entire site or just a single URL.
+                </p>
+            </div>       
+        </div>
+-->         
+        <div class="row-fluid">             
+            <div class="span4 intro-feature intro-html">
+                <h2>HTML5 Validation</h2>
+                <p>
+                    Validate the markup for your entire site using industry-standard
+                    tools provided by the <a href="http://validator.w3.org/">W3C</a>
+                    and <a href="http://html5.validator.nu/">validator.nu</a>.
+                </p>                
+                <p>
+                    Works with: 
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            HTML5
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            HTML 4.01 and 4
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            XHTML 1.0 and 1.1
+                        </p>
+                    </li>                    
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            HTML 3.2
+                        </p>
+                    </li>                    
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            HTML 2
+                        </p>
+                    </li>                   
+                </ul>
+            </div>            
+            <div class="span4 intro-feature intro-css">
+                <h2>Smart CSS3 Validation</h2>
+                <p >
+                    Validate CSS in all your linked style sheets, within any
+                    <code>&lt;style&gt;</code> elements and within any
+                    <code>style="&hellip;"</code> attributes.
+                </p>                
+
+                <p>
+                    Make use of additional result filters not provided by the
+                    standard W3C CSS validator:
+                </p>
+                
+                <ul class="checklist">
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            ignore vendor extension errors and warnings
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            ignore CSS from common content delivery networks
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            ignore CSS from custom domains
+                        </p>
+                    </li>                  
+                </ul> 
+
+            </div>            
+            <div class="span4 intro-feature intro-js">
+                <h2>Smart JSLint Analysis</h2>
+                <p class="intro">
+                    Run static analysis against your JavaScript code using
+                    the de-facto standard <a href="http://jslint.com">JSLint</a>
+                    static analyser.
+                </p>                
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                    laboris nisi ut aliquip ex ea commodo consequat. 
+                </p>                
+            </div>         
+        </div>     
+    </div>    
+</div>
+
+{% endblock %}

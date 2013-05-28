@@ -7,12 +7,24 @@ class DefaultController extends BaseController
 {   
     
     public function indexAction()
-    {        
+    {   
+        return $this->defaultPageAction('index');
+    }
+    
+    public function plansAction() {
+        return $this->defaultPageAction('plans');            
+    }
+
+    public function featuresAction() {
+        return $this->defaultPageAction('features');            
+    }    
+    
+    private function defaultPageAction($templateId) {        
         if ($this->isUsingOldIE()) {
             return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
         }
         
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
         $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
         
         $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
@@ -21,7 +33,7 @@ class DefaultController extends BaseController
         }
         
         return $this->getCachableResponse(
-            $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
+            $this->render('SimplyTestableWebsiteBundle:Default:'.$templateId.'.html.twig', array(
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
@@ -29,30 +41,6 @@ class DefaultController extends BaseController
             )),
             $cacheValidatorHeaders
         );         
-    }
-    
-    public function plansAction() {
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
-        }
-        
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-//            return $response;
-        }
-        
-        return $this->getCachableResponse(
-            $this->render('SimplyTestableWebsiteBundle:Default:plans.html.twig', array(
-                'testimonial' => $this->getTestimonialService()->getRandom(),
-                'user' => $this->getUser(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client' => $this->container->getParameter('web_client'),                
-            )),
-            $cacheValidatorHeaders
-        );            
     }
 
     public function havingProblemsAction() {
