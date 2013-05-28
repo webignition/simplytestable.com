@@ -35,27 +35,27 @@
                     </p>                        
                     {% endif %}                       
                     <ul class="nav pull-right">                        
-                        <li class="">
-                            <i class="icon icon-play-circle"></i>
+                        <li class="">                            
                             <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
+                                <i class="icon icon-play-circle"></i>
                                 Try a demo
                             </a>
                         </li>
-                        <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">
-                            <i class="icon icon-signal"></i>
+                        <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">                            
                             <a href="{{ path('features') }}">
+                                <i class="icon icon-signal"></i>
                                 Features
                             </a>
                         </li>           
-                        <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">
-                            <i class="icon icon-dashboard"></i>
+                        <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">                            
                             <a href="{{ path('plans') }}">
+                                <i class="icon icon-dashboard"></i>
                                 Pricing and plans
                             </a>
                         </li>                   
-                        <li class="">
-                            <i class="icon icon-heart"></i>
+                        <li class="">                            
                             <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
+                                <i class="icon icon-heart"></i>
                                 About us
                             </a>
                         </li>                        
