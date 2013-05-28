@@ -1,10 +1,13 @@
 .intro-feature h2 {
+    height:64px; 
+    font-size:28px;
+    padding-top:10px;  
+}
+
+.intro-feature-imged h2 {
     background-image: url('/bundles/simplytestablewebsite/images/trifecta.png');
     background-repeat: no-repeat;
-    height:64px; 
     text-indent: 64px;
-    font-size:28px;
-    padding-top:10px;
 }
 
 .intro-html h2 {
@@ -41,6 +44,26 @@
     color:#468847;    
 }
 
-.checklist li p {
-    
+.tweet-container .tweet {
+    opacity:0;
+    height:90px;
+}
+
+.tweet-container .time {
+    opacity:0.4;
+}
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
 }
