@@ -157,3 +157,7 @@ margin-bottom: -28px;
     font-style: normal; 
     opacity: 0.8;
 }
+
+.iconified-section .span4 {
+    width:31%;
+}
