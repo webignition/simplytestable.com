@@ -200,3 +200,31 @@ margin-bottom: -28px;
 .iconified-section .span4 {
     width:31%;
 }
+
+
+.tweet-container .tweet {
+    opacity:0;
+}
+
+.tweet-container .time {
+    opacity:0.4;
+}
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
+}
+
+.tweet-container p {
+    margin-top: 10px;
+}
