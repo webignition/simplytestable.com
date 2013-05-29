@@ -16,6 +16,7 @@
     padding-left: 40px;
 }
 
+/*.navbar-inverse .brand span,*/
 .navbar-inverse .brand:hover {
     color:#0ae;
 }
@@ -34,6 +35,37 @@
 .navbar .nav > li:hover i.icon {
     color:#eee;
 }
+
+.navbar .user-link,
+.navbar form.sign-out-form .icon-user {
+    padding-left:10px;
+}
+
+.navbar  form.sign-out-form {
+    margin:1px 0 0 0;
+    padding:0;
+}
+
+.navbar form.sign-out-form button {
+    margin:0 0 0 6px;
+}
+
+.navbar-user-link {
+    border-left: 1px solid #999;
+}
+
+.navbar-user-link:hover {
+    text-decoration: none;
+}
+
+.navbar-inverse .nav .active,
+.navbar-inverse .nav .active>a,
+.navbar-inverse .nav .active>a:hover,
+.navbar-inverse .nav .active>a:focus {
+    color:#fff;
+    background-color: transparent;    
+}
+    
 
 body {
     margin-top:0;
@@ -71,65 +103,66 @@ body .container {
     line-height: 55px;
 }
 
-#footer {
+#footer-announcements {
     background-color:#eee;
     border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
     margin-top:60px;
     padding: 30px 0;
 }
 
-#footer .stay-updated ul {
+#footer-announcements .stay-updated ul {
     list-style: none;
     margin:0;
 }
 
-#footer .stay-updated ul li {
+#footer-announcements .stay-updated ul li {
     list-style-type: none;
     margin-bottom:6px;
     padding-left:20px;
 }
 
-#footer .stay-updated ul li .icon {
+#footer-announcements .stay-updated ul li .icon {
     float:left;
     margin-left:-20px;
 }
 
-#footer .stay-updated ul li .subtext {
+#footer-announcements .stay-updated ul li .subtext {
     opacity: 0.6;
 }
 
-#footer #love .icon {
+#footer-announcements #love .icon {
     color:#d33a1c;
 }
 
-#footer #love blockquote {
+#footer-announcements #love blockquote {
     margin:20px 0 0 0;
     padding:0;
     position:relative;
 }
 
-#footer #love blockquote p {
+#footer-announcements #love blockquote p {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 8px;
 }
 
-#footer #love blockquote .quotemark {
+#footer-announcements #love blockquote .quotemark {
     font-size: 70px;
     opacity:0.7;
     display:inline-block;
     margin-bottom: -14px;
 }
 
-#footer #love blockquote .quotemark-left {
+#footer-announcements #love blockquote .quotemark-left {
     
 }
 
-#footer #love blockquote .quotemark-right {
+#footer-announcements #love blockquote .quotemark-right {
 margin-bottom: -28px;    
 }
 
-#footer #love footer {
+#footer-announcements #love footer {
     margin-left:30px;
 }
 
@@ -158,6 +191,85 @@ margin-bottom: -28px;
     opacity: 0.8;
 }
 
+
 .iconified-section .span4 {
     width:31%;
+}
+    
+#landing-strip {
+    background-color:#eee;
+    border-bottom:1px solid #ddd;
+    padding-top:80px;
+    padding-bottom:20px;
+}
+
+.iconified-section .span4 {
+    width:31%;
+}
+
+
+.tweet-container .tweet {
+    opacity:0;
+}
+
+.tweet-container .time {
+    opacity:0.4;
+}
+
+.tweet-container .tweet ul {
+    list-style: none;
+    margin:0;
+}
+
+.tweet-container .tweet ul li {
+    list-style-type: none;
+}
+
+.tweet-container .icon-twitter {
+    color: #08C;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+    width: auto;       
+}
+
+.tweet-container p {
+    margin-top: 10px;
+}
+
+#footer-detail {
+    padding-top:40px;
+    padding-bottom:40px;
+    background-color: #1b1b1b;
+}
+
+#footer-detail a {
+    color: #999999;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
+}
+
+#footer-detail .doclinks ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+#footer-detail .doclinks ul li {
+    margin:0;
+    padding:1px;
+}
+
+#footer-detail a {
+    display: block;
+    padding:2px;
+}
+
+#footer-detail a:hover {
+    color:#fff;
+    text-decoration: none;
+}
+
+#footer-detail .stay-updated .subtext {
+    color:#999;
+    opacity:0.7;
+    display:block;
+    margin-left:18px;
 }

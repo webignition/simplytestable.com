@@ -30,36 +30,12 @@ body.content h1 a {
     height:100px;
 }
 
-.tweet-container .tweet {
-    opacity:0;
-    height:90px;
-}
-
 #landing-twitter-status .icon-twitter {
     height: 100px;
     font-size: 58px;
     margin: 0 10px 0 0;     
     display: inline-block;       
     float: left;     
-}
-
-.tweet-container .time {
-    opacity:0.4;
-}
-
-.tweet-container .tweet ul {
-    list-style: none;
-    margin:0;
-}
-
-.tweet-container .tweet ul li {
-    list-style-type: none;
-}
-
-.tweet-container .icon-twitter {
-    color: #08C;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
-    width: auto;       
 }
 
 #start-new-test-form {
@@ -114,11 +90,7 @@ body.content .newsletter form label {
     height:100%;
 }
 
-@media (min-width: 1200px) {
-    .tweet-container .tweet {
-        height:60px;
-    }    
-    
+@media (min-width: 1200px) {    
     #landing-strip h1 {
         font-size: 40px;
         line-height: 40px;
