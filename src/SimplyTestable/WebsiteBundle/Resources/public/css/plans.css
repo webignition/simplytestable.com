@@ -292,3 +292,15 @@ body.homepage .feature-list li .content {
         width:26%;
     }    
 }
+
+body.plans del {
+    display: none;
+}
+
+.pricing-table {
+    opacity: 0.2;
+}
+
+#pricing-announcement-modal .modal-footer a.btn span {
+    opacity: 0.7;
+}
