@@ -1,4 +1,4 @@
-<div id="footer">
+<div id="footer-announcements">
     <div class="container">
         <div class="row-fluid">            
             <div class="span6" id="love">
@@ -33,39 +33,94 @@
                 </div>
             </div>
         </div> 
-        <!--            
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <h4>About</h4>
-                            <p>
-                                Save time and take the pain out of routine front-end web testing.
-                                One-click testing of your entire site.
-                            </p>
-                            <p> 
-                                Validate the HTML markup for your entire site in one click. In
-                                the future we'll add CSS validation, JS linting and a range
-                                of quality-related checks.
-                            </p>
-                        </div>            
-                        <div class="span6 stay-updated">
-                            <h4>Stay updated</h4>
-                            <ul>
-                                <li>
-                                    <i class="icon icon-envelope"></i>
-                                    <a href="http://eepurl.com/ni82f">Sign up for our weekly updates newsletter</a>
-                                    <p class="subtext">
-                                        Get advanced invites to beta access and updates on new features. You can
-                                        unsubscribe at any time if this bothers you.
-                                    </p>                        
-                                </li>
-                                <li>
-                                    <i class="icon icon-comments-alt"></i>
-                                    <a href="//blog.simplytestable.com/">Read our blog</a>                        
-                                </li>                   
-                            </ul>               
-        
-                        </div>
-                    </div> 
-        -->            
+
+    </div>
+</div>
+
+<div id="footer-detail">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span2 doclinks">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="http://help.simplytestable.com/legal/cookies/">
+                                <i class="icon icon-file"></i>
+                                <span>Cookie policy</span>
+                            </a>
+                        </li>                    
+                        <li>
+                            <a href="http://help.simplytestable.com/legal/privacy/">
+                                <i class="icon icon-file"></i>
+                                <span>Privacy policy</span>
+                            </a>
+                        </li>                                
+                        <li>
+                            <a href="http://help.simplytestable.com/legal/terms-of-use/">
+                                <i class="icon icon-file"></i>
+                                <span>Terms of use</span>
+                            </a>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="span2 doclinks">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
+                                <i class="icon icon-play-circle"></i>
+                                <span>Try a demo</span>
+                            </a>
+                        </li>                    
+                        <li>
+                            <a href="{{ path('features') }}">
+                                <i class="icon icon-signal"></i>
+                                <span>Features</span>
+                            </a>
+                        </li>                    
+                        <li>
+                            <a href="{{ path('plans') }}">
+                                <i class="icon icon-dashboard"></i>
+                                <span>Pricing and plans</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="span2 doclinks">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;">
+                                <i class="icon icon-envelope"></i>
+                                <span>Contact us</span>
+                            </a>
+                        </li>                    
+                        <li>                            
+                            <a href="//blog.simplytestable.com/">
+                                <i class="icon icon-comments-alt"></i>
+                                <span>Read our blog</span>
+                            </a>       
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="span4 stay-updated">                
+                <a href="http://eepurl.com/ni82f">
+                    <i class="icon icon-bullhorn"></i>
+                    <span class="content">Sign up for our weekly updates newsletter</span>
+                    <span class="subtext">
+                        Get advanced invites to beta access and updates on new features. You can
+                        unsubscribe at any time if this bothers you.
+                    </span>  
+                </a>
+            </div>
+        </div> 
+
     </div>
 </div>
