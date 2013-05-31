@@ -7,6 +7,7 @@ parameters:
       sign_in: /signin/      
       sign_up: /signup/
       start_test_submit: /test/start/
+      account: /account/
   not_found_redirect_map:
     /index.php: http://simplytestable.com/
     /signup.php: "{{web_client::base}}{{web_client::sign_up}}"

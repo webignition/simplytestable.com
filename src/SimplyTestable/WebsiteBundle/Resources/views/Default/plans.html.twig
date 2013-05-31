@@ -99,6 +99,7 @@
         <h3>Pre-launch offer!</h3>
     </div>
     <div class="modal-body">
+        {% if is_logged_in %}
         <p>         
             We've only just started setting up our premium plans.
             They should be ready in a few weeks.
@@ -107,18 +108,38 @@
             We're offering a free 12-month premium subscription to
             all who create a free account now before we launch our premium
             services.
-        </p>        
-        <p>
-            To qualify, just create an account any time before
-            the launch of our premium services.
         </p>
+        <p>        
+            <strong>You already have an account!</strong> You'll be
+            able to choose a free 12-month subscription before too long.
+        </p>
+        {% else %}
+        <p>         
+            We've only just started setting up our premium plans.
+            They should be ready in a few weeks.
+        </p>
+        <p>
+            We're offering a free 12-month premium subscription to
+            all who create a free account now before we launch our premium
+            services.
+        </p>
+        <p>        
+            To qualify, just create an account any time before
+            the launch of our premium services.     
+        </p>
+        {% endif %}
     </div>
+        {% if is_logged_in %}
+    <div class="modal-footer">
+    </div>        
+        {% else %}
     <div class="modal-footer">
         <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}" class="btn btn-primary">
             <i class="icon icon-user"></i>
             Create account <span>to qualify for a free 12-month premium subscription</span>
         </a>
     </div>
+        {% endif %}        
 </div>
 
 <div id="features">

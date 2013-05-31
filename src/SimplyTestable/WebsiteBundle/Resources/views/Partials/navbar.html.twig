@@ -12,11 +12,11 @@
                     </a>
                         
                     {% if is_logged_in %}
-                    <div class="pull-right">
+                    <div class="pull-right">                        
                         
                         <form class="form-inline sign-out-form" method="post" action="{{ path('sign_out_submit') }}">
                             <p class="navbar-text">                                
-                                <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_in'] }}" class="navbar-link navbar-user-link">
+                                <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['account'] }}" class="navbar-link navbar-user-link">
                                     <i class="icon icon-user"></i>
                                     {{ user.username }}
                                 </a>
@@ -38,7 +38,11 @@
                         <li class="">                            
                             <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
                                 <i class="icon icon-play-circle"></i>
+                                {% if is_logged_in %}
+                                Start a new website test
+                                {% else %}
                                 Try a demo
+                                {% endif %}
                             </a>
                         </li>
                         <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">                            
@@ -53,14 +57,6 @@
                                 Pricing and plans
                             </a>
                         </li> 
-<!--                        
-                        <li class="">                            
-                            <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
-                                <i class="icon icon-heart"></i>
-                                About us
-                            </a>
-                        </li>  
--->
                     </ul>
                 </div>
             </div>

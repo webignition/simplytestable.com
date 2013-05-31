@@ -56,9 +56,9 @@
                             </a>
                         </li>                                
                         <li>
-                            <a href="http://help.simplytestable.com/legal/terms-of-use/">
+                            <a href="http://help.simplytestable.com/legal/terms-of-service/">
                                 <i class="icon icon-file"></i>
-                                <span>Terms of use</span>
+                                <span>Terms of service</span>
                             </a>
                         </li>    
                     </ul>
@@ -71,7 +71,13 @@
                         <li>
                             <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
                                 <i class="icon icon-play-circle"></i>
-                                <span>Try a demo</span>
+                                <span>
+                                    {% if is_logged_in %}
+                                    Start a new test
+                                    {% else %}
+                                    Try a demo
+                                    {% endif %}
+                                </span>
                             </a>
                         </li>                    
                         <li>
