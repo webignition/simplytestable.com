@@ -214,15 +214,7 @@ margin-bottom: -28px;
 
 .tweet-container .time {
     opacity:0.4;
-}
-
-.tweet-container .tweet ul {
-    list-style: none;
-    margin:0;
-}
-
-.tweet-container .tweet ul li {
-    list-style-type: none;
+    margin-left: 6px;
 }
 
 .tweet-container .icon-twitter {

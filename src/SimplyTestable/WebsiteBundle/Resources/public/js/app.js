@@ -316,18 +316,12 @@ $(document).ready(function() {
             time.after('<span class="indicator"><i class="icon-off highlighted"></i></span>');
         });        
     });
+
+    twitterlib.timeline('simplytestable', {limit: 1}, function(tweets) {        
+        $('#footer-tweet').html(this.ify.clean(tweets[0].text)).append('<a class="time" href="http://twitter.com/simplytestable/statuses/'+tweets[0].id+'/">29 May</a>');
         
-    getTwitters('footer-tweet', { 
-        id: 'simplytestable', 
-        count: 1, 
-        enableLinks: true, 
-        ignoreReplies: true, 
-        clearContents: true,
-        template: '%text% <a class="time" href="http://twitter.com/%user_screen_name%/statuses/%id_str%/">%time%</a>',
-        callback: function () {                       
-            $('.tweet-container .tweet').html($('#footer-tweet').html()).animate({
-                'opacity':1
-            });
-        }
+        $('.tweet-container .tweet').html($('#footer-tweet').html()).animate({
+            'opacity':1
+        });
     });
 });
