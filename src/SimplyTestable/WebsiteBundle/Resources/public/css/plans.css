@@ -296,11 +296,6 @@ body.homepage .feature-list li .content {
 body.plans del {
     display: none;
 }
-
-.pricing-table {
-    opacity: 0.2;
-}
-
 #pricing-announcement-modal .modal-footer a.btn span {
     opacity: 0.7;
 }
