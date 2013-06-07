@@ -8,10 +8,6 @@
     height:100%;
 }
 
-/*#landing-strip .intro {
-    padding-left:60px;
-}*/
-
 body.plans h1 {
     font-size: 24px;
     line-height: 24px;
@@ -19,11 +15,6 @@ body.plans h1 {
     text-align: center;
     margin-bottom:40px;    
 }
-
-/*#landing-strip p {
-    font-size:18px;
-    line-height: 22px;
-}*/
 
 .pricing-table .plan .plan-name span {
     font-size: 26px;
@@ -33,7 +24,6 @@ body.plans h1 {
     font-size:26px;
     position: relative;
     display: block;
-/*    background-color: red;*/
     margin-left: -20px;
     margin-right: -20px;
     background-color: #0099dd;
@@ -41,7 +31,7 @@ body.plans h1 {
     padding-bottom: 20px;
 }
 
-.pricing-table .plan-business span {
+.pricing-table .plan-highlighted span {
     background-color: #00aaee;
 }
 
@@ -82,7 +72,7 @@ body.plans .row-get-started {
     margin-top: -10px;
 }
 
-.pricing-table .plan-business {
+.pricing-table .plan-highlighted {
     background-color: #fff;
     margin-top: -10px;
   -moz-box-shadow: 0 0 6px 2px #b0b2ab;
@@ -90,101 +80,32 @@ body.plans .row-get-started {
   box-shadow: 0 0 8px 3px #b0b2ab;    
 }
 
-.pricing-table .plan-business .plan-name {
+.pricing-table .plan-highlighted .plan-name {
     background: #0099dd;
     border: 2px solid #00aaee; 
     border-bottom: none;
 }
 
-.pricing-table .plan-business ul {
+.pricing-table .plan-highlighted ul {
     border: 2px solid #ddd;
     border-top: none;
-/*    padding-bottom: 20px;*/
 }
 
-.pricing-table .plan-business .plan-name h2 {
+.pricing-table .plan-highlighted .plan-name h2 {
     color: #ffffff;
     margin-top:18px;
     font-size:36px;
 }
 
-.pricing-table .plan-business .plan-name p {
+.pricing-table .plan-highlighted .plan-name p {
     opacity: 1;
 }
 
-.pricing-table .plan-business .btn-plan-select {
+.pricing-table .plan-highlighted .btn-plan-select {
     margin: 10px 0;
 }
 
-
-/*
-body.homepage #landing-strip {
-    margin-bottom: 0;
-}
-
-body.homepage #landing-strip.carousel {
-    margin-bottom:0;
-}
-
-body.homepage .features {
-    list-style: none;
-    margin-left: 30px;
-}
-
-body.homepage .features .feature {
-    list-style-type: none;
-    position:relative;    
-}
-
-body.homepage .features .icon {
-    position:absolute;
-    left:-30px;
-    line-height: 20px;
-}
-
-body.homepage .features .icon-star {
-    color:yellow;
-}
-
-body.homepage h2 {
-    background-color: #08C;
-    color: white;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);    
-    border-radius: 6px;
-    padding: 6px 16px;
-    margin-bottom: 10px;
-}
-
-body.homepage h2 i {
-    font-size: 36px;
-    line-height: 36px;
-    width: auto;
-    height: auto;    
-}
-
-
-body.homepage .content {
-    margin-top:20px;
-}
-
-#start-new-test-form {
-    margin-bottom:0;
-}
-
-#start-new-test-form input {
-    padding: 9px 9px 8px 9px;
-}
-
-body.homepage #start-new-test-form {
-    margin-top:14px;
-}
-
-body.homepage #start-new-test-form input {
-    width:46%;
-}
-
-
-*/#features .feature-list {
+#features .feature-list {
     list-style:none;
     margin:0;
 }
@@ -200,61 +121,7 @@ body.homepage #start-new-test-form input {
 
 #features .feature-list li.completed .icon {
     color:#468847;
-}/*
-
-#future-development h3 {
-    font-size: 18px;
-    line-height: 24px;        
 }
-
-.planned-improvements {
-    margin-top:20px;
-}
-
-.navbar .user-link,
-.navbar form.sign-out-form .icon-user {
-    border-left: 1px solid #999;
-    padding-left:10px;
-}
-
-.navbar  form.sign-out-form {
-    margin:0;
-    padding:0;
-}
-
-.navbar form.sign-out-form button {
-    margin:0 0 0 6px;
-}
-
-body.homepage #start-new-test-form .test-options-set {
-    border-radius: 5px;
-    padding: 10px;   
-    display:inline-block;
-    width:34%;
-}
-
-body.homepage #start-new-test-form .test-options-set:hover {
-    background-color:#e5e5e5;    
-}  
-
-body.homepage .intro strong {
-    font-weight: normal;
-    color:#000;
-}
-
-body.homepage .carousel-inner {    
-    border-radius: 2px;
-    box-shadow: 0px 0px 4px 1px #4c4b4a; 
-}
-
-body.homepage .feature-list li .content {
-    display: block;
-    width: 90%;
-    margin-left: 23px;
-    margin-top: -20px;    
-}
-
-*/
 
 @media (min-width: 1200px) {
     .tweet-container .tweet {
