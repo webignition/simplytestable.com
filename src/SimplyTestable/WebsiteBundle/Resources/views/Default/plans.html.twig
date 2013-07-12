@@ -33,13 +33,16 @@
                     <li class="plan-feature">50 URLs per full-site test</li>
                     <li class="plan-feature">5,000 credits</li>
                     <li class="plan-feature">
-                        <a href="#" class="btn btn-success btn-plan-select">
-                            {% if is_logged_in %}
-                                Subscribe now
-                            {% else %}
-                                Sign up
-                            {% endif %}
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="personal" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client.urls.base }}{{ web_client.urls.sign_up }}?plan=personal" class="btn btn-success btn-plan-select">
+                            Sign up
                         </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -55,13 +58,16 @@
                     <li class="plan-feature">250 URLs per full-site test</li>
                     <li class="plan-feature">20,000 credits</li>
                     <li class="plan-feature">
-                        <a href="#" class="btn btn-success btn-plan-select">
-                            {% if is_logged_in %}
-                                Subscribe now
-                            {% else %}
-                                Sign up
-                            {% endif %}
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="agency" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client.urls.base }}{{ web_client.urls.sign_up }}?plan=agency" class="btn btn-success btn-plan-select">
+                            Sign up
                         </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>            
@@ -77,13 +83,16 @@
                     <li class="plan-feature">2500 URLs per full-site test</li>
                     <li class="plan-feature">100,000 credits</li>
                     <li class="plan-feature">
-                        <a href="#" class="btn btn-success btn-plan-select">
-                            {% if is_logged_in %}
-                                Subscribe now
-                            {% else %}
-                                Sign up
-                            {% endif %}
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="business" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client.urls.base }}{{ web_client.urls.sign_up }}?plan=business" class="btn btn-success btn-plan-select">
+                            Sign up
                         </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -99,13 +108,16 @@
                     <li class="plan-feature">10,000 URLs per full-site test</li>
                     <li class="plan-feature">Unlimited credits</li>
                     <li class="plan-feature">
-                        <a href="#" class="btn btn-success btn-plan-select">
-                            {% if is_logged_in %}
-                                Subscribe now
-                            {% else %}
-                                Sign up
-                            {% endif %}
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="enterprise" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client.urls.base }}{{ web_client.urls.sign_up }}?plan=enterprise" class="btn btn-success btn-plan-select">
+                            Sign up
                         </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
