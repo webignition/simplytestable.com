@@ -265,3 +265,12 @@ margin-bottom: -28px;
     display:block;
     margin-left:18px;
 }
+
+#footer-detail .icon {
+    float:left;
+    margin-right:4px;
+}
+
+#footer-detail .icon-fixes {
+    height:50px;
+}
