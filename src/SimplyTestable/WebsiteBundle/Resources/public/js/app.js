@@ -206,15 +206,10 @@ $(document).ready(function() {
         };
         
         var requestRecentTestData = function () {
-            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/', function(data) {
+            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/?exclude-types[]=crawl', function(data) {
                 updateRecentTests(data);
             }, "json");               
         };
-
-
-//        $.get('/core-application-proxy/?url=http://app.simplytestable.com/tasks/HTML%20validation/completed/count/', function(data) {
-//            $('#html-validation-completed-count').text(data);
-//        }, "json");
         
         requestRecentTestData();
 
