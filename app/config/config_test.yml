@@ -12,3 +12,10 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+    
+doctrine:
+  dbal:
+    connections:
+      default:
+        driver: pdo_sqlite
+        path: /run/shm/simplytestable.com.db       
