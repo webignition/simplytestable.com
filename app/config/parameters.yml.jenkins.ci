@@ -1,0 +1,16 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: ci_simplytestable_com
+    database_user: root
+    database_password: root
+    mailer_auth_mode: login
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: SetThis!
+    database_path: null
+    simplytestable_session_savepath: /tmp
