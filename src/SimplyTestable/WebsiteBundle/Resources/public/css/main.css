@@ -145,6 +145,7 @@ body .container {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 8px;
+    margin-top:-14px;
 }
 
 #footer-announcements #love blockquote .quotemark {
@@ -155,6 +156,7 @@ body .container {
 
 #footer-announcements #love blockquote .quotemark-left {
     left:-30px;
+    top:14px;
 }
 
 #footer-announcements #love blockquote .quotemark-right {
