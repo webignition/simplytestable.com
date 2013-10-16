@@ -102,11 +102,6 @@ body.homepage #start-new-test-form input {
     padding: 10px 0 10px 30px;       
 }
 
-#recent-site-tests {
-    border-bottom: 1px solid #DDD;    
-}
-
-
 #recent-site-tests .site {
     position:relative;
     padding-right:3%;  
@@ -194,22 +189,9 @@ body.homepage #start-new-test-form input {
     
 }
 
-#features .feature-list {
-    list-style:none;
-    margin:0;
-}
-
-#features .feature-list li {
-    list-style-type:none;
-}
-
-#features .feature-list li .icon,
-.feature-planned .icon {
-    color:#08c;
-}
-
-#features .feature-list li.completed .icon {
-    color:#468847;
+#features {
+    border-bottom: 1px solid #DDD;      
+    padding-bottom: 20px;
 }
 
 #future-development h3 {
@@ -242,11 +224,8 @@ body.homepage .carousel-inner {
     box-shadow: 0px 0px 4px 1px #4c4b4a; 
 }
 
-body.homepage .feature-list li .content {
-    display: block;
-    width: 90%;
-    margin-left: 23px;
-    margin-top: -20px;    
+body.homepage .iconed-list .content {
+    margin-top:-20px;
 }
 
 @media (min-width: 1200px) {    

@@ -274,3 +274,23 @@ margin-bottom: -28px;
 #footer-detail .icon-fixes {
     height:50px;
 }
+
+.iconed-list {
+    list-style:none;
+    margin:0;
+}
+
+.iconed-list li {
+    list-style-type:none;
+}
+
+.iconed-list .icon-ok {
+    color:#468847;    
+}
+
+.iconed-list li .content {
+    display: block;
+    width: 90%;
+    margin-left: 23px;
+    margin-top: -20px;    
+}

@@ -21,21 +21,28 @@
 </div>
 
 <div id="features">
-    <div class="container">
-<!--          
-        <div class="row-fluid">
-            <div class="span12">
-                <h2>Front-end quality checks</h2>
-              
-                <p class="intro">Run a set of web front-end quality checks against either
-                    your entire site or just a single URL.
-                </p>
-            </div>       
-        </div>
--->         
+    <div class="container">        
+        
         <div class="row-fluid">             
-            <div class="span4 intro-feature intro-feature-imged intro-html">
-                <h2>HTML5 Validation</h2>
+            <div class="span5 offset1 intro-feature">
+                <h2><i class="icon icon-certificate"></i><i class="icon icon-ok"></i> One-Click Full-Site Testing</h2>
+                <p>
+                    
+                </p>                
+                <ul class="iconed-list">
+                    <li>
+                        <p><i class="icon icon-ok"></i> <span class="content">Run selected tests against all URLs of your site, not just one URL at a time</span></p>
+                    </li>                     
+                    <li>
+                        <p><i class="icon icon-ok"></i> <span class="content">auto-discover URLs in your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span></p>
+                    </li>                            
+                    <li>
+                        <p><i class="icon icon-ok"></i> <span class="content">crawl your site to find URLs to test if you have no sitemap (requires a <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}">free</a> or <a href="{{ path('plans') }}">premium</a> account)</span></p>
+                    </li>
+                </ul> 
+            </div>            
+            <div class="span5 intro-feature">
+                <h2><i class="icon icon-certificate"></i><i class="icon icon-ok"></i> HTML5 Validation</h2>
                 <p>
                     Validate the markup for your entire site using industry-standard
                     tools provided by the <a href="http://validator.w3.org/">W3C</a>
@@ -44,42 +51,45 @@
                 <p>
                     Works with: 
                 </p>
-                <ul class="checklist">
+                <ul class="iconed-list">
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            HTML5
+                            <span class="content">HTML5</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            HTML 4.01 and 4
+                            <span class="content">HTML 4.01 and 4</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            XHTML 1.0 and 1.1
+                            <span class="content">XHTML 1.0 and 1.1</span>
                         </p>
                     </li>                    
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            HTML 3.2
+                            <span class="content">HTML 3.2</span>
                         </p>
                     </li>                    
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            HTML 2
+                            <span class="content">HTML 2</span>
                         </p>
                     </li>                   
                 </ul>
-            </div>            
-            <div class="span4 intro-feature intro-feature-imged intro-css">
-                <h2>Smart CSS3 Validation</h2>
-                <p >
+            </div>                
+        </div>         
+        
+        <div class="row-fluid">   
+            <div class="span5 offset1 intro-feature">
+                <h2><i class="icon icon-certificate"></i><i class="icon icon-ok"></i> Smart CSS3 Validation</h2>
+                <p>
                     Validate CSS in all your linked style sheets, within any
                     <code>&lt;style&gt;</code> elements and within any
                     <code>style="&hellip;"</code> attributes.
@@ -90,30 +100,30 @@
                     standard W3C CSS validator:
                 </p>
                 
-                <ul class="checklist">
+                <ul class="iconed-list">
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            ignore vendor extension errors and warnings
+                            <span class="content">ignore vendor extension errors and warnings</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            ignore CSS from common content delivery networks
+                            <span class="content">ignore CSS from common content delivery networks</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            ignore CSS from custom domains
+                            <span class="content">ignore CSS from custom domains</span>
                         </p>
                     </li>                  
                 </ul> 
 
-            </div>            
-            <div class="span4 intro-feature intro-feature-imged intro-js">
-                <h2>Smart JSLint Analysis</h2>
+            </div>                 
+            <div class="span5 intro-feature">
+                <h2><i class="icon icon-certificate"></i><i class="icon icon-ok"></i> Smart JSLint Analysis</h2>
                 <p class="intro">
                     Run static analysis against your JavaScript code using
                     the de-facto standard <a href="http://jslint.com">JSLint</a>
@@ -123,25 +133,81 @@
                     JSLint scans your code against a professional subset
                     of JavaScript and in relation to professional coding standards.
                 </p>
-                <ul class="checklist">
+                <ul class="iconed-list">
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            identify syntax errors and code-quality issues
+                            <span class="content">identify syntax errors and code-quality issues</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            ignore JS from common content delivery networks
+                            <span class="content">ignore JS from common content delivery networks</span>
                         </p>
                     </li>
                     <li>
                         <p>
                             <i class="icon icon-ok"></i>
-                            ignore JS from custom domains
+                            <span class="content">ignore JS from custom domains</span>
                         </p>
                     </li>                  
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">sensible JSLint defaults</span>
+                        </p>
+                    </li>                     
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">fully configure JSLint options</span>
+                        </p>
+                    </li>                     
+                </ul>                 
+            </div>                   
+        </div>         
+     
+        <div class="row-fluid">   
+           
+            <div class="span5 offset1 intro-feature">
+                <h2><i class="icon icon-certificate"></i><i class="icon icon-ok"></i> Reliable Link Integrity Testing</h2>
+                <p class="intro">
+                    Find broken links across your entire site effortlessly, turning a near-impossible
+                    task into one you can carry out regularly:
+                </p>                
+
+                <ul class="iconed-list">
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">easily check all links across your entire site</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">check all links in each page, not just clickable links that you can see</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">check all URLs, including all non-absolute and protocol-relative URLs</span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                            <span class="content">find out why a given link does not work</span>
+                        </p>
+                    </li>                    
+                    <li>
+                        <p>
+                            <i class="icon icon-ok"></i>
+                             <span class="content">realistic results that you don't have to double-check by hand</span>
+                        </p>
+                    </li>                     
                 </ul>                 
             </div>         
         </div> 

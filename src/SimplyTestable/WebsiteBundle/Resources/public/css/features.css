@@ -1,35 +1,32 @@
+.intro-feature {
+    padding-right:40px;
+}
+
 .intro-feature h2 {
-    height:64px; 
-    font-size:28px;
-    padding-top:10px;  
+    font-size:28px; 
+    position:relative;
 }
 
-.intro-feature-imged h2 {
-    background-image: url('/bundles/simplytestablewebsite/images/trifecta.png');
-    background-repeat: no-repeat;
-    text-indent: 64px;
+.intro-feature h2 .icon {
+    position:absolute;
 }
 
-.intro-html h2 {
-    background-position: 0px 0px;
+.intro-feature h2 .icon-certificate {
+    color: #0088cc;
+    font-size:60px;
+    margin-left:-60px;
 }
 
-.intro-css h2 {
-    background-position: 0px -1000px;
-}
-
-.intro-js h2 {
-    background-position: 0px -2000px;    
+.intro-feature h2 .icon-ok {
+    color: #fefefe;
+    font-size:16px;
+    margin-left:-44px;
+    margin-top:-3px;
 }
 
 #features {
     margin-top: 30px;
 }
-
-/*#features p.intro {
-    font-size:16px;
-    line-height: 24px;
-}*/
 
 .checklist {
     list-style:none;

@@ -33,6 +33,9 @@
                                     <p><i class="icon icon-star"></i><i class="icon icon-star-empty"></i> HTML validation, CSS validation and JavaScript linting</p>
                                 </li>
                                 <li class="feature">
+                                    <p><i class="icon icon-star"></i><i class="icon icon-star-empty"></i> Link integrity (broken link) checking</p>
+                                </li>                                
+                                <li class="feature">
                                     <p><i class="icon icon-star"></i><i class="icon icon-star-empty"></i> Test either your full site or a single page with just one click</p>
                                 </li>                                
                                 <li class="feature">                                    
@@ -73,6 +76,52 @@
     </div>
 </div>
 
+<div id="features">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12 iconified-section">
+                <i class="icon section-icon icon-signal"></i>
+
+                <div class="inner">
+                    <div class="span4">                        
+                        <h3>Technical verification</h3>
+                        <ul class="iconed-list">
+                            <li class="completed">
+                                <p><i class="icon icon-ok"></i> <span class="content">HTML validation</span></p>
+                            </li>
+                            <li class="completed">
+                                <p><i class="icon icon-ok"></i> <span class="content">CSS validation</span></p>
+                            </li>                             
+                            <li class="completed">
+                                <p><i class="icon icon-ok"></i> <span class="content">JavaScript quality checks with <a href="http://en.wikipedia.org/wiki/JSLint">JSLint</a></span></p>
+                            </li>                            
+                        </ul> 
+                    </div>
+                    <div class="span4">                        
+                        <h3>Quality checks</h3>
+                        <ul class="iconed-list">
+                            <li>
+                                <p><i class="icon icon-ok"></i> <span class="content">Find broken links (requires a <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}">free</a> or <a href="{{ path('plans') }}">premium</a> account)</span></p>
+                            </li>                            
+                        </ul>                     
+                    </div>                        
+                    <div class="span4">
+                        <h3>One-click full-site testing</h3>
+                        <ul class="iconed-list">
+                            <li>
+                                <p><i class="icon icon-ok"></i> <span class="content">auto-discover URLs in your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span></p>
+                            </li>                            
+                            <li>
+                                <p><i class="icon icon-ok"></i> <span class="content">crawl your site to find URLs to test if you have no sitemap (requires a <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}">free</a> or <a href="{{ path('plans') }}">premium</a> account)</span></p>
+                            </li>
+                        </ul>                          
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>        
+</div> 
+
 <div id="recent-site-tests">
     <div class="container">
         <div class="row-fluid">
@@ -85,83 +134,6 @@
         </div>        
     </div>
 </div>
-
-<div id="features">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span12 iconified-section">
-                <i class="icon section-icon icon-asterisk"></i>
-
-                <div class="inner">
-                    <div class="span4">                        
-                        <h3>Technical verification</h3>
-                        <p>Complete:</p>
-                        <ul class="feature-list">
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content">HTML validation</span></p>
-                            </li>
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content">CSS validation</span></p>
-                            </li>                             
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content">JavaScript quality checks with <a href="http://en.wikipedia.org/wiki/JSLint">JSLint</a></span></p>
-                            </li>                            
-                        </ul> 
-                        <!--
-                        <p>Planned:</p>
-                        <ul class="feature-list">    
-
-                        </ul>                      
-                        -->
-                    </div>
-                    <div class="span4">                        
-                        <h3>Quality checks</h3>
-                        <p>Planned:</p>
-                        <ul class="feature-list">                           
-                            <li>
-                                <p><i class="icon icon-time"></i> <span class="content">Find broken links</span></span></p>
-                            </li>                             
-                            <li>
-                                <p><i class="icon icon-time"></i> <span class="content">Image <code>alt</code> attribute quality</span></p>
-                            </li>                                
-                            <li>
-                                <p><i class="icon icon-time"></i> <span class="content">Check for presence of <a href="http://www.robotstxt.org/robotstxt.html">robots.txt</a></span></p>
-                            </li>                             
-                            <li>
-                                <p><i class="icon icon-time"></i> <span class="content">Check for presence of a <a href="http://en.wikipedia.org/wiki/Favicon">favicon</a></span></p>
-                            </li>                         
-                        </ul>                       
-                    </div>
-                    <div class="span4">                        
-                        <h3>Improvements</h3>
-                        <p>Complete:</p>
-                        <ul class="feature-list">                           
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content"><a href="http://blog.simplytestable.com/urls-now-collected-from-news-feeds/">Collect site URLs from an RSS feed</a></span></p>
-                            </li>
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content"><a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">Add support for compressed sitemaps</a></span></p>
-                            </li>                             
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content"><a href="http://blog.simplytestable.com/gracefully-handling-test-failure-without-blocking-test-progress/">Gracefully handle test failure without blocking test progress</a></span></p>
-                            </li>
-                            <li class="completed">
-                                <p><i class="icon icon-ok"></i> <span class="content"><a href="http://blog.simplytestable.com/improved-viewing-of-results-for-large-tests/">More robust progress and results retrieval for large sites (2000+ URLs)</a></span></p>
-                            </li>                             
-                        </ul> 
-                        <!--
-                        <p>Planned:</p>
-                        <ul class="feature-list">
-                            <li>
-                                <p><i class="icon icon-time"></i> <span class="content">More robust progress and results retrieval for large sites (2000+ URLs)</p>
-                            </li>                       
-                        </ul>
-                        -->
-                    </div>                        
-                </div>
-            </div>
-        </div>        
-    </div>    
 </div>          
 
 
