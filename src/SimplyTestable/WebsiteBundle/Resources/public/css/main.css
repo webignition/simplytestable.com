@@ -150,16 +150,15 @@ body .container {
 #footer-announcements #love blockquote .quotemark {
     font-size: 70px;
     opacity:0.7;
-    display:inline-block;
-    margin-bottom: -14px;
+    position:absolute;
 }
 
 #footer-announcements #love blockquote .quotemark-left {
-    
+    left:-30px;
 }
 
 #footer-announcements #love blockquote .quotemark-right {
-margin-bottom: -28px;    
+    right:0;
 }
 
 #footer-announcements #love footer {
