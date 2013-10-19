@@ -17,6 +17,10 @@ class CacheValidatorIdentifier {
      * @param mixed $value 
      */
     public function setParameter($key, $value) {
+        if (is_bool($value)) {
+            $value = ($value) ? 'true' : 'false';
+        }
+        
         $this->parameters[$key] = $value;
     }
     
