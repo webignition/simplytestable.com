@@ -31,17 +31,17 @@
                     {% else %}
                    <p class="navbar-text pull-right">
                         <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_in'] }}" class="btn btn-small "><i class="icon icon-caret-right"></i> Sign in</a>                        
-                        <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}" class="btn btn-primary btn-small"><i class="icon icon-user"></i> Create account</a>                        
+                        <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['sign_up'] }}" class="btn btn-small"><i class="icon icon-user"></i> Create account</a>                        
                     </p>                        
                     {% endif %}                       
                     <ul class="nav pull-right">                        
                         <li class="">                            
                             <a href="{{ web_client['urls']['base'] }}{{ web_client['urls']['start_test'] }}">
-                                <i class="icon icon-play-circle"></i>
+                                <i class="icon icon-dashboard"></i>                                
                                 {% if is_logged_in %}
-                                Start a new website test
+                                Dashboard
                                 {% else %}
-                                Try a demo
+                                Demo dashboard (try me)
                                 {% endif %}
                             </a>
                         </li>
@@ -53,7 +53,7 @@
                         </li>           
                         <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">                            
                             <a href="{{ path('plans') }}">
-                                <i class="icon icon-dashboard"></i>
+                                <i class="icon icon-calendar"></i>
                                 Pricing and plans
                             </a>
                         </li> 
