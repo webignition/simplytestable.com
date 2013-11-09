@@ -1,12 +1,14 @@
 <?php
-namespace SimplyTestable\WebsiteBundle\Command;
+namespace SimplyTestable\WebsiteBundle\Command\Sitemap;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SitemapBuildCommand extends BaseCommand
+use SimplyTestable\WebsiteBundle\Command\BaseCommand;
+
+class BuildCommand extends BaseCommand
 { 
     
     protected function configure()
