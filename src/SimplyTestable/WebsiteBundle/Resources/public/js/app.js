@@ -154,7 +154,7 @@ $(document).ready(function() {
            var recentSiteTestsList = $('#recent-site-tests-list');
            recentSiteTestsList.html('');
             
-            $(data).each(function () { 
+            $(data.jobs).each(function () { 
                 var maximumStandardDigitLength = 4;
                 var standardDigitSize = 40;
                 var taskCount = this.task_count;
@@ -206,7 +206,7 @@ $(document).ready(function() {
         };
         
         var requestRecentTestData = function () {
-            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/?exclude-types[]=crawl', function(data) {
+            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/0/?exclude-types[]=crawl', function(data) {
                 updateRecentTests(data);
             }, "json");               
         };
