@@ -6,26 +6,21 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "doctrine/doctrine-bundle": "1.0.*",
+        "symfony/symfony": "2.2.*",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.1.*",
-        "swiftmailer/swiftmailer": "4.2.*",
-        "symfony/swiftmailer-bundle": "2.1.*",
-        "symfony/monolog-bundle": "2.1.*",
-        "sensio/distribution-bundle": "2.1.*",
-        "sensio/framework-extra-bundle": "2.1.*",
-        "sensio/generator-bundle": "2.1.*",
-        "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*",
-        "webignition/http-client":"*",
-        "webignition/web-json-model":">=0.1,<2.0",
-        "webignition/url":">=1.1,<2.0",
-        "doctrine/migrations": "*",        
-        "webignition/doctrine-migrations-bundle": "*",
-        "webignition/container-aware-migration": "*",
-        "webignition/simplytestable-base-migrations-bundle":"1.1"        
+        "symfony/swiftmailer-bundle": "2.2.*",
+        "symfony/monolog-bundle": "2.2.*",
+        "sensio/distribution-bundle": "2.2.*",
+        "sensio/framework-extra-bundle": "2.2.*",
+        "sensio/generator-bundle": "2.2.*",
+        "jms/security-extra-bundle": "1.4.*",
+        "jms/di-extra-bundle": "1.3.*",
+        "webignition/simplytestable-base-migrations-bundle":"~1.3",
+        "webignition/web-resource-service":">=1.0.1,<2.0",
+        "guzzle/guzzle":">=3.8.1,<4"
     },
     "scripts": {
         "post-install-cmd": [
@@ -44,7 +39,8 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "dev",    
+    "prefer-stable":true,
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"
