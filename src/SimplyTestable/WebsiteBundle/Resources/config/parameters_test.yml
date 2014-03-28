@@ -2,10 +2,10 @@ parameters:
   core_application:
     urls:
         base: http://app.simplytestable.com
-        jobs_list: /jobs/list/{limit}/{offset}/
+        jobs_list: /jobs/list/{limit}/{offset}/    
   web_client:
     urls:
-      base: http://gears.simplytestable.com
+      base: http://web.client.simplytestable.com
       start_test: /
       recent_tests: /#recent-tests
       sign_in: /signin/      
@@ -13,7 +13,7 @@ parameters:
       start_test_submit: /test/start/
       account: /account/
   not_found_redirect_map:
-    /index.php: http://simplytestable.com/
+    /index.php: http://local.simplytestable.com/
     /signup.php: "{{web_client::base}}{{web_client::sign_up}}"
     /signup: "{{web_client::base}}{{web_client::sign_up}}"
     /register.php: "{{web_client::base}}{{web_client::sign_up}}"
@@ -21,4 +21,4 @@ parameters:
     default: webignition\WebResource\WebResource
     text/html: webignition\WebResource\WebPage\WebPage
     application/xhtml+xml: webignition\WebResource\WebPage\WebPage
-    application/json: webignition\WebResource\JsonDocument\JsonDocument
+    application/json: webignition\WebResource\JsonDocument\JsonDocument    

@@ -1,4 +1,8 @@
 parameters:
+  core_application:
+    urls:
+        base: http://null
+        jobs_list: /jobs/list/{limit}/{offset}/
   web_client:
     urls:
       base: http://ci.gears.simplytestable.com
@@ -13,3 +17,8 @@ parameters:
     /signup.php: "{{web_client::base}}{{web_client::sign_up}}"
     /signup: "{{web_client::base}}{{web_client::sign_up}}"
     /register.php: "{{web_client::base}}{{web_client::sign_up}}"
+  content_type_web_resource_map:
+    default: webignition\WebResource\WebResource
+    text/html: webignition\WebResource\WebPage\WebPage
+    application/xhtml+xml: webignition\WebResource\WebPage\WebPage
+    application/json: webignition\WebResource\JsonDocument\JsonDocument

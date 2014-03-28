@@ -1,6 +1,11 @@
 services:
-  simplytestable.services.httpClient:
-    class:  webignition\Http\Client\Client
+  simplytestable.services.httpClientService:
+    class:  SimplyTestable\WebsiteBundle\Services\HttpClientService    
+    
+  simplytestable.services.webResourceService:
+    class:  webignition\WebResource\Service\Service
+    calls:
+      - [createConfiguration, [{allow-uknown-resource-types: "true", retry-with-url-encoding-disabled: "true", content-type-web-resource-map: %content_type_web_resource_map% }]]         
     
   simplytestable.services.testimonialService:
     class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
@@ -27,3 +32,10 @@ services:
     arguments:
         web_client_parameters: %web_client% 
         not_found_redirect_map: %not_found_redirect_map%
+        
+  simplytestable.services.testListService:
+    class:  SimplyTestable\WebsiteBundle\Services\TestListService
+    arguments:        
+        parameters: %core_application%
+        httpClientService: "@simplytestable.services.httpClientService"
+        webResourceService: "@simplytestable.services.webResourceService"

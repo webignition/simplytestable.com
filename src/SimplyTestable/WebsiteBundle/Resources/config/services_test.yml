@@ -1,0 +1,4 @@
+services:
+  
+  simplytestable.services.httpClientService:
+    class:  SimplyTestable\WebsiteBundle\Services\TestHttpClientService
