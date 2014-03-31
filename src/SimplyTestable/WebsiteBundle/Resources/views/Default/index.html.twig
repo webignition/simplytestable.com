@@ -131,8 +131,7 @@
             <div class="span12 iconified-section">
                 <i class="icon section-icon icon-cog"></i>
                 <h3>Recent free demo tests</h3>
-                <div class="inner" id="recent-site-tests-list">
-                </div>
+{% include 'SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig' with {'tests':recent_tests} %}                
             </div>
         </div>        
     </div>

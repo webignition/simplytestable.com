@@ -205,17 +205,17 @@ $(document).ready(function() {
             });            
         };
         
-        var requestRecentTestData = function () {
-            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/0/?exclude-types[]=crawl', function(data) {
-                updateRecentTests(data);
-            }, "json");               
-        };
-        
-        requestRecentTestData();
-
-        window.setInterval(function () {
-            requestRecentTestData();
-        }, 3000);
+//        var requestRecentTestData = function () {
+//            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/0/?exclude-types[]=crawl', function(data) {
+//                updateRecentTests(data);
+//            }, "json");               
+//        };
+//        
+//        requestRecentTestData();
+//
+//        window.setInterval(function () {
+//            requestRecentTestData();
+//        }, 3000);
     }   
     
     

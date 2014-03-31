@@ -8,6 +8,31 @@ class DefaultController extends BaseController
     
     public function indexAction()
     {   
+        if ($this->isUsingOldIE()) {
+            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
+        }
+        
+        $this->getTestListService()->setUser($this->getUserService()->getPublicUser());      
+        
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
+        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
+        
+        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
+        
+        return $this->getCachableResponse(
+            $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
+                'testimonial' => $this->getTestimonialService()->getRandom(),
+                'user' => $this->getUser(),
+                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'web_client' => $this->container->getParameter('web_client'),
+                'recent_tests' => $this->getTestListService()->getTests()
+            )),
+            $cacheValidatorHeaders
+        );        
+        
         return $this->defaultPageAction('index');
     }
     
@@ -69,7 +94,7 @@ class DefaultController extends BaseController
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client' => $this->container->getParameter('web_client'),                
+                'web_client' => $this->container->getParameter('web_client')
             )),
             $cacheValidatorHeaders
         );
@@ -130,6 +155,15 @@ class DefaultController extends BaseController
     private function getTestimonialService() {
         return $this->get('simplytestable.services.testimonialService');
     }
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\TestListService
+     */
+    private function getTestListService() {
+        return $this->get('simplytestable.services.testListService');
+    }    
     
     
     /**

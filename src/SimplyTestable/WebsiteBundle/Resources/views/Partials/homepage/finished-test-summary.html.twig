@@ -1,0 +1,38 @@
+{% set was_not_started = false %}
+{% set no_urls = false %}    
+
+<div data-test-id="{{test.id}}" class="site state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+        <div class="wrapper">
+<div>
+    <a class="url" href="#">
+        <i class="icon icon-bar-chart"></i><span class="website">{{ test.website }}</span> (#{{ test.id }})
+        <span class="btn-wrapper">
+            <span class="btn-spacer"></span>
+            <span class="btn btn-small">View full results <i class="icon icon-caret-right"></i></span>   
+        </span>    
+    </a>
+
+    <div class="row-fluid summary-stats">        
+        {% if test_list is defined and test_list.requiresresults(test.test) %}           
+        {% else %}
+            {% if was_not_started %}            
+            <p>
+                Stopped before any tests were run.
+            </p>
+            {% elseif no_urls %}
+            <p>
+                No urls discovered.
+            </p>
+            {% else %}
+                {# include 'SimplyTestableWebClientBundle:Partials:/results/url-count.html.twig' with {'test': test.test, 'remote_test':test.remote_test} #}
+                {# include 'SimplyTestableWebClientBundle:Partials:/results/task-count.html.twig' with {'test': test.test, 'remote_test':test.remote_test} #}            
+                {# include 'SimplyTestableWebClientBundle:Partials:/results/error-count.html.twig' with {'test': test.test} #}
+                {# include 'SimplyTestableWebClientBundle:Partials:/results/warning-count.html.twig' with {'test': test.test} #}
+                {# include 'SimplyTestableWebClientBundle:Partials:/results/errors-by-task-type.html.twig' with {'test': test.test, 'remote_test':test.remote_test, 'type':null, 'filter':null} #}            
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+        </div>
+    </div>
+

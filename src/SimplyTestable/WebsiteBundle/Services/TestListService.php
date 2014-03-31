@@ -2,12 +2,17 @@
 
 namespace SimplyTestable\WebsiteBundle\Services;
 
-class TestListService extends CoreApplicationService {    
+class TestListService extends CoreApplicationService {        
     
     public function getTests($limit = 3, $offset = 0) {
         $queryParameters = array(
             'exclude-types' => array(
                 'crawl'
+            ),
+            'exclude-states' => array(
+                'rejected',
+                'failed-no-sitemap',
+                'cancelled'
             )
         );
         

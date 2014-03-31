@@ -6,6 +6,7 @@ use SimplyTestable\WebsiteBundle\Model\User;
 class UserService {    
     
     const PUBLIC_USER_USERNAME = 'public';
+    const PUBLIC_USER_PASSWORD = 'public';
     
     
     /**
@@ -38,6 +39,7 @@ class UserService {
     public function getPublicUser() {
         $user = new User();
         $user->setUsername(static::PUBLIC_USER_USERNAME);
+        $user->setPassword(static::PUBLIC_USER_PASSWORD);
         return $user;
     }
     
