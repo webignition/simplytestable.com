@@ -1,7 +1,7 @@
 <div class="inner" id="recent-site-tests-list">
     {% for test in tests %}
 
-    <div class="site" data-test-id="{{ test.id }}" data-state="{{ test.state }}">
+    <div class="site span4" data-test-id="{{ test.id }}" data-state="{{ test.state }}">
         <div class="wrapper">                                  
 {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test-summary.html.twig' %}
         </div>

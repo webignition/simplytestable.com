@@ -27,7 +27,7 @@ class DefaultController extends BaseController
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client' => $this->container->getParameter('web_client'),
+                'web_client_urls' => $this->container->getParameter('web_client_urls'),
                 'recent_tests' => $this->getTestListService()->getTests()
             )),
             $cacheValidatorHeaders
@@ -62,7 +62,7 @@ class DefaultController extends BaseController
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client' => $this->container->getParameter('web_client'),                
+                'web_client_urls' => $this->container->getParameter('web_client_urls'),                
             )),
             $cacheValidatorHeaders
         );         
@@ -94,7 +94,7 @@ class DefaultController extends BaseController
                 'testimonial' => $this->getTestimonialService()->getRandom(),
                 'user' => $this->getUser(),
                 'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client' => $this->container->getParameter('web_client')
+                'web_client_urls' => $this->container->getParameter('web_client_urls')
             )),
             $cacheValidatorHeaders
         );

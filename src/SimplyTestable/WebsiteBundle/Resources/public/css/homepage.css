@@ -102,92 +102,59 @@ body.homepage #start-new-test-form input {
     padding: 10px 0 10px 30px;       
 }
 
-#recent-site-tests .site {
+#recent-site-tests .url {
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap; 
     position:relative;
-    padding-right:3%;  
+    padding-bottom: 4px;
 }
 
-#recent-site-tests .site .wrapper {
-    padding: 20px 0;    
-    overflow:hidden;
+#recent-site-tests .btn-wrapper {
+    position:absolute;
+    right:0;
 }
 
-#recent-site-tests .site .icon {
-    font-size:20px;
+#recent-site-tests .summary-container {
+    background-color: #ddd;
+    height:22px;
+    border-radius: 11px;
+    color:#333;
+    padding-left:12px;
 }
 
-#recent-site-tests .site .state-icon {
-    margin-right:4px;
+#recent-site-tests .summary-stats .error-container {
+    background-color: #b94a48;
 }
 
-#recent-site-tests .site .action-icon {
-    margin-left:4px;
+#recent-site-tests .summary-stats .success-container {
+    background-color: #468847;
 }
 
-#recent-site-tests .badge {
-    padding: 4px 4px 4px 8px;
-    display:inline-block;
+#recent-site-tests .summary-stats .summary-figure a,
+#recent-site-tests .summary-stats .summary-figure .anchor {
+    color: #fff;
+    opacity:0.8;
+    display:block;
+    position:relative;
 }
 
-#recent-site-tests .site .url {
+#recent-site-tests .summary-stats .icon-caret-right {
+    position:absolute;
+    right:12px;
+}
+
+#recent-site-tests .summary-stats .outline-container .anchor {
+    color: #222;
+}
+
+#recent-site-tests .summary-stats .summary-figure a:hover {
+    opacity: 1;
     text-decoration: none;
-    font-size:16px;
-    display: block;
-    white-space: nowrap;
-    width: 98%;
-    overflow: hidden;   
-    margin-bottom:6px;
 }
 
-#recent-site-tests .site .results {
-    position: absolute;
-    right: 10%;   
-    top:20px;
-    border-left: 5px solid #fff;
-}
 
-#recent-site-tests .site .results a {
-    text-decoration: none;
-}
-
-#recent-site-tests .site .total .test-count {
-    color: #666;
-    font-size: 36px;
-    line-height: 40px;
-    display: block;    
-}
-
-#recent-site-tests .site .total .subtext {
-    color:#aaa;
-}
-
-#recent-site-tests .site .total .percent {
-    font-size:14px;
-    line-height:14px;
-    font-weight: normal;
-}
-
-#recent-site-tests .site .detail {
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    padding-right: 3px;
-    margin-top: 5px;    
-}
-
-#recent-site-tests .site .detail .figure {
-    display:inline-block;
-    width:29px;
-    text-align: right;
-}
-
-#recent-site-tests .site .detail .figure-wide {
-    width:36px;
-}
-
-#recent-site-tests .site .detail .caption {
-    
-}
 
 #features {
     border-bottom: 1px solid #DDD;      

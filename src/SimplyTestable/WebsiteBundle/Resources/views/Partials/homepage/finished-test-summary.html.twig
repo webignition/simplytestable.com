@@ -1,38 +1,48 @@
-{% set was_not_started = false %}
-{% set no_urls = false %}    
-
 <div data-test-id="{{test.id}}" class="site state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
-        <div class="wrapper">
-<div>
-    <a class="url" href="#">
-        <i class="icon icon-bar-chart"></i><span class="website">{{ test.website }}</span> (#{{ test.id }})
-        <span class="btn-wrapper">
-            <span class="btn-spacer"></span>
-            <span class="btn btn-small">View full results <i class="icon icon-caret-right"></i></span>   
-        </span>    
-    </a>
+    <div class="wrapper">
+        <div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <a class="url" href="{{ test.results_url }}">
+                        <span class="website">{{ test.formatted_website }}</span> <!--(#{{ test.id }})-->
+                        {#        <span class="fade"></span>#}
+                        <span class="btn-wrapper">
+                            <span class="btn-spacer"></span>
+                            <span class="btn btn-mini">View results <i class="icon icon-caret-right"></i></span>   
+                        </span>    
+                    </a>                    
+                </div>
+            </div>
 
-    <div class="row-fluid summary-stats">        
-        {% if test_list is defined and test_list.requiresresults(test.test) %}           
-        {% else %}
-            {% if was_not_started %}            
-            <p>
-                Stopped before any tests were run.
-            </p>
-            {% elseif no_urls %}
-            <p>
-                No urls discovered.
-            </p>
-            {% else %}
-                {# include 'SimplyTestableWebClientBundle:Partials:/results/url-count.html.twig' with {'test': test.test, 'remote_test':test.remote_test} #}
-                {# include 'SimplyTestableWebClientBundle:Partials:/results/task-count.html.twig' with {'test': test.test, 'remote_test':test.remote_test} #}            
-                {# include 'SimplyTestableWebClientBundle:Partials:/results/error-count.html.twig' with {'test': test.test} #}
-                {# include 'SimplyTestableWebClientBundle:Partials:/results/warning-count.html.twig' with {'test': test.test} #}
-                {# include 'SimplyTestableWebClientBundle:Partials:/results/errors-by-task-type.html.twig' with {'test': test.test, 'remote_test':test.remote_test, 'type':null, 'filter':null} #}            
-            {% endif %}
-        {% endif %}
-    </div>
-</div>
+
+
+            <div class="row-fluid summary-stats">
+                <div class="span6">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
+                </div>
+                <div class="span6">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/error-count.html.twig'  %}
+                </div>
+            </div>
+
+            <div class="row-fluid summary-stats">
+                <div class="span6">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
+                </div>
+                <div class="span6">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/warning-count.html.twig' %}
+                </div>
+            </div>                
+
+
+
+            {#    <div class="row-fluid summary-stats">        
+                    
+                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
+                    
+                    
+                </div>#}
         </div>
     </div>
+</div>
 
