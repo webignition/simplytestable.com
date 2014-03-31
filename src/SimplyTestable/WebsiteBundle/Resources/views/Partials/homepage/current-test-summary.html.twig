@@ -8,7 +8,7 @@
                     + attribute(test.task_count_by_state, 'failed-retry-limit-reached')
                     + test.task_count_by_state.skipped %}
 
-<div class="task-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+<div class="job-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
     <div class="row-fluid">
         <div class="span12">
             <a class="url" href="{{ test.progress_url }}">

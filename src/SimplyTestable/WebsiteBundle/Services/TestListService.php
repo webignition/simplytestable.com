@@ -37,7 +37,6 @@ class TestListService extends CoreApplicationService {
             'exclude-states' => array(
                 'rejected',
                 'failed-no-sitemap',
-                'cancelled',
                 'new',
                 'resolving',
                 'resolved',

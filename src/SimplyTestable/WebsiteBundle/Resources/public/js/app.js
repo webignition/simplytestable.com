@@ -107,10 +107,10 @@ $(document).ready(function() {
                 } else {
                     var inDocSite = $('[data-test-id='+site.attr('data-test-id')+']', container);
                     
-                    var inDocSiteInProgress = $('.task-in-progress', inDocSite).length === 1;
-                    var siteInProgress = $('.task-in-progress', site).length === 1;
-                    var inDocSiteFinished = $('.task-finished', inDocSite).length === 1;
-                    var siteFinished = $('.task-finished', site).length === 1;
+                    var inDocSiteInProgress = $('.job-in-progress', inDocSite).length === 1;
+                    var siteInProgress = $('.job-in-progress', site).length === 1;
+                    var inDocSiteFinished = $('.job-finished', inDocSite).length === 1;
+                    var siteFinished = $('.job-finished', site).length === 1;
                     
                     if (inDocSiteInProgress && siteFinished) {
                        replaceInProgressSiteWithFinishedSite(inDocSite, site);

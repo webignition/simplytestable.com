@@ -1,4 +1,4 @@
-<div class="task-finished state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+<div class="job-finished state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
     <div class="row-fluid">
         <div class="span12">
             <a class="url" href="{{ test.results_url }}">                
