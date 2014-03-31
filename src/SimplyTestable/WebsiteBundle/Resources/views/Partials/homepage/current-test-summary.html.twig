@@ -8,46 +8,41 @@
                     + attribute(test.task_count_by_state, 'failed-retry-limit-reached')
                     + test.task_count_by_state.skipped %}
 
-<div data-test-id="{{test.id}}" class="site state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
-    <div class="wrapper">
-        <div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <a class="url" href="{{ test.progress_url }}">
-                        <span class="website">{{ test.formatted_website }}</span>
-                        <span class="btn-wrapper">
-                            <span class="btn-spacer"></span>
-                            <span class="btn btn-mini">Live progress <i class="icon icon-caret-right"></i></span>   
-                        </span>    
-                    </a>                    
-                </div>
-            </div>
-                        
-            <div class="row-fluid progress-row">
-                <div class="span12">
-                    <div class="progress progress-striped active">
-                        <div class="bar" style="width:{{ test.completion_percent }}%;"></div>
-                    </div>
-                </div>
-            </div>                        
-                    
-            <div class="row-fluid queue-stats">
-                <div class="span12">
-                    <span class="queued">{{ queued_count }}</span> queued, 
-                    <span class="in-progress">{{in_progress_count }}</span> in progress, 
-                    <span class="finished">{{ finished_count }}</span> finished
-                </div>
-            </div>                    
+<div class="task-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+    <div class="row-fluid">
+        <div class="span12">
+            <a class="url" href="{{ test.progress_url }}">
+                <span class="testId">#{{ test.id }} </span><span class="website">{{ test.formatted_website }}</span>
+                <span class="btn-wrapper">
+                    <span class="btn-spacer"></span>
+                    <span class="btn btn-mini">Live progress <i class="icon icon-caret-right"></i></span>   
+                </span>    
+            </a>                    
+        </div>
+    </div>
 
-            <div class="row-fluid summary-stats">
-                <div class="span6">
-                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
-                </div>
-                <div class="span6">
-                    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
-                </div>
+    <div class="row-fluid progress-row">
+        <div class="span12">
+            <div class="progress progress-striped active" data-completion-percent="{{ test.completion_percent }}">
+                <div class="bar" style="width:{{ test.completion_percent }}%;"></div>
             </div>
-                
+        </div>
+    </div>                        
+
+    <div class="row-fluid queue-stats">
+        <div class="span12">
+            <span class="queued">{{ queued_count }}</span> queued, 
+            <span class="in-progress">{{in_progress_count }}</span> in progress, 
+            <span class="finished">{{ finished_count }}</span> finished
+        </div>
+    </div>                    
+
+    <div class="row-fluid summary-stats">
+        <div class="span6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
+        </div>
+        <div class="span6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
         </div>
     </div>
 </div>

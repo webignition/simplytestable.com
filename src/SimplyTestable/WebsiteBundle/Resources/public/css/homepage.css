@@ -97,6 +97,10 @@ body.homepage #start-new-test-form input {
     width:46%;
 }
 
+#recent-site-tests .wrapper {
+ 
+}
+
 #recent-site-tests h3 {        
     margin: 0 0 0 -30px;
     padding: 10px 0 10px 30px;       
@@ -111,9 +115,17 @@ body.homepage #start-new-test-form input {
     padding-bottom: 4px;
 }
 
-/*#recent-site-tests .finished .url {
-    margin-bottom: 18px;
-}*/
+#recent-site-tests .url .testId {
+    color:#222;
+}
+
+#recent-site-tests .url:hover {
+    text-decoration: none;
+}
+
+#recent-site-tests .url:hover .website {
+    text-decoration: underline;
+}
 
 #recent-site-tests .queue-stats {
     min-height: 0;
