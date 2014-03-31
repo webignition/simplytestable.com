@@ -30,12 +30,23 @@ services:
   simplytestable.services.notfoundredirectservice:
     class:  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService   
     arguments:
-        web_client_parameters: %web_client% 
+        web_client_parameters: %web_client_urls% 
         not_found_redirect_map: %not_found_redirect_map%
+        
+  simplytestable.services.coreApplicationUrlService:
+    class:  SimplyTestable\WebsiteBundle\Services\CoreApplicationUrlService
+    arguments:        
+        urls: %core_application_urls%    
+
+  simplytestable.services.webClientUrlService:
+    class:  SimplyTestable\WebsiteBundle\Services\WebClientUrlService
+    arguments:        
+        urls: %web_client_urls%          
         
   simplytestable.services.testListService:
     class:  SimplyTestable\WebsiteBundle\Services\TestListService
     arguments:        
-        parameters: %core_application%
+        coreApplicationUrlService: "@simplytestable.services.coreApplicationUrlService"        
         httpClientService: "@simplytestable.services.httpClientService"
         webResourceService: "@simplytestable.services.webResourceService"
+        webClientUrlService: "@simplytestable.services.webClientUrlService"

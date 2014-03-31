@@ -1,221 +1,140 @@
 $(document).ready(function() {       
     if ($('body.homepage').length) {
-        var taskFinishedStates = [
-            'cancelled',
-            'completed',
-            'failed-no-retry-available',
-            'failed-retry-available',
-            'failed-retry-limit-reached',
-            'skipped',
-            'failed-no-sitemap',
-            'rejected'
-        ]; 
+        var updateRecentTests = function (data) {
+            var isRemoving = false;
 
-        var queuedStates = [
-            'queued-for-assignment',
-            'queued'            
-        ];
-        
-        var getOutputDomainFromWebsiteUrl = function (websiteUrl) {
-            var outputDomain = websiteUrl.replace('http://', '').replace('https://', '')
+            var container = $('#recent-site-tests-list');
+            var sourceTestList = $('.site', container);
+            var updatedTestList = $('.site', data);
             
-            if (outputDomain.charAt(outputDomain.length - 1) == '/') {
-                outputDomain = outputDomain.substr(0, outputDomain.length - 1);
-            }
+            var updatedTestListContains = function (testId) {                
+                var contains = false;
+                
+                updatedTestList.each(function () {                    
+                    if ($(this).attr('data-test-id') === testId) {
+                        contains = true;
+                    }
+                });
+                
+                return contains;
+            };
             
-            return outputDomain;
-        };
-        
-        var isFinishedState = function (stateName) {
-            for (var stateIndex = 0; stateIndex < taskFinishedStates.length; stateIndex++) {
-                if (stateName == taskFinishedStates[stateIndex]) {
-                    return true;
+            var sourceTestListContains = function (testId) {
+                var contains = false;
+                
+                sourceTestList.each(function () {                    
+                    if ($(this).attr('data-test-id') === testId) {
+                        contains = true;
+                    }
+                });
+                
+                return contains;                
+            };
+            
+            var removeSite = function (site) {
+                isRemoving = true;
+                
+                site.animate({
+                    'opacity':0
+                }, function () {
+                    site.remove();
+                    isRemoving = false;
+                });
+            }; 
+            
+            var addSite = function (site) {
+                if (isRemoving === true) {
+                    window.setTimeout(function () {
+                        addSite(site);
+                    }, 100);
+                    return;
                 }
-            }
+                
+                site.css({
+                    'opacity':0
+                });
+                
+                container.append(site);                
+                
+                site.css({
+                    'margin-left':0
+                });
+                
+                site.remove();
+                
+                container.prepend(site);
+                site.animate({
+                    'opacity':'1'
+                });
+            };
             
-            return false;
-        };
-        
-        var getFinishedTaskCount = function(taskCountByState) {
-            var finishedTaskCount = 0;
+            var replaceInProgressSiteWithFinishedSite = function (inProgressSite, finishedSite) {
+                finishedSite.css('opacity', 0);
+                inProgressSite.animate({
+                    'opacity':0
+                }, function () {
+                    inProgressSite.replaceWith(finishedSite);
+                    finishedSite.animate({
+                        'opacity':1
+                    });
+                });                 
+            };
             
-            for (var stateName in taskCountByState) {
-                if (taskCountByState.hasOwnProperty(stateName)) {
-                    if (isFinishedState(stateName)) {
-                        finishedTaskCount += taskCountByState[stateName];
+            var updateInProgressSite = function (inDocSite, site) {
+                var completionPercent = $('.progress', site).attr('data-completion-percent');
+                
+                $('.queued', inDocSite).text($('.queued', site).text());
+                $('.in-progress', inDocSite).text($('.in-progress', site).text());
+                $('.finished', inDocSite).text($('.finished', site).text());
+                
+                $('.progress .bar').css({
+                    'width':completionPercent + '%'
+                });
+            };
+            
+            sourceTestList.each(function () {
+                var site = $(this);                
+                if (!updatedTestListContains(site.attr('data-test-id'))) {
+                    removeSite(site);
+                }
+            });
+            
+            $('.site', data).each(function () {
+                var site = $(this);
+                
+                if (!sourceTestListContains(site.attr('data-test-id'))) {
+                    addSite(site);
+                } else {
+                    var inDocSite = $('[data-test-id='+site.attr('data-test-id')+']', container);
+                    
+                    var inDocSiteInProgress = $('.job-in-progress', inDocSite).length === 1;
+                    var siteInProgress = $('.job-in-progress', site).length === 1;
+                    var inDocSiteFinished = $('.job-finished', inDocSite).length === 1;
+                    var siteFinished = $('.job-finished', site).length === 1;
+                    
+                    if (inDocSiteInProgress && siteFinished) {
+                       replaceInProgressSiteWithFinishedSite(inDocSite, site);
+                    }
+                    
+                    if (inDocSiteInProgress && siteInProgress) {
+                        updateInProgressSite(inDocSite, site);
                     }
                 }
-            }
-            
-            return finishedTaskCount;
-        };
-     
-        var getQueuedTaskCount = function (taskCountByState) {            
-            var queuedTaskCount = 0;
-            
-            for (var stateIndex = 0; stateIndex < queuedStates.length; stateIndex++) {
-                if (taskCountByState[queuedStates[stateIndex]] != undefined) {
-                    queuedTaskCount += taskCountByState[queuedStates[stateIndex]];
-                }
-            }
-            
-            return queuedTaskCount;
-        };   
-        
-        var getCompletionPercent = function (remoteTestSummary) {            
-            if (isFinishedState(remoteTestSummary.state)) {
-                return 100;
-            }
-
-            if (remoteTestSummary.task_count === 0) {
-                return 0;
-            }
-            
-            var finishedCount = getFinishedTaskCount(remoteTestSummary.task_count_by_state);
-            
-            if (finishedCount == remoteTestSummary.task_count) {
-                return 100;
-            }
-            
-            var requiredPrecision = Math.floor(Math.log(remoteTestSummary.task_count) / Math.log(10)) - 1;
-            
-            if (requiredPrecision == 0) {
-                return Math.floor((finishedCount / remoteTestSummary.task_count) * 100);
-            }
-            
-            if (requiredPrecision > 2) {
-                requiredPrecision = 2;
-            }
-            
-            if (requiredPrecision < 1) {
-                requiredPrecision = 1;
-            }
-
-            return ((finishedCount / remoteTestSummary.task_count) * 100).toPrecision(requiredPrecision + 1);
+            });
         };
         
-        var getStateIcon = function (state) {
-            if (state == 'new') {
-                return 'icon-off';
-            }
-            
-            if (state == 'queued') {
-                return 'icon-off';
-            }
-            
-            if (state == 'preparing') {
-                return 'icon-cog';
-            }
-            
-            if (state == 'in-progress') {
-                return 'icon-play-circle';
-            }
-
-            if (state == 'completed') {                
-                return 'icon-bar-chart';
-            }
-            
-            if (state == 'cancelled') {
-                return 'icon-bar-chart';
-            }
-        };
-        
-        var getStateLabelClass = function (state) {
-            if (state == 'new') {
-                return '';
-            }
-            
-            if (state == 'queued') {
-                return 'info';
-            }
-            
-            if (state == 'preparing') {
-                return 'warning';
-            }
-            
-            if (state == 'in-progress') {
-                return 'warning';
-            }
-
-            if (state == 'completed') {                
-                return 'success';
-            }
-            
-            if (state == 'cancelled') {
-                return 'success';
-            }
-            
-            if (state == 'rejected') {
-                return 'success';                
-            }
-        };        
-        
-        var updateRecentTests = function (data) {
-           var recentSiteTestsList = $('#recent-site-tests-list');
-           recentSiteTestsList.html('');
-            
-            $(data.jobs).each(function () { 
-                var maximumStandardDigitLength = 4;
-                var standardDigitSize = 40;
-                var taskCount = this.task_count;
-
-                var taskCountElement = $('<span class="test-count">'+taskCount+'</span>');
-                var taskCountDigitLength = taskCount.length;
+        var requestRecentTestData = function () {
+            var url = window.location.href + 'recent-test-list/';            
+            $.get(url, function(data) {                
+                window.setTimeout(function () {
+                    requestRecentTestData();
+                }, 3000);
                 
-                if (taskCountDigitLength > maximumStandardDigitLength) {
-                    var fontSize = (standardDigitSize - ((taskCountDigitLength - maximumStandardDigitLength) * 5)) + 'px';
-                    taskCountElement.css({
-                        'font-size':fontSize
-                    });
-                }
-                
-                var siteListItem = $('<div class="site span4" />').append(
-                    $('<div class="wrapper" />').append(
-                        '<a class="url" href="'+this.website+'">'+getOutputDomainFromWebsiteUrl(this.website)+'</a>'
-                    ).append(
-                        $('<div class="results" />').append(
-                            $('<a href="http://gears.simplytestable.com/'+this.website+'/'+this.id+'/results/" />').append(
-                                $('<span class="badge badge-'+getStateLabelClass(this.state)+'"> <i class="icon state-icon '+getStateIcon(this.state)+'"></i> #'+this.id+' <i class="icon action-icon icon-caret-right"></i> </span>')
-                            )
-                        )
-                    ).append(
-                        $('<div class="row-fluid meta">').append(
-                            $(' <div class="span4 total">').append(
-                                taskCountElement
-                            ).append(
-                                '<span class="subtext">tests overall</span>'
-                            )
-                        ).append(
-                            $(' <div class="span4 total">').append(
-                                '<span class="test-count percent-count">'+getCompletionPercent(this)+'<span class="percent">%</span></span><span class="subtext">finished</span>'
-                            )
-                        ).append(
-                            $('<div class="span4 detail">').append(
-                                '<div><span class="queued-count figure figure-wide">'+getQueuedTaskCount(this.task_count_by_state)+'</span> <span class="caption">queued</span></div>'
-                            ).append(
-                                '<div><span class="in-progress-count figure">'+this.task_count_by_state['in-progress']+'</span> <span class="caption">in progress</span></div>'
-                            ).append(
-                                '<div><span class="finished-count figure figure-wide">'+getFinishedTaskCount(this.task_count_by_state)+'</span> <span class="caption">finished</span></div>'
-                            )
-                        )
-                    )
-                );
-
-                recentSiteTestsList.append(siteListItem);
-            });            
+                updateRecentTests(data);
+            }, "html");               
         };
         
-//        var requestRecentTestData = function () {
-//            $.get('/core-application-proxy/?url=http://app.simplytestable.com/jobs/list/3/0/?exclude-types[]=crawl', function(data) {
-//                updateRecentTests(data);
-//            }, "json");               
-//        };
-//        
-//        requestRecentTestData();
-//
-//        window.setInterval(function () {
-//            requestRecentTestData();
-//        }, 3000);
+        requestRecentTestData();
     }   
     
     

@@ -106,96 +106,100 @@ body.homepage #start-new-test-form input {
     width:46%;
 }
 
+#recent-site-tests .wrapper {
+ 
+}
+
 #recent-site-tests h3 {        
     margin: 0 0 0 -30px;
     padding: 10px 0 10px 30px;       
 }
 
-#recent-site-tests .site {
+#recent-site-tests .url {
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap; 
     position:relative;
-    padding-right:3%;  
+    padding-bottom: 4px;
 }
 
-#recent-site-tests .site .wrapper {
-    padding: 20px 0;    
-    overflow:hidden;
+#recent-site-tests .url .testId {
+    color:#222;
 }
 
-#recent-site-tests .site .icon {
-    font-size:20px;
-}
-
-#recent-site-tests .site .state-icon {
-    margin-right:4px;
-}
-
-#recent-site-tests .site .action-icon {
-    margin-left:4px;
-}
-
-#recent-site-tests .badge {
-    padding: 4px 4px 4px 8px;
-    display:inline-block;
-}
-
-#recent-site-tests .site .url {
-    text-decoration: none;
-    font-size:16px;
-    display: block;
-    white-space: nowrap;
-    width: 98%;
-    overflow: hidden;   
-    margin-bottom:6px;
-}
-
-#recent-site-tests .site .results {
-    position: absolute;
-    right: 10%;   
-    top:20px;
-    border-left: 5px solid #fff;
-}
-
-#recent-site-tests .site .results a {
+#recent-site-tests .url:hover {
     text-decoration: none;
 }
 
-#recent-site-tests .site .total .test-count {
-    color: #666;
-    font-size: 36px;
-    line-height: 40px;
-    display: block;    
+#recent-site-tests .url:hover .website {
+    text-decoration: underline;
 }
 
-#recent-site-tests .site .total .subtext {
-    color:#aaa;
-}
-
-#recent-site-tests .site .total .percent {
-    font-size:14px;
-    line-height:14px;
-    font-weight: normal;
-}
-
-#recent-site-tests .site .detail {
+#recent-site-tests .queue-stats {
+    min-height: 0;
     font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    padding-right: 3px;
-    margin-top: 5px;    
 }
 
-#recent-site-tests .site .detail .figure {
-    display:inline-block;
-    width:29px;
-    text-align: right;
+#recent-site-tests .queue-stats .span12 {
+    min-height: 26px;
 }
 
-#recent-site-tests .site .detail .figure-wide {
-    width:36px;
+#recent-site-tests .btn-wrapper {
+    position:absolute;
+    right:0;
 }
 
-#recent-site-tests .site .detail .caption {
-    
+#recent-site-tests .summary-container {
+    background-color: #ddd;
+    height:22px;
+    border-radius: 11px;
+    color:#333;
+    padding-left:12px;
+}
+
+#recent-site-tests .summary-stats .error-container {
+    background-color: #b94a48;
+}
+
+#recent-site-tests .summary-stats .success-container {
+    background-color: #468847;
+}
+
+#recent-site-tests .summary-stats .summary-figure a,
+#recent-site-tests .summary-stats .summary-figure .anchor {
+    color: #fff;
+    opacity:0.8;
+    display:block;
+    position:relative;
+}
+
+#recent-site-tests .summary-stats .icon-caret-right {
+    position:absolute;
+    right:12px;
+}
+
+#recent-site-tests .summary-stats .outline-container .anchor {
+    color: #222;
+}
+
+#recent-site-tests .summary-stats .summary-figure a:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+/*#recent-site-tests .progress-row {
+    margin-bottom:14px;
+}*/
+
+#recent-site-tests .progress-row .span12,
+#recent-site-tests .progress {
+    height:4px;
+    min-height: 0px;
+}
+
+#recent-site-tests .progress {    
+
 }
 
 #features {

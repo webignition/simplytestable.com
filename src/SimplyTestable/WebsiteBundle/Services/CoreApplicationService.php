@@ -29,17 +29,17 @@ abstract class CoreApplicationService {
     
     /**
      *
-     * @var array
+     * @var \SimplyTestable\WebsiteBundle\Services\CoreApplicationUrlService
      */
-    private $parameters;
+    private $coreApplicationUrlService;
     
     
     public function __construct(
-        $parameters,
+        \SimplyTestable\WebsiteBundle\Services\CoreApplicationUrlService $coreApplicationUrlService,
         \SimplyTestable\WebsiteBundle\Services\HttpClientService $httpClientService,
         \webignition\WebResource\Service\Service $webResourceService
     ) {
-        $this->parameters = $parameters;
+        $this->coreApplicationUrlService = $coreApplicationUrlService;
         $this->httpClientService = $httpClientService;
         $this->webResourceService = $webResourceService;
     } 
@@ -72,20 +72,12 @@ abstract class CoreApplicationService {
     }
     
     
-    protected function getUrl($name = null, $parameters = null) {
-        $url = $this->parameters['urls']['base'];
-        
-        if (!is_null($name)) {
-            $url .= $this->parameters['urls'][$name];
-        }
-        
-        if (is_array($parameters)) {
-            foreach ($parameters as $parameterName => $parameterValue) {
-                $url = str_replace('{'.$parameterName.'}', $parameterValue, $url);
-            }
-        }
-        
-        return $url;
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\CoreApplicationUrlService
+     */
+    public function getCoreApplicationUrlService() {
+        return $this->coreApplicationUrlService;
     }
     
     

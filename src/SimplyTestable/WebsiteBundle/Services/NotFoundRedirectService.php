@@ -25,8 +25,8 @@ class NotFoundRedirectService {
      * 
      * @param array $web_client_parameters
      */
-    public function __construct($web_client_parameters, $not_found_redirect_map) {
-        $this->replacements['web_client'] = $web_client_parameters['urls'];
+    public function __construct($webClientUrls, $not_found_redirect_map) {
+        $this->replacements['web_client'] = $webClientUrls;
         $this->notFoundRedirectMap = $not_found_redirect_map;
     }
     
