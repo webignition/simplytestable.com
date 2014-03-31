@@ -3,35 +3,17 @@
 namespace SimplyTestable\WebsiteBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends BaseController
+class RecentTestListController extends BaseController
 {   
     
     public function indexAction()
     {   
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
-        }
+        $this->getTestListService()->setUser($this->getUserService()->getPublicUser());
         
-        $this->getTestListService()->setUser($this->getUserService()->getPublicUser());      
-        
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-            return $response;
-        }
-        
-        return $this->getCachableResponse(
-            $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
-                'testimonial' => $this->getTestimonialService()->getRandom(),
-                'user' => $this->getUser(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client_urls' => $this->container->getParameter('web_client_urls'),
-                'recent_tests' => $this->getTestListService()->getTests()
-            )),
-            $cacheValidatorHeaders
-        );
+        return $this->render('SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig', array(
+            'web_client_urls' => $this->container->getParameter('web_client_urls'),
+            'tests' => $this->getTestListService()->getTests()
+        ));
     }
     
     public function plansAction() {

@@ -17,14 +17,14 @@ roadmap:
 outdated_browser:
     pattern:  /outdated-browser/
     defaults: { _controller: SimplyTestableWebsiteBundle:Default:outdatedBrowser }    
-    
-core_application_proxy:
-  pattern: /core-application-proxy/
-  defaults: { _controller: SimplyTestableWebsiteBundle:CoreApplicationProxy:index }  
   
 sign_out_submit:
     pattern:  /signout/
     defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }     
+    
+recent_test_list:
+    pattern:  /recent-test-list/
+    defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }        
     
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/
