@@ -4,6 +4,14 @@ namespace SimplyTestable\WebsiteBundle\Services;
 
 class TestListService extends CoreApplicationService {        
     
+    private $finishedStates = array(
+        'rejected',
+        'failed-no-sitemap',
+        'cancelled',
+        'completed'
+    );
+    
+    
     /**
      *
      * @var type 
@@ -29,7 +37,11 @@ class TestListService extends CoreApplicationService {
             'exclude-states' => array(
                 'rejected',
                 'failed-no-sitemap',
-                'cancelled'
+                'cancelled',
+                'new',
+                'resolving',
+                'resolved',
+                'preparing'
             )
         );
         
@@ -54,7 +66,9 @@ class TestListService extends CoreApplicationService {
                 $tests[$index]->progress_url = $this->webClientUrlService->getUrl('test_progress', array(
                     'website' => $test->website,
                     'testId' => $test->id
-                )); 
+                ));
+                
+                $test->completion_percent = $this->getCompletionPercent($test);
                 
                 $tests[$index]->formatted_website = $this->getFormattedUrl($test->website);
             }
@@ -65,6 +79,68 @@ class TestListService extends CoreApplicationService {
         }
         
         return array();
+    }
+    
+    
+    /**
+     * 
+     * @param \stdClass $test
+     * @return boolean
+     */
+    private function isFinished(\stdClass $test) {
+        return in_array($test->state, $this->finishedStates);
+    }
+    
+    
+    /**
+     * 
+     * @param \stdClass $test
+     * @return boolean
+     */
+    private function isIncomplete(\stdClass $test) {
+        return !$this->isFinished($test);
+    }
+    
+    
+    /**
+     * 
+     * @param \stdClass $test
+     * @return float
+     */
+    private function getCompletionPercent(\stdClass $test) {
+        if ($this->isFinished($test)) {
+            return 100;
+        }
+        
+        $incompleteTaskCount = $this->getIncompleteTaskCount($test);
+        if ($incompleteTaskCount == 0) {
+            return 0;
+        }
+        
+        return (($test->task_count - $incompleteTaskCount) / $test->task_count) * 100;
+        
+    }
+    
+    
+    /**
+     * 
+     * @param \stdClass $test
+     * @return int
+     */
+    private function getIncompleteTaskCount(\stdClass $test) {
+        $incompleteTaskStates = array(
+            'queued',
+            'queued-for-assignment',
+            'in-progress'
+        );
+        
+        $count = 0;
+        
+        foreach ($incompleteTaskStates as $incompleteTaskState) {           
+            $count += $test->task_count_by_state->$incompleteTaskState;
+        }
+        
+        return $count;
     }
     
     

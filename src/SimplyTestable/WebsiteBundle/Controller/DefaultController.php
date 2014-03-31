@@ -22,6 +22,12 @@ class DefaultController extends BaseController
             return $response;
         }
         
+//        foreach ($this->getTestListService()->getTests() as $test) {
+//            var_dump($test->state);
+//        }
+//        
+//        exit();
+        
         return $this->getCachableResponse(
             $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
                 'testimonial' => $this->getTestimonialService()->getRandom(),

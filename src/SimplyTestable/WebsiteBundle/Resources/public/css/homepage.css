@@ -111,6 +111,19 @@ body.homepage #start-new-test-form input {
     padding-bottom: 4px;
 }
 
+/*#recent-site-tests .finished .url {
+    margin-bottom: 18px;
+}*/
+
+#recent-site-tests .queue-stats {
+    min-height: 0;
+    font-size: 12px;
+}
+
+#recent-site-tests .queue-stats .span12 {
+    min-height: 26px;
+}
+
 #recent-site-tests .btn-wrapper {
     position:absolute;
     right:0;
@@ -154,7 +167,19 @@ body.homepage #start-new-test-form input {
     text-decoration: none;
 }
 
+/*#recent-site-tests .progress-row {
+    margin-bottom:14px;
+}*/
 
+#recent-site-tests .progress-row .span12,
+#recent-site-tests .progress {
+    height:4px;
+    min-height: 0px;
+}
+
+#recent-site-tests .progress {    
+
+}
 
 #features {
     border-bottom: 1px solid #DDD;      

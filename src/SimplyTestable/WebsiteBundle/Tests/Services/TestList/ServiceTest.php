@@ -86,6 +86,24 @@ class ServiceTest extends BaseSimplyTestableTestCase {
         foreach ($list as $index => $test) {            
             $this->assertTrue(substr_count($test->formatted_website, $expectedFormattedUrls[$index]) === 1);
         }  
+    }  
+    
+    
+    public function testCompletionPercentForFinishedTest() {        
+        $this->setHttpFixtures($this->getHttpFixtures($this->getFixturesDataPath($this->getName() . '/HttpResponses')));        
+        $this->getTestListService()->setUser($this->getUser());
+        
+        $list = $this->getTestListService()->getTests();
+        $this->assertEquals(100, $list[0]->completion_percent);
     }     
+    
+    
+    public function testCompletionPercentForIncompleteTest() {        
+        $this->setHttpFixtures($this->getHttpFixtures($this->getFixturesDataPath($this->getName() . '/HttpResponses')));        
+        $this->getTestListService()->setUser($this->getUser());
+        
+        $list = $this->getTestListService()->getTests();
+        $this->assertEquals(60, $list[0]->completion_percent);
+    }    
 
 }
