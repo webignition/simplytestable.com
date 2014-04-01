@@ -16,8 +16,6 @@ abstract class BaseSimplyTestableTestCase extends BaseTestCase {
         $user->setUsername('public');
         $user->setPassword('public');
         $this->setUser($user);
-        
-        //$this->clear
     }
     
     
@@ -121,6 +119,15 @@ abstract class BaseSimplyTestableTestCase extends BaseTestCase {
      */    
     protected function getTestListService() {
         return $this->container->get('simplytestable.services.testListService');
-    } 
+    }
+    
+    
+    /**
+     *
+     * @return \SimplyTestable\WebsiteBundle\Services\UserSerializerService
+     */    
+    protected function getUserSerializerService() {
+        return $this->container->get('simplytestable.services.userserializerservice');
+    }     
 
 }

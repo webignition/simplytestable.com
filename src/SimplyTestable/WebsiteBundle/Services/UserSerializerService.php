@@ -65,6 +65,22 @@ class UserSerializerService {
     
     /**
      * 
+     * @param \SimplyTestable\WebsiteBundle\Model\User $user
+     * @return string
+     */
+    public function serializeToString(User $user) {
+        $serializedUser = $this->serialize($user);
+        
+        foreach ($serializedUser as $key => $value) {
+            $serializedUser[$key] = base64_encode($value);
+        }
+        
+        return base64_encode(json_encode($serializedUser));
+    }    
+    
+    
+    /**
+     * 
      * @param string $user
      * @return \SimplyTestable\WebClientBundle\Model\User
      */

@@ -120,12 +120,16 @@ class DefaultController extends BaseController
      * 
      * @return boolean
      */
-    private function isUsingIE6() {        
-        if (!preg_match('/msie 6\.[0-9]+/i', $_SERVER['HTTP_USER_AGENT'])) {
+    private function isUsingIE6() {       
+        if (!preg_match('/msie 6\.[0-9]+/i', $this->getUserAgentString())) {
             return false;
         }
         
-        if (preg_match('/opera/i', $_SERVER['HTTP_USER_AGENT'])) {
+        if (preg_match('/opera/i', $this->getUserAgentString())) {
+            return false;
+        }
+        
+        if (preg_match('/msie 8.[0-9]+/i', $this->getUserAgentString())) {
             return false;
         }
         
@@ -138,11 +142,20 @@ class DefaultController extends BaseController
      * @return boolean
      */
     private function isUsingIE7() {        
-        if (!preg_match('/msie 7\.[0-9]+/i', $_SERVER['HTTP_USER_AGENT'])) {
+        if (!preg_match('/msie 7\.[0-9]+/i', $this->getUserAgentString())) {
             return false;
         }
         
         return true;
+    }
+    
+    
+    /**
+     * 
+     * @return string
+     */
+    private function getUserAgentString() {
+        return $this->getRequest()->server->get('HTTP_USER_AGENT');
     }
     
     
