@@ -64,15 +64,7 @@ class DefaultController extends BaseController
             )),
             $cacheValidatorHeaders
         );         
-    }
-
-    public function havingProblemsAction() {
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:havingProblems');
-        }
-        
-        return $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig');
-    }    
+    }  
     
     public function roadmapAction() {        
         if ($this->isUsingOldIE()) {
