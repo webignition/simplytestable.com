@@ -2,7 +2,11 @@
 
 {% block stylesheets %}      
 {{ parent() }}
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/roadmap.css" />
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/roadmap.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %} 
 {% endblock %}
                                 
 {% block leader_heading %}
