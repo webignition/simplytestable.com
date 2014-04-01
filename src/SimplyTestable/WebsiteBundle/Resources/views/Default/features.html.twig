@@ -2,7 +2,11 @@
 
 {% block stylesheets %}      
 {{ parent() }}
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/features.css" />
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/features.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %} 
 {% endblock %}
 
 {% block body %}
