@@ -8,19 +8,27 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">          
         <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
         
-{% stylesheets    
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}          
+        {% stylesheets    
+            '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
+            filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}          
         {% endblock %}     
         
         {% block javascripts %}        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>        
-        <script type="text/javascript" src="/bundles/simplytestablewebsite/vendor/css3-mediaqueries/css3-mediaqueries-js/css3-mediaqueries.js"></script>        
+        
+        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/css3-mediaqueries/css3-mediaqueries-js/css3-mediaqueries.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>      
-        <script type="text/javascript" src="/bundles/simplytestablewebsite/js/app.js"></script>
+        
+        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}        
+
         {% endblock %}        
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {% if app.environment == 'prod' %}        
