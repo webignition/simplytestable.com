@@ -137,24 +137,15 @@ $(document).ready(function() {
         requestRecentTestData();
         
         var a = document.body, e = document.documentElement;
-        var previousOffset = 0;
-        $(window).unbind("scroll").scroll(function () {
-            var offset = Math.max(e.scrollTop, a.scrollTop) / 80;
-            var current = parseInt($('#landing-strip').css('background-position-y').replace('px', ''), 10);
-            
-            if (previousOffset < offset) {
-                var updated = current - offset;
-            } else {
-                var updated = current + offset;
-            }
-            
-            
+
+        $(window).unbind("scroll").scroll(function () {                        
+            var offset = (Math.max(e.scrollTop, a.scrollTop)) / 4;
+            var updated = offset * -1;
+
             
             $('#landing-strip').css({
                 'background-position-y':updated + 'px'
             });
-
-            previousOffset = offset;
         });        
     }   
     
