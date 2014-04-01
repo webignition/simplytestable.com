@@ -21,10 +21,11 @@ before_script:
   - mkdir app/cache/test  
   - mv app/config/parameters.yml.travis app/config/parameters.yml
   - mv --force app/config/config_travis.yml app/config/config_test.yml
-  - cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
-  - rake
-  - php app/console doctrine:database:create
-  - php app/console doctrine:migrations:migrate --no-interaction  
+  - cat app/config/parameters.yml
+  #- cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
+  #- rake
+  #- php app/console doctrine:database:create
+  #- php app/console doctrine:migrations:migrate --no-interaction  
   
 script:
   - phpunit -c app
