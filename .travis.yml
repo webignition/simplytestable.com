@@ -1,0 +1,34 @@
+services:
+  - redis-server
+  - memcache
+
+language: php
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  
+before_script:  
+  # Install composer for dependency management
+  - wget http://getcomposer.org/composer.phar 
+  
+  # Set the GitHub OAuth token to make use of the 6000 per hour rate limit
+  - "mkdir -p ~/.composer"
+  - cp .travis.composer.config.json ~/.composer/config.json  
+  
+  # Build!
+  - mkdir app/cache/test  
+  - mv app/config/parameters.yml.travis app/config/parameters.yml
+  - mv --force app/config/config_travis.yml app/config/config_test.yml
+  - cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
+  - rake
+  - php app/console doctrine:database:create
+  - php app/console doctrine:migrations:migrate --no-interaction  
+  
+script:
+  - phpunit -c app
+
+notifications:
+  irc:
+    - "irc.freenode.org#simplytestable"
+    
