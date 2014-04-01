@@ -6,4 +6,16 @@
         <changefreq>monthly</changefreq>
         <priority>1</priority>
     </url>
+    <url>
+        <loc>http://simplytestable.com/plans/</loc>
+        <lastmod>{{last-modified-date}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>http://simplytestable.com/features/</loc>
+        <lastmod>{{last-modified-date}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1</priority>
+    </url>              
 </urlset>

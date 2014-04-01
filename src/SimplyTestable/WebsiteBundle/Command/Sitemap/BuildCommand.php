@@ -23,6 +23,7 @@ class BuildCommand extends BaseCommand
     {  
         $sitemapContent = str_replace('{{last-modified-date}}', date('Y-m-d'), $this->getSitemapTemplate());
         file_put_contents($this->getSitemapPath() . '/sitemap.xml', $sitemapContent);
+        $output->writeln('Generated sitemap at ['.$this->getSitemapPath().']');
     }
     
     

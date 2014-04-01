@@ -29,7 +29,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "php app/console assetic:dump",
-            "php app/console simplytestable:cachevalidator:clear"
+            "php app/console simplytestable:cachevalidator:clear",
+            "php app/console simplytestable:sitemap:build"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -37,7 +38,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "php app/console assetic:dump",
-            "php app/console simplytestable:cachevalidator:clear"
+            "php app/console simplytestable:cachevalidator:clear",
+            "php app/console simplytestable:sitemap:build"
         ]
     },
     "config": {
