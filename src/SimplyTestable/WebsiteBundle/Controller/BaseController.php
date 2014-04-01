@@ -29,20 +29,20 @@ class BaseController extends Controller
     
     /**
      *
-     * @return \SimplyTestable\WebClientBundle\Model\CacheValidatorIdentifier 
+     * @return \SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier 
      */
     protected function getCacheValidatorIdentifier(array $parameters = array()) {        
         $identifier = new CacheValidatorIdentifier();
         $identifier->setParameter('route', $this->container->get('request')->get('_route'));
         $identifier->setParameter('user', $this->getUser()->getUsername());
-        $identifier->setParameter('is_logged_in', $this->getUserService()->isPublicUser($this->getUser()) ? 'false' : 'true');
+        $identifier->setParameter('is_logged_in', !$this->getUserService()->isPublicUser($this->getUser()));
         
         foreach ($parameters as $key => $value) {
             $identifier->setParameter($key, $value);
         }
         
         return $identifier;
-    }    
+    }     
     
     
     /**

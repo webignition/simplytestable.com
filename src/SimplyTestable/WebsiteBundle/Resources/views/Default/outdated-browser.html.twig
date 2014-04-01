@@ -3,19 +3,29 @@
 {% block javascripts %}
 {{ parent() }}
     <!--[if IE 6]>
-    <script type="text/javascript" src="/bundles/simplytestablewebsite/vendor/supersleight/supersleight.js"></script>    
+    {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/supersleight/supersleight.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}       
     <![endif]-->      
 {% endblock %} 
 
 {% block stylesheets %}
 {{ parent() }}
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/outdated-browser.css" />    
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/outdated-browser.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %} 
     <!--[if IE 7]>
     <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome-ie7.css" rel="stylesheet">
     <![endif]--> 
     
-    <!--[if IE 6]>
-    <link href="/bundles/simplytestablewebsite/vendor/bootstrap-ie6/Bootstrap-IE6/ie6.css" rel="stylesheet">
+    <!--[if IE 6]>    
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/vendor/bootstrap-ie6/Bootstrap-IE6/ie6.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}     
     <![endif]-->     
 {% endblock %}
 

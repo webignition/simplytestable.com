@@ -91,7 +91,22 @@ class DefaultController extends BaseController
     }
     
     public function outdatedBrowserAction() {
-        return $this->render('SimplyTestableWebsiteBundle:Default:outdated-browser.html.twig');
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
+        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
+        
+        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
+        if ($response->isNotModified($this->getRequest())) {
+            return $response;
+        }
+        
+        return $this->getCachableResponse(
+            $this->render('SimplyTestableWebsiteBundle:Default:outdated-browser.html.twig', array(
+                'testimonial' => $this->getTestimonialService()->getRandom(),
+                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'web_client_urls' => $this->container->getParameter('web_client_urls')
+            )),
+            $cacheValidatorHeaders
+        );
     }
     
     /**
