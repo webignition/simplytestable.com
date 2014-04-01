@@ -6,7 +6,7 @@ task :default do
   fetch_dependencies
   get_composer 
   run_commands([
-    "export SYMFONY_ENV=prod && ./composer.phar install"
+    "./composer.phar install"
   ])  
 #  run_commands([
 #    "rm -Rf app/cache/prod/*",    
