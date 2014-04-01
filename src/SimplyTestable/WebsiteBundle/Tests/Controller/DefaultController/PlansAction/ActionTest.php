@@ -8,7 +8,6 @@ class ActionTest extends BaseActionTest {
     
     public function setUp() {
         parent::setUp();
-        $this->setHttpFixtures($this->getHttpFixtures($this->getFixturesDataPath($this->getName() . '/HttpResponses')));
     }     
     
     protected function getActionName() {
