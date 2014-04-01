@@ -2,9 +2,13 @@
 
 {% block stylesheets %}      
 {{ parent() }}
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/pricing-table.css" />
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/pricing-table-responsive.css" />
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/plans.css" />
+{% stylesheets
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table-responsive.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/plans.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
 {% endblock %}
 
 {% block body %}
