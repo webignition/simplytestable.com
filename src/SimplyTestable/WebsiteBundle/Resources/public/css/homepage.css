@@ -4,8 +4,10 @@
     padding-top:80px;
     padding-bottom:0px;
     margin-bottom: 60px;
-    background-image: url('/bundles/simplytestablewebsite/images/ls03.jpg');
-    background-position: -174px -797px;
+    background-image: url('/bundles/simplytestablewebsite/images/ls04.jpg');
+    //background-position: -174px -797px;
+    background-position-x: -174px;
+    background-position-y: -797px;
     
     // background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
 }
