@@ -7,8 +7,13 @@
         {% block stylesheets %}      
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">          
         <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="/bundles/simplytestablewebsite/css/main.css" />
-        {% endblock %}
+        
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}          
+        {% endblock %}     
         
         {% block javascripts %}        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>

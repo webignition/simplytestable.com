@@ -14,3 +14,4 @@ parameters:
     secret: Secret!
     database_path: null
     simplytestable_session_savepath: /tmp
+    assetic.asset_factory.class: SimplyTestable\WebsiteBundle\Factory\AssetFactory     

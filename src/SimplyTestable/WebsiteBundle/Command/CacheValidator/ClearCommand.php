@@ -19,6 +19,7 @@ class ClearCommand extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $output->writeln('Clearing cache validator headers');
         $this->getContainer()->get('simplytestable.services.cachevalidatorheadersservice')->clear();
     }   
 }

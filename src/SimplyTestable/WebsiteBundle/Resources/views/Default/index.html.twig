@@ -1,8 +1,12 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block stylesheets %}      
+{% block stylesheets %}          
 {{ parent() }}
-<link rel="stylesheet" href="/bundles/simplytestablewebsite/css/homepage.css" />
+{% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/homepage.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %} 
 {% endblock %}
 
 {% block body %}
