@@ -1,0 +1,50 @@
+.navbar-inverse .container .navbar-brand {
+    background: url('/bundles/simplytestablewebsite/images/st30.png') transparent no-repeat 0px 9px;
+    color: #08C;
+    padding-left: 40px;
+    margin-left:-30px;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color:#0ae;
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover{
+    background: transparent;
+}
+
+.navbar .signout-form {
+    padding: 0;
+}
+
+.navbar .spacer {
+    width:0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.navbar .user-actions .spacer {
+    border-left: 1px solid #999;
+}
+
+.not-logged-in .navbar .user-actions .highlighted-spacer {
+    display: none;
+}
+
+.logged-in .navbar .user-actions .highlighted-spacer {
+    margin-right: 10px;
+    margin-left: -2px;    
+}
+
+@media (max-width: 768px) {
+    .navbar .user-actions .spacer {
+        display: none;
+    }
+    
+    .navbar-form {
+        margin-left: 28px;
+        border: none;
+        box-shadow: none;
+    }
+}
