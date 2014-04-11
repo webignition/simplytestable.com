@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,127 +44,7 @@
 
     <body class="{%if is_logged_in%}logged-in{% else %}not-logged-in{% endif %}">
 
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>       
-
-                    <a class="navbar-brand" href="{{ path('homepage') }}">
-                        SimplyTestable
-                        {% if app.request.get('_route') != 'homepage' %}
-                            <span>automated front-end web testing</span>
-                        {% endif %}                        
-                    </a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ web_client_urls['base'] }}{{ web_client_urls['start_test'] }}">
-                                <i class="fa fa-tachometer"></i>
-                                {% if is_logged_in %}
-                                    Dashboard
-                                {% else %}
-                                    Demo dashboard (try me)
-                                {% endif %}                                
-                            </a>
-                        </li>
-                        <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">
-                            <a href="{{ path('features') }}">
-                                <i class="fa fa-signal"></i> Features
-                            </a>
-                        </li>
-                        <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">
-                            <a href="{{ path('plans') }}">
-                                <i class="fa fa-calendar"></i> Pricing and plans
-                            </a>
-                        </li>
-
-                        {% if is_logged_in %}
-                            <li class="user-actions">
-                                <p class="navbar-text spacer highlighted-spacer">&nbsp;</p>
-                                <a href="{{ web_client_urls['base'] }}{{ web_client_urls['account'] }}">
-                                    <i class="fa fa-user"></i> {{ user.username }}
-                                </a>
-                            </li>                         
-                            <li>
-                                <form class="navbar-form signout-form" method="post" action="{{ path('sign_out_submit') }}">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        Sign out
-                                        <i class="fa fa-caret-right"></i>
-                                    </button>
-                                </form>
-                            </li>                               
-                        {% else %}
-                            <li class="user-actions">                                
-                                <div>
-                                    <p class="navbar-text spacer highlighted-spacer">&nbsp;</p>
-                                    <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_in'] }}" class="btn btn-default btn-sm navbar-btn">
-                                        <i class="fa fa-caret-right"></i> Sign in
-                                    </a>
-                                </div>
-                            </li>                         
-                            <li>
-                                <div>
-                                    <p class="navbar-text spacer">&nbsp;</p>                                    
-                                    <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}" class="btn btn-default btn-sm navbar-btn">
-                                        <i class="fa fa-user"></i> Create an account
-                                    </a>
-                                </div>
-                            </li>                            
-                        {% endif %}
-                    </ul>                    
-
-                    <div class="navbar-right">
-                        {#                        <p class="navbar-text"><a href="#" class="navbar-link"><i class="fa fa-tachometer"></i> Dashboard</a></p>#}
-                        {#                        <p class="navbar-text"><a href="#" class="navbar-link"><i class="fa fa-signal"></i> Features</a></p>#}
-                        {#                        <p class="navbar-text"><a href="#" class="navbar-link"><i class="fa fa-calendar"></i> Pricing and plans</a></p>                        #}
-
-                        {#                        <form class="navbar-form navbar-right" method="post" action="{{ path('sign_out_submit') }}">
-                                                    <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-user"></i> Create an account</button>
-                                                </form>                            
-                        
-                                                <form class="navbar-form navbar-right" method="post" action="{{ path('sign_out_submit') }}">
-                                                    <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-caret-right"></i> Sign in</button>
-                                                </form>#}
-
-
-
-
-
-
-                        {#                        [user or sign in]
-                                                [sign out]#}
-                    </div>
-                    {#                    <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_in'] }}" class="btn btn-small navbar-link "><i class="icon icon-caret-right"></i> Sign in</a>                        
-                                        <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}" class="btn btn-small navbar-link"><i class="icon icon-user"></i> Create account</a>                                            #}
-
-                    {#                    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>                    
-                                        
-                                        <form class="navbar-form navbar-right" method="post" action="{{ path('sign_out_submit') }}">
-                                            <button type="submit" class="btn btn-default">Submit 1</button>
-                                        </form>                     
-                                        
-                                        <form class="navbar-form navbar-right" method="post" action="{{ path('sign_out_submit') }}">
-                                            <button type="submit" class="btn btn-default">Submit 2</button>
-                                        </form>  #}                  
-
-                    {#                    <form class="navbar-form navbar-right" role="form">
-                                            <div class="form-group">
-                                                <input type="text" placeholder="Email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" placeholder="Password" class="form-control">
-                                            </div>
-                                            <button type="submit" class="btn btn-success">Sign in</button>
-                                        </form>#}
-                </div><!--/.navbar-collapse -->
-            </div>
-        </div>
+{% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
