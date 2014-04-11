@@ -26,6 +26,10 @@ recent_test_list:
     pattern:  /recent-test-list/
     defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }        
     
+foo:
+    pattern:  /foo/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:foo }       
+    
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/
     defaults:

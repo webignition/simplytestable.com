@@ -1,0 +1,93 @@
+{% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
+
+{% block stylesheets %}      
+    {{ parent() }}
+    {% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/foo.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %} 
+{% endblock %}
+
+{% block body %}
+
+    <div id="landing-strip">
+        <div class="container">   
+            <div class="row-fluid">
+                <div class="span12">
+                    <h1>Demo, Free Plan and Premium Plan Comparison</h1>
+                </div>
+            </div> 
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div id="foo">
+        <div class="container">        
+
+            <div class="row-fluid">             
+                <div class="span12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>[blank]</th>
+                                <th class="filled left-heading">
+                                    <h2>Demo</h2>
+                                    <p>
+                                        ppp
+                                    </p>
+                                </th>
+                                <th class="filled">
+                                    <h2>Free Plan</h2>
+                                    <p>
+                                        ppp
+                                    </p>                                    
+                                </th>
+                                <th class="filled right-heading">
+                                    <h2>Premium Plan</h2>
+                                    <p>
+                                        ppp
+                                    </p>                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monthly full-site test limit</td>
+                                <td>1</td>
+                                <td>No limit</td>
+                                <td>No limit</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly single-url test limit</td>
+                                <td>1</td>
+                                <td>No limit</td>
+                                <td>No limit</td>
+                            </tr>
+                            <tr>
+                                <td>Pages examined per test</td>
+                                <td>10</td>
+                                <td>50</td>
+                                <td>250, 2500 or unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Private tests</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>                            
+                            <tr>
+                                <td>Test results lifetime</td>
+                                <td>1 day</td>
+                                <td>Forever</td>
+                                <td>Forever</td>
+                            </tr>                             
+                        </tbody>
+                    </table>
+                </div>           
+            </div>         
+
+        </div>    
+    </div>
+
+{% endblock %}

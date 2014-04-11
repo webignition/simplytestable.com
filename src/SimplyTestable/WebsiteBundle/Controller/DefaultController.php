@@ -46,6 +46,10 @@ class DefaultController extends BaseController implements Cacheable, IEFiltered
         return $this->defaultPageAction('roadmap'); 
     }    
     
+    public function fooAction() {        
+        return $this->defaultPageAction('foo'); 
+    }     
+    
     private function defaultPageAction($templateId) {        
         return $this->getCacheableResponseService()->getCachableResponse(
             $this->getRequest(),
