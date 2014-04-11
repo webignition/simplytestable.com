@@ -1,106 +1,88 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" class="no-js">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
         <title>{% block title %}Simply Testable professional automated front-end web testing{% endblock %}</title>
-        
-        {% block stylesheets %}      
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">          
-        <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
-        
-        {% stylesheets    
+
+        {% block stylesheets %}    
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+            {% stylesheets    
             '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
             filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}          
+            {% endstylesheets %}          
         {% endblock %}     
-        
+
+
         {% block javascripts %}        
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>        
-        
-        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/css3-mediaqueries/css3-mediaqueries-js/css3-mediaqueries.js' %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-        
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>      
-        
-        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>        
 
-        {% endblock %}        
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-{% if app.environment == 'prod' %}        
-<script type="text/javascript">
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->        
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-33218043-1']);
-  _gaq.push(['_setDomainName', 'simplytestable.com']);
-  _gaq.push(['_trackPageview']);
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>    
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+            {#        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
+                        <script type="text/javascript" src="{{ asset_url }}"></script>
+                    {% endjavascripts %}  #}      
 
-</script>        
-        
-<script type="text/javascript">
-  var GoSquared = {};
-  GoSquared.acct = "GSN-258432-Q";
-  (function(w){
-    function gs(){
-      w._gstc_lt = +new Date;
-      var d = document, g = d.createElement("script");
-      g.type = "text/javascript";
-      g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
-      var s = d.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(g, s);
-    }
-    w.addEventListener ?
-      w.addEventListener("load", gs, false) :
-      w.attachEvent("onload", gs);
-  })(window);
-</script> 
-
-{% endif %}
-    </head>
-    
-    {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}
-    
-    <!--[if lt IE 7]>
-    <body class="ltIE7 {{ body_class }} {% block body_ltIE7_class %} {% endblock %}">
-    <![endif]-->                                
-    <!--[if IE 7]>
-    <body class="IE7 {{ body_class }} {% block body_IE7_class %} {% endblock %}">
-    <![endif]-->
-    <!--[if IE 8]>
-    <body class="IE8 {{ body_class }} {% block body_IE8_class %} {% endblock %}">
-    <![endif]-->
-    <!--[if IE 9]>
-    <body class="IE9 {{ body_class }} {% block body_IE9_class %} {% endblock %}">
-    <![endif]-->
-    <!--[if !IE]> -->
-    <body class="{{ body_class }} {% block body_class %} {% endblock %}">
-    <!-- <![endif]-->
-
-        
-        {% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %} 
-        
-        {% block body %}
         {% endblock %}
-        
-        {% include 'SimplyTestableWebsiteBundle:Partials:footer.html.twig' %} 
-        
-<script type="text/javascript">
-  var uvOptions = {};
-  (function() {
-    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/qSLp2Zb35kqqNpLTQD7u0A.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-  })();
-</script>        
+
+
+    </head>
+
+    <body class="{%if is_logged_in%}logged-in{% else %}not-logged-in{% endif %}">
+
+{% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hello, world!</h1>
+                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <footer>
+                <p>&copy; Company 2014</p>
+            </footer>
+        </div> <!-- /container -->
+
+
+        <!-- ideally move all suitable JS here -->
     </body>
 </html>
