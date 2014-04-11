@@ -1,0 +1,66 @@
+<div class="navbar navbar-inverse navbar-fixed-top">    
+    <div class="navbar-inner">
+
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span12">
+                    <a class="brand" href="{{ path('homepage') }}">
+                        SimplyTestable
+                        {% if app.request.get('_route') != 'homepage' %}
+                        <span>automated front-end web testing</span>
+                        {% endif %}
+                    </a>
+                        
+                    {% if is_logged_in %}
+                    <div class="pull-right">                        
+                        
+                        <form class="form-inline sign-out-form" method="post" action="{{ path('sign_out_submit') }}">
+                            <p class="navbar-text">                                
+                                <a href="{{ web_client_urls['base'] }}{{ web_client_urls['account'] }}" class="navbar-link navbar-user-link">
+                                    <i class="icon icon-user"></i>
+                                    {{ user.username }}
+                                </a>
+                                <button class="btn btn-small btn-primary" type="submit">
+                                    Sign out
+                                    <i class="icon icon-caret-right"></i>
+                                </button>
+                            </p>                        
+                        </form>
+
+                    </div>
+                    {% else %}
+                   <p class="navbar-text pull-right">
+                        <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_in'] }}" class="btn btn-small "><i class="icon icon-caret-right"></i> Sign in</a>                        
+                        <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}" class="btn btn-small"><i class="icon icon-user"></i> Create account</a>                        
+                    </p>                        
+                    {% endif %}                       
+                    <ul class="nav pull-right">                        
+                        <li class="">                            
+                            <a href="{{ web_client_urls['base'] }}{{ web_client_urls['start_test'] }}">
+                                <i class="icon icon-dashboard"></i>                                
+                                {% if is_logged_in %}
+                                Dashboard
+                                {% else %}
+                                Demo dashboard (try me)
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">                            
+                            <a href="{{ path('features') }}">
+                                <i class="icon icon-signal"></i>
+                                Features
+                            </a>
+                        </li>           
+                        <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">                            
+                            <a href="{{ path('plans') }}">
+                                <i class="icon icon-calendar"></i>
+                                Pricing and plans
+                            </a>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>  

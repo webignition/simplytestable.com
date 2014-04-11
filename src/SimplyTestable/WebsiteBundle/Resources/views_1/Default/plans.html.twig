@@ -1,0 +1,213 @@
+{% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
+
+{% block stylesheets %}      
+{{ parent() }}
+{% stylesheets
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table-responsive.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/plans.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<div id="landing-strip">
+    <div class="container">   
+        <div class="row-fluid">
+            <div class="span12">
+                <h1>30 day free trial. No credit card required.</h1>
+            </div>
+        </div> 
+        <div class="clearfix"></div>        
+
+        <div class="row-fluid pricing-table">
+
+
+            <div class="span3 plan plan-personal">
+                <div class="plan-name">
+                    <h2>Personal</h2>
+                    <p>For small scale projects</p>
+                    <span>&pound;9 <i>per month</i></span>
+                </div>
+                <ul>
+                    <li class="plan-feature">Unlimited full-site tests</li>
+                    <li class="plan-feature">Unlimited single-URL tests</li>
+                    <li class="plan-feature">50 URLs per full-site test</li>
+                    <li class="plan-feature">5,000 credits</li>
+                    <li class="plan-feature">
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="personal" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=personal" class="btn btn-success btn-plan-select">
+                            Sign up
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div class="span3 plan plan-agency plan-highlighted">
+                <div class="plan-name">
+                    <h2>Agency</h2>
+                    <p>Great for small organisations</p>
+                    <span>&pound;19 <i>per month</i></span>
+                </div>                
+                <ul>
+                    <li class="plan-feature">Unlimited full-site tests</li>
+                    <li class="plan-feature">Unlimited single-URL tests</li>
+                    <li class="plan-feature">250 URLs per full-site test</li>
+                    <li class="plan-feature">20,000 credits</li>
+                    <li class="plan-feature">
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="agency" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=agency" class="btn btn-success btn-plan-select">
+                            Sign up
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>            
+            <div class="span3 plan plan-business">
+                <div class="plan-name">
+                    <h2>Business</h2>
+                    <p>Best value for professionals</p>
+                    <span>&pound;59 <i>per month</i></span>
+                </div>
+                <ul>
+                    <li class="plan-feature">Unlimited full-site tests</li>
+                    <li class="plan-feature">Unlimited single-URL test</li>
+                    <li class="plan-feature">2500 URLs per full-site test</li>
+                    <li class="plan-feature">100,000 credits</li>
+                    <li class="plan-feature">
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="business" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=business" class="btn btn-success btn-plan-select">
+                            Sign up
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div class="span3 plan plan-enterprise">
+                <div class="plan-name">
+                    <h2>Enterprise</h2>
+                    <p>Full corporate treatment</p>                    
+                    <span>&pound;299 <i>per month</i></span>
+                </div>
+                <ul>
+                    <li class="plan-feature">Unlimited full-site tests</li>
+                    <li class="plan-feature">Unlimited single-URL tests</li>
+                    <li class="plan-feature">10,000 URLs per full-site test</li>
+                    <li class="plan-feature">Unlimited credits</li>
+                    <li class="plan-feature">
+                        {% if is_logged_in %}
+                            <form method="post" action="http://web.client.simplytestable.com/app_dev.php/account/plan/subscribe/">
+                                <input type="hidden" name="plan" value="enterprise" />
+                                <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+                            </form>
+                        {% else %}
+                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=enterprise" class="btn btn-success btn-plan-select">
+                            Sign up
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row-fluid row-get-started">
+                <div class="span12">
+                    Not sure what's best for you? Get started with a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free basic account</a>
+                    and upgrade to a subscription plan after you've tried things out.
+                </div>
+            </div>            
+        </div>
+
+    </div>
+</div>
+
+<div id="features">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12 iconified-section">
+                <i class="icon section-icon icon-question-sign"></i>
+
+                <div class="inner">
+                    <div class="span4">                        
+                        <h3>How does the free trial work?</h3>
+
+                        <p>
+                            You can sign up and use Simply Testable for 30 days
+                            without having to enter any credit card details.
+                        </p>
+
+                        <p>
+                            If you provide your card details before your trial 
+                            ends you will continue with the plan you chose. 
+                            You will be billed monthly from the end of your
+                            trial.
+                        </p>
+
+                        <p>
+                            If you don't provide card details you will be
+                            downgraded to a free basic account  with the option 
+                            to upgrade to a paid plan at your convenience.
+                        </p>
+
+                    </div>
+                    <div class="span4">                        
+                        <h3>What are credits?</h3>
+                        <p>
+                            Performing a HTML validation, CSS validation or 
+                            JSLint analysis on a single URL requires one credit.
+                        </p>
+
+                        <p>
+                            Performing all three on a 10 page site would require
+                            30 credits.
+                        </p>
+
+                        <p>
+                            The number of monthly credits you have available
+                            depends on the plan you choose.
+                        </p>
+
+                        <p>
+                            Credits don't roll over from one month to the next.
+                        </p>
+
+                    </div>
+                    <div class="span4">                        
+                        <h3>How long are your contracts?</h3>
+
+                        <p>
+                            All plans are month to month.
+                        </p>
+
+                        <h3>When can I cancel?</h3>
+
+                        <p>
+                            You can cancel at any time. If you cancel during
+                            a billing cycle (which is quite likely unless you
+                            time things very well) we will refund you for the
+                            remainder of the month not yet used.
+                        </p>
+                    </div>                        
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>
+
+{% endblock %}

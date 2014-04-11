@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Simply Testable professional automated front-end web testing{% endblock %}</title>
+        
+        {% block stylesheets %}      
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">          
+        <link href="//netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+        
+        {% stylesheets    
+            '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
+            filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}          
+        {% endblock %}     
+        
+        {% block javascripts %}        
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>        
+        
+        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/css3-mediaqueries/css3-mediaqueries-js/css3-mediaqueries.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>      
+        
+        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}        
+
+        {% endblock %}        
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% if app.environment == 'prod' %}        
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33218043-1']);
+  _gaq.push(['_setDomainName', 'simplytestable.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>        
+        
+<script type="text/javascript">
+  var GoSquared = {};
+  GoSquared.acct = "GSN-258432-Q";
+  (function(w){
+    function gs(){
+      w._gstc_lt = +new Date;
+      var d = document, g = d.createElement("script");
+      g.type = "text/javascript";
+      g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+      var s = d.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(g, s);
+    }
+    w.addEventListener ?
+      w.addEventListener("load", gs, false) :
+      w.attachEvent("onload", gs);
+  })(window);
+</script> 
+
+{% endif %}
+    </head>
+    
+    {% set body_class = app.request.get('_route') | replace({'_' : '-'})  %}
+    
+    <!--[if lt IE 7]>
+    <body class="ltIE7 {{ body_class }} {% block body_ltIE7_class %} {% endblock %}">
+    <![endif]-->                                
+    <!--[if IE 7]>
+    <body class="IE7 {{ body_class }} {% block body_IE7_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if IE 8]>
+    <body class="IE8 {{ body_class }} {% block body_IE8_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if IE 9]>
+    <body class="IE9 {{ body_class }} {% block body_IE9_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if !IE]> -->
+    <body class="{{ body_class }} {% block body_class %} {% endblock %}">
+    <!-- <![endif]-->
+
+        
+        {% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %} 
+        
+        {% block body %}
+        {% endblock %}
+        
+        {% include 'SimplyTestableWebsiteBundle:Partials:footer.html.twig' %} 
+        
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/qSLp2Zb35kqqNpLTQD7u0A.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>        
+    </body>
+</html>
