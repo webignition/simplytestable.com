@@ -37,14 +37,38 @@
     margin-left: -2px;    
 }
 
+#footer-detail {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #1b1b1b;    
+}
+
 @media (max-width: 768px) {
-    .navbar .user-actions .spacer {
+    .navbar .spacer {
         display: none;
     }
     
+    .navbar a.btn,
     .navbar-form {
-        margin-left: 28px;
+        margin-left: 34px;
         border: none;
         box-shadow: none;
+    }
+    
+    .navbar .text a i {
+        margin-right: 6px;
+    }
+}
+
+/* Control navbar content flow for lesser width displays */
+@media (max-width: 992px) {
+    .max-width-992-none {
+        display:none;
+    }
+}
+
+@media (max-width: 768px) {
+    .max-width-992-none {
+        display: inline;
     }
 }

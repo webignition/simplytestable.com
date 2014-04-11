@@ -1,3 +1,5 @@
+{% set username_parts = user.username|split('@') %}    
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -17,32 +19,32 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li class="text">
                     <a href="{{ web_client_urls['base'] }}{{ web_client_urls['start_test'] }}">
                         <i class="fa fa-tachometer"></i>
                         {% if is_logged_in %}
                             Dashboard
                         {% else %}
-                            Demo dashboard (try me)
+                            Demo <span class="max-width-992-none">dashboard</span> (try me)
                         {% endif %}                                
                     </a>
                 </li>
-                <li class="{% if app.request.get('_route') == 'features' %}active{% endif %}">
+                <li class="text {% if app.request.get('_route') == 'features' %}active{% endif %}">
                     <a href="{{ path('features') }}">
                         <i class="fa fa-signal"></i> Features
                     </a>
                 </li>
-                <li class="{% if app.request.get('_route') == 'plans' %}active{% endif %}">
+                <li class="text {% if app.request.get('_route') == 'plans' %}active{% endif %}">
                     <a href="{{ path('plans') }}">
-                        <i class="fa fa-calendar"></i> Pricing and plans
+                        <i class="fa fa-calendar"></i> Pricing <span class="max-width-992-none">and plans</span>
                     </a>
                 </li>
 
                 {% if is_logged_in %}
-                    <li class="user-actions">
+                    <li class="user-actions text">
                         <p class="navbar-text spacer highlighted-spacer">&nbsp;</p>
-                        <a href="{{ web_client_urls['base'] }}{{ web_client_urls['account'] }}">
-                            <i class="fa fa-user"></i> {{ user.username }}
+                        <a class="username" href="{{ web_client_urls['base'] }}{{ web_client_urls['account'] }}">
+                            <i class="fa fa-user"></i> {{ username_parts[0] }}<span class="max-width-992-none">@{{username_parts[1]}}</span>
                         </a>
                     </li>                         
                     <li>
