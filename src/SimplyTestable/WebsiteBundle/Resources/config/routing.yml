@@ -16,7 +16,7 @@ roadmap:
     
 outdated_browser:
     pattern:  /outdated-browser/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:outdatedBrowser }    
+    defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }    
   
 sign_out_submit:
     pattern:  /signout/

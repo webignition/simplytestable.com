@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.3.*",
         "webignition/simplytestable-base-migrations-bundle":"~1.3",
         "webignition/web-resource-service":">=1.0.1,<2.0",
-        "guzzle/guzzle":">=3.8.1,<4"
+        "guzzle/guzzle":">=3.8.1,<4",
+        "webignition/url":">=1.0,<2.0"
     },
     "scripts": {
         "post-install-cmd": [

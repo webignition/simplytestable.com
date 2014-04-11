@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Controller\DefaultController\OutdatedBrowserAction;
+namespace SimplyTestable\WebsiteBundle\Tests\Controller\OutdatedBrowserController\IndexAction;
 
 use SimplyTestable\WebsiteBundle\Tests\Controller\DefaultController\ActionTest as BaseActionTest;
 

@@ -50,3 +50,13 @@ services:
         httpClientService: "@simplytestable.services.httpClientService"
         webResourceService: "@simplytestable.services.webResourceService"
         webClientUrlService: "@simplytestable.services.webClientUrlService"
+        
+  simplytestable.controller.action_listener:
+    class: SimplyTestable\WebsiteBundle\EventListener\RequestListener
+    arguments:        
+        kernel: @kernel
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }           
+      
+  simplytestable.services.cacheableResponseService:
+    class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService     

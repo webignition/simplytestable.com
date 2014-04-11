@@ -1,178 +1,62 @@
 <?php
 
 namespace SimplyTestable\WebsiteBundle\Controller;
-use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends BaseController
+use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
+use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
+
+class DefaultController extends BaseController implements Cacheable, IEFiltered
 {   
     
+    /**
+     * 
+     * @return \Symfony\Component\DependencyInjection\Container
+     */
+    public function getContainer() {
+        return $this->container;
+    }
+    
+    
+    
     public function indexAction()
-    {   
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
-        }
+    {       
+        $this->getTestListService()->setUser($this->getUserService()->getPublicUser()); 
         
-        $this->getTestListService()->setUser($this->getUserService()->getPublicUser());      
-        
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-            return $response;
-        }
-        
-        return $this->getCachableResponse(
+        return $this->getCacheableResponseService()->getCachableResponse(
+            $this->getRequest(),
             $this->render('SimplyTestableWebsiteBundle:Default:index.html.twig', array(
                 'testimonial' => $this->getTestimonialService()->getRandom(),
-                'user' => $this->getUser(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
+                'user' => $this->getUserService()->getUser(),
+                'is_logged_in' => $this->getUserService()->isLoggedIn(),
                 'web_client_urls' => $this->container->getParameter('web_client_urls'),
                 'recent_tests' => $this->getTestListService()->getTests()
-            )),
-            $cacheValidatorHeaders
+            ))                
         );
     }
     
     public function plansAction() {
-        return $this->defaultPageAction('plans');            
+        return $this->defaultPageAction('plans');           
     }
 
     public function featuresAction() {
         return $this->defaultPageAction('features');            
     }    
     
+    public function roadmapAction() {        
+        return $this->defaultPageAction('roadmap'); 
+    }    
+    
     private function defaultPageAction($templateId) {        
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
-        }
-        
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-            return $response;
-        }
-        
-        return $this->getCachableResponse(
+        return $this->getCacheableResponseService()->getCachableResponse(
+            $this->getRequest(),
             $this->render('SimplyTestableWebsiteBundle:Default:'.$templateId.'.html.twig', array(
                 'testimonial' => $this->getTestimonialService()->getRandom(),
-                'user' => $this->getUser(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client_urls' => $this->container->getParameter('web_client_urls'),                
-            )),
-            $cacheValidatorHeaders
+                'user' => $this->getUserService()->getUser(),
+                'is_logged_in' => $this->getUserService()->isLoggedIn(),
+                'web_client_urls' => $this->container->getParameter('web_client_urls'),
+            ))                
         );         
     }  
-    
-    public function roadmapAction() {        
-        if ($this->isUsingOldIE()) {
-            return $this->forward('SimplyTestableWebsiteBundle:Default:outdatedBrowser');
-        }        
-        
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-            return $response;
-        }
-        
-        return $this->getCachableResponse(
-            $this->render('SimplyTestableWebsiteBundle:Default:roadmap.html.twig', array(
-                'testimonial' => $this->getTestimonialService()->getRandom(),
-                'user' => $this->getUser(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client_urls' => $this->container->getParameter('web_client_urls')
-            )),
-            $cacheValidatorHeaders
-        );
-    }
-    
-    public function outdatedBrowserAction() {
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();        
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
-        $response = $this->getCachableResponse(new Response(), $cacheValidatorHeaders);
-        if ($response->isNotModified($this->getRequest())) {
-            return $response;
-        }
-        
-        return $this->getCachableResponse(
-            $this->render('SimplyTestableWebsiteBundle:Default:outdated-browser.html.twig', array(
-                'testimonial' => $this->getTestimonialService()->getRandom(),
-                'is_logged_in' => !$this->getUserService()->isPublicUser($this->getUser()),
-                'web_client_urls' => $this->container->getParameter('web_client_urls')
-            )),
-            $cacheValidatorHeaders
-        );
-    }
-    
-    /**
-     * 
-     * @return boolean
-     */
-    public function isUsingOldIE() {        
-        if ($this->isUsingIE6() || $this->isUsingIE7()) {
-            $this->get('logger')->err('Detected old IE for ['.$_SERVER['HTTP_USER_AGENT'].']');            
-            return true;
-        }
-        
-        return false;
-    }
-    
-    
-    /**
-     * 
-     * @return boolean
-     */
-    private function isUsingIE6() {       
-        if (!preg_match('/msie 6\.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-        
-        if (preg_match('/opera/i', $this->getUserAgentString())) {
-            return false;
-        }
-        
-        if (preg_match('/msie 8.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-        
-        return true;
-    }
-    
-    
-    /**
-     * 
-     * @return boolean
-     */
-    private function isUsingIE7() {        
-        if (!preg_match('/msie 7\.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-        
-        return true;
-    }
-    
-    
-    /**
-     * 
-     * @return string
-     */
-    private function getUserAgentString() {
-        return $this->getRequest()->server->get('HTTP_USER_AGENT');
-    }
-    
-    
-    /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\TestimonialService
-     */
-    private function getTestimonialService() {
-        return $this->get('simplytestable.services.testimonialService');
-    }
     
     
     /**
@@ -181,15 +65,15 @@ class DefaultController extends BaseController
      */
     private function getTestListService() {
         return $this->get('simplytestable.services.testListService');
-    }    
-    
+    }
+
     
     /**
      * 
-     * @return boolean
+     * @return \SimplyTestable\WebsiteBundle\Services\CacheableResponseService
      */
-    public function isLoggedIn() {
-        return !$this->getUserService()->isPublicUser($this->getUser());
-    }    
+    private function getCacheableResponseService() {
+        return $this->get('simplytestable.services.cacheableResponseService');
+    }        
 }
 

@@ -2,8 +2,11 @@
 namespace SimplyTestable\WebsiteBundle\Services;
 
 use SimplyTestable\WebsiteBundle\Model\User;
+use Symfony\Component\HttpFoundation\Request;
 
-class UserService {    
+class UserService { 
+    
+    const USER_COOKIE_KEY = 'simplytestable-user';
     
     const PUBLIC_USER_USERNAME = 'public';
     const PUBLIC_USER_PASSWORD = 'public';
@@ -53,7 +56,16 @@ class UserService {
         $comparatorUser->setUsername(strtolower($user->getUsername()));
         
         return $this->getPublicUser()->equals($comparatorUser);
-    }    
+    } 
+    
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isLoggedIn() {
+        return !$this->isPublicUser($this->getUser());
+    }
     
     /**
      * 
@@ -80,5 +92,25 @@ class UserService {
     public function clearUser() {
         $this->session->set('user', null);
     }
+    
+    
+    /**
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return null
+     */
+    public function setUserFromRequest(Request $request) {       
+        if (!$request->cookies->has(self::USER_COOKIE_KEY)) {
+            return;
+        }
+        
+        $user = $this->userSerializerService->unserializedFromString($request->cookies->get(self::USER_COOKIE_KEY));
+        
+        if (is_null($user)) {
+            return;
+        }
+        
+        $this->setUser($user);    
+    }     
     
 }
