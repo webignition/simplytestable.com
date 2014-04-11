@@ -1,7 +1,46 @@
+<div id="footer-announcements">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 group" id="love">
+
+                    <h4><i class="fa fa-heart"></i> People Who Love Us</h4>            
+                    <blockquote>
+                        <span class="quotemark quotemark-left">&ldquo;</span>
+                        <p>
+                            {{ testimonial.content }}
+                        </p>
+                        <span class="quotemark quotemark-right">&rdquo;</span>
+                        <footer>
+                            <cite>
+                                <a href="{{ testimonial.url }}">{{ testimonial.name }}</a>
+                            </cite>
+                        </footer>
+                    </blockquote>                      
+ 
+            </div>
+
+            <div class="col-sm-6 group">
+
+                    <a class="twitter-timeline" href="https://twitter.com/simplytestable" data-widget-id="355821684017745920" data-tweet-limit="1" data-chrome="noheader nofooter noborders transparent">Tweets by @simplytestable</a>
+                    <script>!function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = p + "://platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+
+            </div>
+        </div> 
+    </div>        
+</div>
+
 <div id="footer-detail">
     <div class="container">
-        <div class="row show-grid">
-            <div class="col-md-2 doclinks">
+        <div class="row">
+            <div class="col-md-2 group doclinks">
 
                 <ul>
                     <li>
@@ -25,7 +64,7 @@
                 </ul>                
 
             </div>
-            <div class="col-md-2 doclinks">
+            <div class="col-md-2 group doclinks">
 
                 <ul>
                     <li>
@@ -55,7 +94,7 @@
                 </ul>                
 
             </div>
-            <div class="col-md-2 doclinks">
+            <div class="col-md-2 group doclinks">
 
                 <ul>
                     <li>
@@ -79,7 +118,7 @@
                 </ul>                
 
             </div>
-            <div class="col-md-4 stay-updated">
+            <div class="col-md-4 group stay-updated">
                 <a href="http://eepurl.com/ni82f">
                     <i class="fa fa-bullhorn"></i>
                     <span class="content">Sign up for our weekly updates newsletter</span>
