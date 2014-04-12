@@ -101,6 +101,7 @@ class UserService {
      */
     public function setUserFromRequest(Request $request) {       
         if (!$request->cookies->has(self::USER_COOKIE_KEY)) {
+            $this->setUser($this->getPublicUser());
             return;
         }
         
