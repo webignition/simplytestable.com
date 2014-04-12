@@ -1,0 +1,88 @@
+#landing-strip {
+    border-bottom: none;
+    padding-top: 80px;
+    padding-bottom: 0px;
+    margin-bottom: 60px;
+    background-image: url('/bundles/simplytestablewebsite/images/ls04.8.jpg');
+    background-position-x: 50%;
+    background-position-y: 0px;
+}
+
+#landing-strip .fadestrip {
+    background-image: url('/bundles/simplytestablewebsite/images/bottom-fade.png');
+    background-position-y: -42px;
+    height: 100px;
+}
+
+#landing-strip .content {
+    margin-top: 20px;
+}
+
+#landing-strip h1 {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+#start-new-test-form {
+    margin-top: 40px;
+}
+
+#landing-strip .features {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+#landing-strip .features .fa {
+    color: #5cb85c;
+    margin: 0px 6px 0 16px;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.carousel-control .fa {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    font-size: 50px;
+    color:#888;
+}
+
+.carousel-indicators li {
+    border-color: #888;
+    width:20px;
+    height: 20px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.carousel-indicators .active {
+    background-color: #888;
+    width:24px;
+    height: 24px;
+    margin-top: 3px;
+    margin-bottom: -1px;
+    margin-left: 8px;
+    margin-right: 8px; 
+    border-radius: 12px;
+}
+
+.carousel-inner {
+    border-radius: 2px;
+    box-shadow: 0px 0px 4px 1px #4c4b4a;
+}

@@ -1,40 +1,142 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
+{% block stylesheets %}          
+    {{ parent() }}
+    {% stylesheets    
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/homepage.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %} 
+{% endblock %}
+
 {% block body %}
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Hello, world!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <div id="landing-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="leader">
+                        <h1>
+                            Automated front-end web testing
+                        </h1>    
+                        <p>
+                            Save time and take the pain out of routine front-end web testing.
+                            One-click testing of your entire site.
+                        </p>                            
+                    </div>
+                    <div class="content">
+                        <ul class="features">
+                            <li class="feature">
+                                <p>
+                                    <i class="fa fa-check-square"></i> HTML validation, CSS validation and JavaScript linting
+                                </p>
+                            </li>
+                            <li class="feature">
+                                <p>
+                                    <i class="fa fa-check-square"></i></i> Link integrity (broken link) checking
+                                </p>
+                            </li>                                
+                            <li class="feature">
+                                <p>
+                                    <i class="fa fa-check-square"></i> Test either your full site or a single page with just one click
+                                </p>
+                            </li>                                
+                            <li class="feature">                                    
+                                <p>
+                                    <i class="fa fa-check-square"></i> <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/">overview report</a> of successes and failures
+                                </p>
+                            </li>                                
+                            <li class="feature">
+                                <p>
+                                    <i class="fa fa-check-square"></i> detailed <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/276988/results/">per-URL error report</a>
+                                </p>
+                            </li>
+                        </ul>
+
+                        {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
+
+                    </div> 
+                </div>
+                <div class="col-md-5">
+
+                    <div id="carousel-example-generic" class="carousel slide max-width-992-none">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item">
+                                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/00-start.png' %}
+                                <img src="{{ asset_url }}" alt="Start a new website test" />
+                                {% endimage %}                                    
+                            </div>
+                            <div class="item active">
+                                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/01-progress.png' %}
+                                <img src="{{ asset_url }}" alt="Test progress" />
+                                {% endimage %}                                     
+                            </div>
+                            <div class="item">
+                                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/02-results.png' %}
+                                <img src="{{ asset_url }}" alt="Test results" />
+                                {% endimage %}                                    
+                            </div>                                    
+                            <div class="item">
+                                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/03-result-detail.png' %}
+                                <img src="{{ asset_url }}" alt="Test result detail" />
+                                {% endimage %}                                    
+                            </div>
+                            <div class="item">
+                                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/04-history.png' %}
+                                <img src="{{ asset_url }}" alt="Full test history" />
+                                {% endimage %}                                    
+                            </div>                                    
+                        </div>        
+
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                    </div>                    
+
+                </div>
+            </div>
+        </div> <!-- /container -->  
+        <div class="fadestrip"></div>
+    </div>
+
+
+    {#        <div class="jumbotron">
+                <div class="container">
+                    <h1>Hello, world!</h1>
+                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                    <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+                </div>
+            </div>#}
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
-
-        <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-            </div>
-
-            <hr>
-
-            <footer>
-                <p>&copy; Company 2014</p>
-            </footer>
-        </div> <!-- /container -->    
+    </div> <!-- /container -->    
 {% endblock %}
 
