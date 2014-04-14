@@ -13,6 +13,11 @@
     <div id="landing-strip">
         <div class="container">
             <div class="row">
+                <div id="logo">           
+                    {% if app.request.get('_route') != 'homepage' %}                
+                        <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
+                    {% endif %}                
+                </div>                 
                 <div class="col-md-7">
                     <div class="leader">
                         <h1>
@@ -51,9 +56,6 @@
                                 </p>
                             </li>
                         </ul>
-
-                        {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
-
                     </div> 
                 </div>
                 <div class="col-md-5">
@@ -104,6 +106,20 @@
                     </div>                    
 
                 </div>
+            </div>
+            <div class="row ctas">
+                <div class="col-md-3">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>                
             </div>
         </div> <!-- /container -->  
         <div class="fadestrip"></div>

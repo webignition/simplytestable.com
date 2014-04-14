@@ -1,3 +1,15 @@
+#landing-strip .row {
+    position:relative;
+}
+
+#logo {
+    position: absolute;
+    background: url('/bundles/simplytestablewebsite/images/logo100-bold-bordered.png') transparent no-repeat top left;
+    width: 100px;
+    height: 100px;
+    left: -50px;
+}
+
 #landing-strip {
     border-bottom: none;
     padding-top: 80px;
@@ -14,6 +26,11 @@
     height: 100px;
 }
 
+#landing-strip .leader,
+#landing-strip .content {
+    margin-left: 40px;
+}
+
 #landing-strip .content {
     margin-top: 20px;
 }
@@ -24,7 +41,7 @@
     margin-bottom: 20px;
 }
 
-#start-new-test-form {
+#landing-strip .ctas {
     margin-top: 40px;
 }
 
@@ -36,7 +53,7 @@
 
 #landing-strip .features .fa {
     color: #5cb85c;
-    margin: 0px 6px 0 16px;
+    margin: 0px 6px 0 0;
 }
 
 .carousel-control.left {
