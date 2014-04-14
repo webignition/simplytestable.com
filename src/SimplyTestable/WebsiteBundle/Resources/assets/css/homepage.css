@@ -229,3 +229,36 @@ iconed-list li {
 #recent-site-tests .queue-stats .col-md-12 {
     min-height: 26px;
 }
+
+#features h2 {
+    font-size: 24px;
+}
+
+@media (min-width: 1200px) {
+    #features h2 {
+        font-size: 30px;
+    }    
+}
+
+@media (max-width: 768px) {
+    #logo {
+        display:none;
+    }
+
+    #landing-strip .leader,
+    #landing-strip .content {
+        margin-left: 0px;
+    }
+
+    #features h2 {
+        font-size: 30px;
+    }
+
+    .section-icon {
+        display:none;
+    }
+
+    .iconified-section {
+        padding-left: 15px;
+    }
+}
