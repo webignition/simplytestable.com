@@ -1,0 +1,30 @@
+<div class="job-finished state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="url" href="{{ test.results_url }}">                
+                <span class="testId">#{{ test.id }} </span><span class="website">{{ test.formatted_website }}</span>
+                <span class="btn-wrapper">
+                    <span class="btn-spacer"></span><span class="btn btn-default btn-xs">View results <i class="fa fa-caret-right"></i></span>   
+                </span>    
+            </a>                    
+        </div>
+    </div>
+
+    <div class="row summary-stats">
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/warning-count.html.twig' %}
+        </div>
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/error-count.html.twig'  %}
+        </div>
+    </div>                        
+
+    <div class="row summary-stats">
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
+        </div>
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}                    
+        </div>
+    </div>
+</div>

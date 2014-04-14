@@ -29,37 +29,37 @@
                         </p>                            
                     </div>
                     <div class="content">
-                        <ul class="features">
-                            <li class="feature">
+                        <ul class="iconed-list">
+                            <li>
                                 <p>
-                                    <i class="fa fa-check-square"></i> HTML validation, CSS validation and JavaScript linting
+                                    <i class="fa fa-check"></i> HTML validation, CSS validation and JavaScript linting
                                 </p>
                             </li>
-                            <li class="feature">
+                            <li>
                                 <p>
-                                    <i class="fa fa-check-square"></i></i> Link integrity (broken link) checking
+                                    <i class="fa fa-check"></i></i> Link integrity (broken link) checking
                                 </p>
                             </li>                                
-                            <li class="feature">
+                            <li>
                                 <p>
-                                    <i class="fa fa-check-square"></i> Test either your full site or a single page with just one click
+                                    <i class="fa fa-check"></i> Test either your full site or a single page with just one click
                                 </p>
                             </li>                                
-                            <li class="feature">                                    
+                            <li>                                    
                                 <p>
-                                    <i class="fa fa-check-square"></i> <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/">overview report</a> of successes and failures
+                                    <i class="fa fa-check"></i> <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/">overview report</a> of successes and failures
                                 </p>
                             </li>                                
-                            <li class="feature">
+                            <li>
                                 <p>
-                                    <i class="fa fa-check-square"></i> detailed <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/276988/results/">per-URL error report</a>
+                                    <i class="fa fa-check"></i> detailed <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/276988/results/">per-URL error report</a>
                                 </p>
                             </li>
                         </ul>
                     </div> 
                 </div>
                 <div class="col-md-5">
-                {% include 'SimplyTestableWebsiteBundle:Partials/homepage:carousel.html.twig' %}
+                    {% include 'SimplyTestableWebsiteBundle:Partials/homepage:carousel.html.twig' %}
                 </div>
             </div>
             <div class="row ctas">
@@ -67,47 +67,71 @@
                     {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
                 </div>
                 <div class="col-md-3">
-                    
+
                 </div>
                 <div class="col-md-3">
-                    
+
                 </div>
                 <div class="col-md-3">
-                    
+
                 </div>                
             </div>
         </div> <!-- /container -->  
         <div class="fadestrip"></div>
     </div>
-
-
-    {#        <div class="jumbotron">
-                <div class="container">
-                    <h1>Hello, world!</h1>
-                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                    <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-                </div>
-            </div>#}
-
-    <div class="container">
+                
+    <div class="container iconified-section" id="features">        
         <!-- Example row of columns -->
         <div class="row">
+            <i class="fa section-icon fa-signal"></i>
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Technical verification</h2>                
+                <ul class="iconed-list">
+                    <li class="completed">
+                        <p><i class="fa fa-check"></i> <span class="content">HTML validation</span></p>
+                    </li>
+                    <li class="completed">
+                        <p><i class="fa fa-check"></i> <span class="content">CSS validation</span></p>
+                    </li>                             
+                    <li class="completed">
+                        <p><i class="fa fa-check"></i> <span class="content">JavaScript quality checks with <a href="http://en.wikipedia.org/wiki/JSLint">JSLint</a></span></p>
+                    </li>                            
+                </ul>                
             </div>
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Quality checks</h2>
+                <ul class="iconed-list">
+                    <li class="completed">
+                        <p><i class="fa fa-check"></i> <span class="content">Find broken links (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('plans') }}">premium</a> account)</span></p>
+                    </li>                          
+                </ul> 
             </div>
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>One-click full-site testing</h2>
+                
+                {#http://blog.simplytestable.com/urls-now-collected-from-news-feeds/#}
+                
+                <ul class="iconed-list">
+                    <li>
+                        <p><i class="fa fa-check"></i> <span class="content">Auto-discover pages from your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span></p>
+                    </li>                            
+                    <li>
+                        <p><i class="fa fa-check"></i> <span class="content">Crawl your site to find pages to test if you have no sitemap (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('plans') }}">premium</a> account)</span></p>
+                    </li>                    
+                </ul> 
             </div>
         </div>
-    </div> <!-- /container -->    
+    </div>                
+
+    <div class="container iconified-section" id="recent-site-tests">        
+        <!-- Example row of columns -->
+        <div class="row">
+            <i class="fa section-icon fa-cog"></i>
+            <div class="col-md-12">
+                <h2>Recent demo tests</h2>                
+{% include 'SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig' with {'tests':recent_tests} %}                  
+            </div>
+        </div>
+    </div>   
 {% endblock %}
 

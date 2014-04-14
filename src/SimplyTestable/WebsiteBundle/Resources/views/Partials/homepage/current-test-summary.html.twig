@@ -1,0 +1,51 @@
+{% set queued_count = test.task_count_by_state.queued + attribute(test.task_count_by_state, 'queued-for-assignment') %}
+{% set in_progress_count =  attribute(test.task_count_by_state, 'in-progress') %}
+{% set finished_count = test.task_count_by_state.completed
+                      + test.task_count_by_state.cancelled 
+                      + attribute(test.task_count_by_state, 'awaiting-cancellation')
+                    + attribute(test.task_count_by_state, 'failed-no-retry-available')
+                    + attribute(test.task_count_by_state, 'failed-retry-available')
+                    + attribute(test.task_count_by_state, 'failed-retry-limit-reached')
+                    + test.task_count_by_state.skipped %}
+
+<div class="job-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="url" href="{{ test.progress_url }}">
+                <span class="testId">#{{ test.id }} </span><span class="website">{{ test.formatted_website }}</span>
+                <span class="btn-wrapper">
+                    <span class="btn-spacer"></span>
+                    <span class="btn btn-default btn-xs">Live progress <i class="fa fa-caret-right"></i></span>   
+                </span>    
+            </a>                    
+        </div>
+    </div>
+
+    <div class="row progress-row">
+        <div class="col-md-12">
+            <div class="progress" data-completion-percent="{{ test.completion_percent }}">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ test.completion_percent }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ test.completion_percent }}%;"></div>            
+            </div>            
+{#            <div class="progress progress-striped active" data-completion-percent="{{ test.completion_percent }}">
+                <div class="bar" style="width:{{ test.completion_percent }}%;"></div>
+            </div>#}
+        </div>
+    </div>                        
+
+    <div class="row queue-stats">
+        <div class="col-md-12">
+            <span class="queued">{{ queued_count }}</span> queued, 
+            <span class="in-progress">{{in_progress_count }}</span> in progress, 
+            <span class="finished">{{ finished_count }}</span> finished
+        </div>
+    </div>                    
+
+    <div class="row summary-stats">
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
+        </div>
+        <div class="col-md-6">
+            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
+        </div>
+    </div>
+</div>

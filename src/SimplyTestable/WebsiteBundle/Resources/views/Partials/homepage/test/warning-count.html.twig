@@ -1,0 +1,7 @@
+<div class="summary-container summary-figure {% if test.warning_count > 0 %}warning-container{% else %}success-container{% endif %}">
+    {% if test.warning_count > 0 %}
+        <a href="{{ test.results_url }}?filter=with-warnings#test-list"><span class="count">{{ test.warning_count }}</span> <span class="stat-label">warning{% if test.warning_count != 1 %}s{% endif %}</span> <i class="fa fa-caret-right"></i></a>
+    {% else %}
+        <span class="anchor"><span class="count">{{ test.warning_count }}</span> <span class="stat-label">warnings</span></span>
+        {% endif %}
+</div>      
