@@ -87,7 +87,7 @@ $(document).ready(function() {
                 $('.in-progress', inDocSite).text($('.in-progress', site).text());
                 $('.finished', inDocSite).text($('.finished', site).text());
                 
-                $('.progress .bar').css({
+                $('.progress .progress-bar').css({
                     'width':completionPercent + '%'
                 });
             };

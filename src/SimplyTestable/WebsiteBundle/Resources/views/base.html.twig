@@ -33,16 +33,34 @@
 
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>    
 
-            {#        {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
-                        <script type="text/javascript" src="{{ asset_url }}"></script>
-                    {% endjavascripts %}  #}      
+            {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}      
 
         {% endblock %}
 
 
-    </head>
-
-    <body class="{%if is_logged_in%}logged-in{% else %}not-logged-in{% endif %}">
+    </head>   
+    
+{% set route_body_class = app.request.get('_route') | replace({'_' : '-'})  %}
+{% set is_logged_in_body_class = (is_logged_in) ? 'logged_in' : 'not_logged_in' %} 
+{% set body_class = [route_body_class, is_logged_in_body_class]|join(' ') %}
+    
+    <!--[if lt IE 7]>
+    <body class="ltIE7 {{ body_class }} {% block body_ltIE7_class %} {% endblock %}">
+    <![endif]-->                                
+    <!--[if IE 7]>
+    <body class="IE7 {{ body_class }} {% block body_IE7_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if IE 8]>
+    <body class="IE8 {{ body_class }} {% block body_IE8_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if IE 9]>
+    <body class="IE9 {{ body_class }} {% block body_IE9_class %} {% endblock %}">
+    <![endif]-->
+    <!--[if !IE]> -->
+    <body class="{{ body_class }} {% block body_class %} {% endblock %}">
+    <!-- <![endif]-->    
 
 {% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}
 
