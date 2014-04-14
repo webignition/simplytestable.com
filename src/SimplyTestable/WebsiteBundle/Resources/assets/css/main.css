@@ -217,8 +217,12 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {    
     .max-width-992-none {
         display: inline;        
     }
+    
+    .max-width-768-none {
+        display: none;        
+    }    
 }
