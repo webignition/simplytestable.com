@@ -9,26 +9,14 @@
                     + test.task_count_by_state.skipped %}
 
 <div class="job-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
-    <div class="row">
-        <div class="col-md-12">
-            <a class="url" href="{{ test.progress_url }}">
-                <span class="testId">#{{ test.id }} </span><span class="website">{{ test.formatted_website }}</span>
-                <span class="btn-wrapper">
-                    <span class="btn-spacer"></span>
-                    <span class="btn btn-default btn-xs">Live progress <i class="fa fa-caret-right"></i></span>   
-                </span>    
-            </a>                    
-        </div>
-    </div>
+    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/summary/header.html.twig' with {'action_url': test.progress_url, 'cta_label': 'Live progress'} %}        
+
 
     <div class="row progress-row">
         <div class="col-md-12">
             <div class="progress" data-completion-percent="{{ test.completion_percent }}">
                 <div class="progress-bar" role="progressbar" aria-valuenow="{{ test.completion_percent }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ test.completion_percent }}%;"></div>            
-            </div>            
-{#            <div class="progress progress-striped active" data-completion-percent="{{ test.completion_percent }}">
-                <div class="bar" style="width:{{ test.completion_percent }}%;"></div>
-            </div>#}
+            </div>
         </div>
     </div>                        
 
@@ -40,12 +28,5 @@
         </div>
     </div>                    
 
-    <div class="row summary-stats">
-        <div class="col-md-6">
-            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/url-count.html.twig' %}
-        </div>
-        <div class="col-md-6">
-            {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/task-count.html.twig' %}
-        </div>
-    </div>
+    {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/test/summary/url-count-task-count-stats.html.twig' %} 
 </div>

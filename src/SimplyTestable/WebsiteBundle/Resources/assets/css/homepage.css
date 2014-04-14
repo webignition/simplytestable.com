@@ -234,9 +234,21 @@ iconed-list li {
     font-size: 24px;
 }
 
+#features .feature-section,
+#recent-site-tests .site {
+    margin-bottom: 40px;
+}
+
 @media (min-width: 1200px) {
     #features h2 {
         font-size: 30px;
+    }    
+}
+
+@media (min-width: 992px) {
+    #features .feature-section,
+    #recent-site-tests .site {
+        margin-bottom: 0;
     }    
 }
 
