@@ -245,7 +245,7 @@ iconed-list li {
     }    
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     #features .feature-section,
     #recent-site-tests .site {
         margin-bottom: 0;
