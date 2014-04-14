@@ -43,7 +43,7 @@
     </head>   
     
 {% set route_body_class = app.request.get('_route') | replace({'_' : '-'})  %}
-{% set is_logged_in_body_class = (is_logged_in) ? 'logged_in' : 'not_logged_in' %} 
+{% set is_logged_in_body_class = (is_logged_in) ? 'logged-in' : 'not-logged-in' %} 
 {% set body_class = [route_body_class, is_logged_in_body_class]|join(' ') %}
     
     <!--[if lt IE 7]>
