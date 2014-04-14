@@ -245,6 +245,11 @@ iconed-list li {
 }
 
 @media (max-width: 768px) {    
+    #landing-strip .leader,
+    #landing-strip .content {
+        margin-left: 0px;
+    }    
+    
     .max-width-786 {
         display:initial;
     }

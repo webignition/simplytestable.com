@@ -20,13 +20,13 @@
         <div class="container">
             <div class="row">
 
-                <div id="logo">           
+                <div id="logo" class="hidden-xs">           
                     {% if app.request.get('_route') != 'homepage' %}                
                         <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
                     {% endif %}                
                 </div>   
 
-                <div class="col-md-8 intro">
+                <div class="col-lg-8 col-md-6 intro">
                     <div class="leader">
                         <h1>
                             {% block leader_heading %}Leader Heading{% endblock %}
@@ -50,12 +50,12 @@
                         {% endblock %}                             
                     </div>                        
                 </div>
-                <div class="col-md-4 stay-updated">                     
-                    {% include 'SimplyTestableWebsiteBundle:Partials:landing-tweet.html.twig' %}
+                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">                     
+                    {% include 'SimplyTestableWebsiteBundle:Partials:landing-tweet.html.twig' %}                   
+                </div>
+                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">                     
                     {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}                           
                 </div>
-
-
             </div>
         </div>
     </div>

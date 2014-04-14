@@ -88,3 +88,30 @@
 .roadmap .timeline .next .indicator i.highlighted {
     color:yellow;
 }
+
+@media (max-width: 768px) {
+    .roadmap .timeline time {
+        float:none;
+        position:absolute;
+        top: -26px;
+        text-align: left;
+        width:200px;
+    }
+    
+    .roadmap .timeline time span {
+        display:inline;
+    }
+    
+    .roadmap .timeline .detail {
+        margin-left: 0;       
+    }    
+    
+    .roadmap .timeline .event {
+        position: relative;
+        margin-top: 30px;        
+    }
+    
+    .roadmap .timeline .indicator {
+        display:none;
+    }
+}
