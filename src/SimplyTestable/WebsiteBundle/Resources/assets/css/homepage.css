@@ -2,6 +2,11 @@
     position:relative;
 }
 
+#landing-strip p {
+    font-size: 18px;
+    line-height: 22px;
+}  
+
 #logo {
     position: absolute;
     background: url('/bundles/simplytestablewebsite/images/logo100-bold-bordered.png') transparent no-repeat top left;
@@ -35,20 +40,8 @@
     margin-top: 20px;
 }
 
-#landing-strip h1 {
-    font-size: 40px;
-    line-height: 40px;
-    margin-bottom: 20px;
-}
-
 #landing-strip .ctas {
     margin-top: 40px;
-}
-
-.iconed-list {
-    list-style: none;
-    margin:0;
-    padding:0;
 }
 
 .carousel-control.left {
@@ -123,22 +116,6 @@
     padding-bottom: 20px;
     margin-top: -80px;
 }
-
-iconed-list li {
-
-}
-
-.iconed-list .fa {
-    color: #5cb85c;
-    margin: 0px 6px 0 0;    
-}
-
-.iconed-list .content {
-    display: block;
-    margin-left: 23px;
-    margin-top: -20px;    
-}
-
 
 #recent-site-tests .url {
     overflow: hidden;
@@ -240,29 +217,41 @@ iconed-list li {
 }
 
 @media (min-width: 1200px) {    
-    #landing-strip h1 {
-        font-size: 40px;
-        line-height: 40px;
-    }    
-    
     #features h2 {
         font-size: 30px;
     }    
 }
 
+@media (min-width: 992px) {
+    .carousel {
+        display:block;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel {
+        display:none;
+    }
+}
+
 @media (max-width: 1200px) and (min-width: 992px) {    
     #landing-strip h1 {
-        font-size: 34px;
-        line-height: 34px;
+        font-size: 28px;
+        line-height: 28px;
     }    
-     
+
+    #landing-strip p {
+        font-size: 14px;
+        line-height: 20px;
+    }     
+
 }
 
 @media (min-width: 768px) {
     #features .feature-section,
     #recent-site-tests .site {
         margin-bottom: 0;
-    }    
+    }
 }
 
 @media (max-width: 768px) {

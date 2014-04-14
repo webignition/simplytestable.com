@@ -41,13 +41,12 @@
     background-color: #eee;
     border-bottom: 1px solid #ddd;
     padding-top: 80px;
-    padding-bottom: 20px;    
-    margin-bottom: 60px;    
+    padding-bottom: 40px;    
+    margin-bottom: 40px;    
 }
 
-#landing-strip p {
-    font-size: 18px;
-    line-height: 22px;
+#footer-detail h1 {
+    
 }
 
 #footer-announcements {
@@ -161,7 +160,69 @@
     margin-top: 2px;    
 }
 
-@media (max-width: 768px) {
+.iconed-list {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+iconed-list li {
+
+}
+
+.iconed-list .fa {
+    color: #5cb85c;
+    margin: 0px 6px 0 0;    
+}
+
+.iconed-list .content {
+    display: block;
+    margin-left: 23px;
+    margin-top: -20px;    
+}
+
+.min-width-992,
+.min-width-1200 {
+    display:none;
+}
+
+@media (min-width: 1200px) {
+    .min-width-1200 {
+        display: initial;
+    }
+}
+
+@media (min-width: 992px) {
+    .min-width-992 {
+        display: initial;
+    }
+}
+
+@media (max-width: 992px) {
+    #footer-detail {
+        padding-top: 0;  
+        padding-bottom: 0;
+    }    
+
+    #footer-detail .group {
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+        border-top: 1px solid #101010;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    #footer-detail .stay-updated {
+        box-shadow: none;
+        border-top: none;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {    
+    .max-width-786 {
+        display:initial;
+    }
+    
     .navbar .spacer {
         display: none;
     }
@@ -196,43 +257,8 @@
         margin-bottom: 14px;
         border-top: 1px solid #ddd;
         padding: 20px;
-    }
-}
-
-/* Control navbar content flow for lesser width displays */
-@media (max-width: 992px) {
-    .max-width-992-none {
-        display:none;
-    }
-
-    #footer-detail {
-        padding-top: 0;  
-        padding-bottom: 0;
     }    
-
-    #footer-detail .group {
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-        border-top: 1px solid #101010;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
     
-    #footer-detail .stay-updated {
-        box-shadow: none;
-        border-top: none;
-        padding-top: 0;
-    }
-}
-
-@media (max-width: 768px) {    
-    .max-width-992-none {
-        display: inline;        
-    }
-
-    .max-width-768-none {
-        display: none;        
-    }
-
     #footer-detail .icon-fixes {
         height: auto;
         float:none;
