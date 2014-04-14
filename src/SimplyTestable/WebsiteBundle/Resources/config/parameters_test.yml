@@ -12,6 +12,7 @@ parameters:
     account: /account/
     test_results: /{website}/{testId}/results/
     test_progress: /{website}/{testId}/progress/    
+    plan_subscribe: /account/plan/subscribe/    
   not_found_redirect_map:
     /index.php: http://local.simplytestable.com/
     /signup.php: "{{web_client::base}}{{web_client::sign_up}}"

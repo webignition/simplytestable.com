@@ -1,0 +1,89 @@
+h1 {
+    text-align: center;
+}
+
+.plan .head {
+    background-color: #0088cc;
+}
+
+.plan .head,
+.plan .price {
+    color: #fdfdfd;
+}
+
+.plan .head p {
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+.plan {
+    border: 1px solid #ddd;
+}
+
+.recommended {
+    border: none;
+}
+
+.plan .btn {
+    text-transform: none;
+}
+
+.plan.recommended .head {
+    background-color: #0099dd;
+}
+
+.plan.recommended .head h2 {
+    margin-top: 14px;
+}
+
+.pricing-tables .plan.recommended .head {
+    margin-bottom: 0;
+}
+
+.plan ul {
+/*    padding-left:0;
+    padding-right:0;*/
+    padding:0;
+    margin:0;
+}
+
+.plan ul li {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;    
+}
+
+.plan .price {
+    border: none;
+    background-color: #0099dd;
+    width:100%;
+}
+
+.plan.recommended .price {
+    background-color: #00aaee;
+}
+
+.plan .price p {
+    position:relative;
+    padding: 10px 0;
+}
+
+.plan .price span {
+    font-size: 26px;
+}
+
+.plan .price i {
+    font-style: normal;
+    font-size: 12px;
+    position:absolute;
+    width: 100px;
+    text-align: left;
+    opacity: 0.8;
+    bottom: 16px;
+    margin-left:6px;
+}
+
+.pricing-tables {
+    margin-bottom: 40px;
+    padding:0;
+    margin-top: 30px;
+}
