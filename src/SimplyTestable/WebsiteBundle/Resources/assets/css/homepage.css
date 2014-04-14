@@ -1,20 +1,3 @@
-#landing-strip .row {
-    position:relative;
-}
-
-#landing-strip p {
-    font-size: 18px;
-    line-height: 22px;
-}  
-
-#logo {
-    position: absolute;
-    background: url('/bundles/simplytestablewebsite/images/logo100-bold-bordered.png') transparent no-repeat top left;
-    width: 100px;
-    height: 100px;
-    left: -50px;
-}
-
 #landing-strip {
     border-bottom: none;
     padding-top: 80px;
@@ -29,11 +12,6 @@
     background-image: url('/bundles/simplytestablewebsite/images/bottom-fade.png');
     background-position-y: -42px;
     height: 140px;
-}
-
-#landing-strip .leader,
-#landing-strip .content {
-    margin-left: 40px;
 }
 
 #landing-strip .content {

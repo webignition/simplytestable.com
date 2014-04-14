@@ -225,21 +225,31 @@ $(document).ready(function() {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-star highlighted"></i><i class="icon-star-empty"></i></span>');
+            time.after('<span class="indicator"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
         });        
         
         $('.past', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-ok highlighted"></i></span>');
+            time.after('<span class="indicator"><i class="fa fa-check highlighted"></i></span>');
         });        
         
         $('.future', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="icon-off highlighted"></i></span>');
-        });        
+            time.after('<span class="indicator"><i class="fa fa-circle-o highlighted"></i></span>');
+        });
+        
+        $('.past.next', this).each(function () {
+            var event = $(this);
+            var time = $('time', event);
+            
+            $('.indicator', event).remove();
+            time.after('<span class="indicator"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
+        });
+        
+        
     });
 });
