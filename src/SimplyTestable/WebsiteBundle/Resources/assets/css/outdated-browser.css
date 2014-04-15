@@ -31,26 +31,20 @@
 @media (max-width: 768px) {
 }
 
-body.ltIE7 #landing-strip {
+body.ltIE8 #landing-strip {
     padding-top:40px;
 }
 
-body.ltIE7 #footer-announcements,
-body.ltIE7 #footer-detail,
-body.ltIE7 #large-logo {
-    display:none;
-}
-
-body.ltIE7 .col-first,
-body.ltIE7 .col-second {
+body.ltIE8 .col-first,
+body.ltIE8 .col-second {
     float:left;
     width:47%;
 }
 
-body.ltIE7 #outdated-browser-content .col-sm-4 {
+body.ltIE8 #outdated-browser-content .col-sm-4 {
     width:28%;
 }
 
-body.ltIE7 .clearfix {
+body.ltIE8 .clearfix {
     clear:both;
 }

@@ -1,4 +1,2 @@
 src/SimplyTestable/WebsiteBundle/Resources/assets/vendor:
-  css3-mediaqueries: https://github.com/livingston/css3-mediaqueries-js.git
-  bootstrap-ie6: https://github.com/empowering-communities/Bootstrap-IE6.git
   supersleight: http://24ways.org/code/supersleight-transparent-png-in-ie6/supersleight.zip

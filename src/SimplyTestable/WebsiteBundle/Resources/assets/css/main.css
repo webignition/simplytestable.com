@@ -308,10 +308,10 @@ iconed-list li {
     }
 }
 
-body.ltIE7 #logo {
-    display:none;
-}
-
-body.ltIE7 .navbar {
+body.ltIE8 #logo,
+body.ltIE8 .navbar,
+body.ltIE8 #footer-announcements,
+body.ltIE8 #footer-detail,
+body.ltIE8 #large-logo {
     display:none;
 }
