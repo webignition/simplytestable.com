@@ -225,21 +225,21 @@ $(document).ready(function() {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
+            time.after('<span class="indicator hidden-xs"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
         });        
         
         $('.past', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="fa fa-check highlighted"></i></span>');
+            time.after('<span class="indicator hidden-xs"><i class="fa fa-check highlighted"></i></span>');
         });        
         
         $('.future', this).each(function () {
             var event = $(this);
             var time = $('time', event);
             
-            time.after('<span class="indicator"><i class="fa fa-circle-o highlighted"></i></span>');
+            time.after('<span class="indicator hidden-xs"><i class="fa fa-circle-o highlighted"></i></span>');
         });
         
         $('.past.next', this).each(function () {
@@ -247,7 +247,7 @@ $(document).ready(function() {
             var time = $('time', event);
             
             $('.indicator', event).remove();
-            time.after('<span class="indicator"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
+            time.after('<span class="indicator hidden-xs"><i class="fa fa-star highlighted"></i><i class="fa fa-star-o"></i></span>');
         });
         
         

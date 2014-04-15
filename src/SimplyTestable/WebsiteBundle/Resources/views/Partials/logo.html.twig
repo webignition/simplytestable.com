@@ -1,0 +1,5 @@
+<div id="logo" class="hidden-xs">           
+    {% if app.request.get('_route') != 'homepage' %}                
+        <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
+    {% endif %}                
+</div> 

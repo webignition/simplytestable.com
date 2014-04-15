@@ -110,8 +110,4 @@
         position: relative;
         margin-top: 30px;        
     }
-    
-    .roadmap .timeline .indicator {
-        display:none;
-    }
 }

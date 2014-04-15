@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="{{ path('homepage') }}">
                 SimplyTestable
                 {% if app.request.get('_route') != 'homepage' %}
-                    <span class="min-width-1200 max-width-786">automated front-end web testing</span>
+                    <span class="hidden-sm hidden-md">automated front-end web testing</span>
                 {% endif %}                        
             </a>
         </div>
@@ -25,7 +25,7 @@
                         {% if is_logged_in %}
                             Dashboard
                         {% else %}
-                            Demo dashboard <span class="min-width-992 max-width-786">(try me)</span>
+                            Demo dashboard <span class="hidden-sm hidden-md">(try me)</span>
                         {% endif %}                                
                     </a>
                 </li>
@@ -36,15 +36,15 @@
                 </li>
                 <li class="text {% if app.request.get('_route') == 'plans' %}active{% endif %}">
                     <a href="{{ path('plans') }}">
-                        <i class="fa fa-calendar"></i> Pricing <span class="min-width-992 max-width-786">and plans</span>
+                        <i class="fa fa-calendar"></i> Pricing <span class="hidden-sm">and plans</span>
                     </a>
                 </li>
 
                 {% if is_logged_in %}
                     <li class="user-actions text">
-                        <p class="navbar-text spacer highlighted-spacer">&nbsp;</p>
+                        <p class="navbar-text spacer highlighted-spacer hidden-xs">&nbsp;</p>
                         <a class="username" href="{{ web_client_urls['base'] }}{{ web_client_urls['account'] }}">
-                            <i class="fa fa-user"></i> {{ username_parts[0] }}<span class="min-width-992 max-width-786">@{{username_parts[1]}}</span>
+                            <i class="fa fa-user"></i> {{ username_parts[0] }}<span class="hidden-sm">@{{username_parts[1]}}</span>
                         </a>
                     </li>                         
                     <li>                    

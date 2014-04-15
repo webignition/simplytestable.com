@@ -200,18 +200,6 @@
     }    
 }
 
-@media (min-width: 992px) {
-    .carousel {
-        display:block;
-    }
-}
-
-@media (max-width: 992px) {
-    .carousel {
-        display:none;
-    }
-}
-
 @media (max-width: 1200px) and (min-width: 992px) {    
     #landing-strip h1 {
         font-size: 28px;
@@ -233,10 +221,6 @@
 }
 
 @media (max-width: 768px) {
-    #logo {
-        display:none;
-    }
-
     #landing-strip .leader,
     #landing-strip .content {
         margin-left: 0px;
@@ -244,10 +228,6 @@
 
     #features h2 {
         font-size: 30px;
-    }
-
-    .section-icon {
-        display:none;
     }
 
     .iconified-section {

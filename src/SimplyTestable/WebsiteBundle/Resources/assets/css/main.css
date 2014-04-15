@@ -207,23 +207,6 @@ iconed-list li {
     margin-top: -20px;    
 }
 
-.min-width-992,
-.min-width-1200 {
-    display:none;
-}
-
-@media (min-width: 1200px) {
-    .min-width-1200 {
-        display: initial;
-    }
-}
-
-@media (min-width: 992px) {
-    .min-width-992 {
-        display: initial;
-    }
-}
-
 @media (max-width: 992px) {
     #footer-detail {
         padding-top: 0;  
@@ -248,16 +231,8 @@ iconed-list li {
     #landing-strip .leader,
     #landing-strip .content {
         margin-left: 0px;
-    }    
+    }
     
-    .max-width-786 {
-        display:initial;
-    }
-
-    .navbar .spacer {
-        display: none;
-    }
-
     .navbar a.btn,
     .navbar-form {
         margin-left: 34px;

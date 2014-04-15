@@ -20,11 +20,7 @@
         <div class="container">
             <div class="row">
 
-                <div id="logo" class="hidden-xs">           
-                    {% if app.request.get('_route') != 'homepage' %}                
-                        <a href="{{ path('homepage') }}">Simply Testable Homepage</a>
-                    {% endif %}                
-                </div>   
+                {% include 'SimplyTestableWebsiteBundle:Partials:logo.html.twig' %}  
 
                 <div class="col-lg-8 col-md-6 intro">
                     <div class="leader">
