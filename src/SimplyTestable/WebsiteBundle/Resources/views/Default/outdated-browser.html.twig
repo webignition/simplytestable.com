@@ -4,6 +4,7 @@
     {{ parent() }}
     <!--[if IE 6]>
     {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/supersleight/supersleight.js' %}
+        <!-- HELLO -->
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}       
     <![endif]-->      
@@ -43,7 +44,7 @@
 
     <div id="landing-strip">
         <div class="container">
-            <div class="row"> 
+            <div class="row">                 
                 {% include 'SimplyTestableWebsiteBundle:Partials:logo.html.twig' %} 
                 <div class="col-md-8 intro">
                     <div class="leader">
@@ -55,23 +56,20 @@
                     <div class="content">
                         <p>
                             You're using an old version of Internet Explorer.
-                        </p>                                
-                        <p>          
+         
                             We don't intend to make Simply Testable work with Internet Explorer less than version 8.
                         </p> 
                     </div>                        
                 </div>
-                <div class="col-md-4 hidden-xs hidden-sm">                  
+                <div class="col-md-4" id="large-logo">                  
                     {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/256-ie.png' %}
-                    <img src="{{ asset_url }}" alt="" />
+                    <img src="{{ asset_url }}" alt="" class="hidden-xs hidden-sm" />
                     {% endimage %}                          
                 </div>
-            </div>                
-
-
+            </div>
         </div>
     </div>
-
+                
     <div id="outdated-browser-content">
         <div class="container iconified-section">
             <div class="row">
@@ -79,9 +77,8 @@
                     {% include 'SimplyTestableWebsiteBundle:Partials:section-icon.html.twig' with {'icon':'download'} %}
                     <h2>Try a more modern browser</h2>
                     <div class="row browsers">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-first">
                             <div class="row">
-
                                     <div class="col-sm-4 col-xs-4">
                                         <a href="//google.com/chrome/">
                                             {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-chrome.png' %}
@@ -128,7 +125,7 @@
   
                             </div>                        
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-second">
                             <p>
                                 Providing comparable support for versions of Internet
                                 Explorer less than verison 8 takes a lot of time.

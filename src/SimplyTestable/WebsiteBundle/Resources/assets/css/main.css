@@ -307,3 +307,11 @@ iconed-list li {
         display:none;
     }
 }
+
+body.ltIE7 #logo {
+    display:none;
+}
+
+body.ltIE7 .navbar {
+    display:none;
+}
