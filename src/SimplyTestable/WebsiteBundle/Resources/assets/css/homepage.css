@@ -70,25 +70,6 @@
     box-shadow: 0px 0px 4px 1px #4c4b4a;
 }
 
-.iconified-section {
-    padding-left: 60px;
-}
-
-.iconified-section .row {
-    position: relative;
-}
-
-.section-icon {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    left: -110px;
-    color: #08c;
-    font-size: 100px;
-    top: 36px;
-    line-height: 55px;
-}
-
 #features {
     border-bottom: 1px solid #DDD;
     padding-bottom: 20px;
@@ -228,9 +209,5 @@
 
     #features h2 {
         font-size: 30px;
-    }
-
-    .iconified-section {
-        padding-left: 15px;
     }
 }

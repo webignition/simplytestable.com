@@ -80,7 +80,7 @@
         <div class="container iconified-section">        
             <!-- Example row of columns -->
             <div class="row">
-                <i class="fa section-icon fa-signal hidden-xs"></i>
+                {% include 'SimplyTestableWebsiteBundle:Partials:section-icon.html.twig' with {'icon':'signal'} %}
                 <div class="col-md-4 col-sm-6 feature-section">
                     <h2>Technical verification</h2>                
                     <ul class="iconed-list">
@@ -125,7 +125,7 @@
     <div class="container iconified-section" id="recent-site-tests">        
         <!-- Example row of columns -->
         <div class="row">
-            <i class="fa section-icon fa-cog hidden-xs"></i>
+            {% include 'SimplyTestableWebsiteBundle:Partials:section-icon.html.twig' with {'icon':'cog'} %}
             <div class="col-md-12">
                 <h2>Recent demo tests</h2>                
 {% include 'SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig' with {'tests':recent_tests} %}                  

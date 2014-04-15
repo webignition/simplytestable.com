@@ -207,6 +207,26 @@ iconed-list li {
     margin-top: -20px;    
 }
 
+
+.iconified-section {
+    padding-left: 60px;
+}
+
+.iconified-section .row {
+    position: relative;
+}
+
+.section-icon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: -110px;
+    color: #08c;
+    font-size: 100px;
+    top: 36px;
+    line-height: 55px;
+}
+
 @media (max-width: 992px) {
     #footer-detail {
         padding-top: 0;  
@@ -247,6 +267,10 @@ iconed-list li {
     .navbar .text a i {
         margin-right: 6px;
     }
+    
+    .iconified-section {
+        padding-left: 15px;
+    }    
 
     #footer-announcements {
         padding: 0;     
