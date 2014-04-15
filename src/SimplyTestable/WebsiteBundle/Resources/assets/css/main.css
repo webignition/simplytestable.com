@@ -301,3 +301,9 @@ iconed-list li {
         padding-bottom: 20px;
     }    
 }
+
+@media (max-width: 490px) {
+    .navbar-brand span {
+        display:none;
+    }
+}
