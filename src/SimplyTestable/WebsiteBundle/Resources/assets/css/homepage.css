@@ -28,6 +28,7 @@
 
 .carousel-control.right {
     background-image: none;
+    padding-right: 20px;
 }
 
 .carousel-control .fa {
