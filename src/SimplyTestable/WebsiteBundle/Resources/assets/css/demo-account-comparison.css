@@ -74,10 +74,16 @@ h1 {
     border-bottom: 1px solid transparent;
 }
 
+.items i {
+    position: absolute;
+    right:12px;
+    top:24px;
+}
+
 .items .primary,
 .items .secondary {
     position: absolute;
-    right: 20px;
+    right: 34px;
 }
 
 .items .primary {
@@ -87,6 +93,7 @@ h1 {
 .items .secondary {
     bottom: 8px;
     opacity: 0.4;
+    font-size: 12px;
 }
 
 .demo .head,
@@ -121,13 +128,17 @@ h1 {
     .plan ul li {
         font-size: 14px;
     }
+
+    .items .secondary {
+        font-size:14px;
+    }    
 }
 
 @media (max-width: 992px) {
     h1 {
         font-size: 30px;
     }
-    
+
     .plan .head {
         text-align: left;
         padding-left:20px;
@@ -151,20 +162,20 @@ h1 {
     .plan .item .secondary {
 
     }
-    
+
     .plan .btn {
         /*padding: 5px 10px;*/
         margin-left:20px;
     }
-    
+
     .plan .btn-sm {
         padding: 5px 10px;
     }     
-    
+
     .plan .btn-xs {
         padding: 1px 5px;
     }       
-    
+
     .plan {
         text-align: left;
     }
@@ -180,12 +191,12 @@ h1 {
         padding-left: 15px;
         padding-right: 15px;
     }
-    
+
     .plan .item {
         display: inline-block;
         font-size: 14px;
     }
-    
+
     .col-heading {
         padding-left: 15px;
     }
