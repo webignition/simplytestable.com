@@ -2,6 +2,11 @@ h1 {
     text-align: center;
 }
 
+#landing-strip p {
+    font-size: 13px;
+    line-height: 15px;    
+}
+
 .plan .head {
     background-color: #0088cc;
 }
@@ -41,15 +46,16 @@ h1 {
 }
 
 .plan ul {
-/*    padding-left:0;
-    padding-right:0;*/
+    /*    padding-left:0;
+        padding-right:0;*/
     padding:0;
     margin:0;
 }
 
 .plan ul li {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;    
+    padding-bottom: 20px;
+    font-size: 13px;
 }
 
 .plan .price {
@@ -86,4 +92,15 @@ h1 {
     margin-bottom: 40px;
     padding:0;
     margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+    #landing-strip p {
+        font-size: 18px;
+        line-height: 22px;    
+    }    
+
+    .plan ul li {
+        font-size: 14px;
+    }    
 }
