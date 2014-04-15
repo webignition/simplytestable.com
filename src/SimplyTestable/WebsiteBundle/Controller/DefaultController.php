@@ -19,7 +19,7 @@ class DefaultController extends BaseController implements Cacheable, IEFiltered
     
     
     public function indexAction()
-    {       
+    {        
         $this->getTestListService()->setUser($this->getUserService()->getPublicUser()); 
         
         return $this->getCacheableResponseService()->getCachableResponse(

@@ -56,7 +56,7 @@ class ExceptionController extends Controller
         $currentContent = $this->getAndCleanOutputBuffering();
 
         $templating = $this->container->get('templating');
-        $code = $exception->getStatusCode();
+        $code = $exception->getStatusCode();             
 
         return $templating->renderResponse(
             $this->findTemplate($templating, $format, $code, $this->container->get('kernel')->isDebug()),

@@ -1,13 +1,13 @@
-body.error .inner .icon {
+body.error .inner .fa {
     color: #08C;
     width: auto;
     font-size: 100px;
     position: absolute;
-    left: -38px;
+    left: -48px;
 }
 
 body.error .inner section {
-    margin-left:60px;
+    margin-left:40px;
     height:400px;
 }
 
