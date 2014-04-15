@@ -9,9 +9,25 @@
 
         <title>{% block title %}Simply Testable professional automated front-end web testing{% endblock %}</title>
 
-        {% block stylesheets %}    
+        {% block stylesheets %}
+            <!--[if lt IE 9]>
+            {% stylesheets    
+            '@SimplyTestableWebsiteBundle/Resources/assets/css/bootstrap.min.css'
+            filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}                
+            
+            {% stylesheets    
+            '@SimplyTestableWebsiteBundle/Resources/assets/css/font-awesome.css'
+            filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+            <![endif]-->
+            
+            <!--[if !IE]><!-->
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+            <!--<![endif]-->
 
             {% stylesheets    
             '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
@@ -29,7 +45,7 @@
             <!--[if lt IE 9]>
               <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
               <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-            <![endif]-->        
+            <![endif]-->
 
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>    
 
