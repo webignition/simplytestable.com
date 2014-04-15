@@ -43,7 +43,7 @@ class RequestListener
      * @return null
      */
     public function onKernelRequest(GetResponseEvent $event)
-    {             
+    {   
         $this->event = $event;
         
         if (!$this->isApplicationController()) {
@@ -149,7 +149,7 @@ class RequestListener
      */
     private function isUsingOldIE() {        
         if ($this->isUsingIE6() || $this->isUsingIE7()) {
-            $this->get('logger')->err('Detected old IE for [' . $this->getUserAgentString() . ']');
+            $this->kernel->getContainer()->get('logger')->err('Detected old IE for [' . $this->getUserAgentString() . ']');
             return true;
         }
         
