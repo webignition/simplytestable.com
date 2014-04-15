@@ -1,0 +1,192 @@
+h1 {
+    text-align: center;
+}
+
+.data {
+    margin-top: 50px;
+}
+
+.col-heading {
+    padding-left: 0;
+}
+
+.plan {
+    margin-top: 0;
+}
+
+.plan .row {
+    margin: 0;
+}
+
+.items {
+    padding-right:0;
+}
+
+.details {
+    padding-left:0;
+}
+
+.items .head {
+    padding: 12px 0;
+    text-align: center;
+}
+
+.items p {
+    margin-bottom: 0;
+}
+
+.items h2 {
+    margin:0;
+    padding:0;
+}
+
+.items ul {
+    background-color: #fff;
+    background-color: transparent;
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 25px 0;
+}
+
+.items ul li,
+.plan ul li {
+    font-size: 14px;
+}
+
+.items ul li {
+    border-bottom: 1px solid transparent;
+    padding-top: 20px;
+    padding-bottom: 20px;  
+    padding-right:20px;
+    line-height: 22px;
+    text-align: right;
+    position: relative;
+    min-height: 66px;
+
+}
+
+.plan li {
+    min-height: 66px;
+}
+
+.items ul li.last {
+    border-bottom: 1px solid transparent;
+}
+
+.items .primary,
+.items .secondary {
+    position: absolute;
+    right: 20px;
+}
+
+.items .primary {
+    top: 18px;
+}
+
+.items .secondary {
+    bottom: 8px;
+    opacity: 0.4;
+}
+
+.demo .head,
+.head .demo {
+    opacity: 0.8;
+}
+
+.details .head {
+    background-color: transparent;
+    padding-left:0;
+    padding-right:0;
+    padding-bottom: 0;
+}
+
+.details .head .row .col-md-4 {
+    background-color: #0088cc;
+    margin-top:-12px;
+    padding-top:12px;
+    padding-bottom: 12px;
+}
+
+.details .head .row .first {
+    border-top-left-radius: 4px;    
+}
+
+.details .head .row .last {
+    border-top-right-radius: 4px;
+}
+
+@media (min-width: 1200px) {
+    .items ul li,
+    .plan ul li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 30px;
+    }
+    
+    .plan .head {
+        text-align: left;
+        padding-left:20px;
+    }
+
+    .plan ul li {
+        text-align: left;
+        padding-left:20px;
+    }
+
+    .plan .item {
+        display: block;
+        opacity: 0.8;
+        font-size: 12px;
+    }
+
+    .plan .item .primary {
+
+    }
+
+    .plan .item .secondary {
+
+    }
+    
+    .plan .btn {
+        /*padding: 5px 10px;*/
+        margin-left:20px;
+    }
+    
+    .plan .btn-sm {
+        padding: 5px 10px;
+    }     
+    
+    .plan .btn-xs {
+        padding: 1px 5px;
+    }       
+    
+    .plan {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-tables.attached .plan .head {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+    .pricing-tables.attached .col-sm-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .plan .item {
+        display: inline-block;
+        font-size: 14px;
+    }
+    
+    .col-heading {
+        padding-left: 15px;
+    }
+}

@@ -26,6 +26,10 @@ recent_test_list:
     pattern:  /recent-test-list/
     defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }            
     
+plans_demo_account_comparison:
+    pattern:  /plans/more/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Default:demoAccountComparison }        
+    
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/
     defaults:

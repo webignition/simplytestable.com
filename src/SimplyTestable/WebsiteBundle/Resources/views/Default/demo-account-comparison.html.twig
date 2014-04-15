@@ -1,0 +1,271 @@
+{% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
+
+{% macro cta_button(plan_name, is_logged_in, web_client_urls) %}
+    {% if is_logged_in %}
+        <form method="post" action="{{ web_client_urls.base }}{{ web_client_urls.plan_subscribe }}">
+            <input type="hidden" name="plan" value="{{ plan_name }}" />
+            <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
+        </form>
+    {% else %}
+        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan={{ plan_name }}" class="btn btn-success btn-plan-select">
+            Sign up
+        </a>
+    {% endif %}  
+{% endmacro %}
+
+{% import _self as pricing_table %}
+
+{% block stylesheets %}      
+    {{ parent() }}
+    {% stylesheets
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/demo-account-comparison.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+
+    <div id="landing-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <h1>Create an account. <br class="hidden-sm hidden-md hidden-lg">So much more than the demo.</h1>
+                    
+                    <div class="pricing-tables attached hidden-md hidden-lg data">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="plan first demo">
+                                    <div class="head">
+                                        <h2>Demo</h2>
+                                        <p>
+                                            If you're not signed in
+                                        </p>
+                                    </div>                         
+
+                                    <ul class="item-list demo">
+                                        <li>
+                                            10
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                        </li>
+                                        <li>
+                                            10
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                        </li>
+                                        <li>
+                                            10
+                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
+                                        </li>
+                                        <li>
+                                            <span class="item">Results available for</span>
+                                            24 hours
+                                        </li>
+                                    </ul> 
+
+                                    <a href="{{ web_client_urls.base }}" class="btn btn-default btn-sm hidden-xs">
+                                        Try me now
+                                    </a>                                    
+
+                                    <a href="{{ web_client_urls.base }}" class="btn btn-default hidden-sm">
+                                        Try me now
+                                    </a>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <div class="plan">                           
+                                    <div class="head">
+                                        <h2>Free plan</h2>
+                                        <p>
+                                            No-cost account
+                                        </p> 
+                                    </div>                           
+
+                                    <ul class="item-list">
+                                        <li>
+                                            Unlimited
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                        </li>
+                                        <li>
+                                            Unlimited
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                        </li>
+                                        <li>
+                                            50
+                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
+                                        </li>
+                                        <li>
+                                            <span class="item">Results available for</span>
+                                            7 days
+                                        </li>
+                                    </ul>
+
+                                    <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-sm hidden-xs">
+                                        Create a free account
+                                    </a>
+
+                                    <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success hidden-sm">
+                                        Create a free account
+                                    </a>                                        
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <div class="plan last">
+                                    <div class="head">
+                                        <h2>Premium plans</h2>
+                                        <p>
+                                            Paid accounts
+                                        </p>    
+                                    </div>                           
+
+                                    <ul class="item-list">
+                                        <li>
+                                            Unlimited
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                        </li>
+                                        <li>
+                                            Unlimited
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                        </li>
+                                        <li>
+                                            Up to 100,000
+                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
+                                        </li>
+                                        <li>
+                                            <span class="item">Results available for</span>
+                                            Forever
+                                        </li>
+                                    </ul>
+
+                                    <a href="{{ path('plans') }}" class="btn btn-default btn-sm hidden-xs">
+                                        View premium plans
+                                    </a>                                     
+
+                                    <a href="{{ path('plans') }}" class="btn btn-default hidden-sm">
+                                        View premium plans
+                                    </a>                                         
+                                </div>
+                            </div>
+                        </div>
+                    </div>                     
+
+                    <div class="row data hidden-sm hidden-xs">
+                        <div class="col-md-2 hidden-sm hidden-xs items">
+                            <div class="head">
+                                <h2>&nbsp;</h2>
+                                <p>&nbsp;</p>
+                            </div>                    
+                            <ul>
+                                <li>
+                                    <span class="primary">Full-site tests</span> <span class="secondary">per site per month</span>
+                                </li>
+                                <li>
+                                    <span class="primary">Single-page tests</span> <span class="secondary">per page per month</span>
+                                </li>
+                                <li>
+                                    <span class="primary">Pages examined</span> <span class="secondary">per test</span>
+                                </li>
+                                <li class="last">
+                                    Results available for
+                                </li>                        
+                            </ul>
+                        </div>
+                        <div class="col-md-10 details">
+                            <div class="pricing-tables attached">
+                                <div class="plan first last">                           
+                                    <div class="head">
+                                        <div class="row">
+                                            <div class="col-md-4 demo first">
+                                                <h2>Demo</h2>
+                                                <p>
+                                                    If you're not signed in
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h2>Free plan</h2>
+                                                <p>
+                                                    No-cost account
+                                                </p>                                        
+                                            </div>
+                                            <div class="col-md-4 last">
+                                                <h2>Premium plans</h2>
+                                                <p>
+                                                    Paid accounts
+                                                </p>                                        
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 demo">
+                                            <ul class="item-list">
+                                                <li>10</li>
+                                                <li>10</li>
+                                                <li>10</li>
+                                                <li>24 hours</li>
+                                            </ul>
+
+                                            <a href="{{ web_client_urls.base }}" class="btn btn-default btn-plan-select">
+                                                Try me now
+                                            </a> 
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul class="item-list">
+                                                <li>Unlimited</li>
+                                                <li>Unlimited</li>
+                                                <li>50</li>
+                                                <li>7 days</li>
+                                            </ul>
+
+                                            <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-plan-select">
+                                                Create a free account
+                                            </a> 
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul class="item-list">
+                                                <li>Unlimited</li>
+                                                <li>Unlimited</li>
+                                                <li>Up to 100,000</li>
+                                                <li>Forever</li>
+                                            </ul>                                     
+
+                                            <a href="{{ path('plans') }}" class="btn btn-default btn-plan-select">
+                                                View premium plans
+                                            </a> 
+                                        </div>
+                                    </div>                                    
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>                        
+
+                </div>
+            </div>                          
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+
+
+
+
+
+        </div>      
+    </div>    
+</div>
+
+{% endblock %}

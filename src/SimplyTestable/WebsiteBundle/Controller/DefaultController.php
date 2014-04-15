@@ -46,8 +46,8 @@ class DefaultController extends BaseController implements Cacheable, IEFiltered
         return $this->defaultPageAction('roadmap'); 
     }    
     
-    public function fooAction() {        
-        return $this->defaultPageAction('foo'); 
+    public function demoAccountComparisonAction() {        
+        return $this->defaultPageAction('demo-account-comparison'); 
     }     
     
     private function defaultPageAction($templateId) {        
