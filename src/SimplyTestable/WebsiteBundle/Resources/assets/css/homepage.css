@@ -1,6 +1,6 @@
 #start-new-test-form {
-    margin-left: 65px;
-    margin-top: -40px;    
+    margin-left: 28px;
+    margin-top: -20px;    
 }
 
 #landing-strip {
@@ -196,7 +196,12 @@ body.IE9 .carousel-control.right {
 @media (min-width: 1200px) {    
     #features h2 {
         font-size: 30px;
-    }    
+    } 
+
+    #start-new-test-form {
+        margin-left: 68px;
+        margin-top: -40px;        
+    }
 }
 
 @media (max-width: 1200px) and (min-width: 992px) {    
@@ -208,8 +213,19 @@ body.IE9 .carousel-control.right {
     #landing-strip p {
         font-size: 14px;
         line-height: 20px;
-    }     
+    }
+    
+    #start-new-test-form {
+        margin-left: 63px;
+        margin-top: -65px;        
+    }         
+}
 
+@media (min-width: 768px) and (max-width: 992px) {
+    #start-new-test-form {
+        margin-left: 65px;
+        margin-top: -20px;        
+    }     
 }
 
 @media (min-width: 768px) {
