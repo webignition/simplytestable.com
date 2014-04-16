@@ -1,4 +1,4 @@
-$(document).ready(function() {       
+$(document).ready(function() {    
     if ($('body.homepage').length) {
         var updateRecentTests = function (data) {
             var isRemoving = false;

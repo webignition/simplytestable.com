@@ -1,20 +1,5 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% macro cta_button(plan_name, is_logged_in, web_client_urls) %}
-    {% if is_logged_in %}
-        <form method="post" action="{{ web_client_urls.base }}{{ web_client_urls.plan_subscribe }}">
-            <input type="hidden" name="plan" value="{{ plan_name }}" />
-            <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
-        </form>
-    {% else %}
-        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan={{ plan_name }}" class="btn btn-success btn-plan-select">
-            Sign up
-        </a>
-    {% endif %}  
-{% endmacro %}
-
-{% import _self as pricing_table %}
-
 {% block stylesheets %}      
     {{ parent() }}
     {% stylesheets
@@ -32,8 +17,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    
-                    <h1>Create an account. <br class="hidden-sm hidden-md hidden-lg">So much more than the demo.</h1>
+                    <div class="row heading">
+                        <div class="col-md-10 col-md-offset-2">
+                            <h1>Create an account. <br class="hidden-sm hidden-md hidden-lg">So much more than the demo.</h1>
+                        </div>
+                    </div>
                     
                     <div class="pricing-tables attached hidden-md hidden-lg data">
                         <div class="row">
@@ -49,11 +37,11 @@
                                     <ul class="item-list demo">
                                         <li>
                                             10
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
                                         </li>
                                         <li>
                                             10
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
                                         </li>
                                         <li>
                                             10
@@ -65,7 +53,7 @@
                                         </li>
                                         <li>
                                             <span class="item">Results available for</span>
-                                            24 hours
+                                            48 hours
                                         </li>
                                     </ul> 
 
@@ -93,11 +81,11 @@
                                     <ul class="item-list">
                                         <li>
                                             Unlimited
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
                                         </li>
                                         <li>
                                             Unlimited
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
                                         </li>
                                         <li>
                                             50
@@ -137,11 +125,11 @@
                                     <ul class="item-list">
                                         <li>
                                             Unlimited
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site per month</span></span>
+                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
                                         </li>
                                         <li>
                                             Unlimited
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page per month</span></span>
+                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
                                         </li>
                                         <li>
                                             Up to 100,000
@@ -177,11 +165,11 @@
                             </div>                    
                             <ul>
                                 <li>
-                                    <span class="primary">Full-site tests</span> <span class="secondary">per site per month</span>
+                                    <span class="primary">Full-site tests</span> <span class="secondary">per site</span>
                                     <i class="fa fa-star"></i>
                                 </li>
                                 <li>
-                                    <span class="primary">Single-page tests</span> <span class="secondary">per page per month</span>
+                                    <span class="primary">Single-page tests</span> <span class="secondary">per page</span>
                                     <i class="fa fa-star-half-o"></i>
                                 </li>                              
                                 <li>
@@ -231,7 +219,7 @@
                                                 <li>10</li>
                                                 <li>10</li>
                                                 <li>Public</li>
-                                                <li>24 hours</li>
+                                                <li>48 hours</li>
                                             </ul>
 
                                             <a href="{{ web_client_urls.base }}" class="btn btn-default btn-plan-select">
@@ -283,19 +271,58 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-2">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4">
-                            <h3>Limited Demo</h3>
+                            <h3>Limited demo</h3>
                             <p>
-                                
+                                The free demo lets you quickly try the service
+                                out.
+                            </p>
+                            <p>
+                                You can carry out both full-site and single-page
+                                tests but both are limited in the number that
+                                can be carried out per site or page being tested.
+                            </p>
+                            <p>
+                                You don't need to create an account but as a 
+                                consequence all demo tests are visible to everyone.
+                            </p>
+                            <p>
+                                Test results will be available for 48 hours only.
                             </p>
                         </div>
                         <div class="col-md-4">
                             <h3>Free account</h3>
+                            <p>
+                                A free account removes the limit on the number
+                                of full-site and single-page tests that you can
+                                carry out.
+                            </p>
+                            <p>
+                                Tests created by you are visible only to you but
+                                you can opt to make results public for sharing.
+                            </p>
+                            <p>
+                                Test results are available for 7 days, giving
+                                you more time to take action as required.
+                            </p>
                         </div>
                         <div class="col-md-4">
                             <h3>Premium accounts</h3>
+                            <p>
+                                From as little as &pound;9 you can
+                                examine up to 100,000 pages per test.
+                            </p>
+                            <p>
+                                Tests created by you are again visible only to you but
+                                you can opt to make results public for sharing.
+                            </p>
+                            <p>
+                                Test results are available forever, giving
+                                you as long as is needed to take action and
+                                allowing you to compare current and past results.
+                            </p>                            
                         </div>
                     </div>
                 </div>                
