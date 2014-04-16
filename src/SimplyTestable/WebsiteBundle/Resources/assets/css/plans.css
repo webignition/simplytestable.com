@@ -66,3 +66,24 @@ h1 {
         font-size: 14px;
     }    
 }
+
+@media (max-width: 992px) {
+    .plan.recommended {
+        margin-top: 20px;
+    }
+    
+    .plan.recommended .head h2 {
+        margin-top: 0;
+    }
+    
+    .plan.recommended .btn {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-xs-12 {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}

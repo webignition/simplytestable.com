@@ -35,8 +35,105 @@
                     <h1>30 day free trial. No credit card required.</h1>
                 </div>
             </div>
+            
+            <div class="pricing-tables hidden-md hidden-lg">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="plan first">
+                            <div class="head">
+                                <h2>Personal</h2>
+                                <p>For small-scale projects</p>
+                            </div>  
 
-            <div class="pricing-tables attached">
+                            <div class="price">   
+                                <p><span>&pound;9 <i>per month</i></span></p>
+                            </div>                            
+
+                            <ul class="item-list">
+                                <li>Unlimited full-site tests</li>
+                                <li>Unlimited single-page tests</li>
+                                <li>50 pages examined per test</li>
+                                <li>5,000 credits</li>
+                            </ul>
+
+                            {{ pricing_table.cta_button('personal', is_logged_in, web_client_urls) }}                       
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 ">
+                        <div class="plan recommended">                           
+                            <div class="head">
+                                <h2>Agency</h2>
+                                <p>
+                                    Great for small organisations
+                                </p>
+                            </div>  
+
+                            <div class="price">
+                                <p><span>&pound;19 <i>per month</i></span></p>
+                            </div>                            
+
+                            <ul class="item-list">
+                                <li>Unlimited full-site tests</li>
+                                <li>Unlimited single-page tests</li>
+                                <li>250 pages examined per test</li>
+                                <li>20,000 credits</li>
+                            </ul>
+
+                            {{ pricing_table.cta_button('agency', is_logged_in, web_client_urls) }}   
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 ">
+                        <div class="plan">
+                            <div class="head">
+                                <h2>Business</h2>
+                                <p>Best value for professionals</p>
+                            </div>  
+
+                            <div class="price">
+                                <p><span>&pound;59 <i>per month</i></span></p>
+                            </div>                            
+
+                            <ul class="item-list">
+                                <li>Unlimited full-site tests</li>
+                                <li>Unlimited single-page tests</li>
+                                <li>2,500 pages examined per test</li>
+                                <li>100,000 credits</li>
+                            </ul>
+
+                            {{ pricing_table.cta_button('business', is_logged_in, web_client_urls) }}   
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 ">
+
+                        <div class="plan last">
+                            <div class="head">
+                                <h2>Enterprise</h2>
+                                <p>Full corporate treatment</p>
+                            </div>
+
+                            <div class="price">
+                                <p><span>&pound;299 <i>per month</i></span></p>
+                            </div>                            
+
+                            <ul class="item-list">
+                                <li>Unlimited full-site tests</li>
+                                <li>Unlimited single-page tests</li>
+                                <li>100,000 pages examined per test</li>
+                                <li>Unlimited credits</li>
+                            </ul>
+
+                            {{ pricing_table.cta_button('enterprise', is_logged_in, web_client_urls) }}  
+                        </div>
+                    </div>
+                </div>
+            </div>             
+
+            <div class="pricing-tables attached hidden-sm hidden-xs">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="plan first">
@@ -171,7 +268,7 @@
 
                         </div>
                         <div class="col-md-4">                        
-                            <h3>What are credits?</h3>
+                            <h3>What are credits?</h3>                            
                             <p>
                                 Performing a HTML validation, CSS validation or 
                                 JSLint analysis on a single URL requires one credit.
