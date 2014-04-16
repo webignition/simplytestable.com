@@ -33,11 +33,13 @@
     right:0;
 }
 
-body.IE8 .carousel-control.left {
+body.IE8 .carousel-control.left,
+body.IE9 .carousel-control.left {
     left: 30px;
 }
 
-body.IE8 .carousel-control.right {
+body.IE8 .carousel-control.right,
+body.IE9 .carousel-control.right {
     right: -20px;
 }
 
