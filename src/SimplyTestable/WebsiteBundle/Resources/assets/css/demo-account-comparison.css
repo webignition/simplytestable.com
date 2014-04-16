@@ -54,12 +54,13 @@ h1 {
     font-size: 14px;
 }
 
+.plan ul li {
+    padding-bottom: 0;
+}
+
 .items ul li {
     border-bottom: 1px solid transparent;
-    padding-top: 20px;
-    padding-bottom: 20px;  
     padding-right:20px;
-    line-height: 22px;
     text-align: right;
     position: relative;
     min-height: 66px;
@@ -180,7 +181,6 @@ h1 {
     }
 
     .plan .btn {
-        /*padding: 5px 10px;*/
         margin-left:20px;
     }
 
@@ -195,6 +195,10 @@ h1 {
     .plan {
         text-align: left;
     }
+    
+    .plan ul li {
+        padding-bottom: 20px;
+    }    
 }
 
 @media (max-width: 768px) {
@@ -216,4 +220,20 @@ h1 {
     .col-heading {
         padding-left: 15px;
     }
+    
+    body.IE8 .plan ul li {
+        padding-bottom: 0;
+    }    
+    
+    body.IE8 .plan .btn {
+        margin-top: 20px;
+    }    
+}
+
+body.IE8 .plan ul li {
+    min-height: 46px;
+}
+
+body.IE8 .plan .btn {
+    margin-top: 40px;
 }
