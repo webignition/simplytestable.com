@@ -70,14 +70,5 @@ class DefaultController extends BaseController implements Cacheable, IEFiltered
     private function getTestListService() {
         return $this->get('simplytestable.services.testListService');
     }
-
-    
-    /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\CacheableResponseService
-     */
-    private function getCacheableResponseService() {
-        return $this->get('simplytestable.services.cacheableResponseService');
-    }        
 }
 

@@ -23,6 +23,21 @@ class CacheableResponseService {
         $response->headers->addCacheControlDirective('must-revalidate', true);        
         
         return $response;
-    }    
+    }
+    
+    
+    /**
+     * 
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getUncacheableResponse(Response $response) {
+        $response->setPublic();
+        $response->setMaxAge(0);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $response->headers->addCacheControlDirective('no-cache', true);
+        
+        return $response;
+    }     
     
 }

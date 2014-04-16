@@ -9,10 +9,10 @@ class RecentTestListController extends BaseController
     {   
         $this->getTestListService()->setUser($this->getUserService()->getPublicUser());
         
-        return $this->render('SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig', array(
+        return $this->getCacheableResponseService()->getUncacheableResponse($this->render('SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig', array(
             'web_client_urls' => $this->container->getParameter('web_client_urls'),
             'tests' => $this->getTestListService()->getTests()
-        ));
+        )));
     }
     
     

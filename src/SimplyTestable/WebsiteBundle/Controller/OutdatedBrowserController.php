@@ -18,14 +18,6 @@ class OutdatedBrowserController extends BaseController implements Cacheable
                 'web_client_urls' => $this->container->getParameter('web_client_urls'),
             ))                
         );
-    }
-    
-    /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\CacheableResponseService
-     */
-    private function getCacheableResponseService() {
-        return $this->get('simplytestable.services.cacheableResponseService');
-    }      
+    }     
 }
 

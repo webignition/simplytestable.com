@@ -31,6 +31,15 @@ class BaseController extends Controller
      */
     protected function getTestimonialService() {
         return $this->get('simplytestable.services.testimonialService');
-    }    
+    } 
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\CacheableResponseService
+     */
+    protected function getCacheableResponseService() {
+        return $this->get('simplytestable.services.cacheableResponseService');
+    }     
 }
 
