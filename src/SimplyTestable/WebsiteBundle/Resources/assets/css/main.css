@@ -192,21 +192,23 @@
     padding:0;
 }
 
-iconed-list li {
-
+.iconed-list li {
+    margin-bottom: 10px;
+    position: relative;
 }
 
-.iconed-list .fa {
+.iconed-list li:before {
+    font-family: 'FontAwesome';
+    content: '\f00c';
+    margin-right: 4px;
     color: #5cb85c;
-    margin: 0px 6px 0 0;    
+    position: absolute;
 }
 
-.iconed-list .content {
+.iconed-list span {
+    padding-left: 18px;
     display: block;
-    margin-left: 23px;
-    margin-top: -20px;    
 }
-
 
 .iconified-section {
     padding-left: 60px;

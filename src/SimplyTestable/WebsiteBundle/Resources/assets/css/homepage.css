@@ -193,6 +193,18 @@ body.IE9 .carousel-control.right {
     margin-bottom: 40px;
 }
 
+#landing-strip .iconed-list {
+}
+
+#landing-strip .iconed-list li {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+#landing-strip .iconed-list span {
+    padding-left: 26px;
+}
+
 @media (min-width: 1200px) {    
     #features h2 {
         font-size: 30px;
@@ -210,11 +222,12 @@ body.IE9 .carousel-control.right {
         line-height: 28px;
     }    
 
+    #landing-strip .iconed-list li,
     #landing-strip p {
         font-size: 14px;
         line-height: 20px;
     }
-    
+
     #start-new-test-form {
         margin-left: 63px;
         margin-top: -65px;        
@@ -243,5 +256,13 @@ body.IE9 .carousel-control.right {
 
     #features h2 {
         font-size: 30px;
+    }
+    
+    #start-new-test-form {
+        margin-left:0;
+    }
+    
+    #start-new-test-form .btn {
+        width:100%;
     }
 }
