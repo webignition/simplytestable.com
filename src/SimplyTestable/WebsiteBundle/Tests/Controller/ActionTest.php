@@ -8,6 +8,41 @@ abstract class ActionTest extends BaseTest {
     
     
     /**
+     *
+     * @var \Symfony\Component\HttpFoundation\Response
+     */
+    protected $response;
+    
+    public function setUp() {
+        parent::setUp();
+        
+        $controller = $this->getCurrentController($this->getRequestPostData(), $this->getRequestQueryData());       
+
+        $this->container->enterScope('request');
+        $this->response = call_user_func_array(array($controller, $this->getActionName()), $this->getActionMethodArguments());          
+    }
+    
+    
+    abstract protected function getExpectedResponseStatusCode();
+    
+    protected function getRequestPostData() {
+        return array();
+    }
+    
+    protected function getRequestQueryData() {
+        return array();
+    }
+    
+    protected function getActionMethodArguments() {
+        return array();
+    }
+    
+    public function testResponseStatusCode() {
+        $this->assertEquals($this->getExpectedResponseStatusCode(), $this->response->getStatusCode());
+    }
+    
+    
+    /**
      * 
      * @param array $responseProperties
      * @param array $methodProperties

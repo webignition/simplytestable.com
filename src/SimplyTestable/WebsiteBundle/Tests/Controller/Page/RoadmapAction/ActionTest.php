@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Controller\OutdatedBrowser\IndexAction;
+namespace SimplyTestable\WebsiteBundle\Tests\Controller\Page\RoadmapAction;
 
 use SimplyTestable\WebsiteBundle\Tests\Controller\ActionTest as BaseActionTest;
 

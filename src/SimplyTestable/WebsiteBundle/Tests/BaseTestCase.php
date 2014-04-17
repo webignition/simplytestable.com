@@ -83,9 +83,10 @@ abstract class BaseTestCase extends WebTestCase {
      * @param array An array of parameters to pass into the request.
      * @return \Symfony\Bundle\FrameworkBundle\Controller\Controller The built Controller object.
      */
-    protected function createController($controllerClass, $controllerMethod, array $parameters = array(), array $query = array(), array $cookies = array()) {
+    protected function createController($controllerClass, $controllerMethod, $routeName, array $parameters = array(), array $query = array(), array $cookies = array()) {
         $request = $this->createWebRequest();        
         $request->attributes->set('_controller', $controllerClass.'::'.$controllerMethod);
+        $request->attributes->set('_route', $routeName);
         $request->request->add($parameters);
         $request->query->add($query);       
 
@@ -133,7 +134,7 @@ abstract class BaseTestCase extends WebTestCase {
      * @param string $testName
      * @return string
      */
-    protected function getFixturesDataPath($testName) {
+    protected function getFixturesDataPath($testName = null) {
         $fixturesPath = $this->getCustomFixturesDataPath($testName);
         
         while (!$this->directoryContainsFiles($fixturesPath) && $fixturesPath != __DIR__ . '/Fixtures') {
@@ -159,7 +160,7 @@ abstract class BaseTestCase extends WebTestCase {
             }
             
             /* @var $item \DirectoryIterator */
-            if ($item->isFile() && !$item->isDot() && $item->isReadable()) {
+            if (($item->isFile() || $item->isDir()) && !$item->isDot() && $item->isReadable()) {
                 $containsFiles = true;
             }
         }

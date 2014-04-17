@@ -1,20 +1,20 @@
-homepage:
+home_index:
     pattern:  /
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:index }
+    defaults: { _controller: SimplyTestableWebsiteBundle:Home:index }
     
-plans:
+page_plans:
     pattern:  /plans/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:plans }       
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:plans }       
     
-features:
+page_features:
     pattern:  /features/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:features }
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:features }
 
-roadmap:
+page_roadmap:
     pattern:  /roadmap/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:roadmap }
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:roadmap }
     
-outdated_browser:
+outdatedbrowser_index:
     pattern:  /outdated-browser/
     defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }    
   
@@ -26,9 +26,9 @@ recent_test_list:
     pattern:  /recent-test-list/
     defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }            
     
-plans_demo_account_comparison:
-    pattern:  /plans/more/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Default:demoAccountComparison }        
+page_accountbenefits:
+    pattern:  /account-benefits/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }           
     
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/

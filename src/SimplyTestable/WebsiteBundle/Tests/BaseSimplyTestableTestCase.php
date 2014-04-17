@@ -73,13 +73,13 @@ abstract class BaseSimplyTestableTestCase extends BaseTestCase {
      * @param string $methodName
      * @return Symfony\Bundle\FrameworkBundle\Controller\Controller
      */
-    protected function getController($controllerName, $methodName, array $postData = array(), array $queryData = array()) {   
+    protected function getController($controllerName, $methodName, $routeName, array $postData = array(), array $queryData = array()) {   
         $cookieData = array();
         if ($this->hasUser()) {
             $cookieData['simplytestable-user'] = $this->getUserSerializerService()->serializeToString($this->user);
         }
         
-        return $this->createController($controllerName, $methodName, $postData, $queryData, $cookieData);
+        return $this->createController($controllerName, $methodName, $routeName, $postData, $queryData, $cookieData);
     }
 
     

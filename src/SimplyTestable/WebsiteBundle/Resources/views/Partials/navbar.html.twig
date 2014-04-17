@@ -10,9 +10,9 @@
                 <span class="icon-bar"></span>
             </button>       
 
-            <a class="navbar-brand" href="{{ path('homepage') }}">
+            <a class="navbar-brand" href="{{ path('home_index') }}">
                 SimplyTestable
-                {% if app.request.get('_route') != 'homepage' %}
+                {% if app.request.get('_route') != 'home_index' %}
                     <span class="hidden-sm hidden-md">automated front-end web testing</span>
                 {% endif %}                        
             </a>
@@ -29,13 +29,13 @@
                         {% endif %}                                
                     </a>
                 </li>
-                <li class="text {% if app.request.get('_route') == 'features' %}active{% endif %}">
-                    <a href="{{ path('features') }}">
+                <li class="text {% if app.request.get('_route') == 'page_features' %}active{% endif %}">
+                    <a href="{{ path('page_features') }}">
                         <i class="fa fa-signal"></i> Features
                     </a>
                 </li>
-                <li class="text {% if app.request.get('_route') == 'plans' %}active{% endif %}">
-                    <a href="{{ path('plans') }}">
+                <li class="text {% if app.request.get('_route') == 'page_plans' %}active{% endif %}">
+                    <a href="{{ path('page_plans') }}">
                         <i class="fa fa-calendar"></i> Pricing <span class="hidden-sm">and plans</span>
                     </a>
                 </li>
