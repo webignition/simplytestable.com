@@ -248,6 +248,10 @@ body.IE9 .carousel-control.right {
 }
 
 @media (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
     #landing-strip .leader,
     #landing-strip .content {
         margin-left: 0px;
@@ -256,20 +260,23 @@ body.IE9 .carousel-control.right {
     #features h2 {
         font-size: 30px;
     }
-    
+
     #start-new-test-form {
         margin-left:0;
     }
-    
+
     #start-new-test-form .btn {
         width:100%;
     }
-    
+
+    .iconed-list span,
     #landing-strip .iconed-list li span {
         padding-left:30px;
     }
-    
-    #landing-strip .leader {
-        margin-bottom: 40px;
+
+    #landing-strip .iconed-list li,
+    #landing-strip p {
+        line-height: 28px;
     }
+
 }
