@@ -200,7 +200,6 @@
 .iconed-list li:before {
     font-family: 'FontAwesome';
     content: '\f00c';
-    margin-right: 4px;
     color: #5cb85c;
     position: absolute;
 }
@@ -250,6 +249,10 @@
 }
 
 @media (max-width: 768px) {    
+    #landing-strip {
+        padding-top:60px;
+    }
+    
     #landing-strip .leader,
     #landing-strip .content {
         margin-left: 0px;

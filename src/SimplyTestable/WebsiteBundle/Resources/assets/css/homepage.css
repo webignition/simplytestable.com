@@ -5,7 +5,6 @@
 
 #landing-strip {
     border-bottom: none;
-    padding-top: 80px;
     padding-bottom: 0px;
     background-image: url('/bundles/simplytestablewebsite/images/ls04.8.jpg');
     background-position-x: 50%;
@@ -264,5 +263,13 @@ body.IE9 .carousel-control.right {
     
     #start-new-test-form .btn {
         width:100%;
+    }
+    
+    #landing-strip .iconed-list li span {
+        padding-left:30px;
+    }
+    
+    #landing-strip .leader {
+        margin-bottom: 40px;
     }
 }
