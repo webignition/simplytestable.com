@@ -11,14 +11,6 @@ h1 {
     color: #fdfdfd;
 }
 
-.enterprise .plan .price a {
-
-}
-
-.enterprise .plan .price a span {
-
-}
-
 .recommended {
     border: none;
 }
@@ -65,6 +57,29 @@ h1 {
     opacity: 0.8;
     bottom: 16px;
     margin-left:6px;
+}
+
+.plan .head a {
+    color:#fdfdfd;
+}
+
+.plan .head a:hover {
+    text-decoration: none;
+}
+
+.plan .head a:hover h2 {
+    opacity: 0.8;
+}
+
+.plan .head a:hover p {
+    opacity: 0.6;
+}
+
+.plan a.more {
+    display: block;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 13px;
 }
 
 @media (min-width: 1200px) {
