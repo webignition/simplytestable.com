@@ -1,0 +1,23 @@
+<p class="heading hidden-md hidden-lg">{{ name }}</p>
+
+<ul class="item-list">
+    <li>
+        <span class="item hidden-md hidden-lg">{{ results_available_for.name.primary }}</span> {{ results_available_for.value }}
+    </li>
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': private_tests.value,
+                'name':private_tests.name.primary
+            }
+        %}
+    </li>    
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': read_only_reports.value,
+                'name':read_only_reports.name.primary
+            }
+        %}
+    </li>                                 
+</ul>

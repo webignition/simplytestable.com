@@ -1,0 +1,19 @@
+{% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %}
+
+{% block heading %}Features of the limited demo{% endblock %}
+
+{% block content %}
+    <p>
+        A free demo is available to everyone - just visit the
+        <a href="{{ web_client_urls.base }}">test dashboard</a> 
+        without signing in.
+    </p>
+
+    <p>
+        The demo offers many of the features you would find if you had an account
+        but is limited in the breadth of use.
+    </p>
+    
+    {% include 'SimplyTestableWebsiteBundle:PlanDetails:index.demo.detail.html.twig' %} 
+
+{% endblock %}

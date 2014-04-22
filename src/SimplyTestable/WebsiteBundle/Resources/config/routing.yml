@@ -14,21 +14,25 @@ page_roadmap:
     pattern:  /roadmap/
     defaults: { _controller: SimplyTestableWebsiteBundle:Page:roadmap }
     
+page_accountbenefits:
+    pattern:  /account-benefits/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }        
+    
+plandetails_index:
+    pattern:  /plans/{name}/
+    defaults: { _controller: SimplyTestableWebsiteBundle:PlanDetails:index }            
+    
 outdatedbrowser_index:
     pattern:  /outdated-browser/
     defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }    
-  
+    
 sign_out_submit:
     pattern:  /signout/
     defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }     
     
 recent_test_list:
     pattern:  /recent-test-list/
-    defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }            
-    
-page_accountbenefits:
-    pattern:  /account-benefits/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }           
+    defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }
     
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/

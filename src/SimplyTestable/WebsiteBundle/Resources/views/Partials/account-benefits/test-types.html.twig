@@ -1,0 +1,36 @@
+<p class="heading hidden-md hidden-lg">{{ name }}</p>
+
+<ul class="item-list demo">                                                            
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': html_validation.value,
+                'name': html_validation.name.primary
+            }
+        %}
+    </li>
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': css_validation.value,
+                'name': css_validation.name.primary
+            }
+        %}
+    </li>
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': js_static_analysis.value,
+                'name': js_static_analysis.name.primary
+            }
+        %}
+    </li>
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': link_integrity_checking.value,
+                'name': link_integrity_checking.name.primary
+            }
+        %}
+    </li>
+</ul>

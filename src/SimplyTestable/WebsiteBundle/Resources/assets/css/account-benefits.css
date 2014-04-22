@@ -81,10 +81,11 @@ h1 {
     top:22px;
 }
 
+.items .heading span,
 .items .primary,
 .items .secondary {
+    right: 30px;
     position: absolute;
-    right: 34px;
 }
 
 .items .primary {
@@ -124,6 +125,110 @@ h1 {
     border-top-right-radius: 4px;
 }
 
+.items .heading {
+    font-weight: bold;    
+}
+
+.row .spacer,
+.items .heading {
+    border-bottom: 1px solid #ddd;    
+}
+
+.items .heading span {
+    bottom:0;
+}
+
+.items .heading,
+.plan .spacer {
+    min-height: 80px;    
+}
+
+.items .heading-first,
+.plan .spacer-first {
+    min-height: 40px;
+}
+
+.items .heading-first {
+    margin-top: -40px;
+}
+
+.plan .spacer-first {
+    min-height: 0;
+    border:none;
+}
+
+.items ul li.last {
+    border-bottom: 1px solid #ddd;
+}
+
+.items ul li.final {
+    border-bottom: none;
+}
+
+.data .not-applicable span {
+    opacity: 0.4;
+}
+
+.plan .spacer {
+    background-color: #fff;
+}
+
+.items .fa {
+    display:none;
+}
+
+.plan {
+    background-color: transparent;
+    padding-bottom: 0;
+}
+
+.plan .data {
+    background-color: #fff;
+}
+
+.plan .row ul li:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.plan .final ul li:last-child {
+    border-bottom: none;
+}
+
+.plan .ctas {
+    padding: 20px 0;
+    background-color: #fff;
+}
+
+.plan ul li span.boolean {
+    display:none;
+}
+
+li.boolean .fa {
+
+}
+
+li.boolean .item {
+    display:inline;
+}
+
+.pricing-tables-small .plan {
+    background-color: #fff;
+}
+
+#landing-strip .pricing-tables-small .heading {
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 20px;  
+    border-bottom: 1px solid #bbb;
+    margin-top: 40px;
+    color: transparent;
+    padding-bottom: 8px;
+}
+
+#landing-strip .pricing-tables-small .first .heading {
+    color: #333;
+}
+
 @media (min-width: 1200px) {
     .items ul li,
     .plan ul li {
@@ -133,11 +238,11 @@ h1 {
     .items .secondary {
         font-size:14px;
     }    
-    
+
     h1 {
         text-align: left;
     }
-    
+
     .heading .col-md-10 {
         padding-left:0;
     }
@@ -195,7 +300,7 @@ h1 {
     .plan {
         text-align: left;
     }
-    
+
     .plan ul li {
         padding-bottom: 20px;
     }    
@@ -220,13 +325,17 @@ h1 {
     .col-heading {
         padding-left: 15px;
     }
-    
+
     body.IE8 .plan ul li {
         padding-bottom: 0;
     }    
-    
+
     body.IE8 .plan .btn {
         margin-top: 20px;
+    }  
+
+    #landing-strip .pricing-tables-small .heading {
+        color: #333;
     }    
 }
 

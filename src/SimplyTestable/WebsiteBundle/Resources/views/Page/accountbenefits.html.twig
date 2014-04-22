@@ -5,7 +5,7 @@
     {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/demo-account-comparison.css'
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/account-benefits.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -17,54 +17,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="row heading">
+                    <div class="row heading">                                           
                         <div class="col-md-10 col-md-offset-2">
                             <h1>Create an account. <br class="hidden-sm hidden-md hidden-lg">So much more than the demo.</h1>
                         </div>
                     </div>
-                    
-                    <div class="pricing-tables attached hidden-md hidden-lg data">
+
+                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg data">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="plan first demo">
-                                    <div class="head">
-                                        <h2>Demo</h2>
+                                    <div class="head hidden-sm">
+                                        <h2>Limited demo features</h2>
                                         <p>
-                                            If you're not signed in
+                                            What you get if you're not signed in
                                         </p>
-                                    </div>                         
+                                    </div>                                     
+                                    
+                                    <div class="head hidden-xs">
+                                        <h2>Demo features</h2>
+                                        <p>
+                                            What you get if you're not signed in
+                                        </p>
+                                    </div>
+                                    
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:display-xs-sm-account-options.html.twig'
+                                        with {'account_options': plan_features.demo}
+                                    %}
 
-                                    <ul class="item-list demo">
-                                        <li>
-                                            10
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
-                                        </li>
-                                        <li>
-                                            10
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
-                                        </li>
-                                        <li>
-                                            10
-                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
-                                        </li>
-                                        <li>
-                                            Public tests
-                                            <span class="item">Can be viewed by anyone</span>
-                                        </li>
-                                        <li>
-                                            <span class="item">Results available for</span>
-                                            48 hours
-                                        </li>
-                                    </ul> 
+                                    <div class="ctas {% if is_logged_in %}invisible{% endif %}">
+                                        <a href="{{ web_client_urls.base }}" class="btn btn-default btn-sm hidden-xs">
+                                            Try me now
+                                        </a>                                    
 
-                                    <a href="{{ web_client_urls.base }}" class="btn btn-default btn-sm hidden-xs">
-                                        Try me now
-                                    </a>                                    
-
-                                    <a href="{{ web_client_urls.base }}" class="btn btn-default hidden-sm">
-                                        Try me now
-                                    </a>
-
+                                        <a href="{{ web_client_urls.base }}" class="btn btn-default hidden-sm">
+                                            Try me now
+                                        </a>                                         
+                                    </div>
                                 </div>
                             </div>
 
@@ -72,42 +61,25 @@
                             <div class="col-sm-4">
                                 <div class="plan">                           
                                     <div class="head">
-                                        <h2>Free plan</h2>
+                                        <h2>Free plan <span class="hidden-sm hidden-md hidden-lg">features</span></h2>
                                         <p>
                                             No-cost account
                                         </p> 
                                     </div>                           
 
-                                    <ul class="item-list">
-                                        <li>
-                                            Unlimited
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
-                                        </li>
-                                        <li>
-                                            Unlimited
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
-                                        </li>
-                                        <li>
-                                            50
-                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
-                                        </li>
-                                        <li>
-                                            Private tests
-                                            <span class="item">Only visible to you</span>
-                                        </li>                                        
-                                        <li>
-                                            <span class="item">Results available for</span>
-                                            7 days
-                                        </li>
-                                    </ul>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:display-xs-sm-account-options.html.twig'
+                                        with {'account_options': plan_features.free}
+                                    %}  
 
-                                    <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-sm hidden-xs">
-                                        Create a free account
-                                    </a>
+                                    <div class="ctas {% if is_logged_in %}invisible{% endif %}">
+                                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-sm hidden-xs">
+                                            Create a free account <i class="fa fa-caret-right"></i>
+                                        </a>
 
-                                    <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success hidden-sm">
-                                        Create a free account
-                                    </a>                                        
+                                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success hidden-sm">
+                                            Create a free account <i class="fa fa-caret-right"></i>
+                                        </a>                                        
+                                    </div>
 
                                 </div>
                             </div>
@@ -116,42 +88,35 @@
                             <div class="col-sm-4">
                                 <div class="plan last">
                                     <div class="head">
-                                        <h2>Premium plans</h2>
+                                        <h2>Premium plan <span class="hidden-sm hidden-md hidden-lg">features</span></h2>
                                         <p>
-                                            Paid accounts
+                                            From &pound;9 per month
                                         </p>    
                                     </div>                           
 
-                                    <ul class="item-list">
-                                        <li>
-                                            Unlimited
-                                            <span class="item"><span class="primary">Full-site tests</span> <span class="secondary">per site</span></span>
-                                        </li>
-                                        <li>
-                                            Unlimited
-                                            <span class="item"><span class="primary">Single-page tests</span> <span class="secondary">per page</span></span>
-                                        </li>
-                                        <li>
-                                            Up to 100,000
-                                            <span class="item"><span class="primary">Pages examined</span> <span class="secondary">per test</span></span>
-                                        </li>
-                                        <li>
-                                            Private tests
-                                            <span class="item">Only visible to you</span>
-                                        </li>                                             
-                                        <li>
-                                            <span class="item">Results available for</span>
-                                            Forever
-                                        </li>
-                                    </ul>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:display-xs-sm-account-options.html.twig'
+                                        with {'account_options': plan_features.premium }
+                                    %}
+                                    
+                                    <div class="ctas">
+                                        {% if is_logged_in %}
+                                        <a href="{{ path('page_plans') }}" class="btn btn-success btn-sm hidden-xs">
+                                            View premium plans
+                                        </a>                                     
 
-                                    <a href="{{ path('page_plans') }}" class="btn btn-default btn-sm hidden-xs">
-                                        View premium plans
-                                    </a>                                     
+                                        <a href="{{ path('page_plans') }}" class="btn btn-success hidden-sm">
+                                            View premium plans
+                                        </a>                                            
+                                        {% else %}
+                                        <a href="{{ path('page_plans') }}" class="btn btn-default btn-sm hidden-xs">
+                                            View premium plans
+                                        </a>                                     
 
-                                    <a href="{{ path('page_plans') }}" class="btn btn-default hidden-sm">
-                                        View premium plans
-                                    </a>                                         
+                                        <a href="{{ path('page_plans') }}" class="btn btn-default hidden-sm">
+                                            View premium plans
+                                        </a>                                            
+                                        {% endif %}                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -164,26 +129,107 @@
                                 <p>&nbsp;</p>
                             </div>                    
                             <ul>
-                                <li>
-                                    <span class="primary">Full-site tests</span> <span class="secondary">per site</span>
-                                    <i class="fa fa-star"></i>
+                                <li class="heading heading-first">
+                                    <span>{{ plan_features.demo.test_limitations.name }}</span>
+                                </li>
+                                <li>                                        
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': {
+                                                'primary': plan_features.demo.test_limitations.full_site_tests_per_site.name.primary|replace({'%s': 's'}),
+                                                'secondary': plan_features.demo.test_limitations.full_site_tests_per_site.name.secondary
+                                        }}
+                                    %}
                                 </li>
                                 <li>                               
-                                    <span class="primary">Single-page tests</span> <span class="secondary">per page</span>
-                                    <i class="fa fa-star-half-o"></i>
-                                </li>                              
-                                <li>                              
-                                    <span class="primary">Pages examined</span> <span class="secondary">per test</span>
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': {
+                                                'primary': plan_features.demo.test_limitations.single_page_tests_per_page.name.primary|replace({'%s': 's'}),
+                                                'secondary': plan_features.demo.test_limitations.single_page_tests_per_page.name.secondary
+                                        }}
+                                    %}
                                 </li>
+                                <li>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_limitations.pages_examined_per_test.name}
+                                    %}
+                                </li>
+                                <li class="last">   
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_limitations.credits_per_month.name}
+                                    %}                                                                                                         
+                                </li>
+                                <li class="heading">
+                                    <span>{{ plan_features.demo.access_to_results.name }}</span>
+                                </li>                                                               
                                 <li>                                  
-                                    <span class="primary">Test visibility</span>
-                                    <i class="fa fa-lock"></i>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.access_to_results.results_available_for.name}
+                                    %} 
+                                </li>                                
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.access_to_results.private_tests.name}
+                                    %} 
                                 </li>                                  
                                 <li class="last">                                  
-                                    <span class="primary">Results available for</span>
-                                    <i class="fa fa-clock-o"></i>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.access_to_results.read_only_reports.name}
+                                    %} 
+                                </li>                                   
+                                <li class="heading">
+                                    <span>{{ plan_features.demo.url_discovery.name }}</span>
+                                </li>                                    
+                                <li>
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.url_discovery.discovery_via_sitemap.name}
+                                    %}                                   
+                                </li>
+                                <li class="last">
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.url_discovery.discovery_via_crawl.name}
+                                    %}                               
+                                </li>
+                                <li class="heading">
+                                    <span>{{ plan_features.demo.test_types.name }}</span>
                                 </li>                        
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_types.html_validation.name}
+                                    %}
+                                </li>                                  
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_types.css_validation.name}
+                                    %}
+                                </li>                                
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_types.js_static_analysis.name}
+                                    %}
+                                </li>                                 
+                                <li class="last">                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.test_types.link_integrity_checking.name}
+                                    %}
+                                </li>
+                                <li class="heading">
+                                    <span>{{ plan_features.demo.advanced_options.name }}</span>
+                                </li>
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.advanced_options.https_sites.name}
+                                    %}
+                                </li>                                
+                                <li>                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.advanced_options.http_authentication.name}
+                                    %}
+                                </li>
+                                <li class="last final">                                  
+                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                        with {'name': plan_features.demo.advanced_options.custom_cookies.name}
+                                    %}
+                                </li>                                
                             </ul>
                         </div>
                         <div class="col-md-10 details">
@@ -206,63 +252,140 @@
                                             <div class="col-md-4 last">
                                                 <h2>Premium plans</h2>
                                                 <p>
-                                                    Paid accounts
+                                                    From £9 per month
                                                 </p>                                        
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="row spacer spacer-first"></div>
 
-                                    <div class="row">
+                                    <div class="row data">
                                         <div class="col-md-4 demo">
-                                            <ul class="item-list">
-                                                <li>10</li>
-                                                <li>10</li>
-                                                <li>10</li>
-                                                <li>Public</li>
-                                                <li>48 hours</li>
-                                            </ul>
-
-                                            <a href="{{ web_client_urls.base }}" class="btn btn-default btn-plan-select">
-                                                Try me now
-                                            </a> 
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
+                                            with plan_features.demo.test_limitations
+                                        %}                                  
                                         </div>
                                         <div class="col-md-4">
-                                            <ul class="item-list">
-                                                <li>Unlimited</li>
-                                                <li>Unlimited</li>
-                                                <li>50</li>
-                                                <li>Private</li>
-                                                <li>7 days</li>
-                                            </ul>
-
-                                            <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-plan-select">
-                                                Create a free account
-                                            </a> 
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
+                                            with plan_features.free.test_limitations
+                                        %}                                                                                       
                                         </div>
                                         <div class="col-md-4">
-                                            <ul class="item-list">
-                                                <li>Unlimited</li>
-                                                <li>Unlimited</li>
-                                                <li>Up to 100,000</li>
-                                                <li>Private</li>
-                                                <li>Forever</li>
-                                            </ul>                                     
-
-                                            <a href="{{ path('page_plans') }}" class="btn btn-default btn-plan-select">
-                                                View premium plans
-                                            </a> 
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
+                                            with plan_features.premium.test_limitations
+                                        %}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row spacer"><b></b></div>                                    
+                                            
+                                    <div class="row data">
+                                        <div class="col-md-4 demo">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
+                                            with plan_features.demo.access_to_results
+                                        %}                                  
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
+                                            with plan_features.free.access_to_results
+                                        %}                                       
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
+                                            with plan_features.premium.access_to_results
+                                        %}
                                         </div>
                                     </div>                                    
+                                    
+                                    <div class="row spacer"><b></b></div>                                    
+                                            
+                                    <div class="row data">
+                                        <div class="col-md-4 demo">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
+                                            with plan_features.demo.url_discovery
+                                        %}                                    
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
+                                            with plan_features.free.url_discovery
+                                        %} 
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
+                                            with plan_features.premium.url_discovery
+                                        %} 
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row spacer"><b></b></div>
 
-
+                                    <div class="row data">
+                                        <div class="col-md-4 demo">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
+                                            with plan_features.demo.test_types
+                                        %}                                        
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
+                                            with plan_features.free.test_types
+                                        %}                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
+                                            with plan_features.premium.test_types
+                                        %}  
+                                        </div>
+                                    </div>                                    
+                                            
+                                    <div class="row spacer"><b></b></div>                                    
+                                            
+                                    <div class="row data final">
+                                        <div class="col-md-4 demo">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
+                                            with plan_features.demo.advanced_options
+                                        %} 
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
+                                            with plan_features.free.advanced_options
+                                        %} 
+                                        </div>
+                                        <div class="col-md-4">
+                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
+                                            with plan_features.premium.advanced_options
+                                        %} 
+                                        </div>
+                                    </div>
+                                            
+                                    <div class="row ctas">
+                                        <div class="col-md-4">
+                                            <a href="{{ web_client_urls.base }}" class="btn btn-default btn-plan-select {% if is_logged_in %}invisible{% endif %}">
+                                                Try me now
+                                            </a>                                             
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-plan-select {% if is_logged_in %}invisible{% endif %}">
+                                                Create a free account <i class="fa fa-caret-right"></i>
+                                            </a>                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                            {% if is_logged_in %}
+                                                <a href="{{ path('page_plans') }}" class="btn btn-success btn-plan-select">
+                                                    View premium plans <i class="fa fa-caret-right"></i>
+                                                </a>                                                 
+                                            {% else %}
+                                                <a href="{{ path('page_plans') }}" class="btn btn-default btn-plan-select">
+                                                    View premium plans
+                                                </a> 
+                                            {% endif %}                                              
+                                        </div>
+                                    </div>
+                                            
                                 </div>
                             </div>
-
                         </div>
-
-
-                    </div>                        
-
+                    </div>
                 </div>
             </div>                          
         </div>
@@ -282,14 +405,18 @@
                             <p>
                                 You can carry out both full-site and single-page
                                 tests but both are limited in the number that
-                                can be carried out per site or page being tested.
+                                can be carried out per site or per page being tested.
                             </p>
                             <p>
                                 You don't need to create an account but as a 
                                 consequence all demo tests are visible to everyone.
                             </p>
                             <p>
-                                Test results will be available for 48 hours only.
+                                The demo does not offer all the types of test
+                                available to those who have an account.
+                            </p>
+                            <p>
+                                Test results will be available for 24 hours only.
                             </p>
                         </div>
                         <div class="col-md-4">

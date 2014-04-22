@@ -6,13 +6,18 @@ h1 {
     text-align: center;
 }
 
+.enterprise .plan .price a,
 .plan .price {
     color: #fdfdfd;
 }
 
-/*.plan {
-    border: 1px solid #ddd;
-}*/
+.enterprise .plan .price a {
+
+}
+
+.enterprise .plan .price a span {
+
+}
 
 .recommended {
     border: none;
@@ -35,6 +40,7 @@ h1 {
     background-color: #0099dd;
     width:100%;
     margin-bottom: 0;
+    min-height: 50px;
 }
 
 .plan.recommended .price {
@@ -68,17 +74,32 @@ h1 {
 }
 
 @media (max-width: 992px) {
+    .pricing-tables.attached .col-sm-4,
+    .pricing-tables.attached .col-md-4,
+    .pricing-tables.attached .col-sm-3,
+    .pricing-tables.attached .col-md-3 {
+        padding-left: 15px;
+        padding-right: 15px;   
+    }
+    
+    .pricing-tables.attached .plan .head {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }    
+
     .plan.recommended {
         margin-top: 20px;
     }
-    
+
     .plan.recommended .head h2 {
         margin-top: 0;
     }
-    
+
     .plan.recommended .btn {
         margin-bottom: 0;
     }
+
+
 }
 
 @media (max-width: 768px) {

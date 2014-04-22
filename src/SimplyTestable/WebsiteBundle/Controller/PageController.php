@@ -8,7 +8,10 @@ use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 class PageController extends BaseController implements Cacheable, IEFiltered
 {       
     public function plansAction() {
-        return $this->renderCacheableResponse();
+        return $this->renderCacheableResponse(array(
+            'prices' => $this->container->getParameter('plans')['pricing'],
+            'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
+        ));
     }
 
     public function featuresAction() {
@@ -20,7 +23,21 @@ class PageController extends BaseController implements Cacheable, IEFiltered
     }    
     
     public function accountBenefitsAction() {        
-        return $this->renderCacheableResponse();
+        return $this->renderCacheableResponse(array(
+            'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
+        ));
     }
+    
+    
+    /**
+     * 
+     * @return \SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
+     */
+    private function getPlanFeaturesService() {
+        return $this->container->get('simplytestable.services.planFeaturesService');
+    }
+    
+    
+  
 }
 

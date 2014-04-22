@@ -1,0 +1,5 @@
+{% if is_set is defined and is_set == true %}
+    <i class="fa fa-check text-success"></i> {% if name is defined %}<span class="hidden-md hidden-lg">{{ name }}</span>{% endif %} <span class="boolean">Yes</span>
+{% else %}    
+    <i class="fa fa-times text-danger"></i> {% if name is defined %}<span class="hidden-md hidden-lg">{{ name }}</span>{% endif %} <span class="boolean">No</span>
+{% endif %}

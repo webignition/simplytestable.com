@@ -60,3 +60,8 @@ services:
       
   simplytestable.services.cacheableResponseService:
     class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService     
+    
+  simplytestable.services.planFeaturesService:
+    class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
+    arguments:        
+        planData: %plans%        

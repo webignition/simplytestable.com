@@ -1,0 +1,8 @@
+<a href="{{ url }}" class="btn btn-lg btn-cta {% if primary is defined %}btn-success{% else %}btn-default{% endif %}">        
+    <span>{{ label }}</span>
+    <span class="byline">{% autoescape false %}{{ byline }}{% endautoescape %}</span>
+    
+    {% if icon is defined %}
+        <i class="fa fa-{{ icon }}"></i>
+    {% endif %}
+</a>

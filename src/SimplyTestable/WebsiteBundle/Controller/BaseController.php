@@ -98,7 +98,7 @@ class BaseController extends Controller
     
     
     
-    private function getViewName() {
+    protected function getViewName() {
         $classNamespaceParts = $this->getClassNamespaceParts();
         $bundleNamespaceParts = array_slice($classNamespaceParts, 0, array_search('Controller', $classNamespaceParts));
         
@@ -110,7 +110,7 @@ class BaseController extends Controller
      * 
      * @return string
      */
-    private function getViewPath() {
+    protected function getViewPath() {
         $classNamespaceParts = $this->getClassNamespaceParts();
         $controllerClassNameParts = array_slice($classNamespaceParts, array_search('Controller', $classNamespaceParts) + 1);
 
@@ -126,7 +126,7 @@ class BaseController extends Controller
      * 
      * @return string
      */
-    private function getViewFilename() {
+    protected function getViewFilename() {
         $routeParts = explode('_', $this->container->get('request')->get('_route'));        
         return $routeParts[count($routeParts) - 1] . '.html.twig';
     }
