@@ -9,6 +9,8 @@
     {% endstylesheets %} 
 {% endblock %}
 
+{% set plan_titles = {'demo': 'Limited demo', 'free': 'Free plan', 'personal': 'Personal plan', 'agency': 'Agency plan', 'business': 'Business plan', 'enterprise': 'Enterprise plans'} %}
+
 {% block body %}
 
     <div id="landing-strip">
@@ -16,6 +18,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>{% block heading %}{% endblock%}</h1>
+                    
+<ul class="list-inline">
+    {% for plan_key, plan_title in plan_titles %}
+      <li>
+          {% if plan_key == plan %}
+              <span>{{ plan_title }}</span>
+          {% else %}
+              <a href="{{ path('plandetails_index', {'name': plan_key}) }}">{{ plan_title }}</a>
+          {% endif %}
+      </li>  
+    {% endfor %}
+</ul>                    
                 </div>
             </div>
         </div>
@@ -42,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4">                
                 <div class="row">
                     {% for featureSet in features %}
                         <div class="col-md-12 col-sm-6 summary {% if loop.index0 == 0 %}first-md{% endif %} {% if loop.index0 == 0 or loop.index0 == 1 %}first-sm{% endif %}">

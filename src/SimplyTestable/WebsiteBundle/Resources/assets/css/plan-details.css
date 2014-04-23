@@ -45,10 +45,45 @@ h2 span {
     margin-bottom: 0;
 }
 
+.content li,
 .content p {
     font-size: 18px;
     line-height: 26px;
+}
+
+.content p {
     margin-bottom: 20px;
+}
+
+.content li {
+    margin-bottom: 8px;
+}
+
+.content ul {
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+
+#landing-strip .list-inline {
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+#landing-strip .list-inline li {
+    border-right: 1px solid #ccc;
+}
+
+#landing-strip .list-inline li:last-child {
+    border-right: none;
+}
+
+#landing-strip .list-inline a {
+    opacity: 0.8;    
+}
+
+#landing-strip .list-inline a:hover {
+    opacity: 1;
 }
 
 @media (max-width: 992px) {

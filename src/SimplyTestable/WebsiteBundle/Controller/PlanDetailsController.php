@@ -13,7 +13,8 @@ class PlanDetailsController extends BaseController implements Cacheable, IEFilte
         'personal',
         'agency',
         'business',
-        'enterprise'
+        'enterprise',
+        'premium'
     );
     
     private $name;
