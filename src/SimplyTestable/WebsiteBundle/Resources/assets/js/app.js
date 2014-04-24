@@ -1,5 +1,5 @@
 $(document).ready(function() {    
-    if ($('body.homepage').length) {
+    if ($('body.home-index').length) {
         var updateRecentTests = function (data) {
             var isRemoving = false;
 
@@ -150,7 +150,7 @@ $(document).ready(function() {
     }   
     
     
-    $('body.homepage .carousel').carousel('pause');
+    $('body.home-index .carousel').carousel('pause');
     
     $('body.roadmap .timeline').each(function () {
         var futureEvents = [];
