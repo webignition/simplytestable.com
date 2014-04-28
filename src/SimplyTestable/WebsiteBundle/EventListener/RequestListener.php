@@ -52,7 +52,6 @@ class RequestListener
         
         if ($this->isIeFilteredController() && $this->isUsingOldIE()) {
             $this->event->setResponse($this->getRedirectResponseToOutdatedBrowserPage());
-            return;
         }
         
         $this->getUserService()->setUserFromRequest($this->event->getRequest());
