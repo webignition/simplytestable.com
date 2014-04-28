@@ -85,11 +85,11 @@
     <body class="{{ body_class }} {% block body_class %} {% endblock %}">
     <!-- <![endif]-->    
 
-{% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}
+{% block navbar %}{% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}{% endblock %}
 
 {% block body %}{% endblock %}
 
-{% include 'SimplyTestableWebsiteBundle:Partials:footer.html.twig' %}
+{% block footer %}{% include 'SimplyTestableWebsiteBundle:Partials:footer.html.twig' %}{% endblock %}
 
         <!-- ideally move all suitable JS here -->
     </body>

@@ -52,6 +52,7 @@ class RequestListener
         
         if ($this->isIeFilteredController() && $this->isUsingOldIE()) {
             $this->event->setResponse($this->getRedirectResponseToOutdatedBrowserPage());
+            return;
         }
         
         $this->getUserService()->setUserFromRequest($this->event->getRequest());
@@ -84,8 +85,8 @@ class RequestListener
      * 
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    private function getRedirectResponseToOutdatedBrowserPage() {        
-        return new RedirectResponse($this->kernel->getContainer()->get('router')->generate('outdated_browser', array(), true));
+    private function getRedirectResponseToOutdatedBrowserPage() {                
+        return new RedirectResponse($this->kernel->getContainer()->get('router')->generate('outdatedbrowser_index', array(), true));
     }
     
     
@@ -162,6 +163,8 @@ class RequestListener
      * @return boolean
      */
     private function isUsingIE6() {       
+        // // Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+        
         if (!preg_match('/msie 6\.[0-9]+/i', $this->getUserAgentString())) {
             return false;
         }
