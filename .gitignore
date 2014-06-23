@@ -10,6 +10,7 @@ vendor
 bin
 composer.phar
 /nbproject
+/.idea
 /app/config/parameters.yml
 /src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
 /web/sitemap.xml

@@ -1,19 +1,19 @@
 <div id="carousel-example-generic" class="carousel slide hidden-xs hidden-sm">
     <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
         <li data-target="#carousel-example-generic" data-slide-to="4"></li>
     </ol>
 
     <div class="carousel-inner">
-        <div class="item">
-            {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/00-start.png' %}
+        <div class="item active">
+            {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/00-dash.png' %}
             <img src="{{ asset_url }}" alt="Start a new website test" />
             {% endimage %}                                    
         </div>
-        <div class="item active">
+        <div class="item">
             {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/carousel/01-progress.png' %}
             <img src="{{ asset_url }}" alt="Test progress" />
             {% endimage %}                                     
