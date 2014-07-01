@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://www.simplytestable.com/sitemap.xml
+Sitemap: https://www.simplytestable.com/sitemap.xml

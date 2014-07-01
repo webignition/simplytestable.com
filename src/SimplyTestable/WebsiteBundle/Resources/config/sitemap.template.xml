@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://simplytestable.com/</loc>
-        <lastmod>{{last-modified-date}}</lastmod>
+        <loc></loc>
+        <lastmod></lastmod>
         <changefreq>monthly</changefreq>
         <priority>1</priority>
     </url>
-    <url>
-        <loc>http://simplytestable.com/plans/</loc>
-        <lastmod>{{last-modified-date}}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1</priority>
-    </url>
-    <url>
-        <loc>http://simplytestable.com/features/</loc>
-        <lastmod>{{last-modified-date}}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1</priority>
-    </url>              
 </urlset>

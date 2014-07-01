@@ -1,0 +1,14 @@
+{
+    "/": {
+        "plans/": {
+            "demo/":null,
+            "free/":null,
+            "personal/":null,
+            "agency/":null,
+            "business/":null,
+            "enterprise/":null
+        },
+        "features/":null,
+        "account-benefits/":null
+    }
+}

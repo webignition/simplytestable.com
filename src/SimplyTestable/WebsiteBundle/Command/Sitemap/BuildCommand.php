@@ -8,8 +8,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use SimplyTestable\WebsiteBundle\Command\BaseCommand;
 
-class BuildCommand extends BaseCommand
-{ 
+class BuildCommand extends BaseCommand {
+    /**
+     * @var \DOMDocument
+     */
+    private $sitemapDom = null;
+
+
+    /**
+     * @var \DOMElement
+     */
+    private $urlElementTemplate = null;
+
     
     protected function configure()
     {
@@ -19,20 +29,108 @@ class BuildCommand extends BaseCommand
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {  
-        $sitemapContent = str_replace('{{last-modified-date}}', date('Y-m-d'), $this->getSitemapTemplate());
+    protected function execute(InputInterface $input, OutputInterface $output) {
+        foreach ($this->getUrlsFromSource($this->getSitemapSource()) as $url) {
+            $this->getSitemapDom()->getElementsByTagName('urlset')->item(0)->appendChild($this->generateUrlElement($url));
+        }
+
+        $sitemapContent = $this->getSitemapDom()->saveXML();
         file_put_contents($this->getSitemapPath() . '/sitemap.xml', $sitemapContent);
         $output->writeln('Generated sitemap at ['.$this->getSitemapPath().']');
     }
-    
-    
+
+
+    /**
+     * @return \DOMDocument
+     */
+    private function getSitemapDom() {
+        if (is_null($this->sitemapDom)) {
+            $this->sitemapDom = new \DOMDocument();
+            $this->sitemapDom->loadXML($this->getSitemapTemplate());
+
+            $urlElementTemplate = $this->sitemapDom->getElementsByTagName('url')->item(0);
+            $this->urlElementTemplate = clone $urlElementTemplate;
+
+            $this->sitemapDom->getElementsByTagName('urlset')->item(0)->removeChild($urlElementTemplate);
+        }
+
+        return $this->sitemapDom;
+    }
+
+
+    /**
+     * @param $url
+     * @return \DOMElement
+     */
+    private function generateUrlElement($url) {
+        $now = new \DateTime();
+
+        $element = clone $this->urlElementTemplate;
+        $element->getElementsByTagName('loc')->item(0)->nodeValue = $url;
+        $element->getElementsByTagName('lastmod')->item(0)->nodeValue = $now->format('Y-m-d');
+
+        return $element;
+    }
+
+
+    /**
+     * @param \stdClass
+     * @return string[]
+     */
+    private function getUrlsFromSource($source) {
+        $urls = [];
+
+        foreach ($source as $relativePath => $details) {
+            $urls[] = $this->getBaseUrl() . ltrim($relativePath, "/");
+
+            if (!is_null($details)) {
+                $urls = array_merge($urls, $this->getUrlsFromSource($details));
+            }
+        }
+
+        return $urls;
+    }
+
+
+    /**
+     * @return string
+     */
+    private function getBaseUrl() {
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost('simplytestable.com');
+        $context->setScheme('https');
+
+        return $this->getRouter()->generate('home_index', [], true);
+    }
+
+
+    /**
+     * @return string
+     */
     private function getSitemapPath() {
         return realpath($this->getContainer()->get('kernel')->getRootDir() . '/../web');
     }
-    
-    
+
+    /**
+     * @return string
+     */
     private function getSitemapTemplate() {
-        return file_get_contents($this->getContainer()->get('kernel')->locateResource('@SimplyTestableWebsiteBundle/Resources/config/sitemap.template.xml'));        
+        return file_get_contents($this->getContainer()->get('kernel')->locateResource('@SimplyTestableWebsiteBundle/Resources/config/sitemap.template.xml'));
+    }
+
+    /**
+     * @return \stdClass
+     */
+    private function getSitemapSource() {
+        return json_decode(file_get_contents($this->getContainer()->get('kernel')->locateResource('@SimplyTestableWebsiteBundle/Resources/config/sitemap.source.json')));
+    }
+
+
+    /**
+     * @return \Symfony\Bundle\FrameworkBundle\Routing\Router
+     */
+    private function getRouter() {
+        return $this->getContainer()->get('router');
+        //
     }
 }
