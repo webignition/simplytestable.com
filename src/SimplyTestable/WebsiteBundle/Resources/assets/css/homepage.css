@@ -108,11 +108,11 @@ h1 {
     text-align: center;
     display: block;
     font-size: 120px;
-    margin-top: 80px;
 }
 
 #foo1 .fundamental .fa {
     font-size: 100px;
+    margin-top: -10px;
 }
 
 #foo1 .feature {
@@ -124,7 +124,6 @@ h1 {
     text-align: right;
     display: block;
     font-size: 120px;
-    margin-top: 60px;
 }
 
 #foo2 .stacked .row {
@@ -149,19 +148,36 @@ h1 {
     text-align: right;
     display: block;
     font-size: 40px;
-    /*margin-top: 60px;*/
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-    /*#landing-strip p {*/
-        /*line-height: 32px;*/
-    /*}*/
-
     #foo3 h2 {
         font-size: 24px;
     }
 }
 
+
+@media (min-width: 768px) and (max-width: 992px) {
+    h1 {
+        font-size: 46px;
+    }
+
+    #landing-strip .container {
+        padding-top: 100px;
+    }
+
+    #landing-strip p {
+        line-height: 32px;
+    }
+
+    #foo2 .fa {
+        font-size: 120px;
+    }
+
+    #foo3 h2 {
+
+    }
+}
 
 
 /*#landing-strip .content {*/
