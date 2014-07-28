@@ -143,9 +143,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-#foo3 h2 {
-
-}
 
 #foo3 .fa {
     color: #848484;
@@ -153,6 +150,16 @@ h1 {
     display: block;
     font-size: 40px;
     /*margin-top: 60px;*/
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    /*#landing-strip p {*/
+        /*line-height: 32px;*/
+    /*}*/
+
+    #foo3 h2 {
+        font-size: 24px;
+    }
 }
 
 
