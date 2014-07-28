@@ -179,6 +179,42 @@ h1 {
     }
 }
 
+@media (max-width: 768px) {
+    #landing-strip {
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #landing-strip .container {
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #landing-strip p {
+        line-height: 30px;
+    }
+
+    #ctas {
+        margin-top: -200px;
+        margin-bottom: 0;
+    }
+
+    #ctas .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .feature-section {
+        margin: 20px 0;
+        padding-bottom: 0;
+    }
+}
+
 
 /*#landing-strip .content {*/
     /*margin-top: 20px;*/
