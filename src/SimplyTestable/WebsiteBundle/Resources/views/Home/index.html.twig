@@ -13,114 +13,201 @@
     <div id="landing-strip">
         <div class="container">
             <div class="row">
-                {% include 'SimplyTestableWebsiteBundle:Partials:logo.html.twig' %}                 
-                <div class="col-lg-7 col-md-6">
-                    <div class="leader">
-                        <h1>
-                            Automated front-end web testing
-                        </h1>    
-                        <p>
-                            Save time and take the pain out of routine front-end web testing.
-                            One-click testing of your entire site.
-                        </p>                            
-                    </div>
-                    <div class="content">
-                        <ul class="iconed-list">
-                            <li>
-                                <span>HTML validation, CSS validation and JavaScript linting</span>
-                            </li>
-                            <li>
-                                <span>Link integrity (broken link) checking</span>
-                            </li>                                
-                            <li>
-                                <span>Test either your whole site or a single page with just one click</span>
-                            </li>                                
-                            <li>
-                                <span><a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/">Overview report</a> of successes and failures</span>
-                            </li>                                
-                            <li>
-                                <span>Detailed <a href="http://gears.simplytestable.com/http://blog.simplytestable.com//462/276988/results/">per-URL error report</a></span>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    {% include 'SimplyTestableWebsiteBundle:Partials/homepage:carousel.html.twig' %}
+                <div class="col-xs-12">
+                    <h1>
+                        Simple routine frontend web testing
+                    </h1>
+
+                    <p>
+                        One-click full-site <a href="">HTML validation</a>, <a href="">CSS validation</a>,
+                        <a href="">JavaScript static analysis</a> and <a href="">broken link checking</a>.
+                    </p>
                 </div>
             </div>
-            <div class="row ctas">
-                <div class="col-md-3">
-                    {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
-                </div>
-                <div class="col-md-3">
-
-                </div>
-                <div class="col-md-3">
-
-                </div>
-                <div class="col-md-3">
-
-                </div>                
-            </div>
-        </div> <!-- /container -->  
-        <div class="fadestrip"></div>
+        </div>
     </div>
-            
-    <div id="features">
-        <div class="container iconified-section">        
-            <!-- Example row of columns -->
+    <div id="ctas">
+        <div class="container">
             <div class="row">
-                {% include 'SimplyTestableWebsiteBundle:Partials:section-icon.html.twig' with {'icon':'signal'} %}
-                <div class="col-md-4 col-sm-6 feature-section">
-                    <h2>Technical verification</h2>                
-                    <ul class="iconed-list">
-                        <li class="completed">
-                            <span>HTML validation</span>
-                        </li>
-                        <li class="completed">
-                            <span>CSS validation</span>
-                        </li>                             
-                        <li class="completed">
-                            <span>JavaScript quality checks with <a href="http://en.wikipedia.org/wiki/JSLint">JSLint</a></span>
-                        </li>                            
-                    </ul>                
+                <div class="col-lg-3 col-lg-offset-3">
+                    <a class="cta btn btn-primary btn-lg" href="{{ web_client_urls.base }}">
+                        <span class="primary">Try now</span>
+                        <span class="byline">Free demo. No sign up. A limited taster.</span>
+                        <i class="fa fa-caret-right"></i>
+                    </a>
                 </div>
-                <div class="col-md-4 col-sm-6  feature-section">
-                    <h2>Quality checks</h2>
-                    <ul class="iconed-list">
-                        <li class="completed">
-                            <span>Find broken links (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('page_plans') }}">premium</a> account)</span>
-                        </li>                          
-                    </ul> 
-                </div>
-                <div class="clearfix visible-sm"></div>
-                <div class="col-md-4 col-sm-6  feature-section">
-                    <h2>One-click full-site testing</h2>
-
-                    {#http://blog.simplytestable.com/urls-now-collected-from-news-feeds/#}
-
-                    <ul class="iconed-list">
-                        <li>
-                            <span class="content">Auto-discover pages within your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span>
-                        </li>                            
-                        <li>
-                            <span class="content">Crawl your site to find pages to test if you have no sitemap (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('page_plans') }}">premium</a> account)</span>
-                        </li>                    
-                    </ul> 
+                <div class="col-lg-6">
+                    <a class="cta btn btn-default btn-lg pull-left" href="{{ [web_client_urls.base, web_client_urls.sign_up]|join('') }}">
+                        <span class="primary">Create an account</span>
+                        <span class="byline">Free. Full test history. All types of test.</span>
+                        <i class="fa fa-sign-in"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container iconified-section" id="recent-site-tests">        
-        <!-- Example row of columns -->
-        <div class="row">
-            {% include 'SimplyTestableWebsiteBundle:Partials:section-icon.html.twig' with {'icon':'cog'} %}
-            <div class="col-md-12">
-                <h2>Recent demo tests</h2>                
-{% include 'SimplyTestableWebsiteBundle:Partials:/homepage/recent-test-list.html.twig' with {'tests':recent_tests} %}                  
+    <div id="foo1" class="feature-section">
+        <div class="container">
+            <div class="row feature">
+                <div class="col-lg-2 col-lg-offset-1">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="col-lg-7">
+                    <h2>One-click, hours saved</h2>
+                    <p>
+                        Tried validating the HTML per page for a large site by hand and jotting down all the issues?
+                    </p>
+                    <p>
+                        No, no-one does. It takes hours. No-one has time for that.
+                    </p>
+                    <p>
+                        We let you test all the pages of a site no matter the size with just one click.
+                    </p>
+                    <p>
+                        Get on with what is important and return
+                        when your results are ready.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="row feature fundamental">
+                <div class="col-lg-2 col-lg-offset-1">
+                    <i class="fa fa-tachometer"></i>
+                </div>
+                <div class="col-lg-7">
+                    <h2>Fundamental testing and reporting</h2>
+                    <p>
+                        HTML validation, CSS validation, JS static analysis and broken link checking.
+                    </p>
+                    <p>
+                        Live results as your multi-page test is carried out.
+                    </p>
+                    <p>
+                        Overview report of successes and failures.
+                    </p>
+                    <p>
+                        Detailed per-page error report.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row feature">
+                <div class="col-lg-2 col-lg-offset-1">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="col-lg-7">
+                    <h2>Team collaboration</h2>
+                    <p>
+                        Create a team and invite your colleagues to join.
+                    </p>
+
+                    <p>
+                        Share a premium account within your organisation.
+                    </p>
+
+                    <p>
+                        Any number of team members at no extra cost.
+                    </p>
+
+                    <p>
+                        Easily share test results within your team.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>   
+    </div>
+
+    <div id="foo2" class="feature-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </div>
+                        <div class="col-lg-8">
+                            <h2>Used extensively</h2>
+                            <p>
+                                Over 17,000 test jobs run (so far).
+                            </p>
+                            <p>
+                                112,000 unique URLS tested across 8,000 websites.
+                            </p>
+                            <p>
+                                Nearly 490,000 per-page tests carried out.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div class="col-lg-8">
+                            <h2>Global reach</h2>
+                            <p>
+                                Regular daily users from the US, Europe, India and Japan.
+                            </p>
+                            <p>
+                                Average month sees users from 175 countries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="foo3" class="feature-section feature-section-last">
+        <div class="container">
+            <div class="col-lg-3">
+                <h2>Test history</h2>
+
+                        <p>
+                            Full list of past tests, searchable and filterable.
+                        </p>
+                        <p>
+                            Easily find past tests to compare against.
+                        </p>
+
+            </div>
+            <div class="col-lg-3">
+                <h2>Tweakable CSS</h2>
+
+                        <p>
+                            Who's a fan of vendor-specific CSS property warnings?
+                        </p>
+                        <p>
+                            No one. We ignore these by default.
+                        </p>
+
+            </div>
+            <div class="col-lg-3">
+                <h2>Tweakable JSLint</h2>
+
+                        <p>
+                            Customisable JSLint options for JS static analysis.
+                        </p>
+                        <p>
+                            With sane defaults. Filter out the noise.
+                        </p>
+
+            </div>
+            <div class="col-lg-3">
+                <h2>Need something?</h2>
+
+                        <p>
+                            What frontend testing pains do you face?
+                        </p>
+                        <p>
+                            <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;">Tell us what you want</a> and we'll make it.
+                        </p>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
