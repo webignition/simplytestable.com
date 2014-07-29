@@ -2,7 +2,8 @@
 
 {% block stylesheets %}      
 {{ parent() }}
-{% stylesheets    
+{% stylesheets
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/splash.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/features.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
@@ -15,149 +16,263 @@
     <div class="container">   
         <div class="row">
             <div class="col-md-12">
-                <h1>Test in minutes what would take hours by hand. Automate it.</h1>
+                <h1>One-click full-site automated testing. Searchable history. Team collaboration.</h1>
             </div>
-        </div> 
-        <div class="clearfix"></div>        
-
-
+        </div>
     </div>
 </div>
 
-<div id="features">
-    <div class="container">        
-        
-        <div class="row">             
-            <div class="col-md-5 col-md-offset-1 feature-section">
-                <h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check  hidden-xs hidden-sm"></i> One-Click Full-Site Testing</h2>
-                <p>
-                    
-                </p>                
-                <ul class="iconed-list">
-                    <li>
-                        <span class="content">Run selected tests against all pages of your site, not just one page at a time</span>
-                    </li>                     
-                    <li>
-                        <span class="content">Auto-discover pages within your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span>
-                    </li>                            
-                    <li>
-                        <span class="content">Crawl your site to find pages to test if you have no sitemap (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('page_plans') }}">premium</a> account)</span>
-                    </li>
-                </ul> 
-            </div>            
-            <div class="col-md-5 col-md-offset-1 feature-section">
-                <h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> HTML5 Validation</h2>
-                <p>
-                    Validate the markup for your entire site using industry-standard
-                    tools provided by the <a href="http://validator.w3.org/">W3C</a>
-                    and <a href="http://html5.validator.nu/">validator.nu</a>.
-                </p>                
-                <p>
-                    Works with: 
-                </p>
-                <ul class="iconed-list">
-                    <li>
-                        <span class="content">HTML5</span>
-                    </li>
-                    <li>
-                        <span class="content">HTML 4.01 and 4</span>
-                    </li>
-                    <li>
-                        <span class="content">XHTML 1.0 and 1.1</span>
-                    </li>                    
-                    <li>
-                        <span class="content">HTML 3.2</span>
-                    </li>                    
-                    <li>
-                        <span class="content">HTML 2</span>
-                    </li>                   
-                </ul>
-            </div>                
- 
-            <div class="col-md-5 col-md-offset-1 feature-section">
-                <h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Smart CSS3 Validation</h2>
-                <p>
-                    Validate CSS in all your linked style sheets, within any
-                    <code>&lt;style&gt;</code> elements and within any
-                    <code>style="&hellip;"</code> attributes.
-                </p>                
+    <div class="feature-section feature-section-full">
+        <div class="container">
+            <div class="feature">
+                <div class="row">
+                    <div class="col-lg-7 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3">
+                        <h2>One-click full-site automated testing</h2>
+                    </div>
+                </div>
 
-                <p>
-                    Make use of additional result filters not provided by the
-                    standard W3C CSS validator:
-                </p>
-                
-                <ul class="iconed-list">
-                    <li>
-                        <span class="content">ignore vendor extension errors and warnings</span>
-                    </li>
-                    <li>
-                        <span class="content">ignore CSS from common content delivery networks</span>
-                    </li>
-                    <li>
-                        <span class="content">ignore CSS from custom domains</span>
-                    </li>                  
-                </ul> 
+                <div class="row">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <i class="fa fa-dot-circle-o"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-8 col-sm-8">
+                        <p>
+                            Enter your website address, click one button and wait. That's all it takes.
+                        </p>
+                        <p>
+                            Choose HTML validation, CSS validation, JavaScript static analysis and
+                            broken link checking.
+                        </p>
+                        <p>
+                            All with just one click. No more &ldquo;because it will take days&ldquo; excuses.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-            </div>                 
-            <div class="col-md-5 col-md-offset-1 feature-section">
-                <h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Smart JSLint Analysis</h2>
-                <p class="intro">
-                    Run static analysis against your JavaScript code using
-                    the de-facto standard <a href="http://jslint.com">JSLint</a>
-                    syntax checker and code-quality analyser.
-                </p>                
-                <p>
-                    JSLint scans your code against a professional subset
-                    of JavaScript and in relation to professional coding standards.
-                </p>
-                <ul class="iconed-list">
-                    <li>
-                        <span class="content">identify syntax errors and code-quality issues</span>
-                    </li>
-                    <li>
-                        <span class="content">ignore JS from common content delivery networks</span>
-                    </li>
-                    <li>
-                        <span class="content">ignore JS from custom domains</span>
-                    </li>                  
-                    <li>
-                        <span class="content">sensible JSLint defaults</span>
-                    </li>                     
-                    <li>
-                        <span class="content">fully configure JSLint options</span>
-                    </li>                     
-                </ul>                 
-            </div>                   
-  
-           
-            <div class="col-md-5 col-md-offset-1 feature-section">
-                <h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Reliable Link Integrity Testing</h2>
-                <p class="intro">
-                    Find broken links across your entire site effortlessly, turning a near-impossible
-                    task into one you can carry out regularly:
-                </p>                
 
-                <ul class="iconed-list">
-                    <li>
-                        <span class="content">easily check all links across your entire site</span>
-                    </li>
-                    <li>
-                        <span class="content">check all links in each page, not just clickable links that you can see</span>
-                    </li>
-                    <li>
-                        <span class="content">check all URLs, including all non-absolute and protocol-relative URLs</span>
-                    </li>
-                    <li>
-                        <span class="content">find out why a given link does not work</span>
-                    </li>                    
-                    <li>
-                        <span class="content">realistic results that you don't have to double-check by hand</span>
-                    </li>                     
-                </ul>                 
-            </div>         
-        </div> 
-    </div>    
-</div>
+            <div class="feature">
+                <div class="row fundamental">
+                    <div class="col-lg-7 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-2 col-sm-offset-3">
+                        <h2>Fundamental testing</h2>
+                    </div>
+                </div>
+
+                <div class="row fundamental">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <i class="fa fa-gear"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-8 col-sm-8">
+                        <p>
+                            HTML, CSS, JavaScript and links: the fundamental aspects that make websites work.
+                        </p>
+
+                        <p>
+                            You are just one click away from full-site:
+                        </p>
+
+                        <ul>
+                            <li>
+                                HTML validation
+                            </li>
+                            <li>
+                                CSS validation
+                            </li>
+                            <li>
+                                JavaScript static analysis
+                            </li>
+                            <li>
+                                Broken link checking
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-sm-8 col-lg-offset-3 col-md-offset-2 col-sm-offset-3">
+                        <h2>Team collaboration</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="col-lg-7 col-md-8 col-sm-8">
+                        <p>
+                            We all work in groups to achieve more than we could as individuals.
+                        </p>
+
+                        <p>
+                            All testing carried out under your personal Simply Testable account is
+                            private and can be accessed only by you.
+                        </p>
+
+                        <p>
+                            You could share account details throughout your organisation and have everyone
+                            sign in as the same user. You could also share a mug and wash it before passing
+                            it on to your colleagues. Neither is ideal.
+                        </p>
+
+                        <p>
+                            We let you create a team and invite your colleagues to join your team.
+                        </p>
+
+                        <p>
+                            Everyone in your organisation signs in independently and can benefit from the resources
+                            of a shared premium company account.
+                        </p>
+
+                        <p>
+                            Everyone in your team can easily access all tests carried out by everyone else on the team,
+                            letting you work smoothly together as you always do.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+{#<div id="features">#}
+    {#<div class="container">        #}
+        {##}
+        {#<div class="row">             #}
+            {#<div class="col-md-5 col-md-offset-1 feature-section">#}
+                {#<h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check  hidden-xs hidden-sm"></i> One-Click Full-Site Testing</h2>#}
+                {#<p>#}
+                    {##}
+                {#</p>                #}
+                {#<ul class="iconed-list">#}
+                    {#<li>#}
+                        {#<span class="content">Run selected tests against all pages of your site, not just one page at a time</span>#}
+                    {#</li>                     #}
+                    {#<li>#}
+                        {#<span class="content">Auto-discover pages within your XML sitemap (including <a href="http://blog.simplytestable.com/multiple-sitemaps-indexed-sitemaps-supported/">multiple sitemaps, indexed sitemaps</a> and <a href="http://blog.simplytestable.com/compressed-sitemaps-now-supported/">compressed sitemaps</a>)</span>#}
+                    {#</li>                            #}
+                    {#<li>#}
+                        {#<span class="content">Crawl your site to find pages to test if you have no sitemap (requires a <a href="{{ web_client_urls['base'] }}{{ web_client_urls['sign_up'] }}">free</a> or <a href="{{ path('page_plans') }}">premium</a> account)</span>#}
+                    {#</li>#}
+                {#</ul> #}
+            {#</div>            #}
+            {#<div class="col-md-5 col-md-offset-1 feature-section">#}
+                {#<h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> HTML5 Validation</h2>#}
+                {#<p>#}
+                    {#Validate the markup for your entire site using industry-standard#}
+                    {#tools provided by the <a href="http://validator.w3.org/">W3C</a>#}
+                    {#and <a href="http://html5.validator.nu/">validator.nu</a>.#}
+                {#</p>                #}
+                {#<p>#}
+                    {#Works with: #}
+                {#</p>#}
+                {#<ul class="iconed-list">#}
+                    {#<li>#}
+                        {#<span class="content">HTML5</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">HTML 4.01 and 4</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">XHTML 1.0 and 1.1</span>#}
+                    {#</li>                    #}
+                    {#<li>#}
+                        {#<span class="content">HTML 3.2</span>#}
+                    {#</li>                    #}
+                    {#<li>#}
+                        {#<span class="content">HTML 2</span>#}
+                    {#</li>                   #}
+                {#</ul>#}
+            {#</div>                #}
+ {##}
+            {#<div class="col-md-5 col-md-offset-1 feature-section">#}
+                {#<h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Smart CSS3 Validation</h2>#}
+                {#<p>#}
+                    {#Validate CSS in all your linked style sheets, within any#}
+                    {#<code>&lt;style&gt;</code> elements and within any#}
+                    {#<code>style="&hellip;"</code> attributes.#}
+                {#</p>                #}
+
+                {#<p>#}
+                    {#Make use of additional result filters not provided by the#}
+                    {#standard W3C CSS validator:#}
+                {#</p>#}
+                {##}
+                {#<ul class="iconed-list">#}
+                    {#<li>#}
+                        {#<span class="content">ignore vendor extension errors and warnings</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">ignore CSS from common content delivery networks</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">ignore CSS from custom domains</span>#}
+                    {#</li>                  #}
+                {#</ul> #}
+
+            {#</div>                 #}
+            {#<div class="col-md-5 col-md-offset-1 feature-section">#}
+                {#<h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Smart JSLint Analysis</h2>#}
+                {#<p class="intro">#}
+                    {#Run static analysis against your JavaScript code using#}
+                    {#the de-facto standard <a href="http://jslint.com">JSLint</a>#}
+                    {#syntax checker and code-quality analyser.#}
+                {#</p>                #}
+                {#<p>#}
+                    {#JSLint scans your code against a professional subset#}
+                    {#of JavaScript and in relation to professional coding standards.#}
+                {#</p>#}
+                {#<ul class="iconed-list">#}
+                    {#<li>#}
+                        {#<span class="content">identify syntax errors and code-quality issues</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">ignore JS from common content delivery networks</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">ignore JS from custom domains</span>#}
+                    {#</li>                  #}
+                    {#<li>#}
+                        {#<span class="content">sensible JSLint defaults</span>#}
+                    {#</li>                     #}
+                    {#<li>#}
+                        {#<span class="content">fully configure JSLint options</span>#}
+                    {#</li>                     #}
+                {#</ul>                 #}
+            {#</div>                   #}
+  {##}
+           {##}
+            {#<div class="col-md-5 col-md-offset-1 feature-section">#}
+                {#<h2><i class="fa fa-certificate hidden-xs hidden-sm"></i><i class="fa fa-check hidden-xs hidden-sm"></i> Reliable Link Integrity Testing</h2>#}
+                {#<p class="intro">#}
+                    {#Find broken links across your entire site effortlessly, turning a near-impossible#}
+                    {#task into one you can carry out regularly:#}
+                {#</p>                #}
+
+                {#<ul class="iconed-list">#}
+                    {#<li>#}
+                        {#<span class="content">easily check all links across your entire site</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">check all links in each page, not just clickable links that you can see</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">check all URLs, including all non-absolute and protocol-relative URLs</span>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<span class="content">find out why a given link does not work</span>#}
+                    {#</li>                    #}
+                    {#<li>#}
+                        {#<span class="content">realistic results that you don't have to double-check by hand</span>#}
+                    {#</li>                     #}
+                {#</ul>                 #}
+            {#</div>         #}
+        {#</div> #}
+    {#</div>    #}
+{#</div>#}
 
 {% endblock %}

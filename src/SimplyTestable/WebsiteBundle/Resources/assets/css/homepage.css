@@ -1,3 +1,7 @@
+#landing-strip .container {
+    padding: 140px 0 200px 0;
+}
+
 #ctas {
     margin-top: -160px;
     margin-bottom: 140px;
@@ -26,47 +30,11 @@
     font-size: 24px;
 }
 
-.feature-section {
-    margin: 60px 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 60px;
-}
-
-.feature-section-last {
-    border-bottom: none;
-}
-
-.feature-section h2 {
-    margin-bottom: 30px;
-}
-
-.feature-section p,
-.feature-section li {
-    font-size: 18px;
-    line-height: 24px;
-    opacity: 0.9;
-    margin-bottom: 14px;
-}
-
-#foo1 .item .fa {
-    opacity: 0.6;
-}
-
-#foo1 .feature .fa {
-    color: #848484;
-    text-align: center;
-    display: block;
-    font-size: 120px;
-}
-
-#foo1 .fundamental .fa {
+.feature-section .fundamental .fa {
     font-size: 100px;
     margin-top: -10px;
 }
 
-#foo1 .feature {
-    margin-bottom: 40px;
-}
 
 #foo2 .fa {
     color: #848484;
