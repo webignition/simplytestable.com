@@ -2,12 +2,15 @@
 
 {% block stylesheets %}          
     {{ parent() }}
-    {% stylesheets    
+    {% stylesheets
+    '@SimplyTestableWebsiteBundle/Resources/assets/css/splash.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/homepage.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %} 
 {% endblock %}
+
+{% block body_class %} splash{% endblock %}
 
 {% block body %}
     <div id="landing-strip">

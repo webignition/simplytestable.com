@@ -1,0 +1,57 @@
+h1 {
+    font-size: 60px;
+}
+
+#landing-strip {
+    border-bottom: none;
+    background-image: url('/bundles/simplytestablewebsite/images/ls04.8.jpg');
+    background-position: 50% -310px;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0;
+}
+
+#landing-strip p {
+    font-size: 22px;
+    line-height: 22px;
+    margin: 40px 0;
+}
+
+#landing-strip .container {
+    padding: 140px 0 200px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    h1 {
+        font-size: 46px;
+    }
+
+    #landing-strip .container {
+        padding-top: 100px;
+    }
+
+    #landing-strip p {
+        line-height: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    #landing-strip {
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #landing-strip .container {
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #landing-strip p {
+        line-height: 30px;
+    }
+}
