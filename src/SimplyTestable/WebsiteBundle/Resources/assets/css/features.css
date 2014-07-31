@@ -1,3 +1,7 @@
+h1 {
+    height: 140px;
+}
+
 #landing-strip .container {
     padding: 100px 0 260px 0;
 }
@@ -65,7 +69,7 @@
 #upper-nav a b {
 }
 
-#upper-nav a span {
+#upper-nav a span.byline {
     font-size: 14px;
     margin-top: 12px;
 }
@@ -119,40 +123,14 @@
 }
 
 
-/*.sidenav .affix-top {*/
-    /*margin-top: 60px;*/
-/*}*/
-
-/*.sidenav .affix {*/
-    /*top: 80px;*/
-/*}*/
-
-/*.sidenav .nav .nav .nav>li>a {*/
-    /*padding-left: 42px;*/
-
-/*}*/
-
-/*.sidenav .nav .nav>li>a {*/
-    /*padding-top: 4px;*/
-    /*padding-bottom: 4px;*/
-    /*padding-left: 30px;*/
-/*}*/
-/*.sidenav .nav>li>a {*/
-    /*display: block;*/
-    /*padding: 4px 20px 4px 20px;*/
-    /*color: #999;*/
-/*}*/
-
-/*.sidenav .nav>.active>a {*/
-    /*padding-left: 18px;*/
-    /*font-weight: 700;*/
-    /*color: #0088cc;*/
-    /*background-color: transparent;*/
-    /*border-left: 2px solid #0088cc;*/
-/*}*/
-
 #fundamental-testing-section .items .fa {
     font-size: 60px;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    h1 {
+        font-size: 54px;
+    }
 }
 
 /*.feature-section {*/
