@@ -18,22 +18,19 @@ h1 {
 }
 
 #landing-strip .container {
-    padding: 140px 0;
     background-color: rgba(255, 255, 255, 0.2);
 }
 
 .feature-section {
     margin: 60px 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 60px;
-}
-
-.feature-section-last {
-    border-bottom: none;
 }
 
 .feature-section h2 {
     margin-bottom: 30px;
+}
+
+.feature-section h3 {
+    margin: 60px 0 20px 0;
 }
 
 .feature-section p,
@@ -48,15 +45,11 @@ h1 {
     margin-bottom: 30px;
 }
 
-.feature-section-full .feature .fa {
+.feature-section-full .feature .fa.primary {
     color: #848484;
     text-align: center;
     display: block;
     font-size: 120px;
-}
-
-.feature-section-full .feature {
-    margin-bottom: 40px;
 }
 
 @media (min-width: 768px) and (max-width: 992px) {

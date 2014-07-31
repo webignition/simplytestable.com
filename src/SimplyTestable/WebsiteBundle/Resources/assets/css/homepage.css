@@ -30,6 +30,19 @@
     font-size: 24px;
 }
 
+.feature-section {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 60px;
+}
+
+.feature-section-last {
+    border-bottom: none;
+}
+
+.feature-section-full .feature {
+    margin-bottom: 40px;
+}
+
 .feature-section .fundamental .fa {
     font-size: 100px;
     margin-top: -10px;
