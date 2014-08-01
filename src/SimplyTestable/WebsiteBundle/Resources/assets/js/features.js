@@ -34,15 +34,8 @@ $(function() {
         $('body').addClass('upper-nav-affix').removeClass('upper-nav-affix-top');
     }).on('affix-top.bs.affix', function (event) {
         $('body').removeClass('upper-nav-affix').addClass('upper-nav-affix-top');
-    }).on('activate.bs.scrollspy', function (event) {
-        console.log('cp01');
-
-//        if ($('a', event.target).attr('href') == '#invites') {
-//            if (input.stFormHelper().isEmpty() || input.stFormErrorHelper().hasError()) {
-//                input.stFormHelper().select();
-//            }
-//        }
     });
+
 
     $('#upper-nav-fundamental-testing em').click(function () {
         var hashValue = $(this).attr('data-target');
