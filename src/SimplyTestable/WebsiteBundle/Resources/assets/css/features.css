@@ -3,7 +3,8 @@ h1 {
 }
 
 #landing-strip .container {
-    padding: 100px 0 260px 0;
+    padding-top: 100px;
+    padding-bottom: 260px;
 }
 
 
@@ -184,8 +185,17 @@ h1 {
         font-size: 90px;
         margin-top: -26px;
     }
+}
 
+@media (max-width: 768px) {
+    h1 {
+        margin: 0;
+        height: 120px;
+    }
 
+    #landing-strip .container {
+        padding-bottom: 0px;
+    }
 }
 
 /*.feature-section {*/
