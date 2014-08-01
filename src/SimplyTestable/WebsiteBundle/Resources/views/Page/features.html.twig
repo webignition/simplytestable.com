@@ -32,36 +32,29 @@
     </div>
 </div>
 
-<div id="upper-nav" data-spy="affix" data-offset-top="278">
+<div id="upper-nav">
     <div class="inner">
         <div class="container nav">
             <div class="row">
                 <div class="">
                     <ul class="nav">
-                        <li class="col-lg-2 col-md-2 active">
+                        <li id="upper-nav-one-click-full-site-testing" class="col-lg-2 col-md-2 col-sm-4 active selected">
                             <a href="#one-click-full-site-testing">
                                 <i class="fa primary fa-globe"></i>
 
                                 <div class="wrapper">
-                                    <b>
-                                        {#<span class="hidden-md">#}
-                                            {#One-click full-site testing#}
-                                        {#</span>#}
-                                        {#<span class="hidden-lg hidden-sm hidden-xs">#}
-                                            Automated testing
-                                        {#</span>#}
-                                    </b>
-                                    <span class="byline">One click &hellip; <i class="fa fa-coffee"></i> &hellip; entire site tested</span>
+                                    <b>Automated testing</b>
+                                    <span class="byline hidden-sm">One click &hellip; <i class="fa fa-coffee"></i> &hellip; entire site tested</span>
                                 </div>
                             </a>
                         </li>
-                        <li class="col-lg-2 col-md-2" id="upper-nav-fundamental-testing">
+                        <li id="upper-nav-fundamental-testing" class="col-lg-2 col-md-2 col-sm-4">
                             <a href="#fundamental-testing">
                                 <i class="fa primary fa-gear"></i>
 
                                 <div class="wrapper">
-                                    <b>Fundamental testing</b>
-                                    <span class="byline">
+                                    <b>Fundamental <span class="hidden-sm">testing</span> <span class="hidden-lg hidden-md">tests</span></b>
+                                    <span class="byline hidden-sm">
                                         <em data-target="#html-validation">HTML</em>,
                                         <em data-target="#css-validation">CSS</em>,
                                         <em data-target="#javascript-static-analysis">JS</em>,
@@ -70,33 +63,33 @@
                                 </div>
                             </a>
                         </li>
-                        <li class="col-lg-2 col-md-2">
+                        <li id="upper-nav-reporting" class="col-lg-2 col-md-2 col-sm-4">
                             <a href="#reporting">
                                 <i class="fa primary fa-file-text-o"></i>
 
                                 <div class="wrapper">
                                     <b>Glorious reporting</b>
-                                    <span class="byline">Site summary, per-page reports</span>
+                                    <span class="byline hidden-sm">Site summary, per-page reports</span>
                                 </div>
                             </a>
                         </li>
-                        <li class="col-lg-2 col-md-2">
+                        <li id="upper-nav-teams" class="col-lg-2 col-md-2 col-sm-4">
                             <a href="#teams">
                                 <i class="fa primary fa-user"></i>
 
                                 <div class="wrapper">
                                     <b>Team collaboration</b>
-                                    <span class="byline">Shared plan, easily shared test results</span>
+                                    <span class="byline hidden-sm">Shared plan, easily shared test results</span>
                                 </div>
                             </a>
                         </li>
-                        <li class="col-lg-2 col-md-2">
+                        <li id="upper-nav-history" class="col-lg-2 col-md-2 col-sm-4">
                             <a href="#history">
                                 <i class="fa primary fa-search"></i>
 
                                 <div class="wrapper">
                                     <b>Searchable history</b>
-                                    <span class="byline">Searchable, filterable history</span>
+                                    <span class="byline hidden-sm">Searchable, filterable history</span>
                                 </div>
                             </a>
                         </li>
@@ -113,13 +106,13 @@
             <div id="feature-section-first" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="one-click-full-site-testing">One-click full-site automated testing</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-globe"></i>
                         </div>
                         <div class="col-lg-6 col-md-7 col-sm-8">
@@ -141,13 +134,13 @@
             <div id="fundamental-testing-section" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="fundamental-testing">Fundamental testing</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-gear"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -161,17 +154,29 @@
 
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2292826/results/">Sample HTML validation report <i class="fa fa-caret-right"></i></a>
+                                    <a href="#html-validation">HTML validation <i class="fa fa-caret-down"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2293211/results/">Sample CSS validation report <i class="fa fa-caret-right"></i></a>
+                                    <a href="#css-validation">CSS validation <i class="fa fa-caret-down"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2293280/results//">Sample JS static analysis report <i class="fa fa-caret-right"></i></a>
+                                    <a href="#javascript-static-analysis">JavaScript static analysis <i class="fa fa-caret-down"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2292525/results/">Sample link integrity (broken link) report <i class="fa fa-caret-right"></i></a>
+                                    <a href="#broken-link-checking">Broken link checking <i class="fa fa-caret-down"></i></a>
                                 </li>
+                                {#<li>#}
+                                    {#<a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2292826/results/">Sample HTML validation report <i class="fa fa-caret-right"></i></a>#}
+                                {#</li>#}
+                                {#<li>#}
+                                    {#<a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2293211/results/">Sample CSS validation report <i class="fa fa-caret-right"></i></a>#}
+                                {#</li>#}
+                                {#<li>#}
+                                    {#<a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2293280/results//">Sample JS static analysis report <i class="fa fa-caret-right"></i></a>#}
+                                {#</li>#}
+                                {#<li>#}
+                                    {#<a href="https://gears.simplytestable.com/http://blog.simplytestable.com//17098/2292525/results/">Sample link integrity (broken link) report <i class="fa fa-caret-right"></i></a>#}
+                                {#</li>#}
                             </ul>
                         </div>
                     </div>
@@ -181,13 +186,13 @@
             <div id="feature-section-html-validation" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="html-validation">HTML5 validation</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-html5"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -216,13 +221,13 @@
             <div id="feature-section-css-validation" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="css-validation">CSS3 validation</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-css3"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -271,13 +276,13 @@
             <div id="feature-section-javascript-static-analysis" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="javascript-static-analysis">JavaScript static analysis</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <span id="js-logo">
                                 JS
                             </span>
@@ -322,13 +327,13 @@
             <div id="feature-section-broken-link-checking" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="broken-link-checking">Broken link checking</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-link"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -372,13 +377,13 @@
             <div id="feature-section-reporting" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="reporting">Reporting</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-file-text-o"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -403,13 +408,13 @@
             <div id="feature-section-team-collaboration" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="teams">Team collaboration</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-user"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -453,13 +458,13 @@
             <div id="feature-section-history" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
-                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
                             <h2 id="history">Searchable history</h2>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-1 hidden-xs">
+                        <div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-2 col-sm-offset-0 hidden-xs">
                             <i class="fa primary fa-file-text-o"></i>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-8">
@@ -496,5 +501,10 @@
         </div>
     </div>
 </div>
+
+<span id="lg" class="hidden-md hidden-sm hidden-xs"></span>
+<span id="md" class="hidden-lg hidden-sm hidden-xs"></span>
+<span id="sm" class="hidden-lg hidden-md hidden-xs"></span>
+<span id="xs" class="hidden-lg hidden-md hidden-sm"></span>
 
 {% endblock %}

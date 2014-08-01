@@ -20,17 +20,11 @@ h1 {
     margin-top: 0;
 }
 
-#upper-nav .affix-top {
-
-}
-
 .upper-nav-affix #feature-section-first {
     margin-top: 70px;
 }
 
 .upper-nav-affix #upper-nav {
-    /*background-color: #fff;*/
-    /*background-color: rgba(255, 255, 255, 0.9);*/
     background-image: url('/bundles/simplytestablewebsite/images/ls04.8.jpg');
     background-position: 50% -632px;
 }
@@ -43,11 +37,6 @@ h1 {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.nav .active {
-    /*background-color: #f00;*/
-    color: #333;
-}
-
 #upper-nav li {
     width: 20%;
 }
@@ -57,7 +46,6 @@ h1 {
     color: #333;
     display: block;
     padding: 40px 0;
-    /*text-align: center;*/
     opacity: 0.8;
     height: 200px;
 }
@@ -75,7 +63,7 @@ h1 {
 }
 
 #upper-nav a b,
-#upper-nav a span {
+#upper-nav a span.byline {
     display: block;
 }
 
@@ -86,17 +74,6 @@ h1 {
     left: 15px;
 }
 
-#upper-nav .active a {
-    background: transparent;
-    opacity: 1;
-    /*border-top: 5px solid #666;*/
-    border-bottom: 5px solid #666;
-    /*padding: 35px 0;*/
-}
-
-#upper-nav .active a .fa {
-    /*opacity: 1;*/
-}
 
 #upper-nav a:hover {
     background: transparent;
@@ -127,10 +104,88 @@ h1 {
     font-size: 60px;
 }
 
+#upper-nav .active {
+    color: #333;
+}
+
+#upper-nav .active a {
+    background: transparent;
+    opacity: 1;
+    border-bottom: 5px solid #666;
+}
+
 @media (min-width: 992px) and (max-width: 1200px) {
     h1 {
         font-size: 54px;
     }
+
+    #upper-nav li {
+        width: 20%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    #landing-strip .container {
+        padding-bottom: 140px;
+    }
+
+    #upper-nav {
+        margin-top: -120px;
+    }
+
+    #upper-nav li {
+        width: 33.33333333%;
+    }
+
+    #upper-nav a {
+        height: 60px;
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    #upper-nav .active {
+        color:inherit;
+        opacity: 0.8;
+    }
+
+    #upper-nav .active a {
+        border-bottom: none;
+    }
+
+    #upper-nav .active a .fa {
+        border-left: none;
+    }
+
+    /*#upper-nav .active {*/
+        /*color: #333;*/
+        /*opacity: 1;*/
+    /*}*/
+
+    /*#upper-nav .active a {*/
+        /*border-bottom: none;*/
+        /*opacity: 1;*/
+    /*}*/
+
+    /*#upper-nav .active a .fa {*/
+        /*border-left: 5px solid #666;*/
+        /*margin-left: -15px;*/
+        /*padding-left: 10px;*/
+    /*}*/
+
+    #upper-nav a .fa.primary {
+        top: 25px;
+    }
+
+    .upper-nav-affix #feature-section-first {
+        margin-top: 60px;
+    }
+
+    #js-logo {
+        font-size: 90px;
+        margin-top: -26px;
+    }
+
+
 }
 
 /*.feature-section {*/
