@@ -151,4 +151,9 @@ $(function() {
             top: getAffixOffset()
         }
     });
+
+    $('body').scrollspy({
+        target: '#upper-nav',
+        offset: 340
+    })
 });
