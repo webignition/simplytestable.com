@@ -43,7 +43,17 @@ $(function() {
         };
 
         var offsetGroup = $('body').is('.upper-nav-affix') ? offsets['upper-nav-affix'] : offsets['default'];
-        return offsetGroup[getDisplayClass()];
+        var offset =  offsetGroup[getDisplayClass()];
+
+//        var offset = 12;
+//
+//        console.log(offset);
+//
+//
+//
+//        //offset = offset - 100;
+
+        return offset;
     };
 
     var getAffixOffset = function () {
@@ -66,14 +76,16 @@ $(function() {
             var hashValue = this.hash.slice(1);
 
             if (target.length) {
-
-
                 var offset = getScrollOffset();
 
                 $('html,body').animate({
                     scrollTop: (target.offset().top) - offset
                 }, 400, function () {
-                    window.location.hash = hashValue;
+                    if($('body').is('.IE8')) {
+
+                    } else {
+                        window.location.hash = hashValue;
+                    }
                 });
 
                 return false;
