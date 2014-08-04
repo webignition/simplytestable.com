@@ -1,5 +1,6 @@
 #landing-strip .container {
-    padding: 140px 0 200px 0;
+    padding-top: 140px;
+    padding-bottom: 200px;
 }
 
 #ctas {
@@ -76,9 +77,13 @@
     font-size: 40px;
 }
 
+body.IE8 #foo3 h2 {
+    font-size: 22px;
+}
+
 @media (min-width: 992px) and (max-width: 1200px) {
     #foo3 h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
 }
 
@@ -90,6 +95,10 @@
 }
 
 @media (max-width: 768px) {
+    #landing-strip .container {
+        padding-top: 100px;
+    }
+
     #ctas {
         margin-top: -200px;
         margin-bottom: 0;
