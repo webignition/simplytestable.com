@@ -45,14 +45,6 @@ $(function() {
         var offsetGroup = $('body').is('.upper-nav-affix') ? offsets['upper-nav-affix'] : offsets['default'];
         var offset =  offsetGroup[getDisplayClass()];
 
-//        var offset = 12;
-//
-//        console.log(offset);
-//
-//
-//
-//        //offset = offset - 100;
-
         return offset;
     };
 
@@ -73,27 +65,16 @@ $(function() {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 
-            var hashValue = this.hash.slice(1);
-
             if (target.length) {
+                if ($('html').is('.history')) {
+                    history.pushState(null, null, this.hash);
+                }
+
                 var offset = getScrollOffset();
 
                 $('html,body').animate({
                     scrollTop: (target.offset().top) - offset
-                }, 400, function () {
-                    if($('body').is(function () {
-                        var selectors = ['.IE8', '.IE9'];
-                        for (var selectorIndex = 0; selectorIndex < selectors.length; selectorIndex++) {
-                            if ($(this).is(selectors[selectorIndex])) {
-                                return true;
-                            }
-                        }
-                    }) ) {
-
-                    } else {
-                        window.location.hash = hashValue;
-                    }
-                });
+                }, 400);
 
                 return false;
             }
@@ -151,26 +132,17 @@ $(function() {
         var target = $(hashValue);
 
         if (target.length) {
+            if ($('html').is('.history')) {
+                history.pushState(null, null, hashValue);
+            }
+
             $(this).closest('li').addClass('selected');
 
             var offset = $('body').is('.upper-nav-affix') ? 300 : 298;
 
             $('html,body').animate({
                 scrollTop: (target.offset().top) - offset
-            }, 400, function () {
-                if($('body').is(function () {
-                    var selectors = ['.IE8', '.IE9'];
-                    for (var selectorIndex = 0; selectorIndex < selectors.length; selectorIndex++) {
-                        if ($(this).is(selectors[selectorIndex])) {
-                            return true;
-                        }
-                    }
-                }) ) {
-
-                } else {
-                    window.location.hash = hashValue.slice(1);
-                }
-            });
+            }, 400);
 
             return false;
         }
