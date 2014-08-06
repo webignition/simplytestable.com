@@ -158,7 +158,18 @@ $(function() {
             $('html,body').animate({
                 scrollTop: (target.offset().top) - offset
             }, 400, function () {
-                window.location.hash = hashValue.slice(1);
+                if($('body').is(function () {
+                    var selectors = ['.IE8', '.IE9'];
+                    for (var selectorIndex = 0; selectorIndex < selectors.length; selectorIndex++) {
+                        if ($(this).is(selectors[selectorIndex])) {
+                            return true;
+                        }
+                    }
+                }) ) {
+
+                } else {
+                    window.location.hash = hashValue.slice(1);
+                }
             });
 
             return false;
