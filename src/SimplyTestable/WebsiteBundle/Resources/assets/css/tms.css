@@ -1,0 +1,91 @@
+#landing-strip .container {
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+#landing-strip p {
+    line-height: 32px;
+    margin: 0 0 20px 0;
+}
+
+#landing-strip .content {
+    text-align: left;
+    margin: 40px -15px 0 -15px;
+}
+
+.feature-section {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 60px;
+}
+
+.feature-section-last {
+    border-bottom: none;
+}
+
+.feature-section-full .feature {
+    margin-bottom: 40px;
+}
+
+.feature-section .feature .fundamental .fa {
+    font-size: 100px;
+    margin-top: -10px;
+}
+
+#ctas {
+    margin: 0;
+}
+
+#ctas .cta {
+    text-align: left;
+    position: relative;
+    width: 100%;
+}
+
+#ctas .cta .primary {
+    display: block;
+    white-space: normal;
+    margin-bottom: 6px;
+}
+
+#ctas .cta .byline {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+#ctas .cta .fa {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+}
+
+#ctas {
+    text-align: center;
+}
+
+#foo2 .fa {
+    color: #848484;
+    text-align: right;
+    display: block;
+    font-size: 120px;
+}
+
+#foo2 .stacked .row {
+    margin-bottom: 40px;
+}
+
+#foo2 p {
+    line-height: 30px;
+}
+
+#foo2 h2 {
+    margin-bottom: 10px;
+}
+
+
+#foo3 .fa {
+    color: #848484;
+    text-align: right;
+    display: block;
+    font-size: 40px;
+}

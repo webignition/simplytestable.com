@@ -4,9 +4,12 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
+use Symfony\Component\HttpFoundation\Cookie;
 
-class PageController extends BaseController implements Cacheable, IEFiltered
-{       
+class PageController extends BaseController implements Cacheable, IEFiltered {
+
+    const ONE_YEAR_IN_SECONDS = 31536000;
+
     public function plansAction() {
         return $this->renderCacheableResponse(array(
             'prices' => $this->container->getParameter('plans')['pricing'],
@@ -27,8 +30,25 @@ class PageController extends BaseController implements Cacheable, IEFiltered
             'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
         ));
     }
-    
-    
+
+    public function tmsAction() {
+        $cookie = new Cookie(
+            'simplytestable-signup-code',
+            'TMS',
+            time() + self::ONE_YEAR_IN_SECONDS,
+            '/',
+            '.simplytestable.com',
+            false,
+            true
+        );
+
+        $response = $this->renderCacheableResponse();
+        $response->headers->setCookie($cookie);
+
+        return $response;
+    }
+
+
     /**
      * 
      * @return \SimplyTestable\WebsiteBundle\Services\PlanFeaturesService

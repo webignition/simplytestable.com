@@ -33,6 +33,10 @@ sign_out_submit:
 recent_test_list:
     pattern:  /recent-test-list/
     defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }
+
+landingpage_tms:
+    pattern: /tms/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:tms }
     
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/
