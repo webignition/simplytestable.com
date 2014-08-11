@@ -25,7 +25,7 @@
 
                     <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg data">
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="plan first demo">
                                     <div class="head hidden-sm">
                                         <h2>Limited demo features</h2>
@@ -56,39 +56,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="col-sm-4">
-                                <div class="plan">                           
-                                    <div class="head">
-                                        <h2>Free plan <span class="hidden-sm hidden-md hidden-lg">features</span></h2>
-                                        <p>
-                                            No-cost account
-                                        </p> 
-                                    </div>                           
-
-                                    {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:display-xs-sm-account-options.html.twig'
-                                        with {'account_options': plan_features.free}
-                                    %}  
-
-                                    <div class="ctas {% if is_logged_in %}invisible{% endif %}">
-                                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-sm hidden-xs">
-                                            Create a free account <i class="fa fa-caret-right"></i>
-                                        </a>
-
-                                        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success hidden-sm">
-                                            Create a free account <i class="fa fa-caret-right"></i>
-                                        </a>                                        
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="plan last">
                                     <div class="head">
-                                        <h2>Premium plan <span class="hidden-sm hidden-md hidden-lg">features</span></h2>
+                                        <h2>Premium plans <span class="hidden-sm">features</span></h2>
                                         <p>
                                             From &pound;9 per month
                                         </p>    
@@ -110,11 +81,11 @@
                                         {% else %}
                                         <a href="{{ path('page_plans') }}" class="btn btn-default btn-sm hidden-xs">
                                             View premium plans
-                                        </a>                                     
+                                        </a>
 
                                         <a href="{{ path('page_plans') }}" class="btn btn-default hidden-sm">
                                             View premium plans
-                                        </a>                                            
+                                        </a>
                                         {% endif %}                                        
                                     </div>
                                 </div>
