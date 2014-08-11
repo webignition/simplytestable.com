@@ -59,7 +59,25 @@
         are not able to use HTTP authentication and are not able to set custom
         cookies. A premium account is required to use these features.
     </p>
-    
 
 
+
+{% endblock %}
+
+{% block ctas %}
+    <div class="col-lg-5 col-md-6 col-sm-5">
+        {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
+        with {
+        'url': path('page_plans'),
+        'label': 'See plans and pricing',
+        'byline':'30-day free trial. From &pound;9 per month.',
+        'icon':'caret-right',
+        'primary':true
+        } %}
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-5 additional">
+        <a href="{{ web_client_urls.base }}">Try a demo now</a>
+        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
+        <a href="{{ path('page_plans') }}">Premium plan options</a>
+    </div>
 {% endblock %}
