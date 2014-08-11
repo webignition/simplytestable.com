@@ -8,7 +8,8 @@
         </form>
     {% else %}
         <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan={{ plan_name }}" class="btn btn-success btn-plan-select">
-            Create a{{ plan_name == 'agency' ? 'n' : '' }} {{ plan_name }} account
+            <span class="primary">Sign up</span>
+            <span class="secondary">30-day trial, no credit card required</span>
         </a>
     {% endif %}  
 {% endmacro %}

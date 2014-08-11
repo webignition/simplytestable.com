@@ -82,6 +82,24 @@ h1 {
     line-height: 13px;
 }
 
+.plan .btn-plan-select {
+    text-align: left;
+}
+
+.plan .btn-plan-select .primary {
+    font-size: 16px;
+}
+
+.plan .btn-plan-select .secondary {
+    opacity: 0.8;
+    font-size:13px;
+}
+
+.plan .btn-plan-select .primary,
+.plan .btn-plan-select .secondary {
+    display: block;
+}
+
 @media (min-width: 1200px) {
     .plan ul li {
         font-size: 14px;
