@@ -232,24 +232,18 @@
                                 </li>                                
                             </ul>
                         </div>
-                        <div class="col-md-10 details">
+                        <div class="col-md-8 details">
                             <div class="pricing-tables attached">
                                 <div class="plan first last">                           
                                     <div class="head">
                                         <div class="row">
-                                            <div class="col-md-4 demo first">
+                                            <div class="col-md-6 demo first heading">
                                                 <h2>Demo</h2>
                                                 <p>
                                                     If you're not signed in
                                                 </p>
                                             </div>
-                                            <div class="col-md-4">
-                                                <h2>Free plan</h2>
-                                                <p>
-                                                    No-cost account
-                                                </p>                                        
-                                            </div>
-                                            <div class="col-md-4 last">
+                                            <div class="col-md-6 last heading">
                                                 <h2>Premium plans</h2>
                                                 <p>
                                                     From £9 per month
@@ -261,17 +255,12 @@
                                     <div class="row spacer spacer-first"></div>
 
                                     <div class="row data">
-                                        <div class="col-md-4 demo">
+                                        <div class="col-md-6 demo">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
                                             with plan_features.demo.test_limitations
                                         %}                                  
                                         </div>
-                                        <div class="col-md-4">
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
-                                            with plan_features.free.test_limitations
-                                        %}                                                                                       
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
                                             with plan_features.premium.test_limitations
                                         %}
@@ -281,17 +270,12 @@
                                     <div class="row spacer"><b></b></div>                                    
                                             
                                     <div class="row data">
-                                        <div class="col-md-4 demo">
+                                        <div class="col-md-6 demo">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
                                             with plan_features.demo.access_to_results
                                         %}                                  
                                         </div>
-                                        <div class="col-md-4">
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
-                                            with plan_features.free.access_to_results
-                                        %}                                       
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
                                             with plan_features.premium.access_to_results
                                         %}
@@ -301,17 +285,12 @@
                                     <div class="row spacer"><b></b></div>                                    
                                             
                                     <div class="row data">
-                                        <div class="col-md-4 demo">
+                                        <div class="col-md-6 demo">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
                                             with plan_features.demo.url_discovery
                                         %}                                    
                                         </div>
-                                        <div class="col-md-4">
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
-                                            with plan_features.free.url_discovery
-                                        %} 
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
                                             with plan_features.premium.url_discovery
                                         %} 
@@ -321,17 +300,12 @@
                                     <div class="row spacer"><b></b></div>
 
                                     <div class="row data">
-                                        <div class="col-md-4 demo">
+                                        <div class="col-md-6 demo">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
                                             with plan_features.demo.test_types
                                         %}                                        
                                         </div>
-                                        <div class="col-md-4">
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
-                                            with plan_features.free.test_types
-                                        %}                                            
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
                                             with plan_features.premium.test_types
                                         %}  
@@ -341,17 +315,12 @@
                                     <div class="row spacer"><b></b></div>                                    
                                             
                                     <div class="row data final">
-                                        <div class="col-md-4 demo">
+                                        <div class="col-md-6 demo">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
                                             with plan_features.demo.advanced_options
                                         %} 
                                         </div>
-                                        <div class="col-md-4">
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
-                                            with plan_features.free.advanced_options
-                                        %} 
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                         {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
                                             with plan_features.premium.advanced_options
                                         %} 
@@ -359,25 +328,21 @@
                                     </div>
                                             
                                     <div class="row ctas">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <a href="{{ web_client_urls.base }}" class="btn btn-default btn-plan-select {% if is_logged_in %}invisible{% endif %}">
                                                 Try me now
                                             </a>                                             
                                         </div>
-                                        <div class="col-md-4">
-                                            <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan=basic" class="btn btn-success btn-plan-select {% if is_logged_in %}invisible{% endif %}">
-                                                Create a free account <i class="fa fa-caret-right"></i>
-                                            </a>                                            
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             {% if is_logged_in %}
                                                 <a href="{{ path('page_plans') }}" class="btn btn-success btn-plan-select">
                                                     View premium plans <i class="fa fa-caret-right"></i>
                                                 </a>                                                 
                                             {% else %}
-                                                <a href="{{ path('page_plans') }}" class="btn btn-default btn-plan-select">
-                                                    View premium plans
-                                                </a> 
+                                                <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}" class="btn btn-success btn-plan-select">
+                                                    <span class="primary">Sign up</span>
+                                                    <span class="secondary">30-day trial. From &pound;9 per month.</span>
+                                                </a>
                                             {% endif %}                                              
                                         </div>
                                     </div>

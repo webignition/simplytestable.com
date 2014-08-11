@@ -110,7 +110,7 @@ h1 {
     padding-bottom: 0;
 }
 
-.details .head .row .col-md-4 {
+.details .head .row .heading {
     background-color: #0088cc;
     margin-top:-12px;
     padding-top:12px;
@@ -227,6 +227,25 @@ li.boolean .item {
 
 #landing-strip .pricing-tables-small .first .heading {
     color: #333;
+}
+
+.pricing-tables.attached .col-md-6 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.plan .btn-plan-select .primary {
+    font-size: 16px;
+}
+
+.plan .btn-plan-select .secondary {
+    opacity: 0.8;
+    font-size:13px;
+}
+
+.plan .btn-plan-select .primary,
+.plan .btn-plan-select .secondary {
+    display: block;
 }
 
 @media (min-width: 1200px) {
