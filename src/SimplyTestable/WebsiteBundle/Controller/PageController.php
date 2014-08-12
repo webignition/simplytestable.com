@@ -33,7 +33,7 @@ class PageController extends BaseController implements Cacheable, IEFiltered {
 
     public function tmsAction() {
         $cookie = new Cookie(
-            'simplytestable-signup-code',
+            'simplytestable-coupon-code',
             'TMS',
             time() + self::ONE_YEAR_IN_SECONDS,
             '/',
