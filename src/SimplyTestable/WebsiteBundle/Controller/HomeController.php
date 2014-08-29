@@ -2,10 +2,9 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 
-class HomeController extends BaseController implements Cacheable, IEFiltered {
+class HomeController extends CacheableController implements IEFiltered {
 
     public function indexAction() {
         $this->getTestListService()->setUser($this->getUserService()->getPublicUser());

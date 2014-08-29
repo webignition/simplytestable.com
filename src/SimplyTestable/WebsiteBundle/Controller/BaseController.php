@@ -4,7 +4,7 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {   
 
     /**

@@ -73,11 +73,21 @@ class RequestListener
     
     
     private function setRequestCacheValidatorHeaders() {
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier();
+        /* @var $controller CacheableController */
+        $controller = $this->getController();
+        $controller->setRequest($this->event->getRequest());
+
+        $cacheValidatorParameters = $controller->getCacheValidatorParameters($this->getActionName());
+
+        if ($this->event->getRequest()->headers->has('accept')) {
+            $cacheValidatorHeaders['http-header-accept'] = $this->event->getRequest()->headers->get('accept');
+        }
+
+        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier($cacheValidatorParameters);
         $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-        
+
         $this->event->getRequest()->headers->set('x-cache-validator-etag', $cacheValidatorHeaders->getETag());
-        $this->event->getRequest()->headers->set('x-cache-validator-lastmodified', $cacheValidatorHeaders->getLastModifiedDate()->format('c'));       
+        $this->event->getRequest()->headers->set('x-cache-validator-lastmodified', $cacheValidatorHeaders->getLastModifiedDate()->format('c'));
     }
     
     
@@ -113,8 +123,23 @@ class RequestListener
      * @return string
      */
     private function getControllerClassName() {
-        $controllerActionParts = explode('::', $this->event->getRequest()->attributes->get('_controller'));        
-        return $controllerActionParts[0];    
+        return $this->getControllerActionParts()[0];
+    }
+
+
+    /**
+     * @return string
+     */
+    private function getActionName() {
+        return $this->getControllerActionParts()[1];
+    }
+
+
+    /**
+     * @return array
+     */
+    private function getControllerActionParts() {
+        return explode('::', $this->event->getRequest()->attributes->get('_controller'));
     }
     
     
@@ -210,11 +235,11 @@ class RequestListener
     private function getCacheValidatorHeadersService() {
         return $this->kernel->getContainer()->get('simplytestable.services.cachevalidatorheadersservice');
     }     
-    
-    
+
+
     /**
-     *
-     * @return \SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier 
+     * @param array $parameters
+     * @return CacheValidatorIdentifier
      */
     private function getCacheValidatorIdentifier(array $parameters = array()) {        
         $identifier = new CacheValidatorIdentifier();

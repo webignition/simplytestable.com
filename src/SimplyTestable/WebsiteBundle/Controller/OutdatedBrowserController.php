@@ -2,9 +2,7 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
-
-class OutdatedBrowserController extends BaseController implements Cacheable
+class OutdatedBrowserController extends CacheableController
 {   
     
     public function indexAction() {  

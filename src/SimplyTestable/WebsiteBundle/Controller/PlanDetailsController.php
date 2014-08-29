@@ -2,11 +2,9 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 
-class PlanDetailsController extends BaseController implements Cacheable, IEFiltered
-{       
+class PlanDetailsController extends CacheableController implements  IEFiltered {
     private $allowedPlanNames = array(
         'demo',
         'free',
@@ -41,7 +39,6 @@ class PlanDetailsController extends BaseController implements Cacheable, IEFilte
     
     /**
      * 
-     * @param string $name
      * @return boolean
      */
     private function isAllowedPlanName() {
@@ -55,6 +52,7 @@ class PlanDetailsController extends BaseController implements Cacheable, IEFilte
      */
     private function getPlanFeaturesService() {
         return $this->container->get('simplytestable.services.planFeaturesService');
-    }    
+    }
+
 }
 
