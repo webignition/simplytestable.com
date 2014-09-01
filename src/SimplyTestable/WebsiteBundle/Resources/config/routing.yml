@@ -36,7 +36,7 @@ recent_test_list:
 
 landingpage_tms:
     pattern: /tms/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Page:tms }
+    defaults: { _controller: SimplyTestableWebsiteBundle:LandingPage:index }
     
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/

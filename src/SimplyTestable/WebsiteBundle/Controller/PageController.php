@@ -3,11 +3,8 @@
 namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
-use Symfony\Component\HttpFoundation\Cookie;
 
 class PageController extends CacheableController implements IEFiltered {
-
-    const ONE_YEAR_IN_SECONDS = 31536000;
 
     public function plansAction() {
         return $this->renderCacheableResponse(array(
@@ -30,25 +27,6 @@ class PageController extends CacheableController implements IEFiltered {
         ));
     }
 
-    public function tmsAction() {
-        $cookie = new Cookie(
-            'simplytestable-coupon-code',
-            'TMS',
-            time() + self::ONE_YEAR_IN_SECONDS,
-            '/',
-            '.simplytestable.com',
-            false,
-            true
-        );
-
-        $response = $this->renderCacheableResponse([
-            'cookie' => (string)$cookie
-        ]);
-        $response->headers->setCookie($cookie);
-
-        return $response;
-    }
-
 
     /**
      * 
@@ -61,17 +39,6 @@ class PageController extends CacheableController implements IEFiltered {
 
     public function getCacheValidatorParameters($action) {
         switch  ($action) {
-            case 'plansAction':
-                return [];
-
-            case 'accountBenefitsAction':
-                return [];
-
-            case 'tmsAction':
-                return [
-                    'has_tms_coupon_code_cookie' => (int)$this->getRequest()->cookies->has('simplytestable-coupon-code')
-                ];
-
             default:
                 return [];
         }
