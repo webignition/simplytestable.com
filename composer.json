@@ -38,7 +38,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
-        "test-functional": "./bin/phpunit -c app --colors src/SimplyTestable/WorkerBundle/Tests/Functional/",
+        "test-functional": "./bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Functional/",
         "test": [
             "@composer test-functional"
         ],
