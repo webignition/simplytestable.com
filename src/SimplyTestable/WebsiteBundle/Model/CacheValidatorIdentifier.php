@@ -2,41 +2,36 @@
 
 namespace SimplyTestable\WebsiteBundle\Model;
 
-class CacheValidatorIdentifier {
-    
+class CacheValidatorIdentifier
+{
     /**
-     *
-     * @var array
+      * @var array
      */
     private $parameters = array();
-   
-    
+
     /**
-     *
      * @param string $key
-     * @param mixed $value 
+     * @param mixed $value
      */
-    public function setParameter($key, $value) {
+    public function setParameter($key, $value)
+    {
         if (is_bool($value)) {
             $value = ($value) ? 'true' : 'false';
         }
-        
+
         $this->parameters[$key] = $value;
     }
-    
-    
+
     /**
-     *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         $keyValuePairs = array();
         foreach ($this->parameters as $key => $value) {
             $keyValuePairs[] = $key . ':' . $value;
         }
-        
+
         return md5(implode('+', $keyValuePairs));
-    } 
-    
-    
+    }
 }

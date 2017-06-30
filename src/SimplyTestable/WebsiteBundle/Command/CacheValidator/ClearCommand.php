@@ -1,14 +1,12 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Command\CacheValidator;
 
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use SimplyTestable\WebsiteBundle\Command\BaseCommand;
-
-class ClearCommand extends BaseCommand
-{ 
-    
+class ClearCommand extends ContainerAwareCommand
+{
     protected function configure()
     {
         $this
@@ -21,5 +19,5 @@ class ClearCommand extends BaseCommand
     {
         $output->writeln('Clearing cache validator headers');
         $this->getContainer()->get('simplytestable.services.cachevalidatorheadersservice')->clear();
-    }   
+    }
 }

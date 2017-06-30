@@ -3,24 +3,15 @@
 namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
+use Symfony\Component\HttpFoundation\Response;
 
-class HomeController extends CacheableController implements IEFiltered {
-
-    public function indexAction() {
-        $this->getTestListService()->setUser($this->getUserService()->getPublicUser());
-        
-        return $this->renderCacheableResponse(array(
-            'recent_tests' => $this->getTestListService()->getTests()            
-        ));
-    }
-    
-
+class HomeController extends CacheableController implements IEFiltered
+{
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\TestListService
+     * @return Response
      */
-    private function getTestListService() {
-        return $this->get('simplytestable.services.testListService');
+    public function indexAction()
+    {
+        return $this->renderCacheableResponse();
     }
-
 }

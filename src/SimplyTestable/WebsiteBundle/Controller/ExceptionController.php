@@ -1,16 +1,9 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace SimplyTestable\WebsiteBundle\Controller;
 
+use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
+use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
@@ -19,10 +12,6 @@ use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use webignition\Url\Url;
 
-/**
- * ExceptionController.
- *
- */
 class ExceptionController extends Controller
 {
     /**
@@ -39,24 +28,26 @@ class ExceptionController extends Controller
     public function showAction(FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html')
     {
         if ($this->getNotFoundRedirectService()->hasRedirectFor($this->container->get('request')->getRequestUri())) {
-            return $this->redirect($this->getNotFoundRedirectService()->getRedirectFor($this->container->get('request')->getRequestUri()));
+            return $this->redirect(
+                $this->getNotFoundRedirectService()->getRedirectFor($this->container->get('request')->getRequestUri())
+            );
         }
-        
+
         $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $this->container->get('request')->getRequestUri());
         if ($this->isNotFoundException($exception) && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
             return $this->redirect('http:' . $normalisedRequestUrl);
         }
-        
+
         if (!$this->container->get('kernel')->isDebug()) {
             $this->sendDeveloperEmail($exception);
-        }       
-        
+        }
+
         $this->container->get('request')->setRequestFormat($format);
 
         $currentContent = $this->getAndCleanOutputBuffering();
 
         $templating = $this->container->get('templating');
-        $code = $exception->getStatusCode();             
+        $code = $exception->getStatusCode();
 
         return $templating->renderResponse(
             $this->findTemplate($templating, $format, $code, $this->container->get('kernel')->isDebug()),
@@ -71,24 +62,24 @@ class ExceptionController extends Controller
             )
         );
     }
-    
+
     /**
-     * 
      * @param string $url
      * @return boolean
      */
-    private function isProtocolRelativeRequestUrl($url) {
+    private function isProtocolRelativeRequestUrl($url)
+    {
         $urlObject = new Url($url);
         return $urlObject->isProtocolRelative();
     }
-    
-    
+
     /**
-     * 
-     * @param \Symfony\Component\HttpKernel\Exception\FlattenException $exception
+     * @param FlattenException $exception
+     *
      * @return boolean
      */
-    private function isNotFoundException(FlattenException $exception) {
+    private function isNotFoundException(FlattenException $exception)
+    {
         return $exception->getStatusCode() == 404;
     }
 
@@ -96,7 +87,7 @@ class ExceptionController extends Controller
      * @return string
      */
     protected function getAndCleanOutputBuffering()
-    {        
+    {
         // ob_get_level() never returns 0 on some Windows configurations, so if
         // the level is the same two times in a row, the loop should be stopped.
         $previousObLevel = null;
@@ -121,7 +112,7 @@ class ExceptionController extends Controller
      * @return TemplateReference
      */
     protected function findTemplate($templating, $format, $code, $debug)
-    {        
+    {
         $name = $debug ? 'exception' : 'error';
         if ($debug && 'html' == $format) {
             $name = 'exception_full';
@@ -132,12 +123,12 @@ class ExceptionController extends Controller
             $template = new TemplateReference('SimplyTestableWebsiteBundle', 'Exception', $name.$code, $format, 'twig');
             if ($templating->exists($template)) {
                 return $template;
-            }          
+            }
         }
 
         // try to find a template for the given format
         $template = new TemplateReference('TwigBundle', 'Exception', $name, $format, 'twig');
-        
+
         if ($templating->exists($template)) {
             return $template;
         }
@@ -147,15 +138,14 @@ class ExceptionController extends Controller
 
         return new TemplateReference('TwigBundle', 'Exception', $name, 'html', 'twig');
     }
-    
-    
+
     /**
-     * 
-     * @param \Symfony\Component\HttpKernel\Exception\FlattenException $exception
+     * @param FlattenException $exception
      */
-    private function sendDeveloperEmail(FlattenException $exception) {
+    private function sendDeveloperEmail(FlattenException $exception)
+    {
         $message = \Swift_Message::newInstance();
-        
+
         $message->setSubject($this->getDeveloperEmailSubject($exception));
         $message->setFrom('exceptions@simplytestable.com');
         $message->setTo('jon@simplytestable.com');
@@ -166,45 +156,43 @@ class ExceptionController extends Controller
             'remote_addr' => $_SERVER['REMOTE_ADDR'],
             'user_agent' => $_SERVER['HTTP_USER_AGENT']
         )));
-        
-        $this->get('mailer')->send($message);        
+
+        $this->get('mailer')->send($message);
     }
-    
-    
+
     /**
-     * 
-     * @param \Symfony\Component\HttpKernel\Exception\FlattenException $exception
+     * @param FlattenException $exception
+     *
      * @return string
      */
-    private function getDeveloperEmailSubject(FlattenException $exception) {
+    private function getDeveloperEmailSubject(FlattenException $exception)
+    {
         $subject = 'Exception ['.$exception->getCode().','.$exception->getStatusCode().']';
-        
+
         if ($exception->getStatusCode() == 404) {
             $subject .= ' [' . $exception->getMessage() . ']';
         }
-        
+
         if ($exception->getStatusCode() == 500) {
             $subject .= ' [' . $exception->getMessage() . ']';
-        }        
-        
+        }
+
         return $subject;
     }
-    
-    
+
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\TestimonialService
+     * @return TestimonialService
      */
-    private function getTestimonialService() {
+    private function getTestimonialService()
+    {
         return $this->get('simplytestable.services.testimonialService');
     }
-    
-    
+
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService
+     * @return NotFoundRedirectService
      */
-    private function getNotFoundRedirectService() {
+    private function getNotFoundRedirectService()
+    {
         return $this->get('simplytestable.services.notfoundredirectservice');
     }
 }

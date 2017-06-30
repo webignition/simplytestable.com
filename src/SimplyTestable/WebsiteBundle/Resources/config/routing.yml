@@ -1,11 +1,11 @@
 home_index:
     pattern:  /
     defaults: { _controller: SimplyTestableWebsiteBundle:Home:index }
-    
+
 page_plans:
     pattern:  /plans/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Page:plans }       
-    
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:plans }
+
 page_features:
     pattern:  /features/
     defaults: { _controller: SimplyTestableWebsiteBundle:Page:features }
@@ -13,31 +13,27 @@ page_features:
 page_roadmap:
     pattern:  /roadmap/
     defaults: { _controller: SimplyTestableWebsiteBundle:Page:roadmap }
-    
+
 page_accountbenefits:
     pattern:  /account-benefits/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }        
-    
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }
+
 plandetails_index:
     pattern:  /plans/{name}/
-    defaults: { _controller: SimplyTestableWebsiteBundle:PlanDetails:index }            
-    
+    defaults: { _controller: SimplyTestableWebsiteBundle:PlanDetails:index }
+
 outdatedbrowser_index:
     pattern:  /outdated-browser/
-    defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }    
-    
+    defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }
+
 sign_out_submit:
     pattern:  /signout/
-    defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }     
-    
-recent_test_list:
-    pattern:  /recent-test-list/
-    defaults: { _controller: SimplyTestableWebsiteBundle:RecentTestList:index }
+    defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }
 
 landingpage_tms:
     pattern: /tms/
     defaults: { _controller: SimplyTestableWebsiteBundle:LandingPage:index }
-    
+
 redirect_limit_test_1:
     pattern:  /redirect-limit-test/
     defaults:
@@ -50,50 +46,50 @@ redirect_limit_test_2:
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_3
-        permanent: true            
-        
+        permanent: true
+
 redirect_limit_test_3:
     pattern:  /redirect-limit-test/3/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_4
-        permanent: true        
-        
+        permanent: true
+
 redirect_limit_test_4:
     pattern:  /redirect-limit-test/4/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_5
-        permanent: true            
-        
+        permanent: true
+
 redirect_limit_test_5:
     pattern:  /redirect-limit-test/5/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_6
-        permanent: true  
-        
+        permanent: true
+
 redirect_limit_test_6:
     pattern:  /redirect-limit-test/6/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_7
-        permanent: true  
-        
+        permanent: true
+
 redirect_limit_test_7:
     pattern:  /redirect-limit-test/7/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: roadmap
-        permanent: true        
-        
+        permanent: true
+
 redirect_loop_test_1:
     pattern:  /redirect-loop-test/
     defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_loop_test_2
-        permanent: true        
-        
+        permanent: true
+
 redirect_loop_test_2:
     pattern:  /redirect-loop-test/2/
     defaults:
