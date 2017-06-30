@@ -1,6 +1,4 @@
-services:
-  - redis-server
-  - memcache
+sudo: false
 
 language: php
 php:
