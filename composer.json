@@ -42,7 +42,7 @@
         "test": [
             "@composer test-functional"
         ],
-        "cs": ".bin/phpcs --colors --standard=PSR2 --extensions=php src/SimplyTestable/WebsiteBundle",
+        "cs": "./bin/phpcs --colors --standard=PSR2 --extensions=php src/SimplyTestable/WebsiteBundle",
         "ci": [
             "@composer cs",
             "@composer test"
