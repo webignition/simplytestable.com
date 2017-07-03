@@ -1,0 +1,64 @@
+{
+    "home": {
+        "route": "home_index",
+        "parameters": {}
+    },
+    "plans": {
+        "route": "page_plans",
+        "parameters": {}
+    },
+    "features": {
+        "route": "page_features",
+        "parameters": {}
+    },
+    "roadmap": {
+        "route": "page_roadmap",
+        "parameters": {}
+    },
+    "accountbenefits": {
+        "route": "page_accountbenefits",
+        "parameters": {}
+    },
+    "plandetails_demo": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "demo"
+        }
+    },
+    "plandetails_free": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "free"
+        }
+    },
+    "plandetails_personal": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "personal"
+        }
+    },
+    "plandetails_agency": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "agency"
+        }
+    },
+    "plandetails_business": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "business"
+        }
+    },
+    "plandetails_enterprise": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "enterprise"
+        }
+    },
+    "plandetails_premium": {
+        "route": "plandetails_index",
+        "parameters": {
+            "name": "premium"
+        }
+    }
+}

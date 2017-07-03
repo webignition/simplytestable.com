@@ -1,3 +1,6 @@
+imports:
+    - { resource: services/commands.yml }
+
 services:
   simplytestable.services.testimonialService:
     class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
@@ -39,3 +42,8 @@ services:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
     arguments:
         planData: %plans%
+
+  simplytestable.services.resourcelocator:
+    class:  SimplyTestable\WebsiteBundle\Services\ResourceLocator
+    arguments:
+        kernel: "@kernel"
