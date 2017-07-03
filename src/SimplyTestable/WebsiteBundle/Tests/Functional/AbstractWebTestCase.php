@@ -38,6 +38,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         $this->container = $this->client->getKernel()->getContainer();
         $this->application = new Application(self::$kernel);
         $this->application->setAutoExit(false);
+        $this->container->get('doctrine')->getConnection()->beginTransaction();
     }
 
     /**
@@ -123,5 +124,23 @@ abstract class AbstractWebTestCase extends WebTestCase
         $user->setPassword($password);
 
         return $user;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->container->get('doctrine')->getConnection()->close();
+
+        $refl = new \ReflectionObject($this);
+        foreach ($refl->getProperties() as $prop) {
+            if (!$prop->isStatic() && 0 !== strpos($prop->getDeclaringClass()->getName(), 'PHPUnit_')) {
+                $prop->setAccessible(true);
+                $prop->setValue($this, null);
+            }
+        }
     }
 }

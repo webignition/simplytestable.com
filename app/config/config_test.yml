@@ -1,7 +1,7 @@
 imports:
     - { resource: config_dev.yml }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/services_test.yml" }      
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters_test.yml" }      
+    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/services_test.yml" }
+    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters_test.yml" }
 
 framework:
     test: ~
@@ -14,10 +14,11 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
-    
-doctrine:
-  dbal:
-    connections:
-      default:
-        driver: pdo_sqlite
-        path: /run/shm/simplytestable.com.db       
+
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: test_simplytestable_com
+    database_user: root
+    database_password: root

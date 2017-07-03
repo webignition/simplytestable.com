@@ -1,6 +1,6 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters.yml" }    
+    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters.yml" }
     - { resource: security.yml }
     - { resource: "@SimplyTestableWebsiteBundle/Resources/config/services.yml" }
 
@@ -16,7 +16,6 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  %locale%
-    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     trusted_proxies: ~
     session:
       cookie_domain: .simplytestable.com
@@ -26,7 +25,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    exception_controller:  SimplyTestable\WebsiteBundle\Controller\ExceptionController::showAction    
+    exception_controller:  SimplyTestable\WebsiteBundle\Controller\ExceptionController::showAction
 
 # Assetic Configuration
 assetic:
@@ -63,4 +62,4 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
-    spool:     { type: memory }    
+    spool:     { type: memory }
