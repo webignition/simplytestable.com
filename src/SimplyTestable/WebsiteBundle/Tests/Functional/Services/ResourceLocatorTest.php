@@ -31,15 +31,10 @@ class ResourceLocatorTest extends AbstractWebTestCase
     public function locateDataProvider()
     {
         return [
-            'sitemap template' => [
-                'name' => '@SimplyTestableWebsiteBundle/Resources/config/sitemap.template.xml',
+            'sitemap routes' => [
+                'name' => '@SimplyTestableWebsiteBundle/Resources/config/sitemap_routes.json',
                 'expectedRelativeResourcePath' =>
-                    'src/SimplyTestable/WebsiteBundle/Resources/config/sitemap.template.xml',
-            ],
-            'sitemap source' => [
-                'name' => '@SimplyTestableWebsiteBundle/Resources/config/sitemap.source.json',
-                'expectedRelativeResourcePath' =>
-                    'src/SimplyTestable/WebsiteBundle/Resources/config/sitemap.source.json',
+                    'src/SimplyTestable/WebsiteBundle/Resources/config/sitemap_routes.json',
             ],
         ];
     }
