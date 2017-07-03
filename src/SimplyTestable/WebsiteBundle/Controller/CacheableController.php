@@ -3,40 +3,36 @@
 namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
+use Symfony\Component\HttpFoundation\Request;
 
-abstract class CacheableController extends BaseController implements Cacheable {
-
+abstract class CacheableController extends BaseController implements Cacheable
+{
     /**
-     *
-     * @var \Symfony\Component\HttpFoundation\Request
+     * @var Request
      */
     private $request;
 
-
     /**
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      */
-    public function setRequest(\Symfony\Component\HttpFoundation\Request $request) {
+    public function setRequest(Request $request)
+    {
         $this->request = $request;
     }
 
-
     /**
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
+     * @return Request
      */
-    public function getRequest() {
+    public function getRequest()
+    {
         return (is_null($this->request)) ? $this->get('request') : $this->request;
     }
 
-
     /**
-     * @return array
+     * {@inheritdoc}
      */
-    public function getCacheValidatorParameters($action) {
+    public function getCacheValidatorParameters($action)
+    {
         return [];
     }
-
 }
-

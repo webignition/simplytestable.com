@@ -1,70 +1,63 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Model;
 
-class User {    
-    
+class User
+{
     /**
-     *
+      * @var string
+     */
+    private $username = null;
+
+    /**
      * @var string
      */
-    private $username = null; 
-    
-    
+    private $password = null;
+
     /**
-     *
-     * @var string
-     */
-    private $password = null;    
-        
-    
-    
-    /**
-     * 
      * @param string $username
-     * @return SimplyTestable\WebsiteBundle\Model\User
+     *
+     * @return $this
      */
-    public function setUsername($username) {
+    public function setUsername($username)
+    {
         $this->username = $username;
         return $this;
     }
-    
-    
+
     /**
-     * 
      * @return string
      */
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
-    
-    
+
     /**
-     * 
      * @param string $password
-     * @return SimplyTestable\WebsiteBundle\Model\User
+     *
+     * @return $this
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
         return $this;
     }
-    
-    
+
     /**
-     * 
      * @return string
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
-    }    
-    
-    
+    }
+
     /**
-     * 
-     * @param SimplyTestable\WebsiteBundle\Model\User $user
-     * @return boolean
+     * @param User $user
+     *
+     * @return bool
      */
-    public function equals(User $user) {
+    public function equals(User $user)
+    {
         return $this->getUsername() == $user->getUsername();
     }
-    
 }

@@ -3,115 +3,111 @@ namespace SimplyTestable\WebsiteBundle\Services;
 
 use SimplyTestable\WebsiteBundle\Model\User;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
-class UserService { 
-    
+class UserService
+{
     const USER_COOKIE_KEY = 'simplytestable-user';
-    
+
     const PUBLIC_USER_USERNAME = 'public';
     const PUBLIC_USER_PASSWORD = 'public';
-    
-    
+
     /**
-     *
-     * @var \Symfony\Component\HttpFoundation\Session\Session
+     * @var Session
      */
     private $session;
-    
-    
+
     /**
-     *
-     * @var \SimplyTestable\WebsiteBundle\Services\UserSerializerService
+     * @var UserSerializerService
      */
     private $userSerializerService;
-    
-    
+
+    /**
+     * @param Session $session
+     * @param UserSerializerService $userSerializerService
+     */
     public function __construct(
-        \Symfony\Component\HttpFoundation\Session\Session $session,
-        \SimplyTestable\WebsiteBundle\Services\UserSerializerService $userSerializerService
+        Session $session,
+        UserSerializerService $userSerializerService
     ) {
         $this->session = $session;
         $this->userSerializerService = $userSerializerService;
-    }     
+    }
 
-    
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Model\User
+     * @return User
      */
-    public function getPublicUser() {
+    public function getPublicUser()
+    {
         $user = new User();
         $user->setUsername(static::PUBLIC_USER_USERNAME);
         $user->setPassword(static::PUBLIC_USER_PASSWORD);
         return $user;
     }
-    
+
     /**
-     * 
-     * @param \SimplyTestable\WebsiteBundle\Model\User $user
+     * @param User $user
      * @return boolean
      */
-    public function isPublicUser(User $user) {
+    public function isPublicUser(User $user)
+    {
         $comparatorUser = new User();
         $comparatorUser->setUsername(strtolower($user->getUsername()));
-        
+
         return $this->getPublicUser()->equals($comparatorUser);
-    } 
-    
-    
+    }
+
     /**
-     * 
      * @return boolean
      */
-    public function isLoggedIn() {
+    public function isLoggedIn()
+    {
         return !$this->isPublicUser($this->getUser());
     }
-    
+
     /**
-     * 
-     * @param \SimplyTestable\WebsiteBundle\Model\User $user
+     * @param User $user
      */
-    public function setUser(User $user) {
+    public function setUser(User $user)
+    {
         $this->session->set('user', $this->userSerializerService->serialize($user));
     }
-    
-    
+
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Model\User
+     * @return User
      */
-    public function getUser() {
+    public function getUser()
+    {
         if (is_null($this->session->get('user'))) {
             $this->setUser($this->getPublicUser());
         }
-        
+
         return $this->userSerializerService->unserialize($this->session->get('user'));
     }
-    
-    
-    public function clearUser() {
+
+    public function clearUser()
+    {
         $this->session->set('user', null);
     }
-    
-    
+
     /**
-     * 
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
+     *
      * @return null
      */
-    public function setUserFromRequest(Request $request) {       
+    public function setUserFromRequest(Request $request)
+    {
         if (!$request->cookies->has(self::USER_COOKIE_KEY)) {
             $this->setUser($this->getPublicUser());
             return;
         }
-        
+
         $user = $this->userSerializerService->unserializedFromString($request->cookies->get(self::USER_COOKIE_KEY));
-        
+
         if (is_null($user)) {
             return;
         }
-        
-        $this->setUser($user);    
-    }     
-    
+
+        $this->setUser($user);
+    }
 }

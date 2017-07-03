@@ -2,11 +2,15 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-class OutdatedBrowserController extends CacheableController
-{   
-    
-    public function indexAction() {  
-        return $this->renderCacheableResponse();
-    }     
-}
+use Symfony\Component\HttpFoundation\Response;
 
+class OutdatedBrowserController extends CacheableController
+{
+    /**
+     * @return Response
+     */
+    public function indexAction()
+    {
+        return $this->renderCacheableResponse();
+    }
+}

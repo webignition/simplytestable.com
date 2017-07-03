@@ -3,8 +3,15 @@
 namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
+use SimplyTestable\WebsiteBundle\Services\PlanFeaturesService;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
-class PlanDetailsController extends CacheableController implements  IEFiltered {
+class PlanDetailsController extends CacheableController implements IEFiltered
+{
+    /**
+     * @var string[]
+     */
     private $allowedPlanNames = array(
         'demo',
         'free',
@@ -14,45 +21,53 @@ class PlanDetailsController extends CacheableController implements  IEFiltered {
         'enterprise',
         'premium'
     );
-    
+
+    /**
+     * @var string
+     */
     private $name;
-    
-    public function indexAction($name) {
+
+    /**
+     * @param string $name
+     *
+     * @return RedirectResponse|Response
+     */
+    public function indexAction($name)
+    {
         $this->name = $name;
-        
-        if (!$this->isAllowedPlanName()) {            
+
+        if (!$this->isAllowedPlanName()) {
             return $this->redirect($this->generateUrl('page_plans'));
         }
-        
+
         return $this->renderCacheableResponse(array(
-            'prices' => $this->container->getParameter('plans')['pricing'],            
+            'prices' => $this->container->getParameter('plans')['pricing'],
             'features' => $this->getPlanFeaturesService()->getPlanFeatures()[$this->name],
             'plan' => $this->name
         ));
     }
-    
-    
-    protected function getViewFilename() {
+
+    /**
+     * @return string
+     */
+    protected function getViewFilename()
+    {
         return str_replace('index.', 'index.' . $this->name . '.', parent::getViewFilename());
     }
-    
-    
+
     /**
-     * 
      * @return boolean
      */
-    private function isAllowedPlanName() {
+    private function isAllowedPlanName()
+    {
         return in_array($this->name, $this->allowedPlanNames);
     }
-    
-    
+
     /**
-     * 
-     * @return \SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
+     * @return PlanFeaturesService
      */
-    private function getPlanFeaturesService() {
+    private function getPlanFeaturesService()
+    {
         return $this->container->get('simplytestable.services.planFeaturesService');
     }
-
 }
-

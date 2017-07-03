@@ -1,67 +1,41 @@
 services:
-  simplytestable.services.httpClientService:
-    class:  SimplyTestable\WebsiteBundle\Services\HttpClientService    
-    
-  simplytestable.services.webResourceService:
-    class:  webignition\WebResource\Service\Service
-    calls:
-      - [createConfiguration, [{allow-uknown-resource-types: "true", retry-with-url-encoding-disabled: "true", content-type-web-resource-map: %content_type_web_resource_map% }]]         
-    
   simplytestable.services.testimonialService:
     class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
-    
+
   simplytestable.services.cachevalidatorheadersservice:
-    class:   SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService  
+    class:   SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService
     arguments:
-        entityManager: "@doctrine.orm.entity_manager"     
-        
-    
+        entityManager: "@doctrine.orm.entity_manager"
+
+
   simplytestable.services.userservice:
-    class:  SimplyTestable\WebsiteBundle\Services\UserService        
+    class:  SimplyTestable\WebsiteBundle\Services\UserService
     arguments:
         session: "@session"
         userSerializerService: "@simplytestable.services.userserializerservice"
-        
-  simplytestable.services.userserializerservice:
-    class:  SimplyTestable\WebsiteBundle\Services\UserSerializerService        
-    arguments:
-        key: %secret% 
-        
-  simplytestable.services.notfoundredirectservice:
-    class:  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService   
-    arguments:
-        web_client_parameters: %web_client_urls% 
-        not_found_redirect_map: %not_found_redirect_map%
-        
-  simplytestable.services.coreApplicationUrlService:
-    class:  SimplyTestable\WebsiteBundle\Services\CoreApplicationUrlService
-    arguments:        
-        urls: %core_application_urls%    
 
-  simplytestable.services.webClientUrlService:
-    class:  SimplyTestable\WebsiteBundle\Services\WebClientUrlService
-    arguments:        
-        urls: %web_client_urls%          
-        
-  simplytestable.services.testListService:
-    class:  SimplyTestable\WebsiteBundle\Services\TestListService
-    arguments:        
-        coreApplicationUrlService: "@simplytestable.services.coreApplicationUrlService"        
-        httpClientService: "@simplytestable.services.httpClientService"
-        webResourceService: "@simplytestable.services.webResourceService"
-        webClientUrlService: "@simplytestable.services.webClientUrlService"
-        
+  simplytestable.services.userserializerservice:
+    class:  SimplyTestable\WebsiteBundle\Services\UserSerializerService
+    arguments:
+        key: %secret%
+
+  simplytestable.services.notfoundredirectservice:
+    class:  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService
+    arguments:
+        web_client_parameters: %web_client_urls%
+        not_found_redirect_map: %not_found_redirect_map%
+
   simplytestable.controller.action_listener:
     class: SimplyTestable\WebsiteBundle\EventListener\RequestListener
-    arguments:        
+    arguments:
         kernel: @kernel
     tags:
-      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }           
-      
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
   simplytestable.services.cacheableResponseService:
-    class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService     
-    
+    class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService
+
   simplytestable.services.planFeaturesService:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
-    arguments:        
-        planData: %plans%        
+    arguments:
+        planData: %plans%
