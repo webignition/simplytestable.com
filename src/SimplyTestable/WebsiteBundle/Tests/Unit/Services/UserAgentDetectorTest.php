@@ -34,6 +34,9 @@ class UserAgentDetectorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedIsIE6, $this->userAgentDetector->isIE6());
         $this->assertEquals($expectedIsIE7, $this->userAgentDetector->isIE7());
         $this->assertEquals($expectedIsIE8, $this->userAgentDetector->isIE8());
+
+        $expectedIsOldIE = $expectedIsIE6 || $expectedIsIE7 || $expectedIsIE8;
+        $this->assertEquals($expectedIsOldIE, $this->userAgentDetector->isOldIE());
     }
 
     /**

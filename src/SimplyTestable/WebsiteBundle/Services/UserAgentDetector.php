@@ -19,6 +19,14 @@ class UserAgentDetector
     /**
      * @return bool
      */
+    public function isOldIE()
+    {
+        return $this->isIE6() || $this->isIE7() || $this->isIE8();
+    }
+
+    /**
+     * @return bool
+     */
     public function isIE8()
     {
         if (!preg_match('/msie 8\.[0-9]+/i', $this->userAgentString)) {
