@@ -27,3 +27,7 @@ before_script:
 
 script:
   - composer ci
+
+matrix:
+  allow_failures:
+  - php: 7.1
