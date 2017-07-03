@@ -68,7 +68,7 @@ abstract class BaseController extends Controller
     protected function renderCacheableResponse(array $additionalParameters = array())
     {
         return $this->getCacheableResponseService()->getCachableResponse(
-            $this->getRequest(),
+            $this->get('request_stack')->getCurrentRequest(),
             $this->renderResponse($additionalParameters)
         );
     }
