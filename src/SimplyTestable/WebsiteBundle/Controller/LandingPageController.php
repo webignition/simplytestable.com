@@ -54,6 +54,8 @@ class LandingPageController extends BaseController implements IEFiltered
      */
     private function getCouponFromRoute()
     {
-        return strtoupper(str_replace('landingpage_', '', $this->get('request')->attributes->get('_route')));
+        $requestRoute = $this->get('request_stack')->getCurrentRequest()->attributes->get('_route');
+
+        return strtoupper(str_replace('landingpage_', '', $requestRoute));
     }
 }
