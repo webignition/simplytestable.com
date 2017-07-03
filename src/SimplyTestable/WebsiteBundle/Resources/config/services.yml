@@ -47,3 +47,6 @@ services:
     class:  SimplyTestable\WebsiteBundle\Services\ResourceLocator
     arguments:
         kernel: "@kernel"
+
+  simplytestable.services.useragentdetector:
+    class:  SimplyTestable\WebsiteBundle\Services\UserAgentDetector
