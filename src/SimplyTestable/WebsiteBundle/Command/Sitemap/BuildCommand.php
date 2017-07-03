@@ -1,24 +1,63 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Command\Sitemap;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Templating\EngineInterface;
 
-class BuildCommand extends ContainerAwareCommand
+class BuildCommand extends Command
 {
-    /**
-     * @var \DOMDocument
-     */
-    private $sitemapDom = null;
+    const SITEMAP_ROUTES_RESOURCE_NAME = '@SimplyTestableWebsiteBundle/Resources/config/sitemap_routes.json';
+    const SITEMAP_RELATIVE_PATH = '/sitemap.xml';
 
     /**
-     * @var \DOMElement
+     * @var Router
      */
-    private $urlElementTemplate = null;
+    private $router;
+
+    /**
+     * @var ResourceLocator
+     */
+    private $resourceLocator;
+
+    /**
+     * @var string
+     */
+    private $webRootDir;
+
+    /**
+     * @var EngineInterface
+     */
+    private $templating;
+
+    /**
+     * @param Router $router
+     * @param ResourceLocator $resourceLocator
+     * @param string $kernelRootDir
+     * @param EngineInterface $templating
+     * @param string|null $name
+     */
+    public function __construct(
+        Router $router,
+        ResourceLocator $resourceLocator,
+        $kernelRootDir,
+        EngineInterface $templating,
+        $name = null
+    ) {
+        parent::__construct($name);
+        $this->router = $router;
+        $this->resourceLocator = $resourceLocator;
+        $this->webRootDir = realpath($kernelRootDir . '/../web');
+        $this->templating = $templating;
+
+        $routerContext = $this->router->getContext();
+        $routerContext->setHost('simplytestable.com');
+        $routerContext->setScheme('https');
+    }
 
     /**
      * {@inheritdoc}
@@ -36,120 +75,49 @@ class BuildCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        foreach ($this->getUrlsFromSource($this->getSitemapSource()) as $url) {
-            $this->getSitemapDom()->getElementsByTagName('urlset')->item(0)->appendChild(
-                $this->generateUrlElement($url)
+        $now = new \DateTime();
+        $lastModified = $now->format('Y-m-d');
+
+        $urls = $this->getUrls();
+        $decoratedUrls = [];
+
+        foreach ($urls as $url) {
+            $decoratedUrls[] = [
+                'location' => $url,
+                'last_modified' => $lastModified,
+                'change_frequency' => 'monthly',
+                'priority' => 1,
+            ];
+        }
+
+        $sitemapContent = $this->templating->render('SimplyTestableWebsiteBundle::sitemap.xml.twig', [
+            'urls' => $decoratedUrls,
+        ]);
+
+        $sitemapPath = $this->webRootDir . self::SITEMAP_RELATIVE_PATH;
+
+        file_put_contents($sitemapPath, $sitemapContent);
+        $output->writeln('Generated sitemap at [' . $sitemapPath . ']');
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getUrls()
+    {
+        $urls = [];
+        $routes = json_decode(file_get_contents(
+            $this->resourceLocator->locate(self::SITEMAP_ROUTES_RESOURCE_NAME)
+        ), true);
+
+        foreach ($routes as $route) {
+            $urls[] = $this->router->generate(
+                $route['route'],
+                $route['parameters'],
+                RouterInterface::ABSOLUTE_URL
             );
         }
 
-        $sitemapContent = $this->getSitemapDom()->saveXML();
-        file_put_contents($this->getSitemapPath() . '/sitemap.xml', $sitemapContent);
-        $output->writeln('Generated sitemap at ['.$this->getSitemapPath().']');
-    }
-
-    /**
-     * @return \DOMDocument
-     */
-    private function getSitemapDom()
-    {
-        if (is_null($this->sitemapDom)) {
-            $this->sitemapDom = new \DOMDocument();
-            $this->sitemapDom->loadXML($this->getSitemapTemplate());
-
-            $urlElementTemplate = $this->sitemapDom->getElementsByTagName('url')->item(0);
-            $this->urlElementTemplate = clone $urlElementTemplate;
-
-            $this->sitemapDom->getElementsByTagName('urlset')->item(0)->removeChild($urlElementTemplate);
-        }
-
-        return $this->sitemapDom;
-    }
-
-    /**
-     * @param $url
-     *
-     * @return \DOMElement
-     */
-    private function generateUrlElement($url)
-    {
-        $now = new \DateTime();
-
-        $element = clone $this->urlElementTemplate;
-        $element->getElementsByTagName('loc')->item(0)->nodeValue = $url;
-        $element->getElementsByTagName('lastmod')->item(0)->nodeValue = $now->format('Y-m-d');
-
-        return $element;
-    }
-
-    /**
-     * @param \stdClass
-     *
-     * @return string[]
-     */
-    private function getUrlsFromSource($source)
-    {
-        $urls = [];
-
-        foreach ($source as $relativePath => $details) {
-            $urls[] = $this->getBaseUrl() . ltrim($relativePath, "/");
-
-            if (!is_null($details)) {
-                $urls = array_merge($urls, $this->getUrlsFromSource($details));
-            }
-        }
-
         return $urls;
-    }
-
-    /**
-     * @return string
-     */
-    private function getBaseUrl()
-    {
-        $context = $this->getContainer()->get('router')->getContext();
-        $context->setHost('simplytestable.com');
-        $context->setScheme('https');
-
-        return $this->getRouter()->generate('home_index', [], true);
-    }
-
-    /**
-     * @return string
-     */
-    private function getSitemapPath()
-    {
-        return realpath($this->getContainer()->get('kernel')->getRootDir() . '/../web');
-    }
-
-    /**
-     * @return string
-     */
-    private function getSitemapTemplate()
-    {
-        return file_get_contents(
-            $this->getContainer()->get('kernel')->locateResource(
-                '@SimplyTestableWebsiteBundle/Resources/config/sitemap.template.xml'
-            )
-        );
-    }
-
-    /**
-     * @return \stdClass
-     */
-    private function getSitemapSource()
-    {
-        return json_decode(file_get_contents(
-            $this->getContainer()->get('kernel')->locateResource(
-                '@SimplyTestableWebsiteBundle/Resources/config/sitemap.source.json'
-            )
-        ));
-    }
-
-    /**
-     * @return RouterInterface
-     */
-    private function getRouter()
-    {
-        return $this->getContainer()->get('router');
     }
 }
