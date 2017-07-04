@@ -100,7 +100,7 @@ abstract class AbstractBaseController extends Controller
      */
     protected function getViewFilename()
     {
-        $routeParts = explode('_', $this->container->get('request')->get('_route'));
+        $routeParts = explode('_', $this->container->get('request_stack')->getCurrentRequest()->get('_route'));
 
         return $routeParts[count($routeParts) - 1] . '.html.twig';
     }

@@ -25,7 +25,7 @@ abstract class CacheableController extends AbstractBaseController implements Cac
      */
     public function getRequest()
     {
-        return (is_null($this->request)) ? $this->get('request') : $this->request;
+        return (is_null($this->request)) ? $this->get('request_stack')->getCurrentRequest() : $this->request;
     }
 
     /**
