@@ -5,7 +5,6 @@ web/images/
 app/bootstrap.php.cache
 build/
 vendor
-bin
 composer.phar
 /.idea
 /app/config/parameters.yml
