@@ -6,6 +6,7 @@ use SimplyTestable\WebsiteBundle\Services\CacheableResponseService;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class BaseController extends Controller
@@ -118,5 +119,25 @@ abstract class BaseController extends Controller
     private function getClassNamespaceParts()
     {
         return explode('\\', get_class($this));
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isOldIE()
+    {
+        $userAgentDetector = $this->container->get('simplytestable.services.useragentdetector');
+        $currentRequest = $this->get('request_stack')->getCurrentRequest();
+        $userAgentDetector->setUserAgentString($currentRequest->headers->get('user-agent'));
+
+        return $this->container->get('simplytestable.services.useragentdetector')->isOldIE();
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    protected function createRedirectToOutdatedBrowserResponse()
+    {
+        return $this->redirect($this->generateUrl('outdatedbrowser_index'));
     }
 }

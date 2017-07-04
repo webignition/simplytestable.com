@@ -71,13 +71,32 @@ abstract class AbstractWebTestCase extends WebTestCase
     }
 
     /**
-     * @param string $url
-     * @param string $method
+     * @param array $options
      *
      * @return Crawler
      */
-    protected function getCrawler($url, $method = 'GET')
+    protected function getCrawler($options)
     {
+        if (!isset($options['url'])) {
+            $options['url'] = '';
+        }
+
+        if (!isset($options['method'])) {
+            $options['method'] = 'GET';
+        }
+
+        if (!isset($options['parameters'])) {
+            $options['parameters'] = [];
+        }
+
+        if (!isset($options['files'])) {
+            $options['files'] = [];
+        }
+
+        if (!isset($options['server'])) {
+            $options['server'] = [];
+        }
+
         if ($this->hasUser()) {
             $cookie = new Cookie(
                 'simplytestable-user',
@@ -87,7 +106,13 @@ abstract class AbstractWebTestCase extends WebTestCase
             $this->client->getCookieJar()->set($cookie);
         }
 
-        $crawler = $this->client->request($method, $url);
+        $crawler = $this->client->request(
+            $options['method'],
+            $options['url'],
+            $options['parameters'],
+            $options['files'],
+            $options['server']
+        );
 
         return $crawler;
     }

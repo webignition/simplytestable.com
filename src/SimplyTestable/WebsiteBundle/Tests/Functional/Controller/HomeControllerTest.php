@@ -7,17 +7,11 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class HomeControllerTest extends AbstractWebTestCase
 {
-    public function testIndexActionResponse()
-    {
-        $this->getCrawler('/');
-        $response = $this->getClientResponse();
-
-        $this->assertTrue($response->isSuccessful());
-    }
-
     public function testIndexActionContentForPublicUser()
     {
-        $crawler = $this->getCrawler('/');
+        $crawler = $this->getCrawler([
+            'url' => '/',
+        ]);
 
         $signInOutButton = $this->getNavbar($crawler)->filter('a:contains("Sign in")');
         $this->assertCount(1, $signInOutButton);
@@ -40,7 +34,9 @@ class HomeControllerTest extends AbstractWebTestCase
             $this->createUser('user@example.com')
         );
 
-        $crawler = $this->getCrawler('/');
+        $crawler = $this->getCrawler([
+            'url' => '/',
+        ]);
 
         $accountLinkButton = $this->getNavbar($crawler)->filter('a:contains("'.$this->getUser()->getUsername().'")');
         $this->assertCount(1, $accountLinkButton);

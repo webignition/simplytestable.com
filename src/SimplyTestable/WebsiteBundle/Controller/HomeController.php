@@ -2,16 +2,19 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController extends CacheableController implements IEFiltered
+class HomeController extends CacheableController
 {
     /**
      * @return Response
      */
     public function indexAction()
     {
+        if ($this->isOldIE()) {
+            return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
         return $this->renderCacheableResponse();
     }
 }
