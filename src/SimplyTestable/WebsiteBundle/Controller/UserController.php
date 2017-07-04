@@ -5,7 +5,7 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class UserController extends BaseController
+class UserController extends AbstractBaseController
 {
     /**
      * @return RedirectResponse

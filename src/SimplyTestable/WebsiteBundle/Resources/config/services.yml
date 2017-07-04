@@ -1,5 +1,6 @@
 imports:
     - { resource: services/commands.yml }
+    - { resource: services/event-listeners.yml }
 
 services:
   simplytestable.services.testimonialService:
@@ -27,16 +28,6 @@ services:
     arguments:
         web_client_parameters: %web_client_urls%
         not_found_redirect_map: %not_found_redirect_map%
-
-  simplytestable.controller.action_listener:
-    class: SimplyTestable\WebsiteBundle\EventListener\RequestListener
-    arguments:
-        kernel: @kernel
-    tags:
-      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
-
-  simplytestable.services.cacheableResponseService:
-    class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService
 
   simplytestable.services.planFeaturesService:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
