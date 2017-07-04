@@ -9,7 +9,6 @@ php:
 before_install:
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
-  - mkdir app/cache/test
   - mv app/config/parameters.yml.travis app/config/parameters.yml
   - mv --force app/config/config_travis.yml app/config/config_test.yml
   - cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
