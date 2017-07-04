@@ -1,6 +1,7 @@
 imports:
     - { resource: services/commands.yml }
     - { resource: services/event-listeners.yml }
+    - { resource: services/controllers.yml }
 
 services:
   simplytestable.services.testimonialService:
