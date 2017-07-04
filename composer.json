@@ -47,8 +47,10 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ],
+        "test-unit": "./bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Unit/",
         "test-functional": "./bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Functional/",
         "test": [
+            "@composer test-unit",
             "@composer test-functional"
         ],
         "cs": "./bin/phpcs --colors --standard=PSR2 --extensions=php src/SimplyTestable/WebsiteBundle",
