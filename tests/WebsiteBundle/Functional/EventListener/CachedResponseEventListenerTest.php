@@ -1,13 +1,13 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional\Controller;
+namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Doctrine\ORM\EntityRepository;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
-use SimplyTestable\WebsiteBundle\Tests\Functional\AbstractWebTestCase;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;

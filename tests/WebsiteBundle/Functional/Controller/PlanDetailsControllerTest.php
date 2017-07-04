@@ -1,8 +1,8 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional\Controller;
+namespace Tests\WebsiteBundle\Functional\Controller;
 
-use SimplyTestable\WebsiteBundle\Tests\Functional\AbstractWebTestCase;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class PlanDetailsControllerTest extends AbstractWebTestCase
 {

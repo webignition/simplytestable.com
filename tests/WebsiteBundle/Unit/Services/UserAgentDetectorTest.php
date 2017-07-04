@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Unit\Services;
+namespace Tests\WebsiteBundle\Unit\Services;
 
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 
