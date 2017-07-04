@@ -4,28 +4,28 @@ namespace SimplyTestable\WebsiteBundle\Services;
 class NotFoundRedirectService
 {
     /**
-      * @var array
+     * @var array
      */
     private $replacements = array();
 
     /**
-      * @var array
+     * @var array
      */
     private $notFoundRedirectMap = array();
 
     /**
-      * @var string
+     * @var string
      */
     private $normalisedRequestUri = '';
 
     /**
      * @param string[] $webClientUrls
-     * @param array $not_found_redirect_map
+     * @param array $notFoundRedirectMap
      */
-    public function __construct($webClientUrls, $not_found_redirect_map)
+    public function __construct($webClientUrls, $notFoundRedirectMap)
     {
         $this->replacements['web_client'] = $webClientUrls;
-        $this->notFoundRedirectMap = $not_found_redirect_map;
+        $this->notFoundRedirectMap = $notFoundRedirectMap;
     }
 
     /**
@@ -36,6 +36,7 @@ class NotFoundRedirectService
     public function hasRedirectFor($requestUri)
     {
         $this->setNormalisedRequestUri($requestUri);
+
         return isset($this->notFoundRedirectMap[$this->getNormalisedRequestUri()]);
     }
 
@@ -54,7 +55,7 @@ class NotFoundRedirectService
     }
 
     /**
-     * @param $parameterisedUrl
+     * @param string $parameterisedUrl
      *
      * @return string
      */
@@ -104,7 +105,7 @@ class NotFoundRedirectService
     }
 
     /**
-     * @param $string rawParameter
+     * @param string $rawParameter
      *
      * @return array
      */
