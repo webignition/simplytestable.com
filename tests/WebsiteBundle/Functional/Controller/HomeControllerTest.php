@@ -2,8 +2,8 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class HomeControllerTest extends AbstractWebTestCase
 {

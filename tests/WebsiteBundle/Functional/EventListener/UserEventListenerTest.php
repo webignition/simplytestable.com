@@ -5,10 +5,10 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Model\User;
 use SimplyTestable\WebsiteBundle\Services\UserService;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class UserEventListenerTest extends AbstractWebTestCase
 {

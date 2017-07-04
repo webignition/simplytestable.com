@@ -1,8 +1,8 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Factory;
 
-use Symfony\Bundle\AsseticBundle\Factory\AssetFactory as BaseAssetFactory;
 use Assetic\Factory\Worker\CacheBustingWorker;
+use Symfony\Bundle\AsseticBundle\Factory\AssetFactory as BaseAssetFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpKernel\KernelInterface;

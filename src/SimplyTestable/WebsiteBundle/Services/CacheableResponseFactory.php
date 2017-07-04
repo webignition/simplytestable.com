@@ -1,8 +1,8 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Services;
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CacheableResponseFactory
 {

@@ -7,9 +7,9 @@ use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use webignition\Url\Url;
 
 class ExceptionController extends Controller
