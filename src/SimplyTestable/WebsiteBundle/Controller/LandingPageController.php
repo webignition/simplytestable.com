@@ -2,11 +2,10 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
-class LandingPageController extends BaseController implements IEFiltered
+class LandingPageController extends BaseController
 {
     const ONE_YEAR_IN_SECONDS = 31536000;
 
@@ -22,6 +21,10 @@ class LandingPageController extends BaseController implements IEFiltered
      */
     public function indexAction()
     {
+        if ($this->isOldIE()) {
+            return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
         $response = $this->renderResponse();
 
         if ($this->hasValidCoupon()) {

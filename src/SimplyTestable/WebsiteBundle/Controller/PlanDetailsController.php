@@ -2,12 +2,11 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 use SimplyTestable\WebsiteBundle\Services\PlanFeaturesService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class PlanDetailsController extends CacheableController implements IEFiltered
+class PlanDetailsController extends CacheableController
 {
     /**
      * @var string[]
@@ -34,6 +33,10 @@ class PlanDetailsController extends CacheableController implements IEFiltered
      */
     public function indexAction($name)
     {
+        if ($this->isOldIE()) {
+            return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
         $this->name = $name;
 
         if (!$this->isAllowedPlanName()) {

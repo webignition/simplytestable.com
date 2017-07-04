@@ -7,9 +7,7 @@ use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered as IEFilteredController;
 use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 
 class RequestListener
@@ -44,11 +42,6 @@ class RequestListener
         $this->event = $event;
 
         if (!$this->isApplicationController()) {
-            return;
-        }
-
-        if ($this->isIeFilteredController() && $this->isUsingOldIE()) {
-            $this->event->setResponse($this->getRedirectResponseToOutdatedBrowserPage());
             return;
         }
 
@@ -92,16 +85,6 @@ class RequestListener
         );
     }
 
-    /**
-     * @return RedirectResponse
-     */
-    private function getRedirectResponseToOutdatedBrowserPage()
-    {
-        return new RedirectResponse(
-            $this->kernel->getContainer()->get('router')->generate('outdatedbrowser_index', array(), true)
-        );
-    }
-
     private function fixRequestIfNoneMatchHeader()
     {
         $currentIfNoneMatch = $this->event->getRequest()->headers->get('if-none-match');
@@ -109,14 +92,6 @@ class RequestListener
         $modifiedEtag = preg_replace('/-gzip"$/', '"', $currentIfNoneMatch);
 
         $this->event->getRequest()->headers->set('if-none-match', $modifiedEtag);
-    }
-
-    /**
-     * @return boolean
-     */
-    private function isIeFilteredController()
-    {
-        return $this->getController() instanceof IEFilteredController;
     }
 
     /**
@@ -167,62 +142,6 @@ class RequestListener
     private function isCacheableController()
     {
         return $this->getController() instanceof CacheableController;
-    }
-
-    /**
-     * @return boolean
-     */
-    private function isUsingOldIE()
-    {
-        if ($this->isUsingIE6() || $this->isUsingIE7()) {
-            $this->kernel->getContainer()->get('logger')
-                ->err('Detected old IE for [' . $this->getUserAgentString() . ']');
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @return boolean
-     */
-    private function isUsingIE6()
-    {
-        // // Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
-
-        if (!preg_match('/msie 6\.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-
-        if (preg_match('/opera/i', $this->getUserAgentString())) {
-            return false;
-        }
-
-        if (preg_match('/msie 8.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * @return boolean
-     */
-    private function isUsingIE7()
-    {
-        if (!preg_match('/msie 7\.[0-9]+/i', $this->getUserAgentString())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * @return string
-     */
-    private function getUserAgentString()
-    {
-        return $this->event->getRequest()->server->get('HTTP_USER_AGENT');
     }
 
     /**

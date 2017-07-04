@@ -2,21 +2,21 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\IEFiltered;
 use SimplyTestable\WebsiteBundle\Services\PlanFeaturesService;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class PageController extends CacheableController implements IEFiltered
+class PageController extends CacheableController
 {
     /**
      * @return Response
      */
     public function plansAction()
     {
-        return $this->renderCacheableResponse(array(
+        return $this->handleAction([
             'prices' => $this->container->getParameter('plans')['pricing'],
             'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
-        ));
+        ]);
     }
 
     /**
@@ -24,7 +24,7 @@ class PageController extends CacheableController implements IEFiltered
      */
     public function featuresAction()
     {
-        return $this->renderCacheableResponse();
+        return $this->handleAction();
     }
 
     /**
@@ -32,7 +32,7 @@ class PageController extends CacheableController implements IEFiltered
      */
     public function roadmapAction()
     {
-        return $this->renderCacheableResponse();
+        return $this->handleAction();
     }
 
     /**
@@ -40,9 +40,9 @@ class PageController extends CacheableController implements IEFiltered
      */
     public function accountBenefitsAction()
     {
-        return $this->renderCacheableResponse(array(
+        return $this->handleAction([
             'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
-        ));
+        ]);
     }
 
     /**
@@ -62,5 +62,18 @@ class PageController extends CacheableController implements IEFiltered
             default:
                 return [];
         }
+    }
+
+    /**
+     * @param array $additionalParameters
+     * @return RedirectResponse|Response
+     */
+    private function handleAction($additionalParameters = [])
+    {
+        if ($this->isOldIE()) {
+            return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
+        return $this->renderCacheableResponse($additionalParameters);
     }
 }
