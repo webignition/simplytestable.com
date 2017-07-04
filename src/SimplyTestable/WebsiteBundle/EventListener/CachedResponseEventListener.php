@@ -3,14 +3,14 @@
 namespace SimplyTestable\WebsiteBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
+use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
+use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
-use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 
 class CachedResponseEventListener
 {

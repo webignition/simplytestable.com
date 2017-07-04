@@ -7,10 +7,10 @@ use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class CachedResponseEventListenerTest extends AbstractWebTestCase
 {

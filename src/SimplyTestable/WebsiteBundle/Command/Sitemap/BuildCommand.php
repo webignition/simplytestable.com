@@ -2,9 +2,9 @@
 namespace SimplyTestable\WebsiteBundle\Command\Sitemap;
 
 use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Templating\EngineInterface;
