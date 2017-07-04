@@ -2,14 +2,14 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Services\CacheableResponseService;
+use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-abstract class BaseController extends Controller
+abstract class AbstractBaseController extends Controller
 {
     /**
      * @return UserService
@@ -25,14 +25,6 @@ abstract class BaseController extends Controller
     protected function getTestimonialService()
     {
         return $this->get('simplytestable.services.testimonialService');
-    }
-
-    /**
-     * @return CacheableResponseService
-     */
-    protected function getCacheableResponseService()
-    {
-        return $this->get('simplytestable.services.cacheableResponseService');
     }
 
     /**
@@ -68,7 +60,7 @@ abstract class BaseController extends Controller
      */
     protected function renderCacheableResponse(array $additionalParameters = array())
     {
-        return $this->getCacheableResponseService()->getCachableResponse(
+        return CacheableResponseFactory::createCacheableResponse(
             $this->get('request_stack')->getCurrentRequest(),
             $this->renderResponse($additionalParameters)
         );

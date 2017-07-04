@@ -29,9 +29,6 @@ services:
         web_client_parameters: %web_client_urls%
         not_found_redirect_map: %not_found_redirect_map%
 
-  simplytestable.services.cacheableResponseService:
-    class:  SimplyTestable\WebsiteBundle\Services\CacheableResponseService
-
   simplytestable.services.planFeaturesService:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
     arguments:

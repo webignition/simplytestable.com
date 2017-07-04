@@ -10,6 +10,16 @@ class CacheValidatorIdentifier
     private $parameters = array();
 
     /**
+     * @param $parameters
+     */
+    public function setParameters($parameters)
+    {
+        foreach ($parameters as $key => $value) {
+            $this->setParameter($key, $value);
+        }
+    }
+
+    /**
      * @param string $key
      * @param mixed $value
      */

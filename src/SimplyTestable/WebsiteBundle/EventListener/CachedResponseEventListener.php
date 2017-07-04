@@ -2,34 +2,59 @@
 
 namespace SimplyTestable\WebsiteBundle\EventListener;
 
+use Psr\Log\LoggerInterface;
+use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
 use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 
 class CachedResponseEventListener
 {
-    const APPLICATION_CONTROLLER_PREFIX = 'SimplyTestable\WebsiteBundle\Controller\\';
+    const REQUEST_HEADER_ETAG = 'x-cache-validator-etag';
+    const REQUEST_HEADER_LASTMODIFIED = 'x-cache-validator-lastmodified';
 
     /**
-     * @var GetResponseEvent
+     * @var UserService
      */
-    private $event;
+    private $userService;
 
     /**
-     * @var Kernel
+     * @var CacheValidatorHeadersService
      */
-    private $kernel;
+    private $cacheValidatorHeadersService;
 
     /**
-     * @param Kernel $kernel
+     * @var LoggerInterface
      */
-    public function __construct(Kernel $kernel)
-    {
-        $this->kernel = $kernel;
+    private $logger;
+
+    /**
+     * @var CacheableController
+     */
+    private $controller;
+
+    /**
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @param UserService $userService
+     * @param CacheValidatorHeadersService $cacheValidatorHeadersService
+     * @param LoggerInterface $logger
+     */
+    public function __construct(
+        UserService $userService,
+        CacheValidatorHeadersService $cacheValidatorHeadersService,
+        LoggerInterface $logger
+    ) {
+        $this->userService = $userService;
+        $this->cacheValidatorHeadersService = $cacheValidatorHeadersService;
+        $this->logger = $logger;
     }
 
     /**
@@ -39,59 +64,76 @@ class CachedResponseEventListener
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        $this->event = $event;
-
-        if (!$this->isApplicationController()) {
+        if (!$event->isMasterRequest()) {
             return;
         }
 
-        $this->getUserService()->setUserFromRequest($this->event->getRequest());
+        $this->request = $event->getRequest();
+        $this->controller = $this->createController();
 
-        if (!$this->isCacheableController()) {
-            return;
+        if (empty($this->controller)) {
+            return null;
         }
 
-        $this->setRequestCacheValidatorHeaders();
+        if ($this->controller instanceof CacheableController) {
+            $this->controller->setRequest($this->request);
+            $this->setCacheValidatorHeadersOnRequest();
 
-        $response = $this->getCacheableResponseService()->getCachableResponse($this->event->getRequest());
+            $response = CacheableResponseFactory::createCacheableResponse($this->request);
 
-        $this->fixRequestIfNoneMatchHeader();
-        if ($response->isNotModified($this->event->getRequest())) {
-            $this->event->setResponse($response);
+            $this->fixRequestIfNoneMatchHeader();
+            if ($response->isNotModified($this->request)) {
+                $event->setResponse($response);
+            }
         }
 
         return null;
     }
 
-    private function setRequestCacheValidatorHeaders()
+    private function setCacheValidatorHeadersOnRequest()
     {
-        /* @var $controller CacheableController */
-        $controller = $this->getController();
-        $controller->setRequest($this->event->getRequest());
+        $cacheValidatorHeaders = $this->cacheValidatorHeadersService->get(
+            $this->createCacheValidatorIdentifier()
+        );
 
-        $cacheValidatorParameters = $controller->getCacheValidatorParameters($this->getActionName());
-
-        if ($this->event->getRequest()->headers->has('accept')) {
-            $cacheValidatorHeaders['http-header-accept'] = $this->event->getRequest()->headers->get('accept');
-        }
-
-        $cacheValidatorIdentifier = $this->getCacheValidatorIdentifier($cacheValidatorParameters);
-        $cacheValidatorHeaders = $this->getCacheValidatorHeadersService()->get($cacheValidatorIdentifier);
-
-        $this->event->getRequest()->headers->set('x-cache-validator-etag', $cacheValidatorHeaders->getETag());
-        $this->event->getRequest()->headers->set(
-            'x-cache-validator-lastmodified',
+        $this->request->headers->set(self::REQUEST_HEADER_ETAG, $cacheValidatorHeaders->getETag());
+        $this->request->headers->set(
+            self::REQUEST_HEADER_LASTMODIFIED,
             $cacheValidatorHeaders->getLastModifiedDate()->format('c')
         );
     }
 
+    /**
+     * @return CacheValidatorIdentifier
+     */
+    private function createCacheValidatorIdentifier()
+    {
+        $parameters = $this->controller->getCacheValidatorParameters($this->getActionName());
+
+        if ($this->request->headers->has('accept')) {
+            $parameters['http-header-accept'] = $this->request->headers->get('accept');
+        }
+
+        $identifier = new CacheValidatorIdentifier();
+        $identifier->setParameters(array_merge(
+            [
+                'route' => $this->request->get('_route'),
+                'user' => $this->userService->getUser()->getUsername(),
+                'is_logged_in' => $this->userService->isLoggedIn(),
+            ],
+            $parameters
+        ));
+
+        return $identifier;
+    }
+
     private function fixRequestIfNoneMatchHeader()
     {
-        $currentIfNoneMatch = $this->event->getRequest()->headers->get('if-none-match');
+        $currentIfNoneMatch = $this->request->headers->get('if-none-match');
 
         $modifiedEtag = preg_replace('/-gzip"$/', '"', $currentIfNoneMatch);
 
-        $this->event->getRequest()->headers->set('if-none-match', $modifiedEtag);
+        $this->request->headers->set('if-none-match', $modifiedEtag);
     }
 
     /**
@@ -115,75 +157,18 @@ class CachedResponseEventListener
      */
     private function getControllerActionParts()
     {
-        return explode('::', $this->event->getRequest()->attributes->get('_controller'));
+        return explode('::', $this->request->attributes->get('_controller'));
     }
 
     /**
-     * @return boolean
+     * @return Controller|null
      */
-    private function isApplicationController()
-    {
-        return substr($this->getControllerClassName(), 0, strlen(self::APPLICATION_CONTROLLER_PREFIX))
-            == self::APPLICATION_CONTROLLER_PREFIX;
-    }
-
-    /**
-     * @return Controller
-     */
-    private function getController()
+    private function createController()
     {
         $className = $this->getControllerClassName();
-        return new $className;
-    }
 
-    /**
-     * @return boolean
-     */
-    private function isCacheableController()
-    {
-        return $this->getController() instanceof CacheableController;
-    }
-
-    /**
-     * @return CacheValidatorHeadersService
-     */
-    private function getCacheValidatorHeadersService()
-    {
-        return $this->kernel->getContainer()->get('simplytestable.services.cachevalidatorheadersservice');
-    }
-
-    /**
-     * @param array $parameters
-     *
-     * @return CacheValidatorIdentifier
-     */
-    private function getCacheValidatorIdentifier(array $parameters = array())
-    {
-        $identifier = new CacheValidatorIdentifier();
-        $identifier->setParameter('route', $this->kernel->getContainer()->get('request')->get('_route'));
-        $identifier->setParameter('user', $this->getUserService()->getUser()->getUsername());
-        $identifier->setParameter('is_logged_in', $this->getUserService()->isLoggedIn());
-
-        foreach ($parameters as $key => $value) {
-            $identifier->setParameter($key, $value);
-        }
-
-        return $identifier;
-    }
-
-    /**
-     * @return UserService
-     */
-    private function getUserService()
-    {
-        return $this->kernel->getContainer()->get('simplytestable.services.userservice');
-    }
-
-    /**
-     * @return \SimplyTestable\WebsiteBundle\Services\CacheableResponseService
-     */
-    private function getCacheableResponseService()
-    {
-        return $this->kernel->getContainer()->get('simplytestable.services.cacheableResponseService');
+        return class_exists($className)
+            ? new $className
+            : null;
     }
 }

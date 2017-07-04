@@ -5,7 +5,7 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use Symfony\Component\HttpFoundation\Request;
 
-abstract class CacheableController extends BaseController implements Cacheable
+abstract class CacheableController extends AbstractBaseController implements Cacheable
 {
     /**
      * @var Request

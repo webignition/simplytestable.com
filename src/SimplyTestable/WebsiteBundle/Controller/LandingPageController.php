@@ -5,7 +5,7 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
-class LandingPageController extends BaseController
+class LandingPageController extends AbstractBaseController
 {
     const ONE_YEAR_IN_SECONDS = 31536000;
 

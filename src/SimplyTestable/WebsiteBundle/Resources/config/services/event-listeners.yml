@@ -2,6 +2,15 @@ services:
   simplytestable.eventlistener.cachedresponse:
     class: SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener
     arguments:
-        kernel: "@kernel"
+        userService: "@simplytestable.services.userservice"
+        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
+        logger: "@logger"
     tags:
-      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 25 }
+
+  simplytestable.eventlistener.user:
+    class: SimplyTestable\WebsiteBundle\EventListener\UserEventListener
+    arguments:
+        userService: "@simplytestable.services.userservice"
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 20 }
