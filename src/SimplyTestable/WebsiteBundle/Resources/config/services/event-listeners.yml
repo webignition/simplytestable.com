@@ -1,0 +1,7 @@
+services:
+  simplytestable.eventlistener.cachedresponse:
+    class: SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener
+    arguments:
+        kernel: "@kernel"
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

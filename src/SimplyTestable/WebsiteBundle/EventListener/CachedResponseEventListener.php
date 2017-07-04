@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
 use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 
-class RequestListener
+class CachedResponseEventListener
 {
     const APPLICATION_CONTROLLER_PREFIX = 'SimplyTestable\WebsiteBundle\Controller\\';
 
