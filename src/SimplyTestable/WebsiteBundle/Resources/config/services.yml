@@ -1,6 +1,7 @@
 imports:
     - { resource: services/commands.yml }
     - { resource: services/event-listeners.yml }
+    - { resource: services/controllers.yml }
 
 services:
   simplytestable.services.testimonialService:
@@ -21,18 +22,18 @@ services:
   simplytestable.services.userserializerservice:
     class:  SimplyTestable\WebsiteBundle\Services\UserSerializerService
     arguments:
-        key: %secret%
+        key: "%secret%"
 
   simplytestable.services.notfoundredirectservice:
     class:  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService
     arguments:
-        web_client_parameters: %web_client_urls%
-        not_found_redirect_map: %not_found_redirect_map%
+        web_client_parameters: "%web_client_urls%"
+        not_found_redirect_map: "%not_found_redirect_map%"
 
   simplytestable.services.planFeaturesService:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
     arguments:
-        planData: %plans%
+        planData: "%plans%"
 
   simplytestable.services.resourcelocator:
     class:  SimplyTestable\WebsiteBundle\Services\ResourceLocator

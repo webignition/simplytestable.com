@@ -4,69 +4,148 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
+use Swift_Mailer;
+use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
+use Twig_Environment;
 use webignition\Url\Url;
 
-class ExceptionController extends Controller
+class ExceptionController extends BaseExceptionController
 {
     /**
-     * Converts an Exception to a Response.
-     *
-     * @param FlattenException     $exception A FlattenException instance
-     * @param DebugLoggerInterface $logger    A DebugLoggerInterface instance
-     * @param string               $format    The format to use for rendering (html, xml, ...)
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @var NotFoundRedirectService
+     */
+    private $notFoundRedirectService;
+
+    /**
+     * @var Swift_Mailer
+     */
+    private $mailer;
+
+    /**
+     * @var TestimonialService
+     */
+    private $testimonialService;
+
+    /**
+     * @param Twig_Environment $twig
+     * @param bool $debug
+     * @param NotFoundRedirectService $notFoundRedirectService
+     * @param Swift_Mailer $mailer
+     * @param TestimonialService $testimonialService
+     */
+    public function __construct(
+        Twig_Environment $twig,
+        $debug,
+        NotFoundRedirectService $notFoundRedirectService,
+        Swift_Mailer $mailer,
+        TestimonialService $testimonialService
+    ) {
+        parent::__construct($twig, $debug);
+        $this->notFoundRedirectService = $notFoundRedirectService;
+        $this->mailer = $mailer;
+        $this->testimonialService = $testimonialService;
+    }
+
+    /**
+     * @param Request $request
+     * @param FlattenException $exception
+     * @param DebugLoggerInterface|null $logger
      *
      * @return Response
-     *
-     * @throws \InvalidArgumentException When the exception template does not exist
      */
-    public function showAction(FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html')
+    public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null)
     {
-        if ($this->getNotFoundRedirectService()->hasRedirectFor($this->container->get('request')->getRequestUri())) {
-            return $this->redirect(
-                $this->getNotFoundRedirectService()->getRedirectFor($this->container->get('request')->getRequestUri())
+        $this->request = $request;
+
+        if ($this->notFoundRedirectService->hasRedirectFor($this->request->getRequestUri())) {
+            return new RedirectResponse(
+                $this->notFoundRedirectService->getRedirectFor($this->request->getRequestUri())
             );
         }
 
-        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $this->container->get('request')->getRequestUri());
+        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $request->getRequestUri());
+        $isNotFoundException = $exception->getStatusCode() == Response::HTTP_NOT_FOUND;
 
-        if ($this->isNotFoundException($exception) && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
-            return $this->redirect('http:' . $normalisedRequestUrl);
+        if ($isNotFoundException && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
+            return new RedirectResponse(
+                'http:' . $normalisedRequestUrl
+            );
         }
 
-        if (!$this->container->get('kernel')->isDebug()) {
+        if (!$this->debug) {
             $this->sendDeveloperEmail($exception);
         }
 
-        $this->container->get('request')->setRequestFormat($format);
-
-        $currentContent = $this->getAndCleanOutputBuffering();
-
-        $templating = $this->container->get('templating');
+        $currentContent = $this->getAndCleanOutputBuffering($this->request->headers->get('X-Php-Ob-Level', -1));
+        $showException = $request->attributes->get('showException', $this->debug);
         $code = $exception->getStatusCode();
 
-        return $templating->renderResponse(
-            $this->findTemplate($templating, $format, $code, $this->container->get('kernel')->isDebug()),
-            array(
-                'status_code'    => $code,
-                'status_text'    => isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '',
-                'exception'      => $exception,
-                'logger'         => $logger,
-                'currentContent' => $currentContent,
-                'requestUri' => $this->container->get('request')->getRequestUri(),
-                'testimonial' => $this->getTestimonialService()->getRandom()
-            )
+        return new Response(
+            $this->twig->render(
+                (string) $this->findTemplate($request, $request->getRequestFormat(), $code, $showException),
+                array(
+                    'status_code'    => $code,
+                    'status_text'    => isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '',
+                    'exception'      => $exception,
+                    'logger'         => $logger,
+                    'currentContent' => $currentContent,
+                    'requestUri' => $this->request->getRequestUri(),
+                    'testimonial' => $this->testimonialService->getRandom()
+                )
+            ),
+            Response::HTTP_NOT_FOUND
         );
     }
 
     /**
+     * @param Request $request
+     * @param string  $format
+     * @param int     $code          An HTTP response status code
+     * @param bool    $showException
+     *
+     * @return string
+     */
+    protected function findTemplate(Request $request, $format, $code, $showException)
+    {
+        $name = $showException ? 'exception' : 'error';
+        if ($showException && 'html' == $format) {
+            $name = 'exception_full';
+        }
+
+        // For error pages, try to find a template for the specific HTTP status code and format
+        if (!$showException) {
+            $template = sprintf('SimplyTestableWebsiteBundle:Exception:%s%s.%s.twig', $name, $code, $format);
+            if ($this->templateExists($template)) {
+                return $template;
+            }
+        }
+
+        // try to find a template for the given format
+        $template = sprintf('@Twig/Exception/%s.%s.twig', $name, $format);
+        if ($this->templateExists($template)) {
+            return $template;
+        }
+
+        // default to a generic HTML exception
+        $request->setRequestFormat('html');
+
+        return sprintf('@Twig/Exception/%s.html.twig', $showException ? 'exception_full' : $name);
+    }
+
+    /**
      * @param string $url
-     * @return boolean
+     *
+     * @return bool
      */
     private function isProtocolRelativeRequestUrl($url)
     {
@@ -77,81 +156,20 @@ class ExceptionController extends Controller
 
     /**
      * @param FlattenException $exception
-     *
-     * @return boolean
-     */
-    private function isNotFoundException(FlattenException $exception)
-    {
-        return $exception->getStatusCode() == 404;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getAndCleanOutputBuffering()
-    {
-        // ob_get_level() never returns 0 on some Windows configurations, so if
-        // the level is the same two times in a row, the loop should be stopped.
-        $previousObLevel = null;
-        $startObLevel = $this->container->get('request')->headers->get('X-Php-Ob-Level', -1);
-
-        $currentContent = '';
-
-        while (($obLevel = ob_get_level()) > $startObLevel && $obLevel !== $previousObLevel) {
-            $previousObLevel = $obLevel;
-            $currentContent .= ob_get_clean();
-        }
-
-        return $currentContent;
-    }
-
-    /**
-     * @param EngineInterface $templating
-     * @param string          $format
-     * @param integer         $code       An HTTP response status code
-     * @param Boolean         $debug
-     *
-     * @return TemplateReference
-     */
-    protected function findTemplate($templating, $format, $code, $debug)
-    {
-        $name = $debug ? 'exception' : 'error';
-        if ($debug && 'html' == $format) {
-            $name = 'exception_full';
-        }
-
-        // when not in debug, try to find a template for the specific HTTP status code and format
-        if (!$debug) {
-            $template = new TemplateReference('SimplyTestableWebsiteBundle', 'Exception', $name.$code, $format, 'twig');
-            if ($templating->exists($template)) {
-                return $template;
-            }
-        }
-
-        // try to find a template for the given format
-        $template = new TemplateReference('TwigBundle', 'Exception', $name, $format, 'twig');
-
-        if ($templating->exists($template)) {
-            return $template;
-        }
-
-        // default to a generic HTML exception
-        $this->container->get('request')->setRequestFormat('html');
-
-        return new TemplateReference('TwigBundle', 'Exception', $name, 'html', 'twig');
-    }
-
-    /**
-     * @param FlattenException $exception
      */
     private function sendDeveloperEmail(FlattenException $exception)
     {
         $message = \Swift_Message::newInstance();
 
-        $message->setSubject($this->getDeveloperEmailSubject($exception));
+        $message->setSubject(sprintf(
+            'Exception [%s,%s]',
+            $exception->getCode(),
+            $exception->getStatusCode()
+        ));
         $message->setFrom('exceptions@simplytestable.com');
         $message->setTo('jon@simplytestable.com');
-        $message->setBody($this->renderView('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
+
+        $message->setBody($this->twig->render('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
             'status_code' => $exception->getStatusCode(),
             'status_text' => '"status text"',
             'exception' => $exception,
@@ -159,42 +177,6 @@ class ExceptionController extends Controller
             'user_agent' => $_SERVER['HTTP_USER_AGENT']
         )));
 
-        $this->get('mailer')->send($message);
-    }
-
-    /**
-     * @param FlattenException $exception
-     *
-     * @return string
-     */
-    private function getDeveloperEmailSubject(FlattenException $exception)
-    {
-        $subject = 'Exception ['.$exception->getCode().','.$exception->getStatusCode().']';
-
-        if ($exception->getStatusCode() == 404) {
-            $subject .= ' [' . $exception->getMessage() . ']';
-        }
-
-        if ($exception->getStatusCode() == 500) {
-            $subject .= ' [' . $exception->getMessage() . ']';
-        }
-
-        return $subject;
-    }
-
-    /**
-     * @return TestimonialService
-     */
-    private function getTestimonialService()
-    {
-        return $this->get('simplytestable.services.testimonialService');
-    }
-
-    /**
-     * @return NotFoundRedirectService
-     */
-    private function getNotFoundRedirectService()
-    {
-        return $this->get('simplytestable.services.notfoundredirectservice');
+        $this->mailer->send($message);
     }
 }
