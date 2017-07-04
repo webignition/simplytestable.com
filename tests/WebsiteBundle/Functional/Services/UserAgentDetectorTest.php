@@ -1,9 +1,9 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional\Controller;
+namespace Tests\WebsiteBundle\Functional\Controller;
 
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
-use SimplyTestable\WebsiteBundle\Tests\Functional\AbstractWebTestCase;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class UserAgentDetectorTest extends AbstractWebTestCase
 {

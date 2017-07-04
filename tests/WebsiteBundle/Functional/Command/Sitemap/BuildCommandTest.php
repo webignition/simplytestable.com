@@ -1,9 +1,9 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional\Command\Sitemap;
+namespace Tests\WebsiteBundle\Functional\Command\Sitemap;
 
 use SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand;
-use SimplyTestable\WebsiteBundle\Tests\Functional\AbstractWebTestCase;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Templating\EngineInterface;

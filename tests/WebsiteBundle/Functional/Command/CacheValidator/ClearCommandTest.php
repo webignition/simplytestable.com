@@ -1,10 +1,10 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional\Command\CacheValidator;
+namespace Tests\WebsiteBundle\Functional\Command\CacheValidator;
 
 use SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
-use SimplyTestable\WebsiteBundle\Tests\Functional\AbstractWebTestCase;
+use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 

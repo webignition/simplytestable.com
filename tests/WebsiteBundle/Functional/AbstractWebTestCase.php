@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Tests\Functional;
+namespace Tests\WebsiteBundle\Functional;
 
 use SimplyTestable\WebsiteBundle\Model\User;
 use SimplyTestable\WebsiteBundle\Services\UserSerializerService;

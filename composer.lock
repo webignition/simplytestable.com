@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "76a460d3e232ed98d71bd0b950231447",
+    "content-hash": "7b922cc4cc6bc1447405978e994b874e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2724,16 +2724,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.22",
+            "version": "v2.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "2404550f13f71470206227c98c2d53f0f4cbbb3e"
+                "reference": "bca31e4e3b6cfd8cef39ec04a253966cecf8f2ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/2404550f13f71470206227c98c2d53f0f4cbbb3e",
-                "reference": "2404550f13f71470206227c98c2d53f0f4cbbb3e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/bca31e4e3b6cfd8cef39ec04a253966cecf8f2ca",
+                "reference": "bca31e4e3b6cfd8cef39ec04a253966cecf8f2ca",
                 "shasum": ""
             },
             "require": {
@@ -2857,20 +2857,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-06-07T20:12:45+00:00"
+            "time": "2017-07-04T05:31:17+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v1.34.3",
+            "version": "v1.34.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e"
+                "reference": "f878bab48edb66ad9c6ed626bf817f60c6c096ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
-                "reference": "451c6f4197e113e24c1c85bc3fc8c2d77adeff2e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f878bab48edb66ad9c6ed626bf817f60c6c096ee",
+                "reference": "f878bab48edb66ad9c6ed626bf817f60c6c096ee",
                 "shasum": ""
             },
             "require": {
@@ -2922,7 +2922,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-07T18:45:17+00:00"
+            "time": "2017-07-04T13:19:31+00:00"
         },
         {
             "name": "webignition/url",
@@ -4189,7 +4189,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.22",
+            "version": "v2.8.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
