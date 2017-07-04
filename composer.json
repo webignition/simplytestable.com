@@ -47,20 +47,17 @@
         "post-update-cmd": [
             "@symfony-scripts"
         ],
-        "test-unit": "./bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Unit/",
-        "test-functional": "./bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Functional/",
+        "test-unit": "./vendor/bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Unit/",
+        "test-functional": "./vendor/bin/phpunit -c app --colors src/SimplyTestable/WebsiteBundle/Tests/Functional/",
         "test": [
             "@composer test-unit",
             "@composer test-functional"
         ],
-        "cs": "./bin/phpcs --colors --standard=PSR2 --extensions=php src/SimplyTestable/WebsiteBundle",
+        "cs": "./vendor/bin/phpcs --colors --standard=PSR2 --extensions=php src/SimplyTestable/WebsiteBundle",
         "ci": [
             "@composer cs",
             "@composer test"
         ]
-    },
-    "config": {
-        "bin-dir": "bin"
     },
     "minimum-stability": "dev",
     "prefer-stable":true,
