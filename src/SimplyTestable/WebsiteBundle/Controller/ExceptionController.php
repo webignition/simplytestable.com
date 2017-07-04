@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\FlattenException;
+use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use webignition\Url\Url;
 
@@ -34,6 +34,7 @@ class ExceptionController extends Controller
         }
 
         $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $this->container->get('request')->getRequestUri());
+
         if ($this->isNotFoundException($exception) && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
             return $this->redirect('http:' . $normalisedRequestUrl);
         }
@@ -70,6 +71,7 @@ class ExceptionController extends Controller
     private function isProtocolRelativeRequestUrl($url)
     {
         $urlObject = new Url($url);
+
         return $urlObject->isProtocolRelative();
     }
 
