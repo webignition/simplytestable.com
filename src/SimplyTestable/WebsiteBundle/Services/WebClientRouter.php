@@ -21,11 +21,6 @@ class WebClientRouter implements RouterInterface
     const ROUTE_NAME_HISTORY = 'history';
 
     /**
-     * @var string
-     */
-    private $baseUrl;
-
-    /**
      * @var RouterInterface
      */
     private $router;
@@ -37,8 +32,6 @@ class WebClientRouter implements RouterInterface
      */
     public function __construct($baseUrl, KernelInterface $kernel, $cachePath)
     {
-        $this->baseUrl = $baseUrl;
-
         $locator = new FileLocator([$kernel->locateResource(self::BUNDLE_CONFIG_PATH)]);
         $requestContext = new RequestContext();
         $requestContext->fromRequest(Request::createFromGlobals());
@@ -70,7 +63,7 @@ class WebClientRouter implements RouterInterface
         $urls = [];
 
         foreach ($routeNames as $routeName) {
-            $urls[$routeName] = $this->baseUrl . $this->router->generate($routeName);
+            $urls[$routeName] = $this->router->generate($routeName);
         }
 
         return $urls;
