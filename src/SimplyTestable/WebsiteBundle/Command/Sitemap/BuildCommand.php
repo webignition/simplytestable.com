@@ -1,11 +1,11 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Command\Sitemap;
 
+use SimplyTestable\WebsiteBundle\Services\KernelParametersService;
 use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -15,7 +15,7 @@ class BuildCommand extends Command
     const SITEMAP_RELATIVE_PATH = '/sitemap.xml';
 
     /**
-     * @var Router
+     * @var RouterInterface
      */
     private $router;
 
@@ -35,25 +35,24 @@ class BuildCommand extends Command
     private $templating;
 
     /**
-     * @param Router $router
+     * @param RouterInterface $router
      * @param ResourceLocator $resourceLocator
-     * @param string $kernelRootDir
      * @param EngineInterface $templating
+     * @param KernelParametersService $kernelParametersService
      * @param string|null $name
      */
     public function __construct(
-        Router $router,
+        RouterInterface $router,
         ResourceLocator $resourceLocator,
-        $kernelRootDir,
         EngineInterface $templating,
+        KernelParametersService $kernelParametersService,
         $name = null
     ) {
         parent::__construct($name);
         $this->router = $router;
         $this->resourceLocator = $resourceLocator;
-        $this->webRootDir = realpath($kernelRootDir . '/../web');
         $this->templating = $templating;
-
+        $this->webRootDir = realpath($kernelParametersService->getRootDir() . '/../web');
         $routerContext = $this->router->getContext();
         $routerContext->setHost('simplytestable.com');
         $routerContext->setScheme('https');

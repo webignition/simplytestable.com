@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-use Twig_Environment;
+use Twig\Environment as TwigEnvironment;
 use webignition\Url\Url;
 
 class ExceptionController extends BaseExceptionController
@@ -37,15 +37,15 @@ class ExceptionController extends BaseExceptionController
     private $testimonialService;
 
     /**
-     * @param Twig_Environment $twig
      * @param bool $debug
+     * @param TwigEnvironment $twig
      * @param NotFoundRedirectService $notFoundRedirectService
      * @param Swift_Mailer $mailer
      * @param TestimonialService $testimonialService
      */
     public function __construct(
-        Twig_Environment $twig,
         $debug,
+        TwigEnvironment $twig,
         NotFoundRedirectService $notFoundRedirectService,
         Swift_Mailer $mailer,
         TestimonialService $testimonialService

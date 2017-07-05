@@ -1,17 +1,17 @@
 services:
-  simplytestable.command.cachevalidator.clear:
-    class:  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand
-    arguments:
-        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
-    tags:
-      - { name: console.command }
-
-  simplytestable.command.sitemap.build:
-    class:  SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand
-    arguments:
-        router: "@router"
-        resourceLocaot: "@simplytestable.services.resourcelocator"
-        kernelRootDir: "@=service('kernel').getRootDir()"
-        templating: "@templating"
-    tags:
-      - { name: console.command }
+#  simplytestable.command.cachevalidator.clear:
+#    class:  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand
+#    arguments:
+#        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
+#    tags:
+#      - { name: console.command }
+#
+#  simplytestable.command.sitemap.build:
+#    class:  SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand
+#    arguments:
+#        router: "@router"
+#        resourceLocaot: "@simplytestable.services.resourcelocator"
+#        kernelRootDir: "@=service('kernel').getRootDir()"
+#        templating: "@templating"
+#    tags:
+#      - { name: console.command }

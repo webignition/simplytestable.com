@@ -1,16 +1,15 @@
 services:
-  simplytestable.command.cachevalidator.clear:
-    class:  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand
-    arguments:
-        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
-    tags:
-      - { name: console.command }
+#  simplytestable.command.cachevalidator.clear:
+#    class:  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand
+#    arguments:
+#        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
+#    tags:
+#      - { name: console.command }
 
-  simplytestable.controller.exception:
+  SimplyTestable\WebsiteBundle\Controller\ExceptionController:
     class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
-    arguments:
-        twig: "@twig"
-        debug: "%kernel.debug%"
-        notFoundRedirectService: "@simplytestable.services.notfoundredirectservice"
-        mailer: "@mailer"
-        testimonialService: "@simplytestable.services.testimonialservice"
+    arguments: ['%kernel.debug%']
+#        $debug: '%kernel.debug%'
+#        notFoundRedirectService: "@simplytestable.services.notfoundredirectservice"
+#        mailer: "@mailer"
+#        testimonialService: "@simplytestable.services.testimonialservice"
