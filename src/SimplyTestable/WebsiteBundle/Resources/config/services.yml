@@ -4,7 +4,7 @@ imports:
     - { resource: services/controllers.yml }
 
 services:
-  simplytestable.services.testimonialService:
+  simplytestable.services.testimonialservice:
     class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
 
   simplytestable.services.cachevalidatorheadersservice:
@@ -30,7 +30,7 @@ services:
         web_client_parameters: "%web_client_urls%"
         not_found_redirect_map: "%not_found_redirect_map%"
 
-  simplytestable.services.planFeaturesService:
+  simplytestable.services.planfeaturesservice:
     class:  SimplyTestable\WebsiteBundle\Services\PlanFeaturesService
     arguments:
         planData: "%plans%"

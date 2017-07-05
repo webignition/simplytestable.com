@@ -24,7 +24,7 @@ abstract class AbstractBaseController extends Controller
      */
     protected function getTestimonialService()
     {
-        return $this->get('simplytestable.services.testimonialService');
+        return $this->get('simplytestable.services.testimonialservice');
     }
 
     /**
