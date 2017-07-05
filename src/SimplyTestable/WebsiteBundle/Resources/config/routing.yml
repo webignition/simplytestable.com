@@ -36,7 +36,7 @@ landingpage_tms:
 
 redirect_limit_test_1:
     path:  /redirect-limit-test/
-    path:
+    defaults:
         _controller: FrameworkBundle:Redirect:redirect
         route: redirect_limit_test_2
         permanent: true
