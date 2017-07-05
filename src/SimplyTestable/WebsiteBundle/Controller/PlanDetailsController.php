@@ -71,6 +71,6 @@ class PlanDetailsController extends CacheableController
      */
     private function getPlanFeaturesService()
     {
-        return $this->container->get('simplytestable.services.planFeaturesService');
+        return $this->container->get('simplytestable.services.planfeaturesservice');
     }
 }
