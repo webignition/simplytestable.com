@@ -1,7 +1,6 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Services;
 
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 class NotFoundRedirectService
@@ -10,11 +9,6 @@ class NotFoundRedirectService
      * @var array
      */
     private $notFoundRedirectMap = [];
-
-    /**
-     * @var string
-     */
-    private $normalisedRequestUri = '';
 
     /**
      * @var string
@@ -57,8 +51,7 @@ class NotFoundRedirectService
      */
     public function getRedirectFor($requestUri)
     {
-        $this->setNormalisedRequestUri($requestUri);
-        $normalisedRequestUrl = $this->getNormalisedRequestUri();
+        $normalisedRequestUrl = $this->createNormalisedRequestUri($requestUri);
 
         if (!isset($this->notFoundRedirectMap[$normalisedRequestUrl])) {
             return null;
@@ -79,8 +72,10 @@ class NotFoundRedirectService
 
     /**
      * @param string $requestUri
+     *
+     * @return string
      */
-    private function setNormalisedRequestUri($requestUri)
+    private function createNormalisedRequestUri($requestUri)
     {
         if (preg_match('/^\/app_dev.php/', $requestUri) > 0) {
             $requestUri = preg_replace('/^\/app_dev.php/', '', $requestUri);
@@ -90,14 +85,6 @@ class NotFoundRedirectService
             $requestUri = substr($requestUri, 0, strlen($requestUri) - 1);
         }
 
-        $this->normalisedRequestUri = $requestUri;
-    }
-
-    /**
-     * @return string
-     */
-    private function getNormalisedRequestUri()
-    {
-        return $this->normalisedRequestUri;
+        return $requestUri;
     }
 }
