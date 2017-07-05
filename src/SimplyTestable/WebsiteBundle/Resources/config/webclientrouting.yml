@@ -1,0 +1,17 @@
+start_test:
+  path: /
+
+sign_in:
+  path: /signin/
+
+sign_up:
+  path: /signup/
+
+account:
+  path: /account/
+
+plan_subscribe:
+  path: /account/plan/subscribe/
+
+history:
+  path: /history/
