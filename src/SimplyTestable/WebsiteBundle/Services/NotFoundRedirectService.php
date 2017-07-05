@@ -1,17 +1,15 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Services;
 
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
+
 class NotFoundRedirectService
 {
     /**
      * @var array
      */
-    private $replacements = array();
-
-    /**
-     * @var array
-     */
-    private $notFoundRedirectMap = array();
+    private $notFoundRedirectMap = [];
 
     /**
      * @var string
@@ -19,106 +17,64 @@ class NotFoundRedirectService
     private $normalisedRequestUri = '';
 
     /**
-     * @param string[] $webClientUrls
+     * @var string
+     */
+    private $localBaseUrl;
+
+    /**
+     * @var RouterInterface
+     */
+    private $routers = [];
+
+    /**
      * @param array $notFoundRedirectMap
+     * @param string $localBaseUrl
      */
-    public function __construct($webClientUrls, $notFoundRedirectMap)
+    public function __construct($notFoundRedirectMap, $localBaseUrl)
     {
-        $this->replacements['web_client'] = $webClientUrls;
         $this->notFoundRedirectMap = $notFoundRedirectMap;
+        $this->localBaseUrl = $localBaseUrl;
     }
 
     /**
-     * @param string $requestUri
-     *
-     * @return boolean
+     * @param string $groupName
+     * @param RouterInterface $router
      */
-    public function hasRedirectFor($requestUri)
+    public function addRouter($groupName, RouterInterface $router)
     {
-        $this->setNormalisedRequestUri($requestUri);
+        if ($groupName == 'local') {
+            $router = clone $router;
+            $router->getContext()->setBaseUrl($this->localBaseUrl);
+        }
 
-        return isset($this->notFoundRedirectMap[$this->getNormalisedRequestUri()]);
+        $this->routers[$groupName] = $router;
     }
 
     /**
      * @param string $requestUri
      *
-     * @return string
+     * @return string|null
      */
     public function getRedirectFor($requestUri)
     {
-        if (!$this->hasRedirectFor($requestUri)) {
-            return '';
+        $this->setNormalisedRequestUri($requestUri);
+        $normalisedRequestUrl = $this->getNormalisedRequestUri();
+
+        if (!isset($this->notFoundRedirectMap[$normalisedRequestUrl])) {
+            return null;
         }
 
-        return $this->replaceParameters($this->notFoundRedirectMap[$this->getNormalisedRequestUri()]);
-    }
+        $redirectProperties = $this->notFoundRedirectMap[$normalisedRequestUrl];
 
-    /**
-     * @param string $parameterisedUrl
-     *
-     * @return string
-     */
-    private function replaceParameters($parameterisedUrl)
-    {
-        $matches = array();
-        preg_match_all('/{{[^}]+}}/', $parameterisedUrl, $matches);
-
-        $rawParameters = $matches[0];
-
-        $parameters = array();
-        $url = $parameterisedUrl;
-
-        foreach ($rawParameters as $rawParameter) {
-            $rawParameterParts = $this->getRawParameterParts($rawParameter);
-
-            if (!isset($parameters[$rawParameterParts['context']])) {
-                $parameters[$rawParameterParts['context']] = array();
-            }
-
-            $parameters[$rawParameterParts['context']][] = $rawParameterParts['key'];
+        if (!isset($this->routers[$redirectProperties['group']])) {
+            return null;
         }
 
-        foreach ($parameters as $parameterSetKey => $values) {
-            $url = $this->replaceParameterSet($url, $parameterSetKey, $values);
-        }
+        /* @var RouterInterface $router */
+        $router = $this->routers[$redirectProperties['group']];
+        $route = $redirectProperties['route'];
 
-        return $url;
-    }
-
-    /**
-     * @param string $url
-     * @param string $parameterSetKey
-     * @param array $values
-     *
-     * @return string
-     */
-    private function replaceParameterSet($url, $parameterSetKey, $values)
-    {
-        foreach ($values as $value) {
-            $placeholder = '{{'.$parameterSetKey.'::'.$value.'}}';
-            $replacement = $this->replacements[$parameterSetKey][$value];
-            $url = str_replace($placeholder, $replacement, $url);
-        }
-
-        return $url;
-    }
-
-    /**
-     * @param string $rawParameter
-     *
-     * @return array
-     */
-    private function getRawParameterParts($rawParameter)
-    {
-        $rawParameter = str_replace(array('{{', '}}'), '', $rawParameter);
-
-        $rawParameterParts = explode('::', $rawParameter);
-
-        return array(
-            'context' => $rawParameterParts[0],
-            'key' => $rawParameterParts[1]
-        );
+        return $router->generate($route, []);
     }
 
     /**

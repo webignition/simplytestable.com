@@ -9,12 +9,10 @@ use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 
-class WebClientRouter
+class WebClientRouter implements RouterInterface
 {
     const BUNDLE_CONFIG_PATH = '@SimplyTestableWebsiteBundle/Resources/config';
     const ROUTING_RESOURCE = 'webclientrouting.yml';
-    const URL_PLACEHOLDER = '{{url}}';
-
     const ROUTE_NAME_START_TEST = 'start_test';
     const ROUTE_NAME_SIGN_IN = 'sign_in';
     const ROUTE_NAME_SIGN_UP = 'sign_up';
@@ -31,11 +29,6 @@ class WebClientRouter
      * @var RouterInterface
      */
     private $router;
-
-    /**
-     * @var string
-     */
-    private $encodedUrlPlaceholder = null;
 
     /**
      * @param string $baseUrl
@@ -57,7 +50,7 @@ class WebClientRouter
             $requestContext
         );
 
-        $this->encodedUrlPlaceholder = rawurlencode(self::URL_PLACEHOLDER);
+        $this->router->getContext()->setBaseUrl($baseUrl);
     }
 
     /**
@@ -81,5 +74,45 @@ class WebClientRouter
         }
 
         return $urls;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setContext(RequestContext $context)
+    {
+        $this->router->setContext($context);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
+    {
+        return $this->router->getContext();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRouteCollection()
+    {
+        return $this->router->getRouteCollection();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    {
+        return $this->router->generate($name, $parameters, $referenceType);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function match($pathinfo)
+    {
+        return $this->match($pathinfo);
     }
 }

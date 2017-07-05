@@ -4,7 +4,26 @@ imports:
     - { resource: services/controllers.yml }
 #
 services:
-  SimplyTestable\WebsiteBundle\Services\KernelParametersService: ["@=service('kernel').getRootDir()"]
+  SimplyTestable\WebsiteBundle\Services\KernelParametersService:
+      arguments: ["@=service('kernel').getRootDir()"]
+
+  SimplyTestable\WebsiteBundle\Services\WebClientRouter:
+      arguments: ['%web_client_url%', '@kernel', '%kernel.cache_dir%']
+
+  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
+      arguments: ['%not_found_redirect_map%', '%base_url%']
+      calls:
+        - method: addRouter
+          arguments:
+              - 'local'
+              - '@router'
+        - method: addRouter
+          arguments:
+              - 'web_client'
+              - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
+
+  SimplyTestable\WebsiteBundle\Services\UserSerializerService:
+      arguments: ['%secret%']
 
 #  simplytestable.services.testimonialService:
 #    class:  SimplyTestable\WebsiteBundle\Services\TestimonialService
