@@ -11,6 +11,10 @@ class HomeController extends CacheableController
      */
     public function indexAction()
     {
+        if ($this->hasResponse()) {
+            return $this->getResponse();
+        }
+
         if ($this->isOldIE()) {
             return $this->createRedirectToOutdatedBrowserResponse();
         }

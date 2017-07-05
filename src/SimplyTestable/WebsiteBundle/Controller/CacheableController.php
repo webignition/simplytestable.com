@@ -4,6 +4,7 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class CacheableController extends AbstractBaseController implements Cacheable
 {
@@ -13,7 +14,12 @@ abstract class CacheableController extends AbstractBaseController implements Cac
     private $request;
 
     /**
-     * @param Request $request
+     * @var
+     */
+    private $response;
+
+    /**
+     * {@inheritdoc}
      */
     public function setRequest(Request $request)
     {
@@ -21,11 +27,35 @@ abstract class CacheableController extends AbstractBaseController implements Cac
     }
 
     /**
-     * @return Request
+     * {@inheritdoc}
      */
     public function getRequest()
     {
-        return (is_null($this->request)) ? $this->get('request_stack')->getCurrentRequest() : $this->request;
+        return (is_null($this->request)) ? $this->requestStack->getCurrentRequest() : $this->request;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setResponse(Response $response)
+    {
+        $this->response = $response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasResponse()
+    {
+        return !empty($this->response);
     }
 
     /**
