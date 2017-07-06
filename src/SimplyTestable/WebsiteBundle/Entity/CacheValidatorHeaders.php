@@ -3,6 +3,7 @@ namespace SimplyTestable\WebsiteBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 
 /**
  *
@@ -26,7 +27,7 @@ class CacheValidatorHeaders
     private $id;
 
     /**
-     * @var string
+     * @var CacheValidatorIdentifier
      * @ORM\Column(type="string", nullable=false)
      */
     private $identifier;
@@ -64,7 +65,7 @@ class CacheValidatorHeaders
     /**
      * Get identifier
      *
-     * @return string
+     * @return CacheValidatorIdentifier
      */
     public function getIdentifier()
     {

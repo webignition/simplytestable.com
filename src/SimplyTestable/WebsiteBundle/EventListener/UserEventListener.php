@@ -2,8 +2,9 @@
 
 namespace SimplyTestable\WebsiteBundle\EventListener;
 
+use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
 use SimplyTestable\WebsiteBundle\Services\UserService;
-use Symfony\Component\HttpKernel\Event\KernelEvent;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class UserEventListener
 {
@@ -21,9 +22,9 @@ class UserEventListener
     }
 
     /**
-     * @param KernelEvent $event
+     * @param FilterControllerEvent $event
      */
-    public function onKernelRequest(KernelEvent $event)
+    public function onKernelController(FilterControllerEvent $event)
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -31,10 +32,9 @@ class UserEventListener
 
         $request = $event->getRequest();
 
-        $controllerActionParts = explode('::', $request->attributes->get('_controller'));
-        $isApplicationControllerRequest = class_exists($controllerActionParts[0]);
+        $controller = $event->getController()[0];
 
-        if ($isApplicationControllerRequest) {
+        if ($controller instanceof AbstractBaseController) {
             $this->userService->setUserFromRequest($request);
         }
     }

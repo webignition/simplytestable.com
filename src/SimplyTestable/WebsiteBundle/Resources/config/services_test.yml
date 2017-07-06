@@ -1,0 +1,6 @@
+services:
+  SimplyTestable\WebsiteBundle\Services\UserService:
+    public: true
+    arguments:
+      - '@session'
+      - '@SimplyTestable\WebsiteBundle\Services\UserSerializerService'

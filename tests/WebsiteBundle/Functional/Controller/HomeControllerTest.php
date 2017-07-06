@@ -2,11 +2,44 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
+use Doctrine\ORM\EntityRepository;
+use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\DomCrawler\Crawler;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class HomeControllerTest extends AbstractWebTestCase
 {
+    public function testEventListenerOrder()
+    {
+        $entityManager = $this->container->get('doctrine.orm.entity_manager');
+
+        /* @var EntityRepository $cacheValidatorHeadersEntityRepository */
+        $cacheValidatorHeadersEntityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
+
+        $this->setUser(
+            $this->createUser('user@example.com')
+        );
+
+        $this->getCrawler([
+            'url' => '/',
+            'server' => [
+                'HTTP_IF_NONE_MATCH' => '"11bb9bf941ca9b19312cfaf3008a696d"',
+            ],
+        ]);
+
+        $this->assertEquals(304, $this->getClientResponse()->getStatusCode());
+
+        /* @var CacheValidatorHeaders $cacheValidatorHeaders */
+        $cacheValidatorHeaders = $cacheValidatorHeadersEntityRepository->findAll()[0];
+        $cacheValidatorIdentifier = $cacheValidatorHeaders->getIdentifier();
+
+        $this->assertArraySubset([
+            'route' => 'home_index',
+            'user' => 'user@example.com',
+            'is_logged_in' => true,
+        ], $cacheValidatorIdentifier->getParameters());
+    }
+
     public function testIndexActionContentForPublicUser()
     {
         $crawler = $this->getCrawler([

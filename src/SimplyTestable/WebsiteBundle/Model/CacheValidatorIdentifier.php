@@ -33,6 +33,14 @@ class CacheValidatorIdentifier
     }
 
     /**
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
      * @return string
      */
     public function __toString()

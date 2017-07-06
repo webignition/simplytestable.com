@@ -3,6 +3,7 @@
 namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Mockery;
+use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +40,7 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
 
         /* @var KernelInterface $kernel */
         $kernel = Mockery::mock(HttpKernelInterface::class);
-        $controller = $this->container->get('SimplyTestable\WebsiteBundle\Controller\HomeController');
+        $controller = $this->container->get(HomeController::class);
         $request = new Request();
         $request->headers->add($requestHeaders);
         $callable = [
@@ -136,5 +137,14 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
                 'expectedCacheValidatorHeadersCount' => 1,
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Mockery::close();
     }
 }
