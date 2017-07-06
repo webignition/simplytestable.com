@@ -31,7 +31,7 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    exception_controller: simplytestable.controller.exception:showAction
+    exception_controller: SimplyTestableWebsiteBundle:Exception:show
 
 # Assetic Configuration
 assetic:

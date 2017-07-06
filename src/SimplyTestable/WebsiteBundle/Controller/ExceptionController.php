@@ -67,10 +67,10 @@ class ExceptionController extends BaseExceptionController
     {
         $this->request = $request;
 
-        if ($this->notFoundRedirectService->hasRedirectFor($this->request->getRequestUri())) {
-            return new RedirectResponse(
-                $this->notFoundRedirectService->getRedirectFor($this->request->getRequestUri())
-            );
+        $redirectUrl = $this->notFoundRedirectService->getRedirectFor($this->request->getRequestUri());
+
+        if (!empty($redirectUrl)) {
+            return new RedirectResponse($redirectUrl);
         }
 
         $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $request->getRequestUri());
