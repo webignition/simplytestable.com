@@ -52,7 +52,7 @@ class BuildCommand extends Command
         $this->router = $router;
         $this->resourceLocator = $resourceLocator;
         $this->templating = $templating;
-        $this->webRootDir = realpath($kernelParametersService->getRootDir() . '/../web');
+        $this->webRootDir = $kernelParametersService->getWebDir();
         $routerContext = $this->router->getContext();
         $routerContext->setHost('simplytestable.com');
         $routerContext->setScheme('https');

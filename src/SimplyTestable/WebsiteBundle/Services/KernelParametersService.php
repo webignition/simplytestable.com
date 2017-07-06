@@ -23,4 +23,12 @@ class KernelParametersService
     {
         return $this->rootDir;
     }
+
+    /**
+     * @return string
+     */
+    public function getWebDir()
+    {
+        return realpath($this->getRootDir() . '/../web');
+    }
 }
