@@ -5,7 +5,7 @@ namespace Tests\WebsiteBundle\Functional\Services;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
-class CoreApplicationRouterTest extends AbstractWebTestCase
+class WebClientRouterTest extends AbstractWebTestCase
 {
     public function testGenerateAll()
     {
