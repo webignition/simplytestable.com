@@ -1,6 +1,6 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block stylesheets %}      
+{% block stylesheets %}
 {{ parent() }}
 {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/splash.css'
@@ -33,7 +33,7 @@
                 </p>
             </div>
             <div class="col-lg-6 col-md-6" id="ctas">
-                <a class="cta btn btn-primary btn-lg" href="{{ [web_client_urls.base, web_client_urls.sign_up]|join('') }}?utm_source=tms&amp;utm_medium=podcast&amp;utm_campaign=tms">
+                <a class="cta btn btn-primary btn-lg" href="{{ web_client_urls.sign_up }}?utm_source=tms&amp;utm_medium=podcast&amp;utm_campaign=tms">
                     <span class="primary">Create an account - 20% TMS exclusive discount!</span>
                     <span class="byline">30-day trial, no credit card needed. <span class="hidden-xs">And a caveman &hellip; maybe.</span></span>
                     <i class="fa fa-user"></i>

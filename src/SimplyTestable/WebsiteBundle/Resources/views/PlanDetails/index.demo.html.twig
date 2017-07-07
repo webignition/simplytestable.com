@@ -5,7 +5,7 @@
 {% block content %}
     <p>
         A free demo is available to everyone - just visit the
-        <a href="{{ web_client_urls.base }}">test dashboard</a> 
+        <a href="{{ web_client_urls.start_test }}">test dashboard</a>
         without signing in.
     </p>
 
@@ -13,8 +13,8 @@
         The demo offers many of the features you would find if you had an account
         but is limited in the breadth of use.
     </p>
-    
-    {% include 'SimplyTestableWebsiteBundle:PlanDetails:index.demo.detail.html.twig' %} 
+
+    {% include 'SimplyTestableWebsiteBundle:PlanDetails:index.demo.detail.html.twig' %}
 
 {% endblock %}
 
@@ -30,7 +30,7 @@
         } %}
     </div>
     <div class="col-lg-4 col-md-6 col-sm-5 additional">
-        <a href="{{ web_client_urls.base }}">Try a demo now</a>
+        <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
         <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
         <a href="{{ path('page_plans') }}">Premium plan options</a>
     </div>

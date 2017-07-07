@@ -57,7 +57,7 @@ class LandingPageController extends AbstractBaseController
      */
     private function getCouponFromRoute()
     {
-        $requestRoute = $this->get('request_stack')->getCurrentRequest()->attributes->get('_route');
+        $requestRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
 
         return strtoupper(str_replace('landingpage_', '', $requestRoute));
     }

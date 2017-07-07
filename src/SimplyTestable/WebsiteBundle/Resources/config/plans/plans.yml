@@ -1,0 +1,153 @@
+demo:
+  is_pseudo_plan: false
+  price: 0
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: 1
+      single_page_tests_per_page: 1
+      pages_examined_per_test: 10
+      credits_per_month: ~
+    access_to_results:
+      results_available_for: "24 hours"
+      private_tests: false
+      read_only_reports: false
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: false
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: false
+      link_integrity_checking: false
+    advanced_options:
+      https_sites: false
+      http_authentication: false
+      custom_cookies: false
+free:
+  is_pseudo_plan: false
+  price: 0
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: ~
+      single_page_tests_per_page: ~
+      pages_examined_per_test: 10
+      credits_per_month: 500
+    access_to_results:
+      results_available_for: "7 days"
+      private_tests: true
+      read_only_reports: true
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: true
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: true
+      link_integrity_checking: true
+    advanced_options:
+      https_sites: false
+      http_authentication: false
+      custom_cookies: false
+personal:
+  is_pseudo_plan: false
+  price: 9
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: ~
+      single_page_tests_per_page: ~
+      pages_examined_per_test: 50
+      credits_per_month: 5000
+    access_to_results:
+      results_available_for: "7 days"
+      private_tests: true
+      read_only_reports: true
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: true
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: true
+      link_integrity_checking: true
+    advanced_options:
+      https_sites: true
+      http_authentication: true
+      custom_cookies: true
+agency:
+  is_pseudo_plan: false
+  price: 19
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: ~
+      single_page_tests_per_page: ~
+      pages_examined_per_test: 250
+      credits_per_month: 20000
+    access_to_results:
+      results_available_for: "Forever"
+      private_tests: true
+      read_only_reports: true
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: true
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: true
+      link_integrity_checking: true
+    advanced_options:
+      https_sites: true
+      http_authentication: true
+      custom_cookies: true
+business:
+  is_pseudo_plan: false
+  price: 59
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: ~
+      single_page_tests_per_page: ~
+      pages_examined_per_test: 2500
+      credits_per_month: 100000
+    access_to_results:
+      results_available_for: "Forever"
+      private_tests: true
+      read_only_reports: true
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: true
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: true
+      link_integrity_checking: true
+    advanced_options:
+      https_sites: true
+      http_authentication: true
+      custom_cookies: true
+enterprise:
+  is_pseudo_plan: false
+  price: null
+  distinctions:
+    test_limitations:
+      full_site_tests_per_site: ~
+      single_page_tests_per_page: ~
+      pages_examined_per_test: "10,000+"
+      credits_per_month: "100,000+"
+    access_to_results:
+      results_available_for: "Forever"
+      private_tests: true
+      read_only_reports: true
+    url_discovery:
+      discovery_via_sitemap: true
+      discovery_via_crawl: true
+    test_types:
+      html_validation: true
+      css_validation: true
+      js_static_analysis: true
+      link_integrity_checking: true
+    advanced_options:
+      https_sites: true
+      http_authentication: true
+      custom_cookies: true
+premium:
+  is_pseudo_plan: true
+  planIds: [personal, agency, business]
