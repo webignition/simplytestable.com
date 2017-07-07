@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\WebsiteBundle\Functional\Services;
 
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
@@ -11,7 +11,7 @@ class UserAgentDetectorTest extends AbstractWebTestCase
     {
         $this->assertInstanceOf(
             UserAgentDetector::class,
-            $this->container->get('simplytestable.services.useragentdetector')
+            $this->container->get(UserAgentDetector::class)
         );
     }
 }
