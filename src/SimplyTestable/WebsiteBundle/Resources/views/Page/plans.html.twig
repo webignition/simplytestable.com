@@ -2,21 +2,21 @@
 
 {% macro cta_button(plan_name, is_logged_in, web_client_urls) %}
     {% if is_logged_in %}
-        <form method="post" action="{{ web_client_urls.base }}{{ web_client_urls.plan_subscribe }}">
+        <form method="post" action="{{ web_client_urls.plan_subscribe }}">
             <input type="hidden" name="plan" value="{{ plan_name }}" />
             <button type="submit" class="btn btn-success btn-plan-select">Subscribe now</button>
         </form>
     {% else %}
-        <a href="{{ web_client_urls.base }}{{ web_client_urls.sign_up }}?plan={{ plan_name }}" class="btn btn-success btn-plan-select">
+        <a href="{{ web_client_urls.sign_up }}?plan={{ plan_name }}" class="btn btn-success btn-plan-select">
             <span class="primary">Sign up</span>
             <span class="secondary">30-day trial, no credit card required</span>
         </a>
-    {% endif %}  
+    {% endif %}
 {% endmacro %}
 
 {% import _self as pricing_table %}
 
-{% block stylesheets %}      
+{% block stylesheets %}
     {{ parent() }}
     {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <h1>30 day free trial. No credit card required.</h1>
                 </div>
-            </div>         
+            </div>
 
             <div class="pricing-tables attached">
                 <div class="row">
@@ -46,11 +46,11 @@
                                     <h2>Personal</h2>
                                     <p>For small-scale projects</p>
                                 </a>
-                            </div>  
+                            </div>
 
-                            <div class="price">   
-                                <p><span>&pound;{{ prices.personal }} <i>per month</i></span></p>
-                            </div>                            
+                            <div class="price">
+                                <p><span>&pound;{{ plans.personal.price }} <i>per month</i></span></p>
+                            </div>
 
                             <ul class="item-list">
                                 <li>Unlimited full-site tests</li>
@@ -59,15 +59,15 @@
                                 <li>5,000 credits</li>
                             </ul>
 
-                            {{ pricing_table.cta_button('personal', is_logged_in, web_client_urls) }}                       
-                            
+                            {{ pricing_table.cta_button('personal', is_logged_in, web_client_urls) }}
+
                             <a href="{{ path('plandetails_index', {'name': 'personal'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
 
 
                     <div class="col-xs-12 col-sm-6 col-md-4 ">
-                        <div class="plan recommended">                           
+                        <div class="plan recommended">
                             <div class="head">
                                 <a href="{{ path('plandetails_index', {'name': 'agency'}) }}">
                                 <h2>Agency</h2>
@@ -75,11 +75,11 @@
                                     Great for small organisations
                                 </p>
                                 </a>
-                            </div>  
+                            </div>
 
                             <div class="price">
-                                <p><span>&pound;{{ prices.agency }} <i>per month</i></span></p>
-                            </div>                            
+                                <p><span>&pound;{{ plans.agency.price }} <i>per month</i></span></p>
+                            </div>
 
                             <ul class="item-list">
                                 <li>Unlimited full-site tests</li>
@@ -88,8 +88,8 @@
                                 <li>20,000 credits</li>
                             </ul>
 
-                            {{ pricing_table.cta_button('agency', is_logged_in, web_client_urls) }}   
-                            
+                            {{ pricing_table.cta_button('agency', is_logged_in, web_client_urls) }}
+
                             <a href="{{ path('plandetails_index', {'name': 'agency'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
@@ -102,11 +102,11 @@
                                 <h2>Business</h2>
                                 <p>Best value for professionals</p>
                                 </a>
-                            </div>  
+                            </div>
 
                             <div class="price">
-                                <p><span>&pound;{{ prices.business }} <i>per month</i></span></p>
-                            </div>                            
+                                <p><span>&pound;{{ plans.business.price }} <i>per month</i></span></p>
+                            </div>
 
                             <ul class="item-list">
                                 <li>Unlimited full-site tests</li>
@@ -115,13 +115,13 @@
                                 <li>100,000 credits</li>
                             </ul>
 
-                            {{ pricing_table.cta_button('business', is_logged_in, web_client_urls) }}   
-                            
+                            {{ pricing_table.cta_button('business', is_logged_in, web_client_urls) }}
+
                             <a href="{{ path('plandetails_index', {'name': 'business'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="clearfix"></div>
             <div class="row">
@@ -134,7 +134,7 @@
                         Need to test sites larger than 2,500 pages or need to run many large tests? Our <a href="{{ path('plandetails_index', {'name': 'enterprise'}) }}">custom enterprise plans</a> can be tailored to your precise needs.
                     </p>
                 </div>
-            </div>                           
+            </div>
         </div>
     </div>
 
@@ -143,7 +143,7 @@
             <div class="row">
                 <div class="col-md-12 iconified-section">
                     <div class="inner">
-                        <div class="col-md-4">                        
+                        <div class="col-md-4">
                             <h3>How does the free trial work?</h3>
 
                             <p>
@@ -152,23 +152,23 @@
                             </p>
 
                             <p>
-                                If you provide your card details before your trial 
-                                ends you will continue with the plan you chose. 
+                                If you provide your card details before your trial
+                                ends you will continue with the plan you chose.
                                 You will be billed monthly from the end of your
                                 trial.
                             </p>
 
                             <p>
                                 If you don't provide card details you will be
-                                downgraded to a free basic account  with the option 
+                                downgraded to a free basic account  with the option
                                 to upgrade to a paid plan at your convenience.
                             </p>
 
                         </div>
-                        <div class="col-md-4">                        
-                            <h3>What are credits?</h3>                            
+                        <div class="col-md-4">
+                            <h3>What are credits?</h3>
                             <p>
-                                Performing a HTML validation, CSS validation or 
+                                Performing a HTML validation, CSS validation or
                                 JSLint analysis on a single URL requires one credit.
                             </p>
 
@@ -187,7 +187,7 @@
                             </p>
 
                         </div>
-                        <div class="col-md-4">                        
+                        <div class="col-md-4">
                             <h3>How long are your contracts?</h3>
 
                             <p>
@@ -202,11 +202,11 @@
                                 time things very well) we will refund you for the
                                 remainder of the month not yet used.
                             </p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
-            </div>        
-        </div>    
+            </div>
+        </div>
     </div>
 
 {% endblock %}

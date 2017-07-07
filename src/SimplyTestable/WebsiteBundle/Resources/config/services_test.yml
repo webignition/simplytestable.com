@@ -13,6 +13,7 @@ services:
       - { name: console.command }
 
   SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+    public: true
     arguments:
         - '@router'
         - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
@@ -22,5 +23,9 @@ services:
       - { name: console.command }
 
   SimplyTestable\WebsiteBundle\Services\ResourceLocator:
+    public: true
     arguments:
       - "@kernel"
+
+  SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
+    public: true

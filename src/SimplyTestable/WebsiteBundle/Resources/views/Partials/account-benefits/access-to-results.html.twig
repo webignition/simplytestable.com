@@ -1,23 +1,26 @@
-<p class="heading hidden-md hidden-lg">{{ name }}</p>
+<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
 
 <ul class="item-list">
     <li>
-        <span class="item hidden-md hidden-lg">{{ results_available_for.name.primary }}</span> {{ results_available_for.value }}
+        <span class="item hidden-md hidden-lg">
+            {{ category.distinctions.results_available_for.name.primary }}
+        </span>
+        {{ plan_distinctions.results_available_for }}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': private_tests.value,
-                'name':private_tests.name.primary
+                'is_set': plan_distinctions.private_tests.value,
+                'name':category.distinctions.private_tests.name.primary
             }
         %}
-    </li>    
+    </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': read_only_reports.value,
-                'name':read_only_reports.name.primary
+                'is_set': plan_distinctions.read_only_reports.value,
+                'name':category.distinctions.read_only_reports.name.primary
             }
         %}
-    </li>                                 
+    </li>
 </ul>

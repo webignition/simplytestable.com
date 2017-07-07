@@ -1,4 +1,4 @@
-<span class="primary">{{ name.primary }}</span>
+<span class="primary">{{ name.primary|replace({'%': ''}) }}</span>
 {% if name.secondary is defined %}
     <span class="secondary">{{ name.secondary }}</span>
 {% endif %}

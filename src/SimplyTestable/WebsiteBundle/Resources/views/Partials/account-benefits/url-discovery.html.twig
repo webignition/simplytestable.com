@@ -1,20 +1,20 @@
-<p class="heading hidden-md hidden-lg">{{ name }}</p>                                     
+<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
 
 <ul class="item-list">
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': discovery_via_sitemap.value,
-                'name': discovery_via_sitemap.name.primary
-            }
-        %}
-    </li>                                        
-    <li>
-        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
-            with {
-                'is_set': discovery_via_crawl.value,
-                'name': discovery_via_crawl.name.primary
+                'is_set': plan_distinctions.discovery_via_sitemap.value,
+                'name':category.distinctions.discovery_via_sitemap.name.primary
             }
         %}
     </li>
-</ul>  
+    <li>
+        {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+            with {
+                'is_set': plan_distinctions.discovery_via_crawl.value,
+                'name':category.distinctions.discovery_via_crawl.name.primary
+            }
+        %}
+    </li>
+</ul>

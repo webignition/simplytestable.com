@@ -1,19 +1,36 @@
-{% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:per-test-limitations.html.twig'
-    with account_options.test_limitations
+{#{{ dump(distinctions.test_limitations) }}#}
+
+{% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-limitations.html.twig'
+    with {
+        'plan_distinctions': plan.distinctions.test_limitations,
+        'category': distinctions.test_limitations
+    } only
 %}
 
 {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:access-to-results.html.twig'
-    with account_options.access_to_results
-%}                                    
+    with {
+        'plan_distinctions': plan.distinctions.access_to_results,
+        'category': distinctions.access_to_results
+    } only
+%}
 
 {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:url-discovery.html.twig'
-    with account_options.url_discovery
-%}  
+    with {
+        'plan_distinctions': plan.distinctions.url_discovery,
+        'category': distinctions.url_discovery
+    } only
+%}
 
 {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:test-types.html.twig'
-    with account_options.test_types
-%}    
+    with {
+        'plan_distinctions': plan.distinctions.test_types,
+        'category': distinctions.test_types
+    } only
+%}
 
 {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:advanced-options.html.twig'
-    with account_options.advanced_options
-%}   
+    with {
+        'plan_distinctions': plan.distinctions.advanced_options,
+        'category': distinctions.advanced_options
+    } only
+%}
