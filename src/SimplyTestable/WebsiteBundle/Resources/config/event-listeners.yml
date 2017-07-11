@@ -5,7 +5,6 @@ services:
       - '@SimplyTestable\WebsiteBundle\Services\UserService'
       - '@SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService'
       - '@logger'
-      - '%cacheable_controllers%'
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 

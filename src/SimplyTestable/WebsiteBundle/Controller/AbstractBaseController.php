@@ -2,6 +2,7 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
+use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
@@ -61,36 +62,31 @@ abstract class AbstractBaseController extends AbstractController
     }
 
     /**
-     * @param $view
-     * @param array $additionalParameters
-     *
-     * @return Response
+     * {@inheritdoc}
      */
-    protected function renderResponse($view, array $additionalParameters = [])
+    protected function render($view, array $parameters = array(), Response $response = null)
     {
-        return parent::render(
-            $view,
-            array_merge([
-                'testimonial' => $this->testimonialService->getRandom(),
-                'user' => $this->userService->getUser(),
-                'is_logged_in' => $this->userService->isLoggedIn(),
-                'web_client_urls' => $this->webClientRouter->generateAll(),
-            ], $additionalParameters)
-        );
-    }
+        $defaultParameters = [
+            'testimonial' => $this->testimonialService->getRandom(),
+            'user' => $this->userService->getUser(),
+            'is_logged_in' => $this->userService->isLoggedIn(),
+            'web_client_urls' => $this->webClientRouter->generateAll(),
+        ];
 
-    /**
-     * @param string $view
-     * @param array $additionalParameters
-     *
-     * @return Response
-     */
-    protected function renderCacheableResponse($view, array $additionalParameters = array())
-    {
-        return CacheableResponseFactory::createCacheableResponse(
-            $this->requestStack->getCurrentRequest(),
-            $this->renderResponse($view, $additionalParameters)
+        $response = parent::render(
+            $view,
+            array_merge($defaultParameters, $parameters),
+            $response
         );
+
+        if ($this instanceof CacheableController) {
+            $response = CacheableResponseFactory::createCacheableResponse(
+                $this->requestStack->getCurrentRequest(),
+                $response
+            );
+        }
+
+        return $response;
     }
 
     /**

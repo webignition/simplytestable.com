@@ -37,12 +37,8 @@ class SimplyTestableWebsiteExtension extends Extension
         $container->setParameter('plans', $planData);
         $container->setParameter(('plan_distinctions'), $planDistinctionData);
 
-
         $notFoundRedirectMapData = Yaml::parse(file_get_contents($fileLocator->locate('not_found_redirect_map.yml')));
 
         $container->setParameter('not_found_redirect_map', $notFoundRedirectMapData);
-
-        $cacheableControllersList = Yaml::parse(file_get_contents($fileLocator->locate('cacheable_controllers.yml')));
-        $container->setParameter('cacheable_controllers', $cacheableControllersList);
     }
 }

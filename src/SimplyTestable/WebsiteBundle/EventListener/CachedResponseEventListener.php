@@ -47,26 +47,18 @@ class CachedResponseEventListener
     private $request;
 
     /**
-     * @var string
-     */
-    private $cacheableControllers;
-
-    /**
      * @param UserService $userService
      * @param CacheValidatorHeadersService $cacheValidatorHeadersService
      * @param LoggerInterface $logger
-     * @param string[] $cacheableControllers
      */
     public function __construct(
         UserService $userService,
         CacheValidatorHeadersService $cacheValidatorHeadersService,
-        LoggerInterface $logger,
-        $cacheableControllers
+        LoggerInterface $logger
     ) {
         $this->userService = $userService;
         $this->cacheValidatorHeadersService = $cacheValidatorHeadersService;
         $this->logger = $logger;
-        $this->cacheableControllers = $cacheableControllers;
     }
 
     /**

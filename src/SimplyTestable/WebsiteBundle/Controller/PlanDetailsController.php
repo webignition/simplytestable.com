@@ -35,6 +35,10 @@ class PlanDetailsController extends CacheableController
      */
     public function indexAction(PlansService $plansService, $name)
     {
+        if ($this->hasResponse()) {
+            return $this->getResponse();
+        }
+
         if ($this->isOldIE()) {
             return $this->createRedirectToOutdatedBrowserResponse();
         }
@@ -57,7 +61,7 @@ class PlanDetailsController extends CacheableController
         $plans = DecoratedPlanFactory::decorateCollection($plansService->getPlans($this->allowedPlanNames));
         $plan = $plans[$name];
 
-        return $this->renderCacheableResponse(
+        return $this->render(
             '@SimplyTestableWebsite/PlanDetails/' . $name . '.html.twig',
             [
                 'plans' => $plans,
