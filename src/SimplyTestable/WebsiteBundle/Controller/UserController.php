@@ -2,6 +2,7 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
+use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -12,10 +13,10 @@ class UserController extends AbstractBaseController
      */
     public function signOutSubmitAction()
     {
-        $this->getUserService()->clearUser();
+        $this->userService->clearUser();
 
-        $response = $this->redirect($this->generateUrl('home_index', array(), UrlGeneratorInterface::ABSOLUTE_URL));
-        $response->headers->clearCookie('simplytestable-user', '/', '.simplytestable.com');
+        $response = $this->redirect($this->generateUrl('home_index', [], UrlGeneratorInterface::ABSOLUTE_URL));
+        $response->headers->clearCookie(UserService::USER_COOKIE_KEY, '/', '.simplytestable.com');
 
         return $response;
     }

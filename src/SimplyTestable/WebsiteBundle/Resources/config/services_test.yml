@@ -1,0 +1,31 @@
+services:
+  SimplyTestable\WebsiteBundle\Services\UserService:
+    public: true
+    arguments:
+      - '@session'
+      - '@SimplyTestable\WebsiteBundle\Services\UserSerializerService'
+
+  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand:
+    public: true
+    arguments:
+        - '@SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService'
+    tags:
+      - { name: console.command }
+
+  SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+    public: true
+    arguments:
+        - '@router'
+        - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
+        - '@templating'
+        - '@SimplyTestable\WebsiteBundle\Services\KernelParametersService'
+    tags:
+      - { name: console.command }
+
+  SimplyTestable\WebsiteBundle\Services\ResourceLocator:
+    public: true
+    arguments:
+      - "@kernel"
+
+  SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
+    public: true

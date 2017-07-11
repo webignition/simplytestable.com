@@ -1,57 +1,47 @@
-{% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %} 
+{% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %}
 
-{% block heading %}Features of a personal account{% endblock %}
-
-{% block content %}    
+{% block content %}
     <p>
         The personal account is our entry level premium subscription for individuals
-        at just &pound;{{ prices.personal }} per month.        
+        at just {{ plan.price|raw }} per month.
     </p>
-    
+
     <p>
         As with all accounts, your tests are private and can be accessed by you
         only. You can choose to share a read-only report with others.
     </p>
-    
+
     <p>
         As an account holder you have access to all types of test offered: HTML
         validation, CSS validation, JavaScript static analysis and link integrity
         (broken link) checking.
     </p>
-    
+
     <p>
         As a premium account holder, you can access your tests results forever
         and unlock the ability to test HTTPS sites, to test sites that use HTTP
-        authentication and to use custom cookes.
+        authentication and to use custom cookies.
     </p>
 
     <p>
-        Each test created under a personal acount will examine up to the first {{ features.test_limitations.pages_examined_per_test.value|number_format }} 
+        Each test created under a personal account will examine up to the first
+        {{ plan.distinctions.test_limitations.pages_examined_per_test }}
         pages discovered. This gives a more broad insight over what can be acheived
         with a free account. A higher-tier premium account is required for testing larger sites.
     </p>
-    
+
     <p>
-        A personal account offers {{ features.test_limitations.credits_per_month.value|number_format }} credits per month. A single test against
-        a single URL requires 1 credit. Higher-tier premium acounts offer
+        A personal account offers {{ plan.distinctions.test_limitations.credits_per_month }} credits per month. A single test against
+        a single URL requires 1 credit. Higher-tier premium accounts offer
         greater credit allowances.
     </p>
 {% endblock %}
 
 {% block ctas %}
-    <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
-           with {
-                 'url': [web_client_urls.base, web_client_urls.sign_up]|join('') ~ '?plan=' ~ plan,
-                 'label': 'Sign up for a ' ~ plan ~ ' account',
-                 'byline':'30-day free trial. &pound;' ~ prices[plan] ~ ' per month.',
-                 'icon':'caret-right',
-                 'primary':true
-        } %}
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-5 additional">                                                
-        <a href="{{ web_client_urls.base }}">Try a demo now</a>
-        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
-        <a href="{{ path('page_plans') }}">Premium plan options</a>
-    </div>
-{% endblock %}      
+    {% include '@SimplyTestableWebsite/Partials/plan-details/premium-plan-ctas.html.twig'
+        with {
+            'plan': plan,
+            'web_client_urls': web_client_urls
+        }
+    only %}
+{% endblock %}

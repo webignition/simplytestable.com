@@ -2,6 +2,7 @@
 
 namespace Tests\WebsiteBundle\Functional\Command\CacheValidator;
 
+use Doctrine\ORM\EntityRepository;
 use SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -10,14 +11,6 @@ use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class ClearCommandTest extends AbstractWebTestCase
 {
-    public function testGetAsService()
-    {
-        $this->assertInstanceOf(
-            ClearCommand::class,
-            $this->container->get('simplytestable.command.cachevalidator.clear')
-        );
-    }
-
     /**
      * @dataProvider runDataProvider
      *
@@ -27,6 +20,8 @@ class ClearCommandTest extends AbstractWebTestCase
     public function testRun($cacheValidatorHeadersCollection, $expectedReturnCode)
     {
         $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
+
+        /* @var EntityRepository $entityRepository */
         $entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
 
         $this->assertCount(0, $entityRepository->findAll());
@@ -39,9 +34,7 @@ class ClearCommandTest extends AbstractWebTestCase
 
         $this->assertCount(count($cacheValidatorHeadersCollection), $entityRepository->findAll());
 
-        $cacheValidatorHeaderService = $this->container->get('simplytestable.services.cachevalidatorheadersservice');
-
-        $command = new ClearCommand($cacheValidatorHeaderService);
+        $command = $this->container->get(ClearCommand::class);
 
         $returnCode = $command->run(new ArrayInput([]), new NullOutput());
 

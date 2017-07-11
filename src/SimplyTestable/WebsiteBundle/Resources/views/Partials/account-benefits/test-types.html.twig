@@ -1,35 +1,35 @@
-<p class="heading hidden-md hidden-lg">{{ name }}</p>
+<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
 
-<ul class="item-list demo">                                                            
+<ul class="item-list demo">
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': html_validation.value,
-                'name': html_validation.name.primary
+                'is_set': plan_distinctions.html_validation.value,
+                'name':category.distinctions.html_validation.name.primary
             }
         %}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': css_validation.value,
-                'name': css_validation.name.primary
+                'is_set': plan_distinctions.css_validation.value,
+                'name':category.distinctions.css_validation.name.primary
             }
         %}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': js_static_analysis.value,
-                'name': js_static_analysis.name.primary
+                'is_set': plan_distinctions.js_static_analysis.value,
+                'name':category.distinctions.js_static_analysis.name.primary
             }
         %}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': link_integrity_checking.value,
-                'name': link_integrity_checking.name.primary
+                'is_set': plan_distinctions.link_integrity_checking.value,
+                'name':category.distinctions.link_integrity_checking.name.primary
             }
         %}
     </li>

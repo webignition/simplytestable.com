@@ -1,13 +1,13 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block stylesheets %}          
+{% block stylesheets %}
     {{ parent() }}
     {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/splash.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/homepage.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %} 
+    {% endstylesheets %}
 {% endblock %}
 
 {% block body_class %} splash{% endblock %}
@@ -33,14 +33,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-                    <a class="cta btn btn-primary btn-lg pull-right" href="{{ web_client_urls.base }}">
+                    <a class="cta btn btn-primary btn-lg pull-right" href="{{ web_client_urls.start_test }}">
                         <span class="primary">Try our free demo now</span>
                         <span class="byline"><span class="hidden-xs"><br>&nbsp;</span>Instant access. No sign up. A limited taster.</span>
                         <i class="fa fa-caret-right"></i>
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <a class="cta btn btn-default btn-lg pull-left" href="{{ [web_client_urls.base, web_client_urls.sign_up]|join('') }}">
+                    <a class="cta btn btn-default btn-lg pull-left" href="{{ web_client_urls.sign_up }}">
                         <span class="primary">Create an account</span>
                         <span class="byline">30-day trial, no credit card required.<br>Private tests. Full test history. All types of test.</span>
                         <i class="fa fa-sign-in"></i>

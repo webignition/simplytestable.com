@@ -2,200 +2,149 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use Doctrine\ORM\EntityRepository;
+use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
-use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class CachedResponseEventListenerTest extends AbstractWebTestCase
 {
     /**
-     * @var EntityRepository
-     */
-    private $entityRepository;
-
-    protected function setUp()
-    {
-        parent::setUp();
-        $entityManager = $this->container->get('doctrine.orm.entity_manager');
-        $this->entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
-    }
-
-    /**
-     * @dataProvider onKernelRequestNoChangesToRequestDataProvider
+     * @dataProvider onKernelControllerDataProvider
      *
      * @param int $requestType
-     * @param array $requestAttributes
-     */
-    public function testOnKernelRequestNoChangesToRequest(
-        $requestType,
-        $requestAttributes
-    ) {
-        $cachedResponseEventListener = $this->container->get('simplytestable.eventlistener.cachedresponse');
-
-        $request = new Request([], [], $requestAttributes);
-
-        $getResponseEvent = new GetResponseEvent(
-            $this->container->get('kernel'),
-            $request,
-            $requestType
-        );
-
-        $cachedResponseEventListener->onKernelRequest($getResponseEvent);
-
-        $this->assertNull($getResponseEvent->getResponse());
-        $this->assertFalse($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_ETAG));
-        $this->assertFalse($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_LASTMODIFIED));
-
-        $this->assertEmpty($this->entityRepository->findAll());
-    }
-
-    /**
-     * @return array
-     */
-    public function onKernelRequestNoChangesToRequestDataProvider()
-    {
-        return [
-            'sub request' => [
-                'requestType' => HttpKernelInterface::SUB_REQUEST,
-                'requestAttributes' => [],
-            ],
-            'no controller in request attributes' => [
-                'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [],
-            ],
-            'not instance of CacheableController' => [
-                'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', LandingPageController::class),
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider onKernelRequestNoResponseDataProvider
-     *
-     * @param int $requestType
-     * @param array $requestAttributes
      * @param array $requestHeaders
+     * @param bool $expectedResponseIsNull
+     * @param int $expectedResponseStatusCode
+     * @param bool $expectedRequestHasCacheValidatorEtagHeader
+     * @param bool $expectedRequestHasCacheValidatorLastModifiedHeader
+     * @param int $expectedCacheValidatorHeadersCount
      */
-    public function testOnKernelRequestNoResponse(
+    public function testOnKernelController(
         $requestType,
-        $requestAttributes,
-        $requestHeaders
+        $requestHeaders,
+        $expectedResponseIsNull,
+        $expectedResponseStatusCode,
+        $expectedRequestHasCacheValidatorEtagHeader,
+        $expectedRequestHasCacheValidatorLastModifiedHeader,
+        $expectedCacheValidatorHeadersCount
     ) {
+        $entityManager = $this->container->get('doctrine.orm.entity_manager');
+        $entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
         $cachedResponseEventListener = $this->container->get('simplytestable.eventlistener.cachedresponse');
 
-        $request = new Request([], [], $requestAttributes);
+        /* @var KernelInterface $kernel */
+        $kernel = Mockery::mock(HttpKernelInterface::class);
+        $controller = $this->container->get(HomeController::class);
+        $request = new Request();
         $request->headers->add($requestHeaders);
+        $callable = [
+            $controller,
+            'indexAction'
+        ];
 
-        $getResponseEvent = new GetResponseEvent(
-            $this->container->get('kernel'),
+        $filterControllerEvent = new FilterControllerEvent(
+            $kernel,
+            $callable,
             $request,
             $requestType
         );
 
-        $cachedResponseEventListener->onKernelRequest($getResponseEvent);
+        $cachedResponseEventListener->onKernelController($filterControllerEvent);
+        $response = $controller->getResponse();
 
-        $this->assertNull($getResponseEvent->getResponse());
-        $this->assertTrue($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_ETAG));
-        $this->assertTrue($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_LASTMODIFIED));
+        if ($expectedResponseIsNull) {
+            $this->assertNull($response);
+        } else {
+            $this->assertNotNull($response);
+            $this->assertEquals($expectedResponseStatusCode, $response->getStatusCode());
+        }
 
-        $allCacheValidatorHeaders = $this->entityRepository->findAll();
-        $this->assertCount(1, $allCacheValidatorHeaders);
+        $this->assertEquals(
+            $expectedRequestHasCacheValidatorEtagHeader,
+            $request->headers->has(CachedResponseEventListener::REQUEST_HEADER_ETAG)
+        );
+        $this->assertEquals(
+            $expectedRequestHasCacheValidatorLastModifiedHeader,
+            $request->headers->has(CachedResponseEventListener::REQUEST_HEADER_LASTMODIFIED)
+        );
+
+        $allCacheValidatorHeaders = $entityRepository->findAll();
+        $this->assertCount($expectedCacheValidatorHeadersCount, $allCacheValidatorHeaders);
     }
 
     /**
      * @return array
      */
-    public function onKernelRequestNoResponseDataProvider()
+    public function onKernelControllerDataProvider()
     {
         return [
+            'sub-request' => [
+                'requestType' => HttpKernelInterface::SUB_REQUEST,
+                'requestHeaders' => [],
+                'expectedResponseIsNull' => true,
+                'expectedResponseStatusCode' => null,
+                'expectedRequestHasCacheValidatorEtagHeader' => false,
+                'expectedRequestHasCacheValidatorLastModifiedHeader' => false,
+                'expectedCacheValidatorHeadersCount' => 0,
+            ],
             'no relevant request headers' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestHeaders' => [],
+                'expectedResponseIsNull' => true,
+                'expectedResponseStatusCode' => null,
+                'expectedRequestHasCacheValidatorEtagHeader' => true,
+                'expectedRequestHasCacheValidatorLastModifiedHeader' => true,
+                'expectedCacheValidatorHeadersCount' => 1,
             ],
             'non-matching etag' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestHeaders' => [
                     'if_none_match' => 'foo',
                 ],
+                'expectedResponseIsNull' => true,
+                'expectedResponseStatusCode' => null,
+                'expectedRequestHasCacheValidatorEtagHeader' => true,
+                'expectedRequestHasCacheValidatorLastModifiedHeader' => true,
+                'expectedCacheValidatorHeadersCount' => 1,
             ],
-        ];
-    }
-
-    /**
-     * @dataProvider onKernelRequestHasResponseDataProvider
-     *
-     * @param int $requestType
-     * @param array $requestAttributes
-     * @param array $requestHeaders
-     */
-    public function testOnKernelRequestHasResponse(
-        $requestType,
-        $requestAttributes,
-        $requestHeaders
-    ) {
-        $cachedResponseEventListener = $this->container->get('simplytestable.eventlistener.cachedresponse');
-
-        $request = new Request([], [], $requestAttributes);
-        $request->headers->add($requestHeaders);
-
-        $getResponseEvent = new GetResponseEvent(
-            $this->container->get('kernel'),
-            $request,
-            $requestType
-        );
-
-        $cachedResponseEventListener->onKernelRequest($getResponseEvent);
-        $response = $getResponseEvent->getResponse();
-
-        $this->assertNotNull($response);
-        $this->assertEquals(304, $response->getStatusCode());
-        $this->assertTrue($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_ETAG));
-        $this->assertTrue($request->headers->has(CachedResponseEventListener::REQUEST_HEADER_LASTMODIFIED));
-
-        $allCacheValidatorHeaders = $this->entityRepository->findAll();
-        $this->assertCount(1, $allCacheValidatorHeaders);
-    }
-
-    /**
-     * @return array
-     */
-    public function onKernelRequestHasResponseDataProvider()
-    {
-        return [
             'etag match' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestHeaders' => [
                     'if_none_match' => '"c7523ad91c65550c4d532abe6ac86a7f"',
                 ],
+                'expectedResponseIsNull' => false,
+                'expectedResponseStatusCode' => 304,
+                'expectedRequestHasCacheValidatorEtagHeader' => true,
+                'expectedRequestHasCacheValidatorLastModifiedHeader' => true,
+                'expectedCacheValidatorHeadersCount' => 1,
             ],
             'etag match with accept header' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestHeaders' => [
                     'if_none_match' => '"05584d722c9e31c6c4bcfa004529b8f9"',
                     'accept' => 'foo',
                 ],
+                'expectedResponseIsNull' => false,
+                'expectedResponseStatusCode' => 304,
+                'expectedRequestHasCacheValidatorEtagHeader' => true,
+                'expectedRequestHasCacheValidatorLastModifiedHeader' => true,
+                'expectedCacheValidatorHeadersCount' => 1,
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Mockery::close();
     }
 }

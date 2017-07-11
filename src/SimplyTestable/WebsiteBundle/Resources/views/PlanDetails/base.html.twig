@@ -1,40 +1,38 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block stylesheets %}      
+{% block stylesheets %}
     {{ parent() }}
-    {% stylesheets    
+    {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/plan-details.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %} 
+    {% endstylesheets %}
 {% endblock %}
-
-{% set plan_titles = {'demo': 'Limited demo', 'personal': 'Personal plan', 'agency': 'Agency plan', 'business': 'Business plan', 'enterprise': 'Enterprise plans'} %}
 
 {% block body %}
 
     <div id="landing-strip">
-        <div class="container">   
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>{% block heading %}{% endblock%}</h1>
-                    
-<ul class="list-inline">
-    {% for plan_key, plan_title in plan_titles %}
-      <li>
-          {% if plan_key == plan %}
-              <span>{{ plan_title }}</span>
-          {% else %}
-              <a href="{{ path('plandetails_index', {'name': plan_key}) }}">{{ plan_title }}</a>
-          {% endif %}
-      </li>  
-    {% endfor %}
-</ul>                    
+                    <h1>{{ plan.longtitle }}</h1>
+                    <ul class="list-inline">
+                        {% for current_plan in plans %}
+                            {% if current_plan.islisted %}
+                                <li>
+                                    {% if current_plan == plan  %}
+                                        <span>{{ current_plan.shorttitle }}</span>
+                                    {% else %}
+                                        <a href="{{ path('plandetails_index', {'name': current_plan.id}) }}">{{ current_plan.shorttitle }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="container">
         <div class="row">
@@ -45,49 +43,45 @@
                 <div class="row ctas">
                     {% block ctas %}
                         <div class="col-lg-4 col-md-5 col-sm-4">
-                            {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:create-account.html.twig' %}                                                        
+                            {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:create-account.html.twig' %}
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 additional">                                                
-                            <a href="{{ web_client_urls.base }}">Try a demo now</a>
+                        <div class="col-lg-4 col-md-6 col-sm-6 additional">
+                            <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
                             <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
                             <a href="{{ path('page_plans') }}">Premium plan options</a>
                         </div>
-                    {% endblock %}                    
+                    {% endblock %}
                 </div>
             </div>
 
-            <div class="col-md-4">                
+            <div class="col-md-4">
                 <div class="row">
-                    {% for featureSet in features %}
+                    {% for distinction_group_id, distinction_group in distinctions %}
                         <div class="col-md-12 col-sm-6 summary {% if loop.index0 == 0 %}first-md{% endif %} {% if loop.index0 == 0 or loop.index0 == 1 %}first-sm{% endif %}">
-                            <h3 class="{{(loop.index == 1) ? 'first' : ''}}">{{ featureSet.name }}</h3>                    
+                            <h3 class="{% if loop.first %}first{% endif %}">{{ distinction_group.name }}</h3>
 
                             <table class="table">
                                 <tbody>
-                                    {% for feature in featureSet|slice(1) %}
+                                {% for distinction_id, distinction in distinction_group.distinctions %}
+                                    {% set plan_distinction = plan.distinctions[distinction_group_id][distinction_id] %}
 
-                                        <tr class="first">
-                                            <td class="col-sm-8 col-xs-8">
-                                                <i class="fa fa-{{ feature.icon }}"></i><span>{{ feature.name|join(' ')|replace({'%s': 's'}) }}</span>                                    
-                                            </td>
-                                            <td class="{% if feature.value is null %}not-applicable{% endif %}">                                                
-                                                {% if feature.type == 'boolean' %}
-                                                    {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
-                                                        with {
-                                                            'is_set': feature.value
-                                                        }
-                                                    %}                                    
-                                                {% elseif feature.value is null %}
-                                                    &mdash;
-                                                {% elseif feature.type == 'integer' %}
-                                                    {{ feature.value|number_format }} 
-                                                {% else %}
-                                                    {{ feature.value }}                                                    
-                                                {% endif %}                                
-                                            </td>
-                                        </tr>
-
-                                    {% endfor %}
+                                    <tr class="first">
+                                        <td class="col-sm-8 col-xs-8">
+                                            <i class="fa fa-{{ distinction.icon }}"></i><span>{{ distinction.name|join(' ')|replace({'%s': 's'}) }}</span>
+                                        </td>
+                                        <td {% if plan_distinction.value is null %}class="not-applicable"{% endif %}>
+                                            {% if plan_distinction.bool %}
+                                                {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
+                                                    with {
+                                                        'is_set': plan_distinction.value
+                                                    } only
+                                                %}
+                                            {% else %}
+                                                {{ plan_distinction|raw }}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -95,14 +89,9 @@
                         {% if loop.index0 % 2 == 1 %}
                             <div class="clearfix hidden-lg"></div>
                         {% endif %}
-                    {% endfor %}                  
+                    {% endfor %}
                 </div>
             </div>
-
         </div>
-
-
-    </div>    
-
-
+    </div>
 {% endblock %}

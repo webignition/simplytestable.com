@@ -2,25 +2,27 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
+use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Model\User;
+use SimplyTestable\WebsiteBundle\Services\UserSerializerService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\KernelEvent;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class UserEventListenerTest extends AbstractWebTestCase
 {
     /**
-     * @dataProvider onKernelRequestDataProvider
+     * @dataProvider onKernelControllerDataProvider
      *
      * @param int $requestType
-     * @param array $requestAttributes
      * @param string $requestUser
      * @param string $expectedUser
      */
-    public function testOnKernelRequest($requestType, $requestAttributes, $requestUser, $expectedUser)
+    public function testOnKernelController($requestType, $requestUser, $expectedUser)
     {
         $userEventListener = $this->container->get('simplytestable.eventlistener.user');
 
@@ -30,62 +32,66 @@ class UserEventListenerTest extends AbstractWebTestCase
             $user = new User();
             $user->setUsername($requestUser);
 
-            $userSerializerService = $this->container->get('simplytestable.services.userserializerservice');
+            $userSerializerService = $this->container->get(UserSerializerService::class);
             $serializedUser = $userSerializerService->serializeToString($user);
 
             $requestCookies[UserService::USER_COOKIE_KEY] = $serializedUser;
         }
 
-        $request = new Request([], [], $requestAttributes, $requestCookies);
+        /* @var KernelInterface $kernel */
+        $kernel = Mockery::mock(HttpKernelInterface::class);
+        $controller = $this->container->get(HomeController::class);
+        $request = new Request([], [], [], $requestCookies);
+        $callable = [
+            $controller,
+            'indexAction'
+        ];
 
-        $kernelEvent = new KernelEvent(
-            $this->container->get('kernel'),
+        $filterControllerEvent = new FilterControllerEvent(
+            $kernel,
+            $callable,
             $request,
             $requestType
         );
 
-        $userEventListener->onKernelRequest($kernelEvent);
+        $userEventListener->onKernelController($filterControllerEvent);
 
         $this->assertEquals(
             $expectedUser,
-            $this->container->get('simplytestable.services.userservice')->getUser()->getUsername()
+            $this->container->get(UserService::class)->getUser()->getUsername()
         );
     }
 
     /**
      * @return array
      */
-    public function onKernelRequestDataProvider()
+    public function onKernelControllerDataProvider()
     {
         return [
             'sub request' => [
                 'requestType' => HttpKernelInterface::SUB_REQUEST,
-                'requestAttributes' => [],
-                'requestUser' => null,
-                'expectedUser' => 'public',
-            ],
-            'no controller in request attributes' => [
-                'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [],
                 'requestUser' => null,
                 'expectedUser' => 'public',
             ],
             'no user' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestUser' => null,
                 'expectedUser' => 'public',
             ],
             'has user' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestAttributes' => [
-                    '_controller' => sprintf('%s::indexAction', HomeController::class),
-                ],
                 'requestUser' => 'user@example.com',
                 'expectedUser' => 'user@example.com',
             ],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Mockery::close();
     }
 }

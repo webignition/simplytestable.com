@@ -1,0 +1,4 @@
+- 'SimplyTestable\WebsiteBundle\Controller\HomeController'
+- 'SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController'
+- 'SimplyTestable\WebsiteBundle\Controller\PageController'
+- 'SimplyTestable\WebsiteBundle\Controller\PlanDetailsController'

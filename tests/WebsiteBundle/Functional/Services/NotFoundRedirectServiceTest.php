@@ -1,73 +1,22 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\WebsiteBundle\Functional\Services;
 
 use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class NotFoundRedirectServiceTest extends AbstractWebTestCase
 {
-    public function testGetAsService()
+    public function testGetRedirectFor()
     {
-        $this->assertInstanceOf(
-            NotFoundRedirectService::class,
-            $this->container->get('simplytestable.services.notfoundredirectservice')
-        );
-    }
+        $notFoundRedirectService = $this->container->get(NotFoundRedirectService::class);
 
-    /**
-     * @dataProvider hasRedirectForDataProvider
-     *
-     * @param string $url
-     * @param string $expectedHasRedirectFor
-     */
-    public function testHasRedirectFor($url, $expectedHasRedirectFor)
-    {
-        $notFoundRedirectService = $this->container->get('simplytestable.services.notfoundredirectservice');
-
-        $this->assertEquals($expectedHasRedirectFor, $notFoundRedirectService->hasRedirectFor($url));
-    }
-
-    /**
-     * @return array
-     */
-    public function hasRedirectForDataProvider()
-    {
-        return [
-            '/foo' => [
-                'url' => '/foo',
-                'expectedHasRedirectFor' => false,
-            ],
-            '/index.php' => [
-                'url' => '/index.php',
-                'expectedHasRedirectFor' => true,
-            ],
-            '/signup.php' => [
-                'url' => '/index.php',
-                'expectedHasRedirectFor' => true,
-            ],
-            '/signup' => [
-                'url' => '/index.php',
-                'expectedHasRedirectFor' => true,
-            ],
-            '/register.php' => [
-                'url' => '/index.php',
-                'expectedHasRedirectFor' => true,
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider getRedirectForDataProvider
-     *
-     * @param string $url
-     * @param string $expectedRedirectUrl
-     */
-    public function testGetRedirectFor($url, $expectedRedirectUrl)
-    {
-        $notFoundRedirectService = $this->container->get('simplytestable.services.notfoundredirectservice');
-
-        $this->assertEquals($expectedRedirectUrl, $notFoundRedirectService->getRedirectFor($url));
+        foreach ($this->getRedirectForDataProvider() as $testData) {
+            $this->assertEquals(
+                $testData['expectedRedirectUrl'],
+                $notFoundRedirectService->getRedirectFor($testData['url'])
+            );
+        }
     }
 
     /**

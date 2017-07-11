@@ -4,27 +4,60 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
+use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use SimplyTestable\WebsiteBundle\Services\UserService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
-abstract class AbstractBaseController extends Controller
+abstract class AbstractBaseController extends AbstractController
 {
     /**
-     * @return UserService
+     * @var RequestStack
      */
-    protected function getUserService()
-    {
-        return $this->get('simplytestable.services.userservice');
-    }
+    protected $requestStack;
 
     /**
-     * @return TestimonialService
+     * @var UserAgentDetector
      */
-    protected function getTestimonialService()
-    {
-        return $this->get('simplytestable.services.testimonialService');
+    private $userAgentDetector;
+
+    /**
+     * @var TestimonialService
+     */
+    private $testimonialService;
+
+    /**
+     * @var UserService
+     */
+    protected $userService;
+
+    /**
+     * @var WebClientRouter
+     */
+    private $webClientRouter;
+
+    /**
+     * @param RequestStack $requestStack
+     * @param UserAgentDetector $userAgentDetector
+     * @param TestimonialService $testimonialService
+     * @param UserService $userService
+     * @param WebClientRouter $webClientRouter
+     */
+    public function __construct(
+        RequestStack $requestStack,
+        UserAgentDetector $userAgentDetector,
+        TestimonialService $testimonialService,
+        UserService $userService,
+        WebClientRouter $webClientRouter
+    ) {
+        $this->requestStack = $requestStack;
+        $this->userAgentDetector = $userAgentDetector;
+        $this->testimonialService = $testimonialService;
+        $this->userService = $userService;
+        $this->webClientRouter = $webClientRouter;
     }
 
     /**
@@ -33,10 +66,10 @@ abstract class AbstractBaseController extends Controller
     protected function getDefaultViewParameters()
     {
         return array(
-            'testimonial' => $this->getTestimonialService()->getRandom(),
-            'user' => $this->getUserService()->getUser(),
-            'is_logged_in' => $this->getUserService()->isLoggedIn(),
-            'web_client_urls' => $this->container->getParameter('web_client_urls'),
+            'testimonial' => $this->testimonialService->getRandom(),
+            'user' => $this->userService->getUser(),
+            'is_logged_in' => $this->userService->isLoggedIn(),
+            'web_client_urls' => $this->webClientRouter->generateAll(),
         );
     }
 
@@ -61,7 +94,7 @@ abstract class AbstractBaseController extends Controller
     protected function renderCacheableResponse(array $additionalParameters = array())
     {
         return CacheableResponseFactory::createCacheableResponse(
-            $this->get('request_stack')->getCurrentRequest(),
+            $this->requestStack->getCurrentRequest(),
             $this->renderResponse($additionalParameters)
         );
     }
@@ -100,7 +133,7 @@ abstract class AbstractBaseController extends Controller
      */
     protected function getViewFilename()
     {
-        $routeParts = explode('_', $this->container->get('request_stack')->getCurrentRequest()->get('_route'));
+        $routeParts = explode('_', $this->requestStack->getCurrentRequest()->get('_route'));
 
         return $routeParts[count($routeParts) - 1] . '.html.twig';
     }
@@ -118,11 +151,10 @@ abstract class AbstractBaseController extends Controller
      */
     protected function isOldIE()
     {
-        $userAgentDetector = $this->container->get('simplytestable.services.useragentdetector');
-        $currentRequest = $this->get('request_stack')->getCurrentRequest();
-        $userAgentDetector->setUserAgentString($currentRequest->headers->get('user-agent'));
+        $currentRequest = $this->requestStack->getCurrentRequest();
+        $this->userAgentDetector->setUserAgentString($currentRequest->headers->get('user-agent'));
 
-        return $this->container->get('simplytestable.services.useragentdetector')->isOldIE();
+        return $this->userAgentDetector->isOldIE();
     }
 
     /**

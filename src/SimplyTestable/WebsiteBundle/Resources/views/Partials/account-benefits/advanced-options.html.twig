@@ -1,27 +1,27 @@
-<p class="heading hidden-md hidden-lg">{{ name }}</p>
+<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
 
-<ul class="item-list demo">                                                            
+<ul class="item-list demo">
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': https_sites.value,
-                'name': https_sites.name.primary
+                'is_set': plan_distinctions.https_sites.value,
+                'name':category.distinctions.https_sites.name.primary
             }
         %}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': http_authentication.value,
-                'name': http_authentication.name.primary
+                'is_set': plan_distinctions.http_authentication.value,
+                'name':category.distinctions.http_authentication.name.primary
             }
         %}
     </li>
     <li>
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
-                'is_set': custom_cookies.value,
-                'name': custom_cookies.name.primary
+                'is_set': plan_distinctions.custom_cookies.value,
+                'name':category.distinctions.custom_cookies.name.primary
             }
         %}
     </li>

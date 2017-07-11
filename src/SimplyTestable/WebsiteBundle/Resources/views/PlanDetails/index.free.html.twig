@@ -1,50 +1,49 @@
 {% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %}
 
-{% block heading %}Benefits of a free account{% endblock %}
-
 {% block content %}
-    
+
     <p>
         A free account costs nothing and keeps your tests as yours. Just sign in
-        to ensure that all tests you run are tied to your account.        
+        to ensure that all tests you run are tied to your account.
     </p>
-    
+
     <p>
         The free account provides additional privacy and offers a wider breadth
         of use over the limited demo.
-    </p>    
-    
-    <p>        
+    </p>
+
+    <p>
         Unlike the demo, you can test a given site or single page more any number
         of times as long as you have sufficient credits.
 
-        A free account provides {{ features.test_limitations.credits_per_month.value|number_format }} credits per month. A single test against
+        A free account provides {{ plan.distinctions.test_limitations.credits_per_month }} credits per month. A single test against
         a single URL requires 1 credit.
-    </p>    
-    
+    </p>
+
     <p>
         As with all accounts, your tests are private and can be accessed by you
         only. You can choose to share a read-only report with others.
-    </p> 
-    
+    </p>
+
     <p>
         Pages to be tested will be discovered by examining a site's XML sitemap
         or news feed (RSS/Atom). If no pages are discovered, the site will
         be crawled to discover pages to test.
     </p>
-    
+
     <p>
-        Each test created under a free acount will examine up to the first {{ features.test_limitations.pages_examined_per_test.value|number_format }} 
+        Each test created under a free account will examine up to the first {{ plan.distinctions.test_limitations.pages_examined_per_test }}
         pages discovered. A premium account is required for testing larger sites.
-    </p>    
-    
+    </p>
+
     <p>
         Tests created under your account are private. Results can be accessed
         only by you. You can choose to share a read-only report with others.
-    </p>     
+    </p>
 
     <p>
-        Results can be viewed for up to {{ features.access_to_results.results_available_for.value }}. A premium account
+        Results can be viewed for up to
+        {{ plan.distinctions.access_to_results.results_available_for }}. A premium account
         is required to view the results of older tests.
     </p>
 
@@ -53,7 +52,7 @@
         validation, CSS validation, JavaScript static analysis and link integrity
         (broken link) checking.
     </p>
-    
+
     <p>
         Free account tests cannot be carried out against HTTPS sites,
         are not able to use HTTP authentication and are not able to set custom
@@ -65,19 +64,9 @@
 {% endblock %}
 
 {% block ctas %}
-    <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
+    {% include '@SimplyTestableWebsite/Partials/plan-details/free-plan-ctas.html.twig'
         with {
-        'url': path('page_plans'),
-        'label': 'See plans and pricing',
-        'byline':'30-day free trial. From &pound;9 per month.',
-        'icon':'caret-right',
-        'primary':true
-        } %}
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-5 additional">
-        <a href="{{ web_client_urls.base }}">Try a demo now</a>
-        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
-        <a href="{{ path('page_plans') }}">Premium plan options</a>
-    </div>
+            'web_client_urls': web_client_urls
+        }
+    only %}
 {% endblock %}

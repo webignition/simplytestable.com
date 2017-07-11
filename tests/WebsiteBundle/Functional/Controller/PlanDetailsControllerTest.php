@@ -6,11 +6,34 @@ use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class PlanDetailsControllerTest extends AbstractWebTestCase
 {
-    public function testIndexActionInvalidPlan()
+    /**
+     * @dataProvider indexActionRedirectDataProvider
+     *
+     * @param string $url
+     * @param string $expectedRedirectLocation
+     */
+    public function testIndexActionRedirect($url, $expectedRedirectLocation)
     {
-        $this->client->request('GET', '/plans/foo/');
+        $this->client->request('GET', $url);
         $response = $this->getClientResponse();
 
-        $this->assertTrue($response->isRedirect('/plans/'));
+        $this->assertTrue($response->isRedirect($expectedRedirectLocation));
+    }
+
+    /**
+     * @return array
+     */
+    public function indexActionRedirectDataProvider()
+    {
+        return [
+            'invalid plan' => [
+                'url' => '/plans/foo/',
+                'expectedRedirectLocation' => '/plans/'
+            ],
+            'premium => agency' => [
+                'url' => '/plans/premium/',
+                'expectedRedirectLocation' => '/plans/agency/'
+            ],
+        ];
     }
 }

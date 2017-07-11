@@ -8,9 +8,8 @@ use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class CachedResponseEventListener
 {
@@ -38,42 +37,53 @@ class CachedResponseEventListener
     private $controller;
 
     /**
+     * @var string
+     */
+    private $action;
+
+    /**
      * @var Request
      */
     private $request;
 
     /**
+     * @var string
+     */
+    private $cacheableControllers;
+
+    /**
      * @param UserService $userService
      * @param CacheValidatorHeadersService $cacheValidatorHeadersService
      * @param LoggerInterface $logger
+     * @param string[] $cacheableControllers
      */
     public function __construct(
         UserService $userService,
         CacheValidatorHeadersService $cacheValidatorHeadersService,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        $cacheableControllers
     ) {
         $this->userService = $userService;
         $this->cacheValidatorHeadersService = $cacheValidatorHeadersService;
         $this->logger = $logger;
+        $this->cacheableControllers = $cacheableControllers;
     }
 
     /**
-     * @param GetResponseEvent $event
+     * @param FilterControllerEvent $event
      *
      * @return null
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelController(FilterControllerEvent $event)
     {
         if (!$event->isMasterRequest()) {
-            return;
+            return null;
         }
 
         $this->request = $event->getRequest();
-        $this->controller = $this->createController();
-
-        if (empty($this->controller)) {
-            return null;
-        }
+        $controllerCallable = $event->getController();
+        $this->controller = $controllerCallable[0];
+        $this->action = $controllerCallable[1];
 
         if ($this->controller instanceof CacheableController) {
             $this->controller->setRequest($this->request);
@@ -83,7 +93,7 @@ class CachedResponseEventListener
 
             $this->fixRequestIfNoneMatchHeader();
             if ($response->isNotModified($this->request)) {
-                $event->setResponse($response);
+                $this->controller->setResponse($response);
             }
         }
 
@@ -108,7 +118,7 @@ class CachedResponseEventListener
      */
     private function createCacheValidatorIdentifier()
     {
-        $parameters = $this->controller->getCacheValidatorParameters($this->getActionName());
+        $parameters = $this->controller->getCacheValidatorParameters($this->action);
 
         if ($this->request->headers->has('accept')) {
             $parameters['http-header-accept'] = $this->request->headers->get('accept');
@@ -134,41 +144,5 @@ class CachedResponseEventListener
         $modifiedEtag = preg_replace('/-gzip"$/', '"', $currentIfNoneMatch);
 
         $this->request->headers->set('if-none-match', $modifiedEtag);
-    }
-
-    /**
-     * @return string
-     */
-    private function getControllerClassName()
-    {
-        return $this->getControllerActionParts()[0];
-    }
-
-    /**
-     * @return string
-     */
-    private function getActionName()
-    {
-        return $this->getControllerActionParts()[1];
-    }
-
-    /**
-     * @return array
-     */
-    private function getControllerActionParts()
-    {
-        return explode('::', $this->request->attributes->get('_controller'));
-    }
-
-    /**
-     * @return Controller|null
-     */
-    private function createController()
-    {
-        $className = $this->getControllerClassName();
-
-        return class_exists($className)
-            ? new $className
-            : null;
     }
 }

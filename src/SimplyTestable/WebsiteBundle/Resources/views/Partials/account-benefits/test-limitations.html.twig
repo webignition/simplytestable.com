@@ -1,0 +1,36 @@
+{% set full_site_tests_per_site = plan_distinctions.full_site_tests_per_site.value ?: 'Unlimited' %}
+{% set single_page_tests_per_page = plan_distinctions.single_page_tests_per_page.value ?: 'Unlimited' %}
+
+<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
+
+<ul class="item-list">
+    <li>
+        {{ full_site_tests_per_site }}
+        {% set plural_replacement = (full_site_tests_per_site != 1) ? 's' : '' %}
+
+        <span class="item hidden-md hidden-lg">
+            {{ category.distinctions.full_site_tests_per_site.name.primary|replace({'%s': plural_replacement}) }}
+            {{ category.distinctions.full_site_tests_per_site.name.secondary }}
+        </span>
+    </li>
+    <li>
+        {{ single_page_tests_per_page }}
+        {% set plural_replacement = (single_page_tests_per_page != 1) ? 's' : '' %}
+        <span class="item hidden-md hidden-lg">
+            {{ category.distinctions.single_page_tests_per_page.name.primary|replace({'%s': plural_replacement}) }}
+            {{ category.distinctions.single_page_tests_per_page.name.secondary }}
+        </span>
+    </li>
+    <li>
+        {{ plan_distinctions.pages_examined_per_test }}
+        <span class="item hidden-md hidden-lg">{{ category.distinctions.pages_examined_per_test.name.primary }}</span>
+    </li>
+    <li {{ (plan_distinctions.credits_per_month.value is null ? 'class="not-applicable"' : '') }}>
+        {% if plan_distinctions.credits_per_month.value is null %}
+            <span>&mdash;</span><span class="item">&nbsp;</span>
+        {% else %}
+            <span>{{ plan_distinctions.credits_per_month }}</span>
+            <span class="item hidden-md hidden-lg">{{ category.distinctions.credits_per_month.name.primary }}</span>
+        {% endif %}
+    </li>
+</ul>

@@ -2,20 +2,22 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Services\PlanFeaturesService;
+use SimplyTestable\WebsiteBundle\Services\DecoratedPlanFactory;
+use SimplyTestable\WebsiteBundle\Services\PlansService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class PageController extends CacheableController
 {
     /**
+     * @param PlansService $plansService
+     *
      * @return Response
      */
-    public function plansAction()
+    public function plansAction(PlansService $plansService)
     {
         return $this->handleAction([
-            'prices' => $this->container->getParameter('plans')['pricing'],
-            'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
+            'plans' => $plansService->getPlans(),
         ]);
     }
 
@@ -36,21 +38,19 @@ class PageController extends CacheableController
     }
 
     /**
+     * @param PlansService $plansService
+     *
      * @return Response
      */
-    public function accountBenefitsAction()
+    public function accountBenefitsAction(PlansService $plansService)
     {
         return $this->handleAction([
-            'plan_features' => $this->getPlanFeaturesService()->getPlanFeatures()
+            'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
+                'demo',
+                'premium',
+            ])),
+            'distinctions' => $plansService->getDistinctions(),
         ]);
-    }
-
-    /**
-     * @return PlanFeaturesService
-     */
-    private function getPlanFeaturesService()
-    {
-        return $this->container->get('simplytestable.services.planFeaturesService');
     }
 
     /**
