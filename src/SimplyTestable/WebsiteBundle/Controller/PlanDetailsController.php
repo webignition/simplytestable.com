@@ -57,18 +57,13 @@ class PlanDetailsController extends CacheableController
         $plans = DecoratedPlanFactory::decorateCollection($plansService->getPlans($this->allowedPlanNames));
         $plan = $plans[$name];
 
-        return $this->renderCacheableResponse(array(
-            'plans' => $plans,
-            'plan' => $plan,
-            'distinctions' => $plansService->getDistinctions(),
-        ));
-    }
-
-    /**
-     * @return string
-     */
-    protected function getViewFilename()
-    {
-        return str_replace('index.', 'index.' . $this->name . '.', parent::getViewFilename());
+        return $this->renderCacheableResponse(
+            '@SimplyTestableWebsite/PlanDetails/' . $name . '.html.twig',
+            [
+                'plans' => $plans,
+                'plan' => $plan,
+                'distinctions' => $plansService->getDistinctions(),
+            ]
+        );
     }
 }

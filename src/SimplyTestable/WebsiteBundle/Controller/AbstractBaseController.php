@@ -61,89 +61,36 @@ abstract class AbstractBaseController extends AbstractController
     }
 
     /**
-     * @return array
-     */
-    protected function getDefaultViewParameters()
-    {
-        return array(
-            'testimonial' => $this->testimonialService->getRandom(),
-            'user' => $this->userService->getUser(),
-            'is_logged_in' => $this->userService->isLoggedIn(),
-            'web_client_urls' => $this->webClientRouter->generateAll(),
-        );
-    }
-
-    /**
+     * @param $view
      * @param array $additionalParameters
      *
      * @return Response
      */
-    protected function renderResponse(array $additionalParameters = array())
+    protected function renderResponse($view, array $additionalParameters = [])
     {
         return parent::render(
-            $this->getViewName(),
-            array_merge($this->getDefaultViewParameters(), $additionalParameters)
+            $view,
+            array_merge([
+                'testimonial' => $this->testimonialService->getRandom(),
+                'user' => $this->userService->getUser(),
+                'is_logged_in' => $this->userService->isLoggedIn(),
+                'web_client_urls' => $this->webClientRouter->generateAll(),
+            ], $additionalParameters)
         );
     }
 
     /**
+     * @param string $view
      * @param array $additionalParameters
      *
      * @return Response
      */
-    protected function renderCacheableResponse(array $additionalParameters = array())
+    protected function renderCacheableResponse($view, array $additionalParameters = array())
     {
         return CacheableResponseFactory::createCacheableResponse(
             $this->requestStack->getCurrentRequest(),
-            $this->renderResponse($additionalParameters)
+            $this->renderResponse($view, $additionalParameters)
         );
-    }
-
-    /**
-     * @return string
-     */
-    protected function getViewName()
-    {
-        $classNamespaceParts = $this->getClassNamespaceParts();
-        $bundleNamespaceParts = array_slice($classNamespaceParts, 0, array_search('Controller', $classNamespaceParts));
-
-        return implode('', $bundleNamespaceParts) . ':' .  $this->getViewPath() . ':' . $this->getViewFilename();
-    }
-
-    /**
-     * @return string
-     */
-    protected function getViewPath()
-    {
-        $classNamespaceParts = $this->getClassNamespaceParts();
-        $controllerClassNameParts = array_slice(
-            $classNamespaceParts,
-            array_search('Controller', $classNamespaceParts) + 1
-        );
-
-        array_walk($controllerClassNameParts, function (&$part) {
-            $part = preg_replace('/Controller$/', '', $part);
-        });
-
-        return implode('/', $controllerClassNameParts);
-    }
-
-    /**
-     * @return string
-     */
-    protected function getViewFilename()
-    {
-        $routeParts = explode('_', $this->requestStack->getCurrentRequest()->get('_route'));
-
-        return $routeParts[count($routeParts) - 1] . '.html.twig';
-    }
-
-    /**
-     * @return string[]
-     */
-    private function getClassNamespaceParts()
-    {
-        return explode('\\', get_class($this));
     }
 
     /**

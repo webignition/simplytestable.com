@@ -16,9 +16,12 @@ class PageController extends CacheableController
      */
     public function plansAction(PlansService $plansService)
     {
-        return $this->handleAction([
-            'plans' => $plansService->getPlans(),
-        ]);
+        return $this->handleAction(
+            '@SimplyTestableWebsite/Page/plans.html.twig',
+            [
+                'plans' => $plansService->getPlans(),
+            ]
+        );
     }
 
     /**
@@ -26,7 +29,7 @@ class PageController extends CacheableController
      */
     public function featuresAction()
     {
-        return $this->handleAction();
+        return $this->handleAction('@SimplyTestableWebsite/Page/features.html.twig');
     }
 
     /**
@@ -34,7 +37,7 @@ class PageController extends CacheableController
      */
     public function roadmapAction()
     {
-        return $this->handleAction();
+        return $this->handleAction('@SimplyTestableWebsite/Page/roadmap.html.twig');
     }
 
     /**
@@ -44,13 +47,16 @@ class PageController extends CacheableController
      */
     public function accountBenefitsAction(PlansService $plansService)
     {
-        return $this->handleAction([
-            'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
-                'demo',
-                'premium',
-            ])),
-            'distinctions' => $plansService->getDistinctions(),
-        ]);
+        return $this->handleAction(
+            '@SimplyTestableWebsite/Page/accountbenefits.html.twig',
+            [
+                'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
+                    'demo',
+                    'premium',
+                ])),
+                'distinctions' => $plansService->getDistinctions(),
+            ]
+        );
     }
 
     /**
@@ -65,15 +71,17 @@ class PageController extends CacheableController
     }
 
     /**
+     * @param string $view
      * @param array $additionalParameters
+     *
      * @return RedirectResponse|Response
      */
-    private function handleAction($additionalParameters = [])
+    private function handleAction($view, $additionalParameters = [])
     {
         if ($this->isOldIE()) {
             return $this->createRedirectToOutdatedBrowserResponse();
         }
 
-        return $this->renderCacheableResponse($additionalParameters);
+        return $this->renderCacheableResponse($view, $additionalParameters);
     }
 }

@@ -34,18 +34,18 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
     public function redirectOutdatedBrowserDataProvider()
     {
         $urls = [
-            '/',
-            '/tms/',
-            '/plans/',
-            '/features/',
-            '/roadmap/',
+//            '/',
+//            '/tms/',
+//            '/plans/',
+//            '/features/',
+//            '/roadmap/',
             '/account-benefits/',
-            '/plans/demo/',
-            '/plans/free/',
-            '/plans/personal/',
-            '/plans/agency/',
-            '/plans/business/',
-            '/plans/enterprise/',
+//            '/plans/demo/',
+//            '/plans/free/',
+//            '/plans/personal/',
+//            '/plans/agency/',
+//            '/plans/business/',
+//            '/plans/enterprise/',
         ];
 
         $sourceTestDataCollection = [
