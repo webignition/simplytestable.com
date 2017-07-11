@@ -1,24 +1,3 @@
 parameters:
   base_url: http://simplytestable.com
-  core_application_urls:
-    base: http://app.simplytestable.com
-    jobs_list: /jobs/list/{limit}/{offset}/
   web_client_url: http://web.client.simplytestable.com
-  not_found_redirect_map:
-    /index.php:
-      group: local
-      route: home_index
-    /signup.php:
-      group: web_client
-      route: sign_up
-    /signup:
-      group: web_client
-      route: sign_up
-    /register.php:
-      group: web_client
-      route: sign_up
-  content_type_web_resource_map:
-    default: webignition\WebResource\WebResource
-    text/html: webignition\WebResource\WebPage\WebPage
-    application/xhtml+xml: webignition\WebResource\WebPage\WebPage
-    application/json: webignition\WebResource\JsonDocument\JsonDocument
