@@ -3,8 +3,11 @@ imports:
     - { resource: services/controllers.yml }
 
 services:
-  SimplyTestable\WebsiteBundle\Services\KernelParametersService:
-      arguments: ["@=service('kernel').getRootDir()"]
+  SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
+      arguments:
+        - '%base_url%'
+        - "@=service('kernel').getRootDir()"
+        - "@=service('kernel').getCacheDir()"
 
   SimplyTestable\WebsiteBundle\Services\WebClientRouter:
       arguments: ['%web_client_url%', '@kernel', '%kernel.cache_dir%']

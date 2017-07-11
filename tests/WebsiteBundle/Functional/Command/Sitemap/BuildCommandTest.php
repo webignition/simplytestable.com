@@ -3,7 +3,7 @@
 namespace Tests\WebsiteBundle\Functional\Command\Sitemap;
 
 use SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand;
-use SimplyTestable\WebsiteBundle\Services\KernelParametersService;
+use SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService;
 use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -15,7 +15,7 @@ class BuildCommandTest extends AbstractWebTestCase
     {
         $sitemapPath = sprintf(
             '%s%s',
-            $this->container->get(KernelParametersService::class)->getWebDir(),
+            $this->container->get(ApplicationConfigurationService::class)->getWebDir(),
             BuildCommand::SITEMAP_RELATIVE_PATH
         );
 

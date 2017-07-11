@@ -1,7 +1,7 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Command\Sitemap;
 
-use SimplyTestable\WebsiteBundle\Services\KernelParametersService;
+use SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService;
 use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,21 +38,21 @@ class BuildCommand extends Command
      * @param RouterInterface $router
      * @param ResourceLocator $resourceLocator
      * @param EngineInterface $templating
-     * @param KernelParametersService $kernelParametersService
+     * @param ApplicationConfigurationService $applicationConfigurationService
      * @param string|null $name
      */
     public function __construct(
         RouterInterface $router,
         ResourceLocator $resourceLocator,
         EngineInterface $templating,
-        KernelParametersService $kernelParametersService,
+        ApplicationConfigurationService $applicationConfigurationService,
         $name = null
     ) {
         parent::__construct($name);
         $this->router = $router;
         $this->resourceLocator = $resourceLocator;
         $this->templating = $templating;
-        $this->webRootDir = $kernelParametersService->getWebDir();
+        $this->webRootDir = $applicationConfigurationService->getWebDir();
         $routerContext = $this->router->getContext();
         $routerContext->setHost('simplytestable.com');
         $routerContext->setScheme('https');
