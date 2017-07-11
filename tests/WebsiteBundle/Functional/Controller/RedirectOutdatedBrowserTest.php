@@ -46,7 +46,6 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
             '/plans/agency/',
             '/plans/business/',
             '/plans/enterprise/',
-            '/plans/premium/',
         ];
 
         $sourceTestDataCollection = [

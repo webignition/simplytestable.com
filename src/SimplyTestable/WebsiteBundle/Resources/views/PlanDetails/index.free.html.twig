@@ -1,7 +1,5 @@
 {% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %}
 
-{% block heading %}Benefits of a free account{% endblock %}
-
 {% block content %}
 
     <p>
@@ -18,7 +16,7 @@
         Unlike the demo, you can test a given site or single page more any number
         of times as long as you have sufficient credits.
 
-        A free account provides {{ features.test_limitations.credits_per_month.value|number_format }} credits per month. A single test against
+        A free account provides {{ plan.distinctions.test_limitations.credits_per_month }} credits per month. A single test against
         a single URL requires 1 credit.
     </p>
 
@@ -34,7 +32,7 @@
     </p>
 
     <p>
-        Each test created under a free acount will examine up to the first {{ features.test_limitations.pages_examined_per_test.value|number_format }}
+        Each test created under a free account will examine up to the first {{ plan.distinctions.test_limitations.pages_examined_per_test }}
         pages discovered. A premium account is required for testing larger sites.
     </p>
 
@@ -44,7 +42,8 @@
     </p>
 
     <p>
-        Results can be viewed for up to {{ features.access_to_results.results_available_for.value }}. A premium account
+        Results can be viewed for up to
+        {{ plan.distinctions.access_to_results.results_available_for }}. A premium account
         is required to view the results of older tests.
     </p>
 
@@ -65,19 +64,9 @@
 {% endblock %}
 
 {% block ctas %}
-    <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
+    {% include '@SimplyTestableWebsite/Partials/plan-details/free-plan-ctas.html.twig'
         with {
-        'url': path('page_plans'),
-        'label': 'See plans and pricing',
-        'byline':'30-day free trial. From &pound;9 per month.',
-        'icon':'caret-right',
-        'primary':true
-        } %}
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-5 additional">
-        <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
-        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
-        <a href="{{ path('page_plans') }}">Premium plan options</a>
-    </div>
+            'web_client_urls': web_client_urls
+        }
+    only %}
 {% endblock %}

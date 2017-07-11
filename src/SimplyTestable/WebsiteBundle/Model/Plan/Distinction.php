@@ -39,4 +39,28 @@ class Distinction implements DistinctionInterface
     {
         return $this->value;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isInt()
+    {
+        return is_int($this->value) || ctype_digit($this->value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isInfinity()
+    {
+        return $this->value === INF;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isBool()
+    {
+        return is_bool($this->value);
+    }
 }

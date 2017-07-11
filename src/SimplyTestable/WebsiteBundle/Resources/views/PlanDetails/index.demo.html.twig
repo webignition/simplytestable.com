@@ -14,24 +14,58 @@
         but is limited in the breadth of use.
     </p>
 
-    {% include 'SimplyTestableWebsiteBundle:PlanDetails:index.demo.detail.html.twig' %}
+    <p>
+        You can carry out 1 full-site test per site and 1 single-page test
+        per page. This limit is not present if you create an account.
+    </p>
+
+    <p>
+        All demo tests are public as standard. They can be viewed by anyone
+        and are always to be found in the <a href="{{web_client_urls.history}}">demo account test history</a>.
+    </p>
+
+    <p>
+        Pages to be tested will be discovered by examining a site's XML sitemap
+        or news feed (RSS/Atom).
+    </p>
+
+    <p>
+        Sites with no sitemap or news need cannot be tested through the free demo.
+        A free or premium account allows a site to be crawled to discover pages
+        to test.
+    </p>
+
+    <p>
+        Each full-site demo test will examine up to the first
+        {{ plan.distinctions.test_limitations.pages_examined_per_test }}
+        pages discovered. A premium account is required for testing larger sites.
+    </p>
+
+    <p>
+        Results can be accessed for up to
+        {{ plan.distinctions.access_to_results.results_available_for }}
+        only. An account is required to claim and view older demo test results.
+    </p>
+
+    <p>
+        Demo tests can carry out HTML validation and
+        CSS validation tests. An account is required to carry out JavaScript
+        static analysis and link integrity (broken
+        link) checks.
+    </p>
+
+    <p>
+        Demo tests cannot be carried out against HTTPS sites,
+        are not able to use HTTP authentication and are not able to set custom
+        cookies. A premium account is required to use these features.
+    </p>
 
 {% endblock %}
 
 {% block ctas %}
-    <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
+    {% include '@SimplyTestableWebsite/Partials/plan-details/free-plan-ctas.html.twig'
         with {
-        'url': path('page_plans'),
-        'label': 'See plans and pricing',
-        'byline':'30-day free trial. From &pound;9 per month.',
-        'icon':'caret-right',
-        'primary':true
-        } %}
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-5 additional">
-        <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
-        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
-        <a href="{{ path('page_plans') }}">Premium plan options</a>
-    </div>
+            'web_client_urls': web_client_urls
+        }
+    only %}
 {% endblock %}

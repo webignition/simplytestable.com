@@ -31,7 +31,7 @@ class PseudoPlan implements PlanInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -39,7 +39,7 @@ class PseudoPlan implements PlanInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getPrice()
     {
@@ -47,7 +47,31 @@ class PseudoPlan implements PlanInterface
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
+     */
+    public function getIsListed()
+    {
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShortTitle()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLongTitle()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getDistinctions()
     {
@@ -76,34 +100,36 @@ class PseudoPlan implements PlanInterface
      */
     private function deriveDistinctions($plans)
     {
+
+
         return [
-            'test_limitations' => [
-                'full_site_tests_per_site' => new Distinction(
-                    'full_site_tests_per_site',
+            DistinctionInterface::DISTINCTION_GROUP_TEST_LIMITATIONS => [
+                DistinctionInterface::DISTINCTION_FULL_SITE_TESTS_PER_SITE => new Distinction(
+                    DistinctionInterface::DISTINCTION_FULL_SITE_TESTS_PER_SITE,
                     $this->deriveIntegerOrNullValue(
                         $plans,
                         'test_limitations',
                         'full_site_tests_per_site'
                     )
                 ),
-                'single_page_tests_per_page' => new Distinction(
-                    'single_page_tests_per_page',
+                DistinctionInterface::DISTINCTION_SINGLE_PAGE_TESTS_PER_PAGE => new Distinction(
+                    DistinctionInterface::DISTINCTION_SINGLE_PAGE_TESTS_PER_PAGE,
                     $this->deriveIntegerOrNullValue(
                         $plans,
                         'test_limitations',
                         'single_page_tests_per_page'
                     )
                 ),
-                'pages_examined_per_test' => new Distinction(
-                    'pages_examined_per_test',
+                DistinctionInterface::DISTINCTION_PAGES_EXAMINED_PER_TEST => new Distinction(
+                    DistinctionInterface::DISTINCTION_PAGES_EXAMINED_PER_TEST,
                     $this->deriveNumericRange(
                         $plans,
                         'test_limitations',
                         'pages_examined_per_test'
                     )
                 ),
-                'credits_per_month' => new Distinction(
-                    'credits_per_month',
+                DistinctionInterface::DISTINCTION_CREDITS_PER_MONTH => new Distinction(
+                    DistinctionInterface::DISTINCTION_CREDITS_PER_MONTH,
                     $this->deriveNumericRange(
                         $plans,
                         'test_limitations',
@@ -111,103 +137,103 @@ class PseudoPlan implements PlanInterface
                     )
                 ),
             ],
-            'access_to_results' => [
-                'results_available_for' => new Distinction(
-                    'results_available_for',
+            DistinctionInterface::DISTINCTION_GROUP_ACCESS_TO_RESULTS => [
+                DistinctionInterface::DISTINCTION_RESULTS_AVAILABLE_FOR => new Distinction(
+                    DistinctionInterface::DISTINCTION_RESULTS_AVAILABLE_FOR,
                     'Forever'
                 ),
-                'private_tests' => new Distinction(
-                    'private_tests',
+                DistinctionInterface::DISTINCTION_PRIVATE_TESTS => new Distinction(
+                    DistinctionInterface::DISTINCTION_PRIVATE_TESTS,
                     $this->deriveBooleanValue(
                         $plans,
-                        'access_to_results',
-                        'private_tests'
+                        DistinctionInterface::DISTINCTION_GROUP_ACCESS_TO_RESULTS,
+                        DistinctionInterface::DISTINCTION_PRIVATE_TESTS
                     )
                 ),
-                'read_only_reports' => new Distinction(
-                    'read_only_reports',
+                DistinctionInterface::DISTINCTION_READ_ONLY_REPORTS => new Distinction(
+                    DistinctionInterface::DISTINCTION_READ_ONLY_REPORTS,
                     $this->deriveBooleanValue(
                         $plans,
-                        'access_to_results',
-                        'read_only_reports'
-                    )
-                ),
-            ],
-            'url_discovery' => [
-                'discovery_via_sitemap' => new Distinction(
-                    'discovery_via_sitemap',
-                    $this->deriveBooleanValue(
-                        $plans,
-                        'url_discovery',
-                        'discovery_via_sitemap'
-                    )
-                ),
-                'discovery_via_crawl' => new Distinction(
-                    'discovery_via_crawl',
-                    $this->deriveBooleanValue(
-                        $plans,
-                        'url_discovery',
-                        'discovery_via_crawl'
+                        DistinctionInterface::DISTINCTION_GROUP_ACCESS_TO_RESULTS,
+                        DistinctionInterface::DISTINCTION_READ_ONLY_REPORTS
                     )
                 ),
             ],
-            'test_types' => [
-                'html_validation' => new Distinction(
-                    'html_validation',
+            DistinctionInterface::DISTINCTION_GROUP_URL_DISCOVERY => [
+                DistinctionInterface::DISTINCTION_DISCOVERY_VIA_SITEMAP => new Distinction(
+                    DistinctionInterface::DISTINCTION_DISCOVERY_VIA_SITEMAP,
                     $this->deriveBooleanValue(
                         $plans,
-                        'test_types',
-                        'html_validation'
+                        DistinctionInterface::DISTINCTION_GROUP_URL_DISCOVERY,
+                        DistinctionInterface::DISTINCTION_DISCOVERY_VIA_SITEMAP
                     )
                 ),
-                'css_validation' => new Distinction(
-                    'css_validation',
+                DistinctionInterface::DISTINCTION_DISCOVERY_VIA_CRAWL => new Distinction(
+                    DistinctionInterface::DISTINCTION_DISCOVERY_VIA_CRAWL,
                     $this->deriveBooleanValue(
                         $plans,
-                        'test_types',
-                        'css_validation'
-                    )
-                ),
-                'js_static_analysis' => new Distinction(
-                    'js_static_analysis',
-                    $this->deriveBooleanValue(
-                        $plans,
-                        'test_types',
-                        'js_static_analysis'
-                    )
-                ),
-                'link_integrity_checking' => new Distinction(
-                    'link_integrity_checking',
-                    $this->deriveBooleanValue(
-                        $plans,
-                        'test_types',
-                        'link_integrity_checking'
+                        DistinctionInterface::DISTINCTION_GROUP_URL_DISCOVERY,
+                        DistinctionInterface::DISTINCTION_DISCOVERY_VIA_CRAWL
                     )
                 ),
             ],
-            'advanced_options' => [
-                'https_sites' => new Distinction(
-                    'https_sites',
+            DistinctionInterface::DISTINCTION_GROUP_TEST_TYPES => [
+                DistinctionInterface::DISTINCTION_HTML_VALIDATION => new Distinction(
+                    DistinctionInterface::DISTINCTION_HTML_VALIDATION,
                     $this->deriveBooleanValue(
                         $plans,
-                        'advanced_options',
-                        'https_sites'
+                        DistinctionInterface::DISTINCTION_GROUP_TEST_TYPES,
+                        DistinctionInterface::DISTINCTION_HTML_VALIDATION
                     )
                 ),
-                'http_authentication' => new Distinction(
-                    'http_authentication',
+                DistinctionInterface::DISTINCTION_CSS_VALIDATION => new Distinction(
+                    DistinctionInterface::DISTINCTION_CSS_VALIDATION,
                     $this->deriveBooleanValue(
                         $plans,
-                        'advanced_options',
-                        'http_authentication'
+                        DistinctionInterface::DISTINCTION_GROUP_TEST_TYPES,
+                        DistinctionInterface::DISTINCTION_CSS_VALIDATION
                     )
                 ),
-                'custom_cookies' => new Distinction(
-                    'custom_cookies',
+                DistinctionInterface::DISTINCTION_JS_STATIC_ANALYSIS => new Distinction(
+                    DistinctionInterface::DISTINCTION_JS_STATIC_ANALYSIS,
                     $this->deriveBooleanValue(
                         $plans,
-                        'advanced_options',
-                        'custom_cookies'
+                        DistinctionInterface::DISTINCTION_GROUP_TEST_TYPES,
+                        DistinctionInterface::DISTINCTION_JS_STATIC_ANALYSIS
+                    )
+                ),
+                DistinctionInterface::DISTINCTION_LINK_INTEGRITY_CHECKING => new Distinction(
+                    DistinctionInterface::DISTINCTION_LINK_INTEGRITY_CHECKING,
+                    $this->deriveBooleanValue(
+                        $plans,
+                        DistinctionInterface::DISTINCTION_GROUP_TEST_TYPES,
+                        DistinctionInterface::DISTINCTION_LINK_INTEGRITY_CHECKING
+                    )
+                ),
+            ],
+            DistinctionInterface::DISTINCTION_GROUP_ADVANCED_OPTIONS => [
+                DistinctionInterface::DISTINCTION_HTTPS_SITES => new Distinction(
+                    DistinctionInterface::DISTINCTION_HTTPS_SITES,
+                    $this->deriveBooleanValue(
+                        $plans,
+                        DistinctionInterface::DISTINCTION_GROUP_ADVANCED_OPTIONS,
+                        DistinctionInterface::DISTINCTION_HTTPS_SITES
+                    )
+                ),
+                DistinctionInterface::DISTINCTION_HTTP_AUTHENTICATION => new Distinction(
+                    DistinctionInterface::DISTINCTION_HTTP_AUTHENTICATION,
+                    $this->deriveBooleanValue(
+                        $plans,
+                        DistinctionInterface::DISTINCTION_GROUP_ADVANCED_OPTIONS,
+                        DistinctionInterface::DISTINCTION_HTTP_AUTHENTICATION
+                    )
+                ),
+                DistinctionInterface::DISTINCTION_CUSTOM_COOKIES => new Distinction(
+                    DistinctionInterface::DISTINCTION_CUSTOM_COOKIES,
+                    $this->deriveBooleanValue(
+                        $plans,
+                        DistinctionInterface::DISTINCTION_GROUP_ADVANCED_OPTIONS,
+                        DistinctionInterface::DISTINCTION_CUSTOM_COOKIES
                     )
                 ),
             ],

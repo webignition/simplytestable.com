@@ -1,0 +1,11 @@
+{% set label_article = (plan.id|slice(0, 1) == 'a') ? 'an' : 'a' %}
+
+{% include 'SimplyTestableWebsiteBundle:Partials/cta-buttons:generic-anchor.html.twig'
+    with {
+        'url': sign_up_url ~ '?plan=' ~ plan.id,
+        'label': 'Sign up for ' ~ label_article ~ ' ' ~ plan.id ~ ' account',
+        'byline':'30-day free trial. ' ~ plan.price ~ ' per month.',
+        'icon':'caret-right',
+        'primary':true
+    } only
+%}

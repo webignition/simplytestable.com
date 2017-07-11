@@ -8,6 +8,13 @@ use SimplyTestable\WebsiteBundle\Model\Plan\PseudoPlan;
 
 class PlansService
 {
+    const PLAN_KEY_SHORT_TITLE = 'short_title';
+    const PLAN_KEY_LONG_TITLE = 'long_title';
+    const PLAN_KEY_PLAN_IDS = 'plan_ids';
+    const PLAN_KEY_PRICE = 'price';
+    const PLAN_KEY_IS_LISTED = 'is_listed';
+    const PLAN_KEY_DISTINCTIONS = 'distinctions';
+
     /**
      * @var PlanInterface[]
      */
@@ -25,10 +32,18 @@ class PlansService
     public function __construct($plansData, $distinctionsData)
     {
         foreach ($plansData as $planId => $planData) {
-            if ($planData['is_pseudo_plan']) {
+            $shortTitle = isset($planData[self::PLAN_KEY_SHORT_TITLE])
+                ? $planData[self::PLAN_KEY_SHORT_TITLE]
+                : '';
+
+            $longTitle = isset($planData[self::PLAN_KEY_LONG_TITLE])
+                ? $planData[self::PLAN_KEY_LONG_TITLE]
+                : '';
+
+            if (isset($planData[self::PLAN_KEY_PLAN_IDS])) {
                 $plans = [];
 
-                foreach ($planData['planIds'] as $existingPlanId) {
+                foreach ($planData[self::PLAN_KEY_PLAN_IDS] as $existingPlanId) {
                     $plans[] = $this->plans[$existingPlanId];
                 }
 
@@ -39,8 +54,11 @@ class PlansService
             } else {
                 $this->plans[$planId] = new Plan(
                     $planId,
-                    $planData['price'],
-                    $planData['distinctions']
+                    $planData[self::PLAN_KEY_PRICE],
+                    $planData[self::PLAN_KEY_IS_LISTED],
+                    $shortTitle,
+                    $longTitle,
+                    $planData[self::PLAN_KEY_DISTINCTIONS]
                 );
             }
         }
@@ -49,12 +67,39 @@ class PlansService
     }
 
     /**
+     * @param $name
+     * @return null|PlanInterface
+     */
+    public function getPlan($name)
+    {
+        return isset($this->plans[$name])
+            ? $this->plans[$name]
+            : null;
+    }
+
+    /**
+     * @param string[] $planIds
+     *
      * @return PlanInterface[]
      */
-    public function getPlans()
+    public function getPlans($planIds = [])
     {
+        $plans = $this->plans;
 
-        return $this->plans;
+        if (!empty($planIds)) {
+            $filteredPlans = [];
+
+            foreach ($plans as $plan) {
+                /* @var PlanInterface $plan */
+                if (in_array($plan->getId(), $planIds)) {
+                    $filteredPlans[$plan->getId()] = $plan;
+                }
+            }
+
+            $plans = $filteredPlans;
+        }
+
+        return $plans;
     }
 
     /**

@@ -36,18 +36,50 @@ class DistinctionDecorator implements DistinctionInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function isInt()
+    {
+        return $this->distinction->isInt();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isInfinity()
+    {
+        return $this->distinction->isInfinity();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isBool()
+    {
+        return $this->distinction->isBool();
+    }
+
+    /**
      * @return string
      */
     public function __toString()
     {
         $value = $this->getValue();
 
-        if (gettype($value) === 'integer') {
+        if ($this->isInt()) {
             return number_format($value);
         }
 
         if (gettype($value) === 'string' && $this->isNumberRange($value)) {
             return $this->numberFormatRangeString($value);
+        }
+
+        if ($this->isInfinity()) {
+            return 'Unlimited';
+        }
+
+        if (is_null($value)) {
+            return '&mdash;';
         }
 
         return (string)$value;

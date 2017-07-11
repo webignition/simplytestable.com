@@ -45,7 +45,10 @@ class PageController extends CacheableController
     public function accountBenefitsAction(PlansService $plansService)
     {
         return $this->handleAction([
-            'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans()),
+            'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
+                'demo',
+                'premium',
+            ])),
             'distinctions' => $plansService->getDistinctions(),
         ]);
     }

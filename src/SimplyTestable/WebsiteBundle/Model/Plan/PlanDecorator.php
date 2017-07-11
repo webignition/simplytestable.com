@@ -23,24 +23,15 @@ class PlanDecorator implements PlanInterface
         $distinctions = $plan->getDistinctions();
 
         $decoratedDistinctions = [];
-
-//        var_dump($plan->getId());
-
         foreach ($distinctions as $groupName => $distinctionGroup) {
-//            var_dump($groupName);
-
             $decoratedDistinctionGroup = [];
 
             foreach ($distinctionGroup as $distinctionId => $distinction) {
-//                var_dump($distinctionId);
-
                 $decoratedDistinctionGroup[$distinctionId] = new DistinctionDecorator($distinction);
             }
-//
+
             $decoratedDistinctions[$groupName] = $decoratedDistinctionGroup;
         }
-
-//        exit();
 
         $this->distinctions = $decoratedDistinctions;
     }
@@ -58,7 +49,15 @@ class PlanDecorator implements PlanInterface
      */
     public function getPrice()
     {
-        return '£' . $this->plan->getPrice();
+        return '&pound;' . $this->plan->getPrice();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIsListed()
+    {
+        return $this->plan->getIsListed();
     }
 
     /**
@@ -67,5 +66,21 @@ class PlanDecorator implements PlanInterface
     public function getDistinctions()
     {
         return $this->distinctions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShortTitle()
+    {
+        return $this->plan->getShortTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLongTitle()
+    {
+        return $this->plan->getLongTitle();
     }
 }

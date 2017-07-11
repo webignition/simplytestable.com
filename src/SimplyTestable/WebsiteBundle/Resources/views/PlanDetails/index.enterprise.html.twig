@@ -1,28 +1,28 @@
-{% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %} 
+{% extends 'SimplyTestableWebsiteBundle:PlanDetails:base.html.twig' %}
 
 {% block heading %}Custom enterprise solutions{% endblock %}
 
-{% block content %}    
+{% block content %}
     <p>
         Our <a href="{{ path('page_plans') }}">standard premium plans</a>
         can't fit the needs of everyone. That's where our enterprise
         solutions come in.
     </p>
-    
+
     <p>
         Custom-tailored plans are available if you regularly need to test websites
-        with {{ features.test_limitations.pages_examined_per_test.value }}
-        pages or need to run more than {{ features.test_limitations.credits_per_month.value }} individual
+        with {{ plan.distinctions.test_limitations.pages_examined_per_test }}
+        pages or need to run more than {{ plan.distinctions.test_limitations.credits_per_month }} individual
         tests per month.
     </p>
-    
+
     <p>
         An enterprise plan will be created specific to your needs, including
         all features and including (or excluding) whatever limits your budget demands.
     </p>
-    
+
     <p>
-        Prices start at &pound;1,000 per month with a one year commitment.  
+        Prices start at &pound;1,000 per month with a one year commitment.
     </p>
 
 {% endblock %}
@@ -38,4 +38,4 @@
                  'primary':true
         } %}
     </div>
-{% endblock %}  
+{% endblock %}

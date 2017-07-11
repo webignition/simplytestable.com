@@ -2,7 +2,8 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Services\PlanFeaturesService;
+use SimplyTestable\WebsiteBundle\Services\DecoratedPlanFactory;
+use SimplyTestable\WebsiteBundle\Services\PlansService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,7 +19,7 @@ class PlanDetailsController extends CacheableController
         'agency',
         'business',
         'enterprise',
-        'premium'
+        'premium',
     );
 
     /**
@@ -27,26 +28,39 @@ class PlanDetailsController extends CacheableController
     private $name;
 
     /**
+     * @param PlansService $plansService
      * @param string $name
      *
      * @return RedirectResponse|Response
      */
-    public function indexAction($name)
+    public function indexAction(PlansService $plansService, $name)
     {
         if ($this->isOldIE()) {
             return $this->createRedirectToOutdatedBrowserResponse();
         }
 
-        $this->name = $name;
+        $name = strtolower($name);
 
-        if (!$this->isAllowedPlanName()) {
+        $isAllowedPlanName = in_array($name, $this->allowedPlanNames);
+        if (!$isAllowedPlanName) {
             return $this->redirect($this->generateUrl('page_plans'));
         }
 
+        if ($name == 'premium') {
+            return $this->redirect($this->generateUrl('plandetails_index', [
+                'name' => 'agency',
+            ]));
+        }
+
+        $this->name = $name;
+
+        $plans = DecoratedPlanFactory::decorateCollection($plansService->getPlans($this->allowedPlanNames));
+        $plan = $plans[$name];
+
         return $this->renderCacheableResponse(array(
-            'prices' => $this->container->getParameter('plans')['pricing'],
-            'features' => $this->getPlanFeaturesService()->getPlanFeatures()[$this->name],
-            'plan' => $this->name
+            'plans' => $plans,
+            'plan' => $plan,
+            'distinctions' => $plansService->getDistinctions(),
         ));
     }
 
@@ -56,21 +70,5 @@ class PlanDetailsController extends CacheableController
     protected function getViewFilename()
     {
         return str_replace('index.', 'index.' . $this->name . '.', parent::getViewFilename());
-    }
-
-    /**
-     * @return boolean
-     */
-    private function isAllowedPlanName()
-    {
-        return in_array($this->name, $this->allowedPlanNames);
-    }
-
-    /**
-     * @return PlanFeaturesService
-     */
-    private function getPlanFeaturesService()
-    {
-        return $this->container->get('simplytestable.services.planFeaturesService');
     }
 }

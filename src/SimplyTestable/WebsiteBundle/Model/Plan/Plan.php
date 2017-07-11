@@ -15,6 +15,21 @@ class Plan implements PlanInterface
     private $price;
 
     /**
+     * @var bool
+     */
+    private $isListed;
+
+    /**
+     * @var string
+     */
+    private $shortTitle;
+
+    /**
+     * @var string
+     */
+    private $longTitle;
+
+    /**
      * @var array
      */
     private $distinctions = [];
@@ -22,12 +37,18 @@ class Plan implements PlanInterface
     /**
      * @param string $id
      * @param int $price
+     * @param bool $isListed
+     * @param string $shortTitle
+     * @param string $longTitle
      * @param array $distinctions
      */
-    public function __construct($id, $price, $distinctions)
+    public function __construct($id, $price, $isListed, $shortTitle, $longTitle, $distinctions)
     {
         $this->id = $id;
         $this->price = $price;
+        $this->isListed = $isListed;
+        $this->shortTitle = $shortTitle;
+        $this->longTitle = $longTitle;
 
         foreach ($distinctions as $group => $groupDistinctionData) {
             $groupDistinctions = [];
@@ -58,8 +79,32 @@ class Plan implements PlanInterface
     /**
      * {@inheritdoc}
      */
+    public function getIsListed()
+    {
+        return $this->isListed;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getDistinctions()
     {
         return $this->distinctions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getShortTitle()
+    {
+        return $this->shortTitle;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLongTitle()
+    {
+        return $this->longTitle;
     }
 }
