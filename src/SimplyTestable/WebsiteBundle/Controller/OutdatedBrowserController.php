@@ -11,6 +11,10 @@ class OutdatedBrowserController extends CacheableController
      */
     public function indexAction()
     {
-        return $this->renderCacheableResponse('@SimplyTestableWebsite/OutdatedBrowser/index.html.twig');
+        if ($this->hasResponse()) {
+            return $this->getResponse();
+        }
+
+        return $this->render('@SimplyTestableWebsite/OutdatedBrowser/index.html.twig');
     }
 }

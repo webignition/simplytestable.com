@@ -1,6 +1,6 @@
 imports:
-    - { resource: services/event-listeners.yml }
-    - { resource: services/controllers.yml }
+    - { resource: event-listeners.yml }
+    - { resource: controllers.yml }
 
 services:
   SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
