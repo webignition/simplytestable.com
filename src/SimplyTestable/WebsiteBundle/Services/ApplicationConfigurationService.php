@@ -6,11 +6,6 @@ class ApplicationConfigurationService
     /**
      * @var string
      */
-    private $baseUrl;
-
-    /**
-     * @var string
-     */
     private $cacheDir;
 
     /**
@@ -19,13 +14,11 @@ class ApplicationConfigurationService
     private $rootDir;
 
     /**
-     * @param string $baseUrl
      * @param string $rootDir
      * @param string $cacheDir
      */
-    public function __construct($baseUrl, $rootDir, $cacheDir)
+    public function __construct($rootDir, $cacheDir)
     {
-        $this->baseUrl = $baseUrl;
         $this->rootDir = $rootDir;
         $this->cacheDir = $cacheDir;
     }
@@ -52,13 +45,5 @@ class ApplicationConfigurationService
     public function getCacheDir()
     {
         return realpath($this->cacheDir);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBaseUrl()
-    {
-        return $this->baseUrl;
     }
 }

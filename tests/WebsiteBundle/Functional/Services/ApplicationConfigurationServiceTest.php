@@ -15,7 +15,6 @@ class ApplicationConfigurationServiceTest extends AbstractWebTestCase
 
         $applicationConfigurationService = $this->container->get(ApplicationConfigurationService::class);
 
-        $this->assertEquals('http://local.simplytestable.com', $applicationConfigurationService->getBaseUrl());
         $this->assertEquals($expectedRootDir, $applicationConfigurationService->getRootDir());
         $this->assertRegExp('/\/var\/cache\/test$/', $applicationConfigurationService->getCacheDir());
         $this->assertEquals($expectedWebDir, $applicationConfigurationService->getWebDir());
