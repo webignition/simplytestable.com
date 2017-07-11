@@ -5,7 +5,6 @@ namespace Tests\WebsiteBundle\Functional;
 use SimplyTestable\WebsiteBundle\Model\User;
 use SimplyTestable\WebsiteBundle\Services\UserSerializerService;
 use Symfony\Bundle\FrameworkBundle\Client;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,19 +24,13 @@ abstract class AbstractWebTestCase extends WebTestCase
     protected $container;
 
     /**
-     * @var Application
-     */
-    private $application;
-
-    /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
         $this->client = static::createClient();
         $this->container = $this->client->getKernel()->getContainer();
-        $this->application = new Application(self::$kernel);
-        $this->application->setAutoExit(false);
+
         $this->container->get('doctrine')->getConnection()->beginTransaction();
     }
 
@@ -117,14 +110,6 @@ abstract class AbstractWebTestCase extends WebTestCase
         );
 
         return $crawler;
-    }
-
-    /**
-     * @return UserSerializerService
-     */
-    protected function getUserSerializerService()
-    {
-        return $this->container->get('simplytestable.services.userserializerservice');
     }
 
     /**
