@@ -25,7 +25,7 @@ class LandingPageController extends AbstractBaseController
             return $this->createRedirectToOutdatedBrowserResponse();
         }
 
-        $response = $this->renderResponse();
+        $response = $this->renderResponse('@SimplyTestableWebsite/LandingPage/tms.html.twig');
 
         if ($this->hasValidCoupon()) {
             $cookie = new Cookie(
