@@ -51,5 +51,4 @@ interface DistinctionInterface
      * @return bool
      */
     public function isBool();
-
 }
