@@ -1,11 +1,4 @@
 services:
-#  simplytestable.command.cachevalidator.clear:
-#    class:  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand
-#    arguments:
-#        cacheValidatorHeadersService: "@simplytestable.services.cachevalidatorheadersservice"
-#    tags:
-#      - { name: console.command }
-
   SimplyTestable\WebsiteBundle\Controller\ExceptionController:
     class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
     public: true
