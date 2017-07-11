@@ -3,7 +3,6 @@ namespace SimplyTestable\WebsiteBundle\Services;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Router;
@@ -27,19 +26,22 @@ class WebClientRouter implements RouterInterface
 
     /**
      * @param string $baseUrl
-     * @param KernelInterface $kernel
-     * @param string $cachePath
+     * @param ResourceLocator $resourceLocator
+     * @param ApplicationConfigurationService $applicationConfigurationService
      */
-    public function __construct($baseUrl, KernelInterface $kernel, $cachePath)
-    {
-        $locator = new FileLocator([$kernel->locateResource(self::BUNDLE_CONFIG_PATH)]);
+    public function __construct(
+        $baseUrl,
+        ResourceLocator $resourceLocator,
+        ApplicationConfigurationService $applicationConfigurationService
+    ) {
+        $locator = new FileLocator($resourceLocator->locate(self::BUNDLE_CONFIG_PATH));
         $requestContext = new RequestContext();
         $requestContext->fromRequest(Request::createFromGlobals());
 
         $this->router = new Router(
             new YamlFileLoader($locator),
             self::ROUTING_RESOURCE,
-            ['cache_dir' => $cachePath],
+            ['cache_dir' => $applicationConfigurationService->getCacheDir()],
             $requestContext
         );
 

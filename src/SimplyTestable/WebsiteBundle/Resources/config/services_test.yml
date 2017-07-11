@@ -18,7 +18,7 @@ services:
         - '@router'
         - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
         - '@templating'
-        - '@SimplyTestable\WebsiteBundle\Services\KernelParametersService'
+        - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
     tags:
       - { name: console.command }
 

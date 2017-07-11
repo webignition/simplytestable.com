@@ -1,8 +1,13 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Services;
 
-class KernelParametersService
+class ApplicationConfigurationService
 {
+    /**
+     * @var string
+     */
+    private $cacheDir;
+
     /**
      * @var string
      */
@@ -10,10 +15,12 @@ class KernelParametersService
 
     /**
      * @param string $rootDir
+     * @param string $cacheDir
      */
-    public function __construct($rootDir)
+    public function __construct($rootDir, $cacheDir)
     {
         $this->rootDir = $rootDir;
+        $this->cacheDir = $cacheDir;
     }
 
     /**
@@ -30,5 +37,13 @@ class KernelParametersService
     public function getWebDir()
     {
         return realpath($this->getRootDir() . '/../web');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCacheDir()
+    {
+        return realpath($this->cacheDir);
     }
 }
