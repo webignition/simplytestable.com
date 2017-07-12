@@ -23,8 +23,6 @@
         "twig/twig": "^1.0||^2.0",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "symfony/assetic-bundle": "~2.8",
-        "jms/security-extra-bundle": "~1.6",
-        "jms/di-extra-bundle": "~1.8",
         "doctrine/migrations": "~1.5",
         "doctrine/doctrine-migrations-bundle": "~1.2",
         "webignition/url":">=1.0,<2.0"
