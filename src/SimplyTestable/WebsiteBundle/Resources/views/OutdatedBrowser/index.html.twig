@@ -6,12 +6,6 @@
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/vendor/normalise-css/normalize.css-3.0.1/normalize.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
 {% endblock %}
 
 {% block title %}OMG IE{% endblock %}
