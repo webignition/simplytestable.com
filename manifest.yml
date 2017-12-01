@@ -1,4 +1,3 @@
 src/SimplyTestable/WebsiteBundle/Resources/assets/vendor:
-  supersleight: http://24ways.org/code/supersleight-transparent-png-in-ie6/supersleight.zip
   internet-explorer-opacity-polyfill: https://github.com/bladeSk/internet-explorer-opacity-polyfill.git
   normalise-css: https://github.com/necolas/normalize.css/archive/3.0.1.zip
