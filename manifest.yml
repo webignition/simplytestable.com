@@ -1,3 +1,2 @@
 src/SimplyTestable/WebsiteBundle/Resources/assets/vendor:
-  internet-explorer-opacity-polyfill: https://github.com/bladeSk/internet-explorer-opacity-polyfill.git
   normalise-css: https://github.com/necolas/normalize.css/archive/3.0.1.zip
