@@ -39,6 +39,8 @@
             filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
 
 
@@ -57,6 +59,8 @@
             {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+
+            <script src="{{ asset('build/app.js') }}"></script>
 
             <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

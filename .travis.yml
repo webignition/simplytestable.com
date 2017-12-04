@@ -14,16 +14,19 @@ before_install:
   - cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
 
 install:
-  - composer install
+  - composer install --prefer-dist
   - php bin/console doctrine:database:create
   - php bin/console doctrine:migrations:migrate --no-interaction
   - composer config --global process-timeout 2000
+  - yarn install
 
 before_script:
   - php bin/console --env=test cache:clear --no-warmup
   - php bin/console --env=test cache:warmup
 
 script:
+  - yarn run stylelint --config .stylelintrc assets/css/
+  - yarn run encore production
   - composer ci
 
 matrix:
