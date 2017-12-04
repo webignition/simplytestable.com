@@ -18,6 +18,7 @@ install:
   - php bin/console doctrine:database:create
   - php bin/console doctrine:migrations:migrate --no-interaction
   - composer config --global process-timeout 2000
+  - yarn install
 
 before_script:
   - php bin/console --env=test cache:clear --no-warmup
