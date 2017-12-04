@@ -24,6 +24,7 @@ before_script:
   - php bin/console --env=test cache:warmup
 
 script:
+  - node node_modules/stylelint/bin/stylelint.js --config .stylelintrc assets/css/
   - composer ci
 
 matrix:
