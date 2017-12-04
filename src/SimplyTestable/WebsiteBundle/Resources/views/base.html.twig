@@ -34,12 +34,6 @@
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
             <!--<![endif]-->
 
-            {% stylesheets
-            '@SimplyTestableWebsiteBundle/Resources/assets/css/main.css'
-            filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
 

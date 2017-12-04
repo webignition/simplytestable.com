@@ -1,3 +1,13 @@
+a {
+  &.btn {
+    @media (max-width: 768px) {
+      margin-left: 34px;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
 .navbar-brand {
   background: url('../images/st30.png') transparent no-repeat 0 9px;
   color: $brand;
@@ -6,6 +16,22 @@
 
   &:hover {
     color: #0ae;
+  }
+
+  span {
+    @media (max-width: 490px) {
+      display: none;
+    }
+  }
+}
+
+.text {
+  a {
+    i {
+      @media (max-width: 768px) {
+        margin-right: 6px;
+      }
+    }
   }
 }
 
@@ -30,4 +56,10 @@
 
 .user-actions .spacer {
   border-left: 1px solid #999;
+}
+
+.navbar-form {
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
 }

@@ -23,4 +23,14 @@ body {
       @import "partials/navbar-logged-in";
     }
   }
+
+  &.ltIE8 {
+    #logo,
+    .navbar,
+    #footer-announcements,
+    #footer-detail,
+    #large-logo {
+      display: none;
+    }
+  }
 }
