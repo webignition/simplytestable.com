@@ -28,11 +28,11 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
         return [
             'invalid plan' => [
                 'url' => '/plans/foo/',
-                'expectedRedirectLocation' => '/plans/'
+                'expectedRedirectLocation' => 'http://localhost/plans/'
             ],
             'premium => agency' => [
                 'url' => '/plans/premium/',
-                'expectedRedirectLocation' => '/plans/agency/'
+                'expectedRedirectLocation' => 'http://localhost/plans/agency/'
             ],
         ];
     }

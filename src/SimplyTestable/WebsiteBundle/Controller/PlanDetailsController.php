@@ -47,13 +47,13 @@ class PlanDetailsController extends CacheableController
 
         $isAllowedPlanName = in_array($name, $this->allowedPlanNames);
         if (!$isAllowedPlanName) {
-            return $this->redirect($this->generateUrl('page_plans'));
+            return $this->redirect('page_plans');
         }
 
         if ($name == 'premium') {
-            return $this->redirect($this->generateUrl('plandetails_index', [
+            return $this->redirect('plandetails_index', [
                 'name' => 'agency',
-            ]));
+            ]);
         }
 
         $this->name = $name;

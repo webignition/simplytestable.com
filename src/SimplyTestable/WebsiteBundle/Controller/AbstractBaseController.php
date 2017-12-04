@@ -119,16 +119,27 @@ abstract class AbstractBaseController
     }
 
     /**
+     * @param string $routeName
+     * @param array $parameters
+     *
      * @return RedirectResponse
      */
-    protected function createRedirectToOutdatedBrowserResponse()
+    protected function redirect($routeName, $parameters = [])
     {
         $url = $this->router->generate(
-            'outdatedbrowser_index',
-            [],
+            $routeName,
+            $parameters,
             UrlGeneratorInterface::ABSOLUTE_URL
         );
 
         return new RedirectResponse($url);
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    protected function createRedirectToOutdatedBrowserResponse()
+    {
+        return $this->redirect('outdatedbrowser_index');
     }
 }
