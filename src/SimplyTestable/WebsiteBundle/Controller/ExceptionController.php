@@ -17,11 +17,6 @@ use webignition\Url\Url;
 class ExceptionController extends BaseExceptionController
 {
     /**
-     * @var Request
-     */
-    private $request;
-
-    /**
      * @var NotFoundRedirectService
      */
     private $notFoundRedirectService;
@@ -65,15 +60,14 @@ class ExceptionController extends BaseExceptionController
      */
     public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null)
     {
-        $this->request = $request;
-
-        $redirectUrl = $this->notFoundRedirectService->getRedirectFor($this->request->getRequestUri());
+        $requestUri = $request->getRequestUri();
+        $redirectUrl = $this->notFoundRedirectService->getRedirectFor($requestUri);
 
         if (!empty($redirectUrl)) {
             return new RedirectResponse($redirectUrl);
         }
 
-        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $request->getRequestUri());
+        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $requestUri);
         $isNotFoundException = $exception->getStatusCode() == Response::HTTP_NOT_FOUND;
 
         if ($isNotFoundException && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
@@ -86,7 +80,7 @@ class ExceptionController extends BaseExceptionController
             $this->sendDeveloperEmail($exception);
         }
 
-        $currentContent = $this->getAndCleanOutputBuffering($this->request->headers->get('X-Php-Ob-Level', -1));
+        $currentContent = $this->getAndCleanOutputBuffering($request->headers->get('X-Php-Ob-Level', -1));
         $showException = $request->attributes->get('showException', $this->debug);
         $code = $exception->getStatusCode();
 
@@ -99,7 +93,7 @@ class ExceptionController extends BaseExceptionController
                     'exception'      => $exception,
                     'logger'         => $logger,
                     'currentContent' => $currentContent,
-                    'requestUri' => $this->request->getRequestUri(),
+                    'requestUri' => $requestUri,
                     'testimonial' => $this->testimonialService->getRandom()
                 )
             ),

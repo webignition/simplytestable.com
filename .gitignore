@@ -3,7 +3,6 @@ web/js/
 web/css/
 web/images/
 app/bootstrap.php.cache
-build/
 vendor
 composer.phar
 /.idea
@@ -17,3 +16,5 @@ composer.phar
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
+/build/
+/node_modules/

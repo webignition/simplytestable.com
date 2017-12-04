@@ -15,7 +15,7 @@ class UserController extends AbstractBaseController
     {
         $this->userService->clearUser();
 
-        $response = $this->redirect($this->generateUrl('home_index', [], UrlGeneratorInterface::ABSOLUTE_URL));
+        $response = $this->redirect('home_index');
         $response->headers->clearCookie(UserService::USER_COOKIE_KEY, '/', '.simplytestable.com');
 
         return $response;

@@ -3,11 +3,15 @@
 namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Doctrine\ORM\EntityRepository;
+use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
-class HomeControllerTest extends AbstractWebTestCase
+class HomeControllerTest extends AbstractControllerTest
 {
     public function testEventListenerOrder()
     {
@@ -86,6 +90,33 @@ class HomeControllerTest extends AbstractWebTestCase
             ['/signout/'],
             $signOutForm->extract(['action'])
         );
+    }
+
+    public function testIndexActionHasResponse()
+    {
+        $request = new Request();
+        $response = new Response();
+
+        $controllerFactory = new ControllerFactory($this->container);
+
+        $controller = $controllerFactory->createHomeController($request);
+        $controller->setResponse($response);
+
+        $retrievedResponse = $controller->indexAction();
+
+        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
+    }
+
+    public function testIndexActionForOutdatedBrowser()
+    {
+        $request = $this->createRequestForOutdatedBrowser();
+
+        $controllerFactory = new ControllerFactory($this->container);
+        $controller = $controllerFactory->createHomeController($request);
+
+        $response = $controller->indexAction();
+
+        $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
     }
 
     /**

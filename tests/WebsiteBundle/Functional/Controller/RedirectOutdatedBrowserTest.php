@@ -57,7 +57,7 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
             'IE6' => [
                 'userAgentString' => 'Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)',
                 'expectedStatusCode' => 302,
-                'expectedResponseLocation' => '/outdated-browser/',
+                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
             ],
         ];
 
