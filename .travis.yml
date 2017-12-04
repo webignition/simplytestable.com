@@ -20,7 +20,7 @@ install:
   - composer config --global process-timeout 2000
 
 before_script:
-  - php bin/console --env=test cache:clear --no-warmpup
+  - php bin/console --env=test cache:clear --no-warmup
   - php bin/console --env=test cache:warmup
 
 script:
