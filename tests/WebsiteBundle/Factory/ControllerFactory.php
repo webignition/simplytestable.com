@@ -5,6 +5,7 @@ namespace Tests\WebsiteBundle\Factory;
 use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
+use SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController;
 use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
@@ -65,6 +66,19 @@ class ControllerFactory
         $planDetailsController = $this->createController($request, PlanDetailsController::class);
 
         return $planDetailsController;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return OutdatedBrowserController
+     */
+    public function createOutdatedBrowserController(Request $request)
+    {
+        /* @var OutdatedBrowserController $outdatedBrowserController */
+        $outdatedBrowserController = $this->createController($request, OutdatedBrowserController::class);
+
+        return $outdatedBrowserController;
     }
 
     /**
