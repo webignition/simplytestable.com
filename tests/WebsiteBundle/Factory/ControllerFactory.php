@@ -4,9 +4,9 @@ namespace Tests\WebsiteBundle\Factory;
 
 use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
+use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
-use SimplyTestable\WebsiteBundle\Services\UserSerializerService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -38,6 +38,19 @@ class ControllerFactory
         $homeController = $this->createController($request, HomeController::class);
 
         return $homeController;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return LandingPageController
+     */
+    public function createLandingPageController(Request $request)
+    {
+        /* @var LandingPageController $homeController */
+        $landingPageController = $this->createController($request, LandingPageController::class);
+
+        return $landingPageController;
     }
 
     /**
