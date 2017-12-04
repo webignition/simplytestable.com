@@ -26,7 +26,7 @@ before_script:
 
 script:
   - yarn run stylelint --config .stylelintrc assets/css/
-  - yarn run encore dev
+  - yarn run encore production
   - composer ci
 
 matrix:
