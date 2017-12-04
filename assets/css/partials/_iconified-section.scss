@@ -1,0 +1,11 @@
+.iconified-section {
+  padding-left: 60px;
+
+  .row {
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 15px;
+  }
+}

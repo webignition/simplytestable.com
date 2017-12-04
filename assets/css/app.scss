@@ -1,12 +1,36 @@
+@import "modules/variables";
+@import "partials/logo";
+@import "partials/landing-strip";
+@import "partials/footer-announcements";
+@import "partials/start-new-test-form";
+@import "partials/footer-detail";
+@import "partials/iconified-section";
+@import "partials/btn-cta";
+
 body {
-  .navbar-inverse {
-    .container {
-      .navbar-brand {
-        background: url('../images/st30.png') transparent no-repeat 0 9px;
-        color: #08c;
-        padding-left: 40px;
-        margin-left: -30px;
-      }
+  .navbar {
+    @import "partials/navbar";
+  }
+
+  &.not-logged-in {
+    .navbar {
+      @import "partials/navbar-not-logged-in";
+    }
+  }
+
+  &.logged-in {
+    .navbar {
+      @import "partials/navbar-logged-in";
+    }
+  }
+
+  &.ltIE8 {
+    #logo,
+    .navbar,
+    #footer-announcements,
+    #footer-detail,
+    #large-logo {
+      display: none;
     }
   }
 }
