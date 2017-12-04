@@ -17,3 +17,4 @@ composer.phar
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
+/node_modules/
