@@ -5,6 +5,7 @@ namespace Tests\WebsiteBundle\Factory;
 use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
+use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use SimplyTestable\WebsiteBundle\Services\UserService;
@@ -47,10 +48,23 @@ class ControllerFactory
      */
     public function createLandingPageController(Request $request)
     {
-        /* @var LandingPageController $homeController */
+        /* @var LandingPageController $landingPageController */
         $landingPageController = $this->createController($request, LandingPageController::class);
 
         return $landingPageController;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return PlanDetailsController
+     */
+    public function createPlanDetailsController(Request $request)
+    {
+        /* @var PlanDetailsController $planDetailsController */
+        $planDetailsController = $this->createController($request, PlanDetailsController::class);
+
+        return $planDetailsController;
     }
 
     /**
