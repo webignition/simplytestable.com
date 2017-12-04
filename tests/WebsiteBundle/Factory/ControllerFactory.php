@@ -6,6 +6,7 @@ use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 use SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController;
+use SimplyTestable\WebsiteBundle\Controller\PageController;
 use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
@@ -79,6 +80,19 @@ class ControllerFactory
         $outdatedBrowserController = $this->createController($request, OutdatedBrowserController::class);
 
         return $outdatedBrowserController;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return PageController
+     */
+    public function createPageController(Request $request)
+    {
+        /* @var PageController $pageController */
+        $pageController = $this->createController($request, PageController::class);
+
+        return $pageController;
     }
 
     /**

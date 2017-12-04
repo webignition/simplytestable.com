@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
-class LandingPageControllerTest extends AbstractWebTestCase
+class LandingPageControllerTest extends AbstractControllerTest
 {
     public function testIndexAction()
     {
@@ -21,8 +21,7 @@ class LandingPageControllerTest extends AbstractWebTestCase
 
     public function testIndexActionForOutdatedBrowser()
     {
-        $request = new Request();
-        $request->headers->set('user-agent', 'Mozilla/4.0 (MSIE 6.0; Windows NT 5.0)');
+        $request = $this->createRequestForOutdatedBrowser();
 
         $controllerFactory = new ControllerFactory($this->container);
 

@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
-class HomeControllerTest extends AbstractWebTestCase
+class HomeControllerTest extends AbstractControllerTest
 {
     public function testEventListenerOrder()
     {
@@ -109,11 +109,9 @@ class HomeControllerTest extends AbstractWebTestCase
 
     public function testIndexActionForOutdatedBrowser()
     {
-        $request = new Request();
-        $request->headers->set('user-agent', 'Mozilla/4.0 (MSIE 6.0; Windows NT 5.0)');
+        $request = $this->createRequestForOutdatedBrowser();
 
         $controllerFactory = new ControllerFactory($this->container);
-
         $controller = $controllerFactory->createHomeController($request);
 
         $response = $controller->indexAction();
