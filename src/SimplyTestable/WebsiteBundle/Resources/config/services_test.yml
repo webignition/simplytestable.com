@@ -29,3 +29,6 @@ services:
 
   SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
     public: true
+
+  SimplyTestable\WebsiteBundle\Services\TestimonialService:
+    public: true

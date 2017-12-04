@@ -3,8 +3,11 @@
 namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Doctrine\ORM\EntityRepository;
+use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Request;
+use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class HomeControllerTest extends AbstractWebTestCase
@@ -86,6 +89,20 @@ class HomeControllerTest extends AbstractWebTestCase
             ['/signout/'],
             $signOutForm->extract(['action'])
         );
+    }
+
+    public function testIndexActionForOutdatedBrowser()
+    {
+        $request = new Request();
+        $request->headers->set('user-agent', 'Mozilla/4.0 (MSIE 6.0; Windows NT 5.0)');
+
+        $controllerFactory = new ControllerFactory($this->container);
+
+        $controller = $controllerFactory->createHomeController($request);
+
+        $response = $controller->indexAction();
+
+        $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
     }
 
     /**

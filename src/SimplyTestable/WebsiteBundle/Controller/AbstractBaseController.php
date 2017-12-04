@@ -2,18 +2,19 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
 use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
+use Twig\Environment as TwigEnvironment;
 
-abstract class AbstractBaseController extends AbstractController
+abstract class AbstractBaseController
 {
     /**
      * @var RequestStack
@@ -41,24 +42,40 @@ abstract class AbstractBaseController extends AbstractController
     private $webClientRouter;
 
     /**
+     * @var TwigEnvironment
+     */
+    private $twig;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
      * @param RequestStack $requestStack
      * @param UserAgentDetector $userAgentDetector
      * @param TestimonialService $testimonialService
      * @param UserService $userService
      * @param WebClientRouter $webClientRouter
+     * @param TwigEnvironment $twig
+     * @param RouterInterface $router
      */
     public function __construct(
         RequestStack $requestStack,
         UserAgentDetector $userAgentDetector,
         TestimonialService $testimonialService,
         UserService $userService,
-        WebClientRouter $webClientRouter
+        WebClientRouter $webClientRouter,
+        TwigEnvironment $twig,
+        RouterInterface $router
     ) {
         $this->requestStack = $requestStack;
         $this->userAgentDetector = $userAgentDetector;
         $this->testimonialService = $testimonialService;
         $this->userService = $userService;
         $this->webClientRouter = $webClientRouter;
+        $this->twig = $twig;
+        $this->router = $router;
     }
 
     /**
@@ -66,6 +83,10 @@ abstract class AbstractBaseController extends AbstractController
      */
     protected function render($view, array $parameters = array(), Response $response = null)
     {
+        if (null === $response) {
+            $response = new Response();
+        }
+
         $defaultParameters = [
             'testimonial' => $this->testimonialService->getRandom(),
             'user' => $this->userService->getUser(),
@@ -73,11 +94,8 @@ abstract class AbstractBaseController extends AbstractController
             'web_client_urls' => $this->webClientRouter->generateAll(),
         ];
 
-        $response = parent::render(
-            $view,
-            array_merge($defaultParameters, $parameters),
-            $response
-        );
+        $content = $this->twig->render($view, array_merge($defaultParameters, $parameters));
+        $response->setContent($content);
 
         if ($this instanceof CacheableController) {
             $response = CacheableResponseFactory::createCacheableResponse(
@@ -105,6 +123,12 @@ abstract class AbstractBaseController extends AbstractController
      */
     protected function createRedirectToOutdatedBrowserResponse()
     {
-        return $this->redirect($this->generateUrl('outdatedbrowser_index'));
+        $url = $this->router->generate(
+            'outdatedbrowser_index',
+            [],
+            UrlGeneratorInterface::ABSOLUTE_URL
+        );
+
+        return new RedirectResponse($url);
     }
 }
