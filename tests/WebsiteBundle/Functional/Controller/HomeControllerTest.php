@@ -7,6 +7,7 @@ use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
@@ -89,6 +90,21 @@ class HomeControllerTest extends AbstractWebTestCase
             ['/signout/'],
             $signOutForm->extract(['action'])
         );
+    }
+
+    public function testIndexActionHasResponse()
+    {
+        $request = new Request();
+        $response = new Response();
+
+        $controllerFactory = new ControllerFactory($this->container);
+
+        $controller = $controllerFactory->createHomeController($request);
+        $controller->setResponse($response);
+
+        $retrievedResponse = $controller->indexAction();
+
+        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
     }
 
     public function testIndexActionForOutdatedBrowser()
