@@ -1,14 +1,3 @@
-.section-icon {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    left: -110px;
-    color: #08c;
-    font-size: 100px;
-    top: 36px;
-    line-height: 55px;
-}
-
 @media (max-width: 768px) {
     .navbar a.btn,
     .navbar-form {
