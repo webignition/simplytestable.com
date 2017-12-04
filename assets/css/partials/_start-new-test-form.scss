@@ -1,0 +1,22 @@
+#start-new-test-form {
+  a {
+    position: relative;
+    padding-right: 40px;
+    text-align: left;
+
+    .byline {
+      display: block;
+      font-size: 13px;
+      text-align: left;
+      font-style: normal;
+      opacity: 0.8;
+    }
+
+    .fa {
+      position: absolute;
+      right: 10px;
+      font-size: 30px;
+      top: 15px;
+    }
+  }
+}
