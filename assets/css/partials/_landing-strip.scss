@@ -1,0 +1,29 @@
+#landing-strip {
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+
+  .row {
+    position: relative;
+  }
+
+  .leader,
+  .content {
+    margin-left: 40px;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 60px;
+  }
+}
