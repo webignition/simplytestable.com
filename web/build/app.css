@@ -1,9 +1,1 @@
-body .navbar-inverse .container .navbar-brand {
-  background: url(/build/images/st30.eca1a060.png) transparent no-repeat 0 9px;
-  color: #ff0000;
-  padding-left: 40px;
-  margin-left: -30px;
-}
-
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvY3NzL2FwcC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdNO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7Q0FGUCIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIC5uYXZiYXItaW52ZXJzZSB7XG4gICAgLmNvbnRhaW5lciB7XG4gICAgICAubmF2YmFyLWJyYW5kIHtcbiAgICAgICAgYmFja2dyb3VuZDogdXJsKCcuLi9pbWFnZXMvc3QzMC5wbmcnKSB0cmFuc3BhcmVudCBuby1yZXBlYXQgMCA5cHg7XG4gICAgICAgIGNvbG9yOiAjZmYwMDAwO1xuICAgICAgICBwYWRkaW5nLWxlZnQ6IDQwcHg7XG4gICAgICAgIG1hcmdpbi1sZWZ0Oi0zMHB4O1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAuL2Fzc2V0cy9jc3MvYXBwLnNjc3MiXSwic291cmNlUm9vdCI6IiJ9*/
+body .navbar-inverse .container .navbar-brand{background:url(/build/images/st30.eca1a060.png) transparent no-repeat 0 9px;color:#08c;padding-left:40px;margin-left:-30px}
