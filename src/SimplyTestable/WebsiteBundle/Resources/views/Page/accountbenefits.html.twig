@@ -113,7 +113,7 @@
                                     </li>
 
                                     {% for distinction in distinction_group.distinctions %}
-                                        {% set class_attr = '' %}
+                                        {% set class_attr = 'distinction ' %}
                                         {% if loop.last %}
                                             {% set class_attr = class_attr ~ ' last' %}
                                         {% endif %}
