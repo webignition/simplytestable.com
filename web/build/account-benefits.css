@@ -1,1 +1,297 @@
-body.page-accountbenefits h1{text-align:left}@media (max-width:1200px){body.page-accountbenefits h1{font-size:34px}}@media (max-width:992px){body.page-accountbenefits h1{font-size:30px}}@media (min-width:1200px){body.page-accountbenefits .heading .col-md-10{padding-left:0}}body.page-accountbenefits .data{margin-top:50px}body.page-accountbenefits .not-applicable span{opacity:.4}body.page-accountbenefits .col-heading{padding-left:0}body.page-accountbenefits .pricing-tables-small .heading{font-size:14px;font-weight:700;padding-left:20px;border-bottom:1px solid #bbb;margin-top:40px;color:transparent;padding-bottom:8px}body.page-accountbenefits .pricing-tables-small .first .heading{color:#333}body.page-accountbenefits .pricing-tables-small.attached .col-md-6,body.page-accountbenefits .pricing-tables-small.attached .col-sm-6{padding-left:0;padding-right:0}body.page-accountbenefits .pricing-tables-small .plan{background-color:#fff}@media (max-width:768px){body.page-accountbenefits .pricing-tables.attached .plan .head{border-top-left-radius:4px;border-top-right-radius:4px}}body.page-accountbenefits .pricing-tables.attached .col-sm-4{padding-left:15px;padding-right:15px}body.page-accountbenefits .items{padding-right:0}body.page-accountbenefits .items h2{margin:0;padding:0}body.page-accountbenefits .items p{margin-bottom:0}body.page-accountbenefits .items ul{background-color:transparent;list-style:none;margin:0;padding:0 0 25px}body.page-accountbenefits .items li{font-size:14px;border-bottom:1px solid transparent;padding-right:20px;text-align:right;position:relative;min-height:66px}body.page-accountbenefits .items li.last{border-bottom:1px solid #ddd}body.page-accountbenefits .items li:last-child{border-bottom:none}body.page-accountbenefits .items .head{padding:12px 0;text-align:center}body.page-accountbenefits .items .heading{font-weight:700;min-height:80px;border-bottom:1px solid #ddd}body.page-accountbenefits .items .heading:first-child{min-height:40px}body.page-accountbenefits .items .heading span{right:30px;position:absolute;bottom:0}body.page-accountbenefits .items .primary{right:30px;position:absolute;top:18px}body.page-accountbenefits .items .secondary{right:30px;position:absolute;bottom:8px;opacity:.4;font-size:12px}@media (min-width:1200px){body.page-accountbenefits .items .secondary{font-size:14px}}body.page-accountbenefits .items .heading-first{margin-top:-40px}body.page-accountbenefits .plan{margin-top:0;background-color:transparent;padding-bottom:0}body.page-accountbenefits .plan ul{font-size:14px}body.page-accountbenefits .plan li{padding-bottom:0;min-height:66px}@media (max-width:992px){body.page-accountbenefits .plan li{padding-left:20px;padding-bottom:20px}}body.page-accountbenefits .plan .row{margin:0;background-color:#fff}body.page-accountbenefits .plan .row.final li:last-child{border-bottom:none}body.page-accountbenefits .plan .spacer{border-bottom:1px solid #ddd;min-height:80px}body.page-accountbenefits .plan .spacer-first{min-height:0;border:none}body.page-accountbenefits .plan .ctas{padding:20px 0}body.page-accountbenefits .plan .boolean{display:none}body.page-accountbenefits .plan .btn-plan-select .primary{font-size:16px;display:block}body.page-accountbenefits .plan .btn-plan-select .secondary{opacity:.8;font-size:13px;display:block}@media (max-width:992px){body.page-accountbenefits .plan .head{padding-left:20px}}@media (max-width:992px){body.page-accountbenefits .plan .item{display:block;opacity:.8;font-size:12px}}@media (max-width:768px){body.page-accountbenefits .plan .item{display:inline-block;font-size:14px}}@media (max-width:992px){body.page-accountbenefits .plan .btn{margin-left:20px}}@media (max-width:992px){body.page-accountbenefits .plan .btn-sm{padding:5px 10px}}@media (max-width:992px){body.page-accountbenefits .plan{text-align:left}}body.page-accountbenefits .demo .head{opacity:.8}body.page-accountbenefits .details{padding-left:0}body.page-accountbenefits .details .head{background-color:transparent;padding-left:0;padding-right:0;padding-bottom:0}body.page-accountbenefits .details .head .demo{opacity:.8}body.page-accountbenefits .details .head .heading{background-color:#08c;margin-top:-12px;padding-top:12px;padding-bottom:12px}body.page-accountbenefits .details .head .heading:first-child{border-top-left-radius:4px}body.page-accountbenefits .details .head .heading:last-child{border-top-right-radius:4px}
+body.page-accountbenefits h1 {
+  text-align: left;
+}
+
+@media (max-width: 1200px) {
+  body.page-accountbenefits h1 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits h1 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body.page-accountbenefits .heading .col-md-10 {
+    padding-left: 0;
+  }
+}
+
+body.page-accountbenefits .data {
+  margin-top: 50px;
+}
+
+body.page-accountbenefits .not-applicable span {
+  opacity: 0.4;
+}
+
+body.page-accountbenefits .col-heading {
+  padding-left: 0;
+}
+
+body.page-accountbenefits .pricing-tables-small .heading {
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 20px;
+  border-bottom: 1px solid #bbb;
+  margin-top: 40px;
+  color: transparent;
+  padding-bottom: 8px;
+}
+
+body.page-accountbenefits .pricing-tables-small .first .heading {
+  color: #333;
+}
+
+body.page-accountbenefits .pricing-tables-small.attached .col-sm-6,
+body.page-accountbenefits .pricing-tables-small.attached .col-md-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.page-accountbenefits .pricing-tables-small .plan {
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  body.page-accountbenefits .pricing-tables.attached .plan .head {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
+
+body.page-accountbenefits .pricing-tables.attached .col-sm-4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+body.page-accountbenefits .distinctions {
+  padding-right: 0;
+  padding-top: 80px;
+}
+
+body.page-accountbenefits .distinctions h2 {
+  margin: 0;
+  padding: 0;
+}
+
+body.page-accountbenefits .distinctions p {
+  margin-bottom: 0;
+}
+
+body.page-accountbenefits .distinctions ul {
+  background-color: transparent;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 25px 0;
+}
+
+body.page-accountbenefits .distinctions li {
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  padding-right: 20px;
+  text-align: right;
+  position: relative;
+  min-height: 66px;
+}
+
+body.page-accountbenefits .distinctions li.last {
+  border-bottom: 1px solid #ddd;
+}
+
+body.page-accountbenefits .distinctions li:last-child {
+  border-bottom: none;
+}
+
+body.page-accountbenefits .distinctions .head {
+  padding: 12px 0;
+  text-align: center;
+}
+
+body.page-accountbenefits .distinctions .heading {
+  font-weight: bold;
+  min-height: 80px;
+  border-bottom: 1px solid #ddd;
+}
+
+body.page-accountbenefits .distinctions .heading:first-child {
+  min-height: 40px;
+}
+
+body.page-accountbenefits .distinctions .heading span {
+  right: 30px;
+  position: absolute;
+  bottom: 0;
+}
+
+body.page-accountbenefits .distinctions .primary {
+  right: 30px;
+  position: absolute;
+  top: 18px;
+}
+
+body.page-accountbenefits .distinctions .secondary {
+  right: 30px;
+  position: absolute;
+  bottom: 8px;
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+@media (min-width: 1200px) {
+  body.page-accountbenefits .distinctions .secondary {
+    font-size: 14px;
+  }
+}
+
+body.page-accountbenefits .distinctions .heading-first {
+  margin-top: -40px;
+}
+
+body.page-accountbenefits .plan {
+  margin-top: 0;
+  background-color: transparent;
+  padding-bottom: 0;
+}
+
+body.page-accountbenefits .plan ul {
+  font-size: 14px;
+}
+
+body.page-accountbenefits .plan li {
+  padding-bottom: 0;
+  min-height: 66px;
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan li {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan li {
+    padding-bottom: 20px;
+  }
+}
+
+body.page-accountbenefits .plan .row {
+  margin: 0;
+  background-color: #fff;
+}
+
+body.page-accountbenefits .plan .row.final li:last-child {
+  border-bottom: none;
+}
+
+body.page-accountbenefits .plan .spacer {
+  border-bottom: 1px solid #ddd;
+  min-height: 80px;
+}
+
+body.page-accountbenefits .plan .spacer-first {
+  min-height: 0;
+  border: none;
+}
+
+body.page-accountbenefits .plan .ctas {
+  padding: 20px 0;
+}
+
+body.page-accountbenefits .plan .boolean {
+  display: none;
+}
+
+body.page-accountbenefits .plan .btn-plan-select .primary {
+  font-size: 16px;
+  display: block;
+}
+
+body.page-accountbenefits .plan .btn-plan-select .secondary {
+  opacity: 0.8;
+  font-size: 13px;
+  display: block;
+}
+
+body.page-accountbenefits .plan .head {
+  min-height: 80px;
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan .head {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan .item {
+    display: block;
+    opacity: 0.8;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-accountbenefits .plan .item {
+    display: inline-block;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan .btn {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan .btn-sm {
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  body.page-accountbenefits .plan {
+    text-align: left;
+  }
+}
+
+body.page-accountbenefits .demo .head {
+  opacity: 0.8;
+}
+
+body.page-accountbenefits .details {
+  padding-left: 0;
+}
+
+body.page-accountbenefits .details .head {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+body.page-accountbenefits .details .head .demo {
+  opacity: 0.8;
+}
+
+body.page-accountbenefits .details .head .heading {
+  background-color: #08c;
+  margin-top: -12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+body.page-accountbenefits .details .head .heading:first-child {
+  border-top-left-radius: 4px;
+}
+
+body.page-accountbenefits .details .head .heading:last-child {
+  border-top-right-radius: 4px;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvY3NzL2FjY291bnQtYmVuZWZpdHMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQUNFO0NBQUg7O0FBRUc7RUFIRjtJQUlJO0dBRUg7Q0FDRjs7QUFBRztFQVJKO0lBU007R0FJSDtDQUNGOztBQUNLO0VBZk47SUFnQlE7R0FHTDtDQUNGOztBQUNDO0VBQ0U7Q0FFSDs7QUFFRztFQUNFO0NBQ0w7O0FBR0M7RUFDRTtDQUFIOztBQWhDRDtFQXFDTTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtDQURMOztBQTFDRDtFQWdEUTtDQUZQOztBQU9LOztFQUVFO0VBQ0E7Q0FKUDs7QUFwREQ7RUE2RE07Q0FMTDs7QUFhUztFQXJFVjtJQXNFWTtJQUNBO0dBVFQ7Q0FDRjs7QUEvREQ7RUE2RVE7RUFDQTtDQVZQOztBQWVDO0VBQ0U7RUFDQTtDQVpIOztBQXpFRDtFQXdGTTtFQUNBO0NBWEw7O0FBOUVEO0VBNkZNO0NBWEw7O0FBY0c7RUFDRTtFQUNBO0VBQ0E7RUFDQTtDQVhMOztBQXpGRDtFQXdHTTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7Q0FYTDs7QUFsR0Q7RUFnSFE7Q0FWUDs7QUFDRztFQWFJO0NBVlA7O0FBMUdEO0VBeUhNO0VBQ0E7Q0FYTDs7QUEvR0Q7RUE4SE07RUFDQTtFQUNBO0NBWEw7O0FBckhEO0VBbUlRO0NBVlA7O0FBekhEO0VBdUlRO0VBQ0E7RUFDQTtDQVZQOztBQWNHO0VBQ0U7RUFDQTtFQUNBO0NBWEw7O0FBcklEO0VBb0pNO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7Q0FYTDs7QUFhSztFQVBGO0lBUUk7R0FUTDtDQUNGOztBQVlHO0VBQ0U7Q0FUTDs7QUF2SkQ7RUFxS0k7RUFDQTtFQUNBO0NBVkg7O0FBN0pEO0VBMEtNO0NBVEw7O0FBWUc7RUFDRTtFQUNBO0NBVEw7O0FBV0s7RUFqTE47SUFrTFE7R0FQTDtDQUNGOztBQVNLO0VBUkY7SUFTSTtHQUxMO0NBQ0Y7O0FBbExEO0VBMkxNO0VBQ0E7Q0FMTDs7QUFRTztFQUNFO0NBTFQ7O0FBVUc7RUFDRTtFQUNBO0NBUEw7O0FBaE1EO0VBMk1NO0VBQ0E7Q0FQTDs7QUFyTUQ7RUFnTk07Q0FQTDs7QUFVRztFQUNFO0NBUEw7O0FBV0s7RUFDRTtFQUNBO0NBUlA7O0FBbE5EO0VBOE5RO0VBQ0E7RUFDQTtDQVJQOztBQXhORDtFQXFPTTtDQVRMOztBQVdLO0VBdk9OO0lBd09RO0dBUEw7Q0FDRjs7QUFXSztFQTdPTjtJQThPUTtJQUNBO0lBQ0E7R0FQTDtDQUNGOztBQVNLO0VBUEY7SUFRSTtJQUNBO0dBTEw7Q0FDRjs7QUFTSztFQTFQTjtJQTJQUTtHQUxMO0NBQ0Y7O0FBU0s7RUFERjtJQUVJO0dBTEw7Q0FDRjs7QUFRRztFQWpHRjtJQWtHSTtHQUpIO0NBQ0Y7O0FBUUc7RUFDRTtDQUxMOztBQVNDO0VBQ0U7Q0FOSDs7QUFRRztFQUNFO0VBQ0E7RUFDQTtFQUNBO0NBTEw7O0FBT0s7RUFDRTtDQUpQOztBQXRSRDtFQThSUTtFQUNBO0VBQ0E7RUFDQTtDQUpQOztBQTdSRDtFQW9TVTtDQUhUOztBQUpLO0VBV0k7Q0FIVCIsImZpbGUiOiJhY2NvdW50LWJlbmVmaXRzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkucGFnZS1hY2NvdW50YmVuZWZpdHMge1xuICBoMSB7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcblxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiAxMjAwcHgpIHtcbiAgICAgIGZvbnQtc2l6ZTogMzRweDtcbiAgICB9XG5cbiAgICBAbWVkaWEgKG1heC13aWR0aDogOTkycHgpIHtcbiAgICAgIGZvbnQtc2l6ZTogMzBweDtcbiAgICB9XG4gIH1cblxuICAuaGVhZGluZyB7XG4gICAgLmNvbC1tZC0xMCB7XG4gICAgICBAbWVkaWEgKG1pbi13aWR0aDogMTIwMHB4KSB7XG4gICAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICAuZGF0YSB7XG4gICAgbWFyZ2luLXRvcDogNTBweDtcbiAgfVxuXG4gIC5ub3QtYXBwbGljYWJsZSB7XG4gICAgc3BhbiB7XG4gICAgICBvcGFjaXR5OiAwLjQ7XG4gICAgfVxuICB9XG5cbiAgLmNvbC1oZWFkaW5nIHtcbiAgICBwYWRkaW5nLWxlZnQ6IDA7XG4gIH1cblxuICAucHJpY2luZy10YWJsZXMtc21hbGwge1xuICAgIC5oZWFkaW5nIHtcbiAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNiYmI7XG4gICAgICBtYXJnaW4tdG9wOiA0MHB4O1xuICAgICAgY29sb3I6IHRyYW5zcGFyZW50O1xuICAgICAgcGFkZGluZy1ib3R0b206IDhweDtcbiAgICB9XG5cbiAgICAuZmlyc3Qge1xuICAgICAgLmhlYWRpbmcge1xuICAgICAgICBjb2xvcjogIzMzMztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmLmF0dGFjaGVkIHtcbiAgICAgIC5jb2wtc20tNixcbiAgICAgIC5jb2wtbWQtNiB7XG4gICAgICAgIHBhZGRpbmctbGVmdDogMDtcbiAgICAgICAgcGFkZGluZy1yaWdodDogMDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAucGxhbiB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuICAgIH1cbiAgfVxuXG4gIC5wcmljaW5nLXRhYmxlcyB7XG4gICAgJi5hdHRhY2hlZCB7XG4gICAgICAucGxhbiB7XG4gICAgICAgIC5oZWFkIHtcbiAgICAgICAgICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgICAgICAgICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDRweDtcbiAgICAgICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHg7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC5jb2wtc20tNCB7XG4gICAgICAgIHBhZGRpbmctbGVmdDogMTVweDtcbiAgICAgICAgcGFkZGluZy1yaWdodDogMTVweDtcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICAuZGlzdGluY3Rpb25zIHtcbiAgICBwYWRkaW5nLXJpZ2h0OiAwO1xuICAgIHBhZGRpbmctdG9wOiA4MHB4O1xuXG4gICAgaDIge1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgcGFkZGluZzogMDtcbiAgICB9XG5cbiAgICBwIHtcbiAgICAgIG1hcmdpbi1ib3R0b206IDA7XG4gICAgfVxuXG4gICAgdWwge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgICBsaXN0LXN0eWxlOiBub25lO1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgcGFkZGluZzogMCAwIDI1cHggMDtcbiAgICB9XG5cbiAgICBsaSB7XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdHJhbnNwYXJlbnQ7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAyMHB4O1xuICAgICAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICBtaW4taGVpZ2h0OiA2NnB4O1xuXG4gICAgICAmLmxhc3Qge1xuICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2RkZDtcbiAgICAgIH1cblxuICAgICAgJjpsYXN0LWNoaWxkIHtcbiAgICAgICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAuaGVhZCB7XG4gICAgICBwYWRkaW5nOiAxMnB4IDA7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgfVxuXG4gICAgLmhlYWRpbmcge1xuICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICBtaW4taGVpZ2h0OiA4MHB4O1xuICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZGQ7XG5cbiAgICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgICBtaW4taGVpZ2h0OiA0MHB4O1xuICAgICAgfVxuXG4gICAgICBzcGFuIHtcbiAgICAgICAgcmlnaHQ6IDMwcHg7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgYm90dG9tOiAwO1xuICAgICAgfVxuICAgIH1cblxuICAgIC5wcmltYXJ5IHtcbiAgICAgIHJpZ2h0OiAzMHB4O1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgdG9wOiAxOHB4O1xuICAgIH1cblxuICAgIC5zZWNvbmRhcnkge1xuICAgICAgcmlnaHQ6IDMwcHg7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDhweDtcbiAgICAgIG9wYWNpdHk6IDAuNDtcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcblxuICAgICAgQG1lZGlhIChtaW4td2lkdGg6IDEyMDBweCkge1xuICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICB9XG4gICAgfVxuXG4gICAgLmhlYWRpbmctZmlyc3Qge1xuICAgICAgbWFyZ2luLXRvcDogLTQwcHg7XG4gICAgfVxuICB9XG5cbiAgLnBsYW4ge1xuICAgIG1hcmdpbi10b3A6IDA7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgcGFkZGluZy1ib3R0b206IDA7XG5cbiAgICB1bCB7XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgfVxuXG4gICAgbGkge1xuICAgICAgcGFkZGluZy1ib3R0b206IDA7XG4gICAgICBtaW4taGVpZ2h0OiA2NnB4O1xuXG4gICAgICBAbWVkaWEgKG1heC13aWR0aDogOTkycHgpIHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICAgICAgfVxuXG4gICAgICBAbWVkaWEgKG1heC13aWR0aDogOTkycHgpIHtcbiAgICAgICAgcGFkZGluZy1ib3R0b206IDIwcHg7XG4gICAgICB9XG4gICAgfVxuXG4gICAgLnJvdyB7XG4gICAgICBtYXJnaW46IDA7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xuXG4gICAgICAmLmZpbmFsIHtcbiAgICAgICAgbGk6bGFzdC1jaGlsZCB7XG4gICAgICAgICAgYm9yZGVyLWJvdHRvbTogbm9uZTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgIC5zcGFjZXIge1xuICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZGQ7XG4gICAgICBtaW4taGVpZ2h0OiA4MHB4O1xuICAgIH1cblxuICAgIC5zcGFjZXItZmlyc3Qge1xuICAgICAgbWluLWhlaWdodDogMDtcbiAgICAgIGJvcmRlcjogbm9uZTtcbiAgICB9XG5cbiAgICAuY3RhcyB7XG4gICAgICBwYWRkaW5nOiAyMHB4IDA7XG4gICAgfVxuXG4gICAgLmJvb2xlYW4ge1xuICAgICAgZGlzcGxheTogbm9uZTtcbiAgICB9XG5cbiAgICAuYnRuLXBsYW4tc2VsZWN0IHtcbiAgICAgIC5wcmltYXJ5IHtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgIH1cblxuICAgICAgLnNlY29uZGFyeSB7XG4gICAgICAgIG9wYWNpdHk6IDAuODtcbiAgICAgICAgZm9udC1zaXplOiAxM3B4O1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAuaGVhZCB7XG4gICAgICBtaW4taGVpZ2h0OiA4MHB4O1xuXG4gICAgICBAbWVkaWEgKG1heC13aWR0aDogOTkycHgpIHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICAgICAgfVxuICAgIH1cblxuICAgIC5pdGVtIHtcbiAgICAgIEBtZWRpYSAobWF4LXdpZHRoOiA5OTJweCkge1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgb3BhY2l0eTogMC44O1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICB9XG5cbiAgICAgIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xuICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAuYnRuIHtcbiAgICAgIEBtZWRpYSAobWF4LXdpZHRoOiA5OTJweCkge1xuICAgICAgICBtYXJnaW4tbGVmdDogMjBweDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAuYnRuLXNtIHtcbiAgICAgIEBtZWRpYSAobWF4LXdpZHRoOiA5OTJweCkge1xuICAgICAgICBwYWRkaW5nOiA1cHggMTBweDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICBAbWVkaWEgKG1heC13aWR0aDogOTkycHgpIHtcbiAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgfVxuICB9XG5cbiAgLmRlbW8ge1xuICAgIC5oZWFkIHtcbiAgICAgIG9wYWNpdHk6IDAuODtcbiAgICB9XG4gIH1cblxuICAuZGV0YWlscyB7XG4gICAgcGFkZGluZy1sZWZ0OiAwO1xuXG4gICAgLmhlYWQge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgICBwYWRkaW5nLWxlZnQ6IDA7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAwO1xuICAgICAgcGFkZGluZy1ib3R0b206IDA7XG5cbiAgICAgIC5kZW1vIHtcbiAgICAgICAgb3BhY2l0eTogMC44O1xuICAgICAgfVxuXG4gICAgICAuaGVhZGluZyB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMwOGM7XG4gICAgICAgIG1hcmdpbi10b3A6IC0xMnB4O1xuICAgICAgICBwYWRkaW5nLXRvcDogMTJweDtcbiAgICAgICAgcGFkZGluZy1ib3R0b206IDEycHg7XG5cbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogNHB4O1xuICAgICAgICB9XG5cbiAgICAgICAgJjpsYXN0LWNoaWxkIHtcbiAgICAgICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9hc3NldHMvY3NzL2FjY291bnQtYmVuZWZpdHMuc2NzcyJdLCJzb3VyY2VSb290IjoiIn0=*/
