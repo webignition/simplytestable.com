@@ -200,6 +200,12 @@ body.page-accountbenefits {
     }
   }
 
+  .demo {
+    .head {
+      opacity: 0.8;
+    }
+  }
+
   .pricing-tables-small {
     .heading {
       font-size: 14px;
@@ -220,6 +226,40 @@ body.page-accountbenefits {
     }
   }
 
+  .details {
+    padding-left: 0;
+
+    .heading {
+      background-color: #08c;
+      margin-top: -12px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+
+      &:first-child {
+        @media (min-width: 992px) {
+          border-top-left-radius: 4px;
+        }
+      }
+
+      &:last-child {
+        @media (min-width: 992px) {
+          border-top-right-radius: 4px;
+        }
+      }
+    }
+
+    .head {
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+
+      .demo {
+        opacity: 0.8;
+      }
+    }
+  }
+
   .pricing-tables {
     &.attached {
       .col-sm-4 {
@@ -232,44 +272,22 @@ body.page-accountbenefits {
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
         }
-      }
-    }
-  }
 
-  .demo {
-    .head {
-      opacity: 0.8;
-    }
-  }
-
-  .details {
-    padding-left: 0;
-
-    .head {
-      background-color: transparent;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-
-      .demo {
-        opacity: 0.8;
-      }
-
-      .heading {
-        background-color: #08c;
-        margin-top: -12px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-
-        &:first-child {
-          @media (min-width: 992px) {
-            border-top-left-radius: 4px;
+        &.first {
+          .head {
+            @media (min-width: 768px) {
+              border-top-left-radius: 4px;
+              border-top-right-radius: 0;
+            }
           }
         }
 
-        &:last-child {
-          @media (min-width: 992px) {
-            border-top-right-radius: 4px;
+        &.last {
+          .head {
+            @media (min-width: 768px) {
+              border-top-left-radius: 0;
+              border-top-right-radius: 4px;
+            }
           }
         }
       }
