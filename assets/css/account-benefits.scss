@@ -97,12 +97,16 @@ body.page-accountbenefits {
       padding: 0 0 25px 0;
     }
 
+    .distinction,
+    .heading {
+      position: relative;
+      text-align: right;
+    }
+
     .distinction {
       font-size: 14px;
       border-bottom: 1px solid transparent;
       padding-right: 20px;
-      text-align: right;
-      position: relative;
       min-height: 66px;
 
       &.last {
