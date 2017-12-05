@@ -7,10 +7,11 @@
     {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/account-benefits.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('build/account-benefits.css') }}">
 {% endblock %}
 
 {% block body %}
