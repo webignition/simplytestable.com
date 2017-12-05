@@ -104,8 +104,8 @@
 
                     <div class="row data hidden-sm hidden-xs">
                         <div class="col-md-2 hidden-sm hidden-xs distinctions">
-                            <ul>
-                                {% for distinction_group in distinctions %}
+                            {% for distinction_group in distinctions %}
+                                <ul class="distinction-group">
                                     {% set group_loop_last = loop.last %}
 
                                     <li class="heading {{ loop.first ? 'heading-first' : '' }}">
@@ -123,16 +123,15 @@
                                         {% endif %}
 
                                         <li {% if class_attr != '' %}class="{{ class_attr }}"{% endif %}>
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
-                                            with {
+                                            {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                                with {
                                                 'name': distinction.name
                                             } only
-                                        %}
+                                            %}
                                         </li>
                                     {% endfor %}
-
-                                {% endfor %}
-                            </ul>
+                                </ul>
+                            {% endfor %}
                         </div>
                         <div class="col-md-8 details">
                             <div class="pricing-tables attached">
