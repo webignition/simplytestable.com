@@ -2,6 +2,12 @@ body.page-accountbenefits {
   .headline {
     margin-bottom: 30px;
 
+    .col-md-10 {
+      @media (min-width: 1200px) {
+        padding-left: 0;
+      }
+    }
+
     @media (min-width: 769px) {
       margin-bottom: 40px;
     }
@@ -16,14 +22,6 @@ body.page-accountbenefits {
 
     @media (max-width: 992px) {
       font-size: 30px;
-    }
-  }
-
-  .heading {
-    .col-md-10 {
-      @media (min-width: 1200px) {
-        padding-left: 0;
-      }
     }
   }
 
