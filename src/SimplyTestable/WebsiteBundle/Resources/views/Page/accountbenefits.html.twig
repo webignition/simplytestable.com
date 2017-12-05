@@ -7,10 +7,11 @@
     {% stylesheets
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
     '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/account-benefits.css'
     filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('build/account-benefits.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -19,13 +20,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="row heading">
+                    <div class="row headline">
                         <div class="col-md-10 col-md-offset-2">
                             <h1>Create an account. <br class="hidden-sm hidden-md hidden-lg">So much more than the demo.</h1>
                         </div>
                     </div>
 
-                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg data">
+                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="plan first demo">
@@ -101,22 +102,18 @@
                         </div>
                     </div>
 
-                    <div class="row data hidden-sm hidden-xs">
-                        <div class="col-md-2 hidden-sm hidden-xs items">
-                            <div class="head">
-                                <h2>&nbsp;</h2>
-                                <p>&nbsp;</p>
-                            </div>
-                            <ul>
-                                {% for distinction_group in distinctions %}
+                    <div class="row hidden-sm hidden-xs">
+                        <div class="col-md-2 hidden-sm hidden-xs distinctions">
+                            {% for distinction_group in distinctions %}
+                                <ul class="distinction-group">
                                     {% set group_loop_last = loop.last %}
 
-                                    <li class="heading {{ loop.first ? 'heading-first' : '' }}">
+                                    <li class="heading">
                                         <span>{{ distinction_group.name }}</span>
                                     </li>
 
                                     {% for distinction in distinction_group.distinctions %}
-                                        {% set class_attr = '' %}
+                                        {% set class_attr = 'distinction ' %}
                                         {% if loop.last %}
                                             {% set class_attr = class_attr ~ ' last' %}
                                         {% endif %}
@@ -126,16 +123,15 @@
                                         {% endif %}
 
                                         <li {% if class_attr != '' %}class="{{ class_attr }}"{% endif %}>
-                                        {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
-                                            with {
+                                            {% include 'SimplyTestableWebsiteBundle:Partials/account-benefits:feature-name.html.twig'
+                                                with {
                                                 'name': distinction.name
                                             } only
-                                        %}
+                                            %}
                                         </li>
                                     {% endfor %}
-
-                                {% endfor %}
-                            </ul>
+                                </ul>
+                            {% endfor %}
                         </div>
                         <div class="col-md-8 details">
                             <div class="pricing-tables attached">
@@ -161,8 +157,7 @@
                                         {% set distinction_group_template_id = distinction_group_id|replace({'_': '-'}) %}
                                         {% set distinction_group_template = 'SimplyTestableWebsiteBundle:Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
 
-                                        <div class="row spacer{% if loop.first %} spacer-first{% endif %}"></div>
-                                        <div class="row data{% if loop.last %} final{% endif %}">
+                                        <div class="row data{% if loop.last %} final{% endif %} {% if loop.first %} first{% endif %}">
                                             {% for plan_name in plan_names %}
                                                 <div class="col-md-6 {{ plan_name }}">
                                                     {% include distinction_group_template
