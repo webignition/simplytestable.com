@@ -206,26 +206,6 @@ body.page-accountbenefits {
     }
   }
 
-  .pricing-tables-small {
-    .heading {
-      font-size: 14px;
-      font-weight: bold;
-      padding-left: 20px;
-      border-bottom: 1px solid #bbb;
-      margin-top: 40px;
-      color: #333;
-      padding-bottom: 8px;
-    }
-
-    &.attached {
-      .col-sm-6,
-      .col-md-6 {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-  }
-
   .details {
     padding-left: 0;
 
@@ -256,6 +236,36 @@ body.page-accountbenefits {
 
       .demo {
         opacity: 0.8;
+      }
+    }
+  }
+
+  .pricing-tables-small {
+    /* stylelint-disable no-descending-specificity */
+    .heading {
+      font-size: 14px;
+      font-weight: bold;
+      padding-left: 20px;
+      border-bottom: 1px solid #bbb;
+      margin-top: 40px;
+      color: #333;
+      padding-bottom: 8px;
+    }
+    /* stylelint-enable */
+
+    &.attached {
+      .col-sm-6,
+      .col-md-6 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .plan {
+      &.last {
+        .heading {
+          color: transparent;
+        }
       }
     }
   }
