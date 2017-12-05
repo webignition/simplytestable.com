@@ -2,11 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/plan-details.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/plan-details.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -58,14 +54,14 @@
                 <div class="row">
                     {% for distinction_group_id, distinction_group in distinctions %}
                         <div class="col-md-12 col-sm-6 summary {% if loop.index0 == 0 %}first-md{% endif %} {% if loop.index0 == 0 or loop.index0 == 1 %}first-sm{% endif %}">
-                            <h3 class="{% if loop.first %}first{% endif %}">{{ distinction_group.name }}</h3>
+                            <h3>{{ distinction_group.name }}</h3>
 
                             <table class="table">
                                 <tbody>
                                 {% for distinction_id, distinction in distinction_group.distinctions %}
                                     {% set plan_distinction = plan.distinctions[distinction_group_id][distinction_id] %}
 
-                                    <tr class="first">
+                                    <tr>
                                         <td class="col-sm-8 col-xs-8">
                                             <i class="fa fa-{{ distinction.icon }}"></i><span>{{ distinction.name|join(' ')|replace({'%s': 's'}) }}</span>
                                         </td>
