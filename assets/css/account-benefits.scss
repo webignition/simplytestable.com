@@ -1,4 +1,12 @@
 body.page-accountbenefits {
+  .headline {
+    margin-bottom: 30px;
+
+    @media (min-width: 769px) {
+      margin-bottom: 40px;
+    }
+  }
+
   h1 {
     text-align: left;
 
@@ -17,10 +25,6 @@ body.page-accountbenefits {
         padding-left: 0;
       }
     }
-  }
-
-  .data {
-    margin-top: 50px;
   }
 
   .not-applicable {
