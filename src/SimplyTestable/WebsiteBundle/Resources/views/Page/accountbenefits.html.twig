@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg data">
+                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="plan first demo">
@@ -157,8 +157,7 @@
                                         {% set distinction_group_template_id = distinction_group_id|replace({'_': '-'}) %}
                                         {% set distinction_group_template = 'SimplyTestableWebsiteBundle:Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
 
-                                        <div class="row spacer{% if loop.first %} spacer-first{% endif %}"></div>
-                                        <div class="row data{% if loop.last %} final{% endif %}">
+                                        <div class="row data{% if loop.last %} final{% endif %} {% if loop.first %} first{% endif %}">
                                             {% for plan_name in plan_names %}
                                                 <div class="col-md-6 {{ plan_name }}">
                                                     {% include distinction_group_template

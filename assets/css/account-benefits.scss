@@ -25,6 +25,15 @@ body.page-accountbenefits {
     }
   }
 
+  .data {
+    @media (min-width: 993px) {
+      &:not(.first) {
+        border-top: 1px solid #ddd;
+        margin-top: 79px;
+      }
+    }
+  }
+
   .not-applicable {
     span {
       opacity: 0.4;
@@ -55,10 +64,6 @@ body.page-accountbenefits {
         padding-right: 0;
       }
     }
-
-    .plan {
-      background-color: #fff;
-    }
   }
 
   .pricing-tables {
@@ -87,7 +92,11 @@ body.page-accountbenefits {
       background-color: transparent;
       list-style: none;
       margin: 0;
-      padding: 0 0 40px 0;
+      padding: 0;
+
+      &:not(:first-child) {
+        margin-top: 40px;
+      }
     }
 
     .distinction,
@@ -152,8 +161,8 @@ body.page-accountbenefits {
 
   .plan {
     margin-top: 0;
-    background-color: transparent;
     padding-bottom: 0;
+    background-color: #fff;
 
     ul {
       font-size: 14px;
@@ -173,24 +182,14 @@ body.page-accountbenefits {
     }
 
     .row {
-      margin: 0;
-      background-color: #fff;
+      margin-left: 0;
+      margin-right: 0;
 
       &.final {
         li:last-child {
           border-bottom: none;
         }
       }
-    }
-
-    .spacer {
-      border-bottom: 1px solid #ddd;
-      min-height: 80px;
-    }
-
-    .spacer-first {
-      min-height: 0;
-      border: none;
     }
 
     .ctas {
