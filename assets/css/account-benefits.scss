@@ -81,8 +81,9 @@ body.page-accountbenefits {
     }
   }
 
-  .items {
+  .distinctions {
     padding-right: 0;
+    padding-top: 80px;
 
     h2 {
       margin: 0;
@@ -115,11 +116,6 @@ body.page-accountbenefits {
       &:last-child {
         border-bottom: none;
       }
-    }
-
-    .head {
-      padding: 12px 0;
-      text-align: center;
     }
 
     .heading {
@@ -226,6 +222,8 @@ body.page-accountbenefits {
     }
 
     .head {
+      min-height: 80px;
+
       @media (max-width: 992px) {
         padding-left: 20px;
       }
