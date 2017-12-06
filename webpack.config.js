@@ -13,6 +13,7 @@ Encore
     .addStyleEntry('account-benefits', './assets/css/account-benefits.scss')
     .addStyleEntry('content', './assets/css/content.scss')
     .addStyleEntry('plan-details', './assets/css/plan-details.scss')
+    .addStyleEntry('features', './assets/css/features.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()
