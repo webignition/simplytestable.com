@@ -11,8 +11,11 @@ page_features:
     defaults: { _controller: SimplyTestableWebsiteBundle:Page:features }
 
 page_roadmap:
-    path:  /roadmap/
-    defaults: { _controller: SimplyTestableWebsiteBundle:Page:roadmap }
+    path: /roadmap/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: home_index
+        permanent: true
 
 page_accountbenefits:
     path:  /account-benefits/
