@@ -41,21 +41,6 @@ class PageControllerTest extends AbstractControllerTest
         $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
     }
 
-    public function testRoadmapActionHasResponse()
-    {
-        $request = new Request();
-        $response = new Response();
-
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createPageController($request);
-        $controller->setResponse($response);
-
-        $retrievedResponse = $controller->roadmapAction();
-
-        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
-    }
-
     public function testAccountBenefitsActionHasResponse()
     {
         $request = new Request();
@@ -97,19 +82,6 @@ class PageControllerTest extends AbstractControllerTest
         $controller = $controllerFactory->createPageController($request);
 
         $response = $controller->featuresAction();
-
-        $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
-    }
-
-    public function testRoadmapActionForOutdatedBrowser()
-    {
-        $request = $this->createRequestForOutdatedBrowser();
-
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createPageController($request);
-
-        $response = $controller->roadmapAction();
 
         $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
     }

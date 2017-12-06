@@ -33,14 +33,6 @@ class PageController extends CacheableController
     }
 
     /**
-     * @return Response
-     */
-    public function roadmapAction()
-    {
-        return $this->handleAction('@SimplyTestableWebsite/Page/roadmap.html.twig');
-    }
-
-    /**
      * @param PlansService $plansService
      *
      * @return Response
