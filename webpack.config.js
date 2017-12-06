@@ -16,6 +16,7 @@ Encore
     .addStyleEntry('features', './assets/css/features.scss')
     .addStyleEntry('homepage', './assets/css/homepage.scss')
     .addStyleEntry('errorpage', './assets/css/errorpage.scss')
+    .addStyleEntry('plans', './assets/css/plans.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()
