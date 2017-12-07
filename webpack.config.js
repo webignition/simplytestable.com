@@ -19,6 +19,7 @@ Encore
     .addStyleEntry('plans', './assets/css/plans.scss')
     .addStyleEntry('tms', './assets/css/tms.scss')
     .addStyleEntry('outdated-browser', './assets/css/outdated-browser.scss')
+    .addStyleEntry('splash', './assets/css/splash.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()

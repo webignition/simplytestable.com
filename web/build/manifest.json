@@ -12,5 +12,6 @@
   "build/outdated-browser.css": "/build/outdated-browser.css",
   "build/plan-details.css": "/build/plan-details.css",
   "build/plans.css": "/build/plans.css",
+  "build/splash.css": "/build/splash.css",
   "build/tms.css": "/build/tms.css"
 }

@@ -1,0 +1,91 @@
+body.splash {
+  h1 {
+    font-size: 30px;
+
+    @media (min-width: 768px) and (max-width: 992px) {
+      font-size: 46px;
+    }
+
+    @media (min-width: 992px) {
+      font-size: 60px;
+    }
+  }
+
+  .feature-section {
+    margin: 60px 0;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      margin: 60px 0 20px 0;
+    }
+
+    ul {
+      margin-bottom: 30px;
+    }
+
+    p,
+    li {
+      font-size: 18px;
+      line-height: 24px;
+      opacity: 0.9;
+      margin-bottom: 14px;
+      background-color: #fff;
+    }
+  }
+
+  .feature-section-full {
+    .feature {
+      .fa {
+        color: #848484;
+        text-align: center;
+        display: block;
+        font-size: 120px;
+      }
+    }
+  }
+
+  #landing-strip {
+    text-align: left;
+    border-bottom: none;
+    background-image: url('../images/ls04.8.jpg');
+    background-position: 50% -310px;
+    margin-bottom: 0;
+    padding: 0;
+
+    p {
+      line-height: 30px;
+      font-size: 22px;
+      margin: 40px 0;
+
+      @media (min-width: 768px) and (max-width: 992px) {
+        line-height: 32px;
+      }
+
+      @media (min-width: 992px) {
+        line-height: 22px;
+      }
+    }
+
+    .container {
+      padding-top: 80px;
+      padding-left: 15px;
+      padding-right: 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+
+      @media (min-width: 768px) {
+        padding-top: 100px;
+      }
+
+      @media (min-width: 992px) {
+        padding-top: unset;
+      }
+    }
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
+  }
+}
