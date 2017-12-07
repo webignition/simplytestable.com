@@ -17,6 +17,7 @@ Encore
     .addStyleEntry('homepage', './assets/css/homepage.scss')
     .addStyleEntry('errorpage', './assets/css/errorpage.scss')
     .addStyleEntry('plans', './assets/css/plans.scss')
+    .addStyleEntry('tms', './assets/css/tms.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()
