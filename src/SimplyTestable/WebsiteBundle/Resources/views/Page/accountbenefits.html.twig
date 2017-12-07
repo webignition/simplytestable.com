@@ -4,13 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
+    <link rel="stylesheet" href="{{ asset('build/pricing-table.css') }}">
     <link rel="stylesheet" href="{{ asset('build/account-benefits.css') }}">
 {% endblock %}
 
