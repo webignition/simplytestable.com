@@ -1,41 +1,5 @@
-.pricing-tables {
-    margin-bottom: 40px;
-    padding:0;
-}
-
-.plan .head {
-    background-color: #0088cc;
-}
-
-.plan .head,
-.plan .price {
-    color: #fdfdfd;
-}
-
-.plan .head p {
-    opacity: 0.8;
-    margin-bottom: 0;
-}
-
-.plan ul {
-    padding:0;
-    margin:0;
-}
-
-.plan ul li {
-    border-bottom: 1px solid #ddd;
-    font-size: 13px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin:0;    
-}
-
 #landing-strip .head p {
-    font-size: 13px;
-    line-height: 15px;
-    margin: 4px 0;
-}
-
-.plan .btn {
-    text-transform: none;
+  font-size: 13px;
+  line-height: 15px;
+  margin: 4px 0;
 }
