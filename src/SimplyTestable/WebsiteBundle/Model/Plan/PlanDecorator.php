@@ -71,6 +71,14 @@ class PlanDecorator implements PlanInterface
     /**
      * {@inheritdoc}
      */
+    public function getName()
+    {
+        return $this->plan->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getShortTitle()
     {
         return $this->plan->getShortTitle();
@@ -82,5 +90,13 @@ class PlanDecorator implements PlanInterface
     public function getLongTitle()
     {
         return $this->plan->getLongTitle();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSubtitle()
+    {
+        return $this->plan->getSubtitle();
     }
 }

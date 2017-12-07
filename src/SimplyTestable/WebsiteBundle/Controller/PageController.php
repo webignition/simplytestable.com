@@ -19,7 +19,11 @@ class PageController extends CacheableController
         return $this->handleAction(
             '@SimplyTestableWebsite/Page/plans.html.twig',
             [
-                'plans' => $plansService->getPlans(),
+                'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
+                    'personal',
+                    'agency',
+                    'business',
+                ])),
             ]
         );
     }

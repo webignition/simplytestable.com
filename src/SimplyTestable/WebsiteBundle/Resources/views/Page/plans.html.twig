@@ -16,6 +16,8 @@
 
 {% import _self as pricing_table %}
 
+{% set recommended_plan = 'agency' %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
@@ -39,87 +41,46 @@
 
             <div class="pricing-tables attached">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="plan first">
-                            <div class="head">
-                                <a href="{{ path('plandetails_index', {'name': 'personal'}) }}">
-                                    <h2>Personal</h2>
-                                    <p>For small-scale projects</p>
-                                </a>
+                    {% for plan in plans %}
+                        {% set plan_container_class = 'plan ' %}
+                        {% if loop.first %}
+                            {% set plan_container_class = plan_container_class ~ ' first' %}
+                        {% endif %}
+
+                        {% if loop.last %}
+                            {% set plan_container_class = plan_container_class ~ ' last' %}
+                        {% endif %}
+
+                        {% if plan.id == recommended_plan %}
+                            {% set plan_container_class = plan_container_class ~ ' recommended' %}
+                        {% endif %}
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="{{ plan_container_class }}">
+                                <div class="head">
+                                    <a href="{{ path('plandetails_index', {'name': plan.id}) }}">
+                                        <h2>{{ plan.name }}</h2>
+                                        <p>{{ plan.subtitle }}</p>
+                                    </a>
+                                </div>
+
+                                <div class="price">
+                                    <p><span>{{ plan.price|raw }} <i>per month</i></span></p>
+                                </div>
+
+                                <ul class="item-list">
+                                    <li>{{ plan.distinctions.test_limitations.full_site_tests_per_site }} full-site tests</li>
+                                    <li>{{ plan.distinctions.test_limitations.single_page_tests_per_page }} single-page tests</li>
+                                    <li>{{ plan.distinctions.test_limitations.pages_examined_per_test }} pages examined per test</li>
+                                    <li>{{ plan.distinctions.test_limitations.credits_per_month }} credits</li>
+                                </ul>
+
+                                {{ pricing_table.cta_button(plan.id, is_logged_in, web_client_urls) }}
+
+                                <a href="{{ path('plandetails_index', {'name': plan.id}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
                             </div>
-
-                            <div class="price">
-                                <p><span>&pound;{{ plans.personal.price }} <i>per month</i></span></p>
-                            </div>
-
-                            <ul class="item-list">
-                                <li>Unlimited full-site tests</li>
-                                <li>Unlimited single-page tests</li>
-                                <li>50 pages examined per test</li>
-                                <li>5,000 credits</li>
-                            </ul>
-
-                            {{ pricing_table.cta_button('personal', is_logged_in, web_client_urls) }}
-
-                            <a href="{{ path('plandetails_index', {'name': 'personal'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
                         </div>
-                    </div>
-
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 ">
-                        <div class="plan recommended">
-                            <div class="head">
-                                <a href="{{ path('plandetails_index', {'name': 'agency'}) }}">
-                                <h2>Agency</h2>
-                                <p>
-                                    Great for small organisations
-                                </p>
-                                </a>
-                            </div>
-
-                            <div class="price">
-                                <p><span>&pound;{{ plans.agency.price }} <i>per month</i></span></p>
-                            </div>
-
-                            <ul class="item-list">
-                                <li>Unlimited full-site tests</li>
-                                <li>Unlimited single-page tests</li>
-                                <li>250 pages examined per test</li>
-                                <li>20,000 credits</li>
-                            </ul>
-
-                            {{ pricing_table.cta_button('agency', is_logged_in, web_client_urls) }}
-
-                            <a href="{{ path('plandetails_index', {'name': 'agency'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
-                        </div>
-                    </div>
-
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 ">
-                        <div class="plan last">
-                            <div class="head">
-                                <a href="{{ path('plandetails_index', {'name': 'business'}) }}">
-                                <h2>Business</h2>
-                                <p>Best value for professionals</p>
-                                </a>
-                            </div>
-
-                            <div class="price">
-                                <p><span>&pound;{{ plans.business.price }} <i>per month</i></span></p>
-                            </div>
-
-                            <ul class="item-list">
-                                <li>Unlimited full-site tests</li>
-                                <li>Unlimited single-page tests</li>
-                                <li>2,500 pages examined per test</li>
-                                <li>100,000 credits</li>
-                            </ul>
-
-                            {{ pricing_table.cta_button('business', is_logged_in, web_client_urls) }}
-
-                            <a href="{{ path('plandetails_index', {'name': 'business'}) }}" class="more">Find out more <i class="fa fa-caret-right"></i></a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
