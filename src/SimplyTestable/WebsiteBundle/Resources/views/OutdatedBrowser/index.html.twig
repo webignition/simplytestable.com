@@ -13,13 +13,8 @@
 {% block navbar %}{% endblock %}
 
 {% block body_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_ltIE7_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE7_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE8_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE9_class %} outdated-browser {{ parent() }}{% endblock %}
 
 {% block body %}
-
     <div id="landing-strip">
         <div class="container">
             <div class="intro">
@@ -33,7 +28,8 @@
                     <p>
                         You're using an old version of Internet Explorer.
 
-                        We don't intend to make <a href="{{ path('home_index') }}">Simply Testable</a> work with Internet Explorer less than version 8.
+                        We don't intend to make <a href="{{ path('home_index') }}">Simply Testable</a> work with
+                        Internet Explorer less than version 9.
                     </p>
                 </div>
             </div>
