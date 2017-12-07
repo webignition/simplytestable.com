@@ -8,8 +8,10 @@ use SimplyTestable\WebsiteBundle\Model\Plan\PseudoPlan;
 
 class PlansService
 {
+    const PLAN_KEY_NAME = 'name';
     const PLAN_KEY_SHORT_TITLE = 'short_title';
     const PLAN_KEY_LONG_TITLE = 'long_title';
+    const PLAN_KEY_SUB_TITLE = 'sub_title';
     const PLAN_KEY_PLAN_IDS = 'plan_ids';
     const PLAN_KEY_PRICE = 'price';
     const PLAN_KEY_IS_LISTED = 'is_listed';
@@ -32,12 +34,20 @@ class PlansService
     public function __construct($plansData, $distinctionsData)
     {
         foreach ($plansData as $planId => $planData) {
+            $name = isset($planData[self::PLAN_KEY_NAME])
+                ? $planData[self::PLAN_KEY_NAME]
+                : '';
+
             $shortTitle = isset($planData[self::PLAN_KEY_SHORT_TITLE])
                 ? $planData[self::PLAN_KEY_SHORT_TITLE]
                 : '';
 
             $longTitle = isset($planData[self::PLAN_KEY_LONG_TITLE])
                 ? $planData[self::PLAN_KEY_LONG_TITLE]
+                : '';
+
+            $subTitle = isset($planData[self::PLAN_KEY_SUB_TITLE])
+                ? $planData[self::PLAN_KEY_SUB_TITLE]
                 : '';
 
             if (isset($planData[self::PLAN_KEY_PLAN_IDS])) {
@@ -56,8 +66,10 @@ class PlansService
                     $planId,
                     $planData[self::PLAN_KEY_PRICE],
                     $planData[self::PLAN_KEY_IS_LISTED],
+                    $name,
                     $shortTitle,
                     $longTitle,
+                    $subTitle,
                     $planData[self::PLAN_KEY_DISTINCTIONS]
                 );
             }
