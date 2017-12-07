@@ -10,20 +10,6 @@
         <title>{% block title %}Simply Testable professional automated front-end web testing{% endblock %}</title>
 
         {% block stylesheets %}
-            <!--[if lt IE 9]>
-            {% stylesheets
-            '@SimplyTestableWebsiteBundle/Resources/assets/css/bootstrap.min.css'
-            filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-
-            {% stylesheets
-            '@SimplyTestableWebsiteBundle/Resources/assets/css/font-awesome.css'
-            filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-            <![endif]-->
-
             <!--[if gt IE 8]>
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -37,17 +23,9 @@
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
 
-
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
             <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
-
-            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-            <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-              <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-            <![endif]-->
-
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
             {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/app.js' %}
@@ -66,10 +44,7 @@
                 ga('send', 'pageview');
 
             </script>
-
         {% endblock %}
-
-
     </head>
 
 {% set route_body_class = app.request.get('_route') | replace({'_' : '-'})  %}
@@ -77,18 +52,8 @@
 {% set body_class = [route_body_class, is_logged_in_body_class]|join(' ') %}
 {% set body_attrs %}{% block body_attrs %}{% endblock %}{% endset %}
 
-    <!--[if lt IE 8]>
-    <body class="ltIE8 {{ body_class }} {% block body_ltIE8_class %} {% endblock %} {{ body_attrs }}">
-    <![endif]-->
-    <!--[if IE 8]>
-    <body class="IE8 {{ body_class }} {% block body_IE8_class %} {% endblock %} {{ body_attrs }}">
-    <![endif]-->
-    <!--[if IE 9]>
-    <body class="IE9 {{ body_class }} {% block body_IE9_class %} {% endblock %} {{ body_attrs }}">
-    <![endif]-->
-    <!--[if !IE]> -->
     <body class="{{ body_class }} {% block body_class %} {% endblock %}" {{ body_attrs }}>
-    <!-- <![endif]-->
+
 
 {% block navbar %}{% include 'SimplyTestableWebsiteBundle:Partials:navbar.html.twig' %}{% endblock %}
 
