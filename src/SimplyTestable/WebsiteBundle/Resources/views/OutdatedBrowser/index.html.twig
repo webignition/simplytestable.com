@@ -1,11 +1,7 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
 {% block stylesheets %}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/outdated-browser.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/outdated-browser.css') }}">
 {% endblock %}
 
 {% block title %}OMG IE{% endblock %}
