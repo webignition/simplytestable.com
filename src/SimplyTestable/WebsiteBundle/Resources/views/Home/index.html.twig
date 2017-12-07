@@ -2,12 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/splash.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
+    <link rel="stylesheet" href="{{ asset('build/splash.css') }}">
     <link rel="stylesheet" href="{{ asset('build/homepage.css') }}">
 {% endblock %}
 
