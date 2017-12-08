@@ -30,6 +30,7 @@ before_script:
 
 script:
   - yarn run stylelint --config .stylelintrc assets/css/
+  - yarn run eslint --config .eslintrc.js assets/js
   - yarn run encore production
   - composer ci
 
