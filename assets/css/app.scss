@@ -9,7 +9,9 @@
 
 body {
   .navbar {
-    @import "partials/navbar";
+    .container {
+      @import "partials/navbar";
+    }
   }
 
   &.not-logged-in {
