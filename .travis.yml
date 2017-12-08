@@ -6,6 +6,10 @@ php:
   - 7
   - 7.1
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 before_install:
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
