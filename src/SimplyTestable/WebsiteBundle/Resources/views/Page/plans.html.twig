@@ -20,12 +20,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
     <link rel="stylesheet" href="{{ asset('build/plans.css') }}">
 {% endblock %}
 
@@ -39,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="pricing-tables attached">
+            <div class="pricing-tables">
                 <div class="row">
                     {% for plan in plans %}
                         {% set plan_container_class = 'plan ' %}
@@ -59,8 +53,8 @@
                             <div class="{{ plan_container_class }}">
                                 <div class="head">
                                     <a href="{{ path('plandetails_index', {'name': plan.id}) }}">
-                                        <h2>{{ plan.name }}</h2>
-                                        <p>{{ plan.subtitle }}</p>
+                                        <h2 class="name">{{ plan.name }}</h2>
+                                        <p class="subtitle">{{ plan.subtitle }}</p>
                                     </a>
                                 </div>
 
@@ -68,7 +62,7 @@
                                     <p><span>{{ plan.price|raw }} <i>per month</i></span></p>
                                 </div>
 
-                                <ul class="item-list">
+                                <ul>
                                     <li>{{ plan.distinctions.test_limitations.full_site_tests_per_site }} full-site tests</li>
                                     <li>{{ plan.distinctions.test_limitations.single_page_tests_per_page }} single-page tests</li>
                                     <li>{{ plan.distinctions.test_limitations.pages_examined_per_test }} pages examined per test</li>

@@ -4,18 +4,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-tables.css'
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/pricing-table.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
     <link rel="stylesheet" href="{{ asset('build/account-benefits.css') }}">
 {% endblock %}
 
 {% block body %}
-
     <div id="landing-strip">
         <div class="container">
             <div class="row">
@@ -26,19 +18,15 @@
                         </div>
                     </div>
 
-                    <div class="pricing-tables pricing-tables-small attached hidden-md hidden-lg">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="plan first demo">
-                                    <div class="head hidden-sm">
-                                        <h2>Limited demo features</h2>
-                                        <p>
-                                            What you get if you're not signed in
-                                        </p>
-                                    </div>
-
-                                    <div class="head hidden-xs">
-                                        <h2>Demo features</h2>
+                    <div class="hidden-md hidden-lg distinctions-table">
+                        <div class="row distinction-data">
+                            <div class="col-sm-6 distinction-data-column">
+                                <div class="demo">
+                                    <div class="distinction-data-heading demo">
+                                        <h2>
+                                            <span class="hidden-sm">Limited demo features</span>
+                                            <span class="hidden-xs">Demo features</span>
+                                        </h2>
                                         <p>
                                             What you get if you're not signed in
                                         </p>
@@ -51,20 +39,19 @@
                                         } only
                                     %}
 
-                                    <div class="ctas {% if is_logged_in %}invisible{% endif %}">
-                                        <a href="{{ web_client_urls.start_test }}" class="btn btn-default btn-sm hidden-xs">
-                                            Try me now
-                                        </a>
+                                    {% if not is_logged_in %}
+                                        <div class="ctas">
+                                            <a href="{{ web_client_urls.start_test }}" class="btn btn-default btn-plan-select">
+                                                Try me now
+                                            </a>
+                                        </div>
+                                    {% endif %}
 
-                                        <a href="{{ web_client_urls.start_test }}" class="btn btn-default hidden-sm">
-                                            Try me now
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="plan last">
-                                    <div class="head">
+                            <div class="col-sm-6 distinction-data-column">
+                                <div class="last">
+                                    <div class="distinction-data-heading">
                                         <h2>Premium plans <span class="hidden-sm">features</span></h2>
                                         <p>
                                             From {{ plans.premium.price|raw }} per month
@@ -80,21 +67,14 @@
 
                                     <div class="ctas">
                                         {% if is_logged_in %}
-                                        <a href="{{ path('page_plans') }}" class="btn btn-success btn-sm hidden-xs">
-                                            View premium plans
-                                        </a>
-
-                                        <a href="{{ path('page_plans') }}" class="btn btn-success hidden-sm">
-                                            View premium plans
-                                        </a>
+                                            <a href="{{ path('page_plans') }}" class="btn btn-success btn-plan-select">
+                                                View premium plans <i class="fa fa-caret-right"></i>
+                                            </a>
                                         {% else %}
-                                        <a href="{{ path('page_plans') }}" class="btn btn-default btn-sm hidden-xs">
-                                            View premium plans
-                                        </a>
-
-                                        <a href="{{ path('page_plans') }}" class="btn btn-default hidden-sm">
-                                            View premium plans
-                                        </a>
+                                            <a href="{{ web_client_urls.sign_up }}" class="btn btn-success btn-plan-select">
+                                                <span class="primary">Sign up</span>
+                                                <span class="secondary">30-day trial. From {{ plans.premium.price|raw }} per month.</span>
+                                            </a>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -102,21 +82,18 @@
                         </div>
                     </div>
 
-                    <div class="row hidden-sm hidden-xs">
-                        <div class="col-md-2 hidden-sm hidden-xs distinctions">
+                    <div class="row hidden-sm hidden-xs distinctions-table">
+                        <div class="col-md-2 hidden-sm hidden-xs distinction-labels">
                             {% for distinction_group in distinctions %}
-                                <ul class="distinction-group">
+                                <ul class="distinction-label-group">
                                     {% set group_loop_last = loop.last %}
 
-                                    <li class="heading">
+                                    <li class="distinction-heading">
                                         <span>{{ distinction_group.name }}</span>
                                     </li>
 
                                     {% for distinction in distinction_group.distinctions %}
-                                        {% set class_attr = 'distinction ' %}
-                                        {% if loop.last %}
-                                            {% set class_attr = class_attr ~ ' last' %}
-                                        {% endif %}
+                                        {% set class_attr = 'distinction-label ' %}
 
                                         {% if group_loop_last %}
                                             {% set class_attr = class_attr ~ ' final' %}
@@ -133,64 +110,57 @@
                                 </ul>
                             {% endfor %}
                         </div>
-                        <div class="col-md-8 details">
-                            <div class="pricing-tables attached">
-                                <div class="plan first last">
-                                    <div class="head">
-                                        <div class="row">
-                                            <div class="col-md-6 demo first heading">
-                                                <h2>Demo</h2>
-                                                <p>
-                                                    If you're not signed in
-                                                </p>
-                                            </div>
-                                            <div class="col-md-6 last heading">
-                                                <h2>Premium plans</h2>
-                                                <p>
-                                                    From {{ plans.premium.price|raw }} per month
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-md-8 hidden-sm hidden-xs distinction-data">
+                            <div class="row">
+                                <div class="col-md-6 distinction-data-heading demo">
+                                    <h2>Demo</h2>
+                                    <p>
+                                        If you're not signed in
+                                    </p>
+                                </div>
+                                <div class="col-md-6 distinction-data-heading">
+                                    <h2>Premium plans</h2>
+                                    <p>
+                                        From {{ plans.premium.price|raw }} per month
+                                    </p>
+                                </div>
+                            </div>
 
-                                    {% for distinction_group_id, distinction_group in distinctions %}
-                                        {% set distinction_group_template_id = distinction_group_id|replace({'_': '-'}) %}
-                                        {% set distinction_group_template = 'SimplyTestableWebsiteBundle:Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
+                            {% for distinction_group_id, distinction_group in distinctions %}
+                                {% set distinction_group_template_id = distinction_group_id|replace({'_': '-'}) %}
+                                {% set distinction_group_template = 'SimplyTestableWebsiteBundle:Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
 
-                                        <div class="row data{% if loop.last %} final{% endif %} {% if loop.first %} first{% endif %}">
-                                            {% for plan_name in plan_names %}
-                                                <div class="col-md-6 {{ plan_name }}">
-                                                    {% include distinction_group_template
-                                                        with {
-                                                            'plan_distinctions': plans[plan_name].distinctions[distinction_group_id],
-                                                            'category': distinctions[distinction_group_id]
-                                                        } only
-                                                    %}
-                                                </div>
-                                            {% endfor %}
+                                <div class="row data{% if loop.last %} final{% endif %} {% if loop.first %} first{% endif %}">
+                                    {% for plan in plans %}
+                                        <div class="col-md-6 distinction-data-column {{ plan.id }}">
+                                            {% include distinction_group_template
+                                                with {
+                                                'plan_distinctions': plan.distinctions[distinction_group_id],
+                                                'category': distinctions[distinction_group_id]
+                                            } only
+                                            %}
                                         </div>
                                     {% endfor %}
+                                </div>
+                            {% endfor %}
 
-                                    <div class="row ctas">
-                                        <div class="col-md-6">
-                                            <a href="{{ web_client_urls.start_test }}" class="btn btn-default btn-plan-select {% if is_logged_in %}invisible{% endif %}">
-                                                Try me now
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            {% if is_logged_in %}
-                                                <a href="{{ path('page_plans') }}" class="btn btn-success btn-plan-select">
-                                                    View premium plans <i class="fa fa-caret-right"></i>
-                                                </a>
-                                            {% else %}
-                                                <a href="{{ web_client_urls.sign_up }}" class="btn btn-success btn-plan-select">
-                                                    <span class="primary">Sign up</span>
-                                                    <span class="secondary">30-day trial. From {{ plans.premium.price|raw }} per month.</span>
-                                                </a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-
+                            <div class="row ctas">
+                                <div class="col-md-6">
+                                    <a href="{{ web_client_urls.start_test }}" class="btn btn-default btn-plan-select {% if is_logged_in %}invisible{% endif %}">
+                                        Try me now
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    {% if is_logged_in %}
+                                        <a href="{{ path('page_plans') }}" class="btn btn-success btn-plan-select">
+                                            View premium plans <i class="fa fa-caret-right"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ web_client_urls.sign_up }}" class="btn btn-success btn-plan-select">
+                                            <span class="primary">Sign up</span>
+                                            <span class="secondary">30-day trial. From {{ plans.premium.price|raw }} per month.</span>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -200,72 +170,67 @@
         </div>
     </div>
 
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3>Limited demo</h3>
-                            <p>
-                                The free demo lets you quickly try the service
-                                out.
-                            </p>
-                            <p>
-                                You can carry out both full-site and single-page
-                                tests but both are limited in the number that
-                                can be carried out per site or per page being tested.
-                            </p>
-                            <p>
-                                You don't need to create an account but as a
-                                consequence all demo tests are visible to everyone.
-                            </p>
-                            <p>
-                                The demo does not offer all the types of test
-                                available to those who have an account.
-                            </p>
-                            <p>
-                                Test results will be available for 24 hours only.
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Free account</h3>
-                            <p>
-                                A free account removes the limit on the number
-                                of full-site and single-page tests that you can
-                                carry out.
-                            </p>
-                            <p>
-                                Tests created by you are visible only to you but
-                                you can opt to make results public for sharing.
-                            </p>
-                            <p>
-                                Test results are available for 7 days, giving
-                                you more time to take action as required.
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Premium accounts</h3>
-                            <p>
-                                From as little as {{ plans.premium.price|raw }} you can
-                                examine up to 100,000 pages per test.
-                            </p>
-                            <p>
-                                Tests created by you are again visible only to you but
-                                you can opt to make results public for sharing.
-                            </p>
-                            <p>
-                                Test results are available forever, giving
-                                you as long as is needed to take action and
-                                allowing you to compare current and past results.
-                            </p>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Limited demo</h3>
+                        <p>
+                            The free demo lets you quickly try the service
+                            out.
+                        </p>
+                        <p>
+                            You can carry out both full-site and single-page
+                            tests but both are limited in the number that
+                            can be carried out per site or per page being tested.
+                        </p>
+                        <p>
+                            You don't need to create an account but as a
+                            consequence all demo tests are visible to everyone.
+                        </p>
+                        <p>
+                            The demo does not offer all the types of test
+                            available to those who have an account.
+                        </p>
+                        <p>
+                            Test results will be available for 24 hours only.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Free account</h3>
+                        <p>
+                            A free account removes the limit on the number
+                            of full-site and single-page tests that you can
+                            carry out.
+                        </p>
+                        <p>
+                            Tests created by you are visible only to you but
+                            you can opt to make results public for sharing.
+                        </p>
+                        <p>
+                            Test results are available for 7 days, giving
+                            you more time to take action as required.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Premium accounts</h3>
+                        <p>
+                            From as little as {{ plans.premium.price|raw }} you can
+                            examine up to 100,000 pages per test.
+                        </p>
+                        <p>
+                            Tests created by you are again visible only to you but
+                            you can opt to make results public for sharing.
+                        </p>
+                        <p>
+                            Test results are available forever, giving
+                            you as long as is needed to take action and
+                            allowing you to compare current and past results.
+                        </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
-
 {% endblock %}

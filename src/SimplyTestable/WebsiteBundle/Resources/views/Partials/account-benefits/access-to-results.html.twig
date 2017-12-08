@@ -1,13 +1,13 @@
-<h3 class="heading hidden-md hidden-lg">{{ category.name }}</h3>
+<h3 class="distinction-heading hidden-md hidden-lg">{{ category.name }}</h3>
 
-<ul class="item-list">
-    <li>
-        <span class="item hidden-md hidden-lg">
+<ul class="distinction-data-group">
+    <li class="distinction-data-item">
+        <span class="distinction-label hidden-md hidden-lg">
             {{ category.distinctions.results_available_for.name.primary }}
         </span>
         {{ plan_distinctions.results_available_for }}
     </li>
-    <li>
+    <li class="distinction-data-item">
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.private_tests.value,
@@ -15,7 +15,7 @@
             }
         %}
     </li>
-    <li>
+    <li class="distinction-data-item">
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.read_only_reports.value,
