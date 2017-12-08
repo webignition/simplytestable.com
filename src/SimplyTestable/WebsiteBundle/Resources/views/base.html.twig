@@ -10,16 +10,8 @@
         <title>{% block title %}Simply Testable professional automated front-end web testing{% endblock %}</title>
 
         {% block stylesheets %}
-            <!--[if gt IE 8]>
             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-            <![endif]-->
-
-            <!--[if !IE]><!-->
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-            <!--<![endif]-->
-
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
 
