@@ -57,6 +57,14 @@ class PseudoPlan implements PlanInterface
     /**
      * {@inheritdoc}
      */
+    public function getName()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getShortTitle()
     {
         return '';
@@ -66,6 +74,14 @@ class PseudoPlan implements PlanInterface
      * {@inheritdoc}
      */
     public function getLongTitle()
+    {
+        return '';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSubTitle()
     {
         return '';
     }

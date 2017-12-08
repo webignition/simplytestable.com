@@ -1,0 +1,100 @@
+body.landingpage-tms {
+  .feature-section-usage-reach {
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 30px;
+    }
+
+    .fa {
+      color: #848484;
+      text-align: right;
+      display: block;
+      font-size: 120px;
+    }
+
+    .stacked {
+      .row {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  #landing-strip {
+    p {
+      line-height: 32px;
+      margin: 0 0 20px 0;
+    }
+
+    .container {
+      padding-top: 100px;
+      padding-bottom: 80px;
+    }
+
+    .content {
+      text-align: left;
+      margin: 40px -15px 0 -15px;
+    }
+  }
+
+  .feature-section-features {
+    .fa {
+      color: #848484;
+      text-align: right;
+      display: block;
+      font-size: 40px;
+    }
+  }
+
+  .feature-section-full {
+    .feature {
+      margin-bottom: 40px;
+    }
+  }
+
+  .feature-section {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 60px;
+
+    .fundamental {
+      .fa {
+        font-size: 100px;
+        margin-top: -10px;
+      }
+    }
+  }
+
+  .feature-section-last {
+    border-bottom: none;
+  }
+
+  #ctas {
+    margin: 0;
+
+    .cta {
+      text-align: left;
+      position: relative;
+      width: 100%;
+    }
+
+    .primary {
+      display: block;
+      white-space: normal;
+      margin-bottom: 6px;
+    }
+
+    .byline {
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    .fa {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 24px;
+    }
+  }
+}

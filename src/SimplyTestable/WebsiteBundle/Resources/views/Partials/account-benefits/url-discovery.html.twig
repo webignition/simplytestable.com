@@ -1,7 +1,7 @@
-<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
+<h3 class="distinction-heading hidden-md hidden-lg">{{ category.name }}</h3>
 
-<ul class="item-list">
-    <li>
+<ul class="distinction-data-group">
+    <li class="distinction-data-item">
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.discovery_via_sitemap.value,
@@ -9,7 +9,7 @@
             }
         %}
     </li>
-    <li>
+    <li class="distinction-data-item">
         {% include 'SimplyTestableWebsiteBundle:Partials:boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.discovery_via_crawl.value,

@@ -18,3 +18,4 @@ composer.phar
 !var/logs/.gitkeep
 /build/
 /node_modules/
+/build/

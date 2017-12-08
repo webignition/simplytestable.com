@@ -1,25 +1,7 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block javascripts %}
-    <!--[if IE 6]>
-    {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/vendor/supersleight/supersleight.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}       
-    <![endif]-->      
-{% endblock %} 
-
 {% block stylesheets %}
-    {% stylesheets    
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/outdated-browser.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-    {% stylesheets    
-    '@SimplyTestableWebsiteBundle/Resources/assets/vendor/normalise-css/normalize.css-3.0.1/normalize.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}      
+    <link rel="stylesheet" href="{{ asset('build/outdated-browser.css') }}">
 {% endblock %}
 
 {% block title %}OMG IE{% endblock %}
@@ -27,34 +9,28 @@
 {% block navbar %}{% endblock %}
 
 {% block body_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_ltIE7_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE7_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE8_class %} outdated-browser {{ parent() }}{% endblock %}
-{% block body_IE9_class %} outdated-browser {{ parent() }}{% endblock %}
 
 {% block body %}
-
     <div id="landing-strip">
         <div class="container">
             <div class="intro">
                 <div class="leader">
                     <h1>
                         Outdated Internet Explorer Browser
-                    </h1>     
+                    </h1>
 
                 </div>
                 <div class="content">
                     <p>
                         You're using an old version of Internet Explorer.
 
-                        We don't intend to make <a href="{{ path('home_index') }}">Simply Testable</a> work with Internet Explorer less than version 8.
-                    </p> 
-                </div>                        
+                        We don't intend to make <a href="{{ path('home_index') }}">Simply Testable</a> work with
+                        Internet Explorer less than version 9.
+                    </p>
+                </div>
             </div>
-            <div  id="large-logo">                  
-                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/256-ie.png' %}
-                <img src="{{ asset_url }}" alt="" class="hidden-xs hidden-sm" />
-                {% endimage %}                          
+            <div  id="large-logo">
+                <img src="{{ asset('build/images/256-ie.png') }}" alt="" class="hidden-xs hidden-sm" />
             </div>
         </div>
     </div>
@@ -65,48 +41,38 @@
 
             <div class="browser">
                 <a href="//google.com/chrome/">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-chrome.png' %}
-                    <img src="{{ asset_url }}" alt="Chrome" />
-                    {% endimage %}                                         
+                    <img src="{{ asset('build/images/128-chrome.png') }}" alt="Chrome" />
                     <span class="name">Chrome</span>
                 </a>
             </div>
 
             <div class="browser">
                 <a href="http://getfirefox.com">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-firefox.png' %}
-                    <img src="{{ asset_url }}" alt="Firefox" />
-                    {% endimage %}    
+                    <img src="{{ asset('build/images/128-firefox.png') }}" alt="Firefox" />
                     <span class="name">Firefox</span>
-                </a> 
+                </a>
             </div>
 
             <div class="browser">
                 <a href="http://opera.com">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-opera.png' %}
-                    <img src="{{ asset_url }}" alt="Opera" />
-                    {% endimage %}    
+                    <img src="{{ asset('build/images/128-opera.png') }}" alt="Opera" />
                     <span class="name">Opera</span>
-                </a> 
+                </a>
             </div>
 
             <div class="browser">
                 <a href="http://www.apple.com/safari">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-safari.png' %}
-                    <img src="{{ asset_url }}" alt="Safari" />
-                    {% endimage %}    
+                    <img src="{{ asset('build/images/128-safari.png') }}" alt="Safari" />
                     <span class="name">Safari</span>
-                </a> 
+                </a>
             </div>
 
             <div class="browser">
                 <a href="http://microsoft.com/ie">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-ie.png' %}
-                    <img src="{{ asset_url }}" alt="Internet Explorer" />
-                    {% endimage %}    
+                    <img src="{{ asset('build/images/128-ie.png') }}" alt="Internet Explorer" />
                     <span class="name">IE9+</span>
-                </a> 
-            </div>            
+                </a>
+            </div>
 
         </div>
     </div>
