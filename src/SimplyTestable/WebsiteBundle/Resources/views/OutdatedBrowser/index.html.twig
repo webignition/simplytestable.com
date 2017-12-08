@@ -30,9 +30,7 @@
                 </div>
             </div>
             <div  id="large-logo">
-                {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/256-ie.png' %}
-                <img src="{{ asset_url }}" alt="" class="hidden-xs hidden-sm" />
-                {% endimage %}
+                <img src="{{ asset('build/images/256-ie.png') }}" alt="" class="hidden-xs hidden-sm" />
             </div>
         </div>
     </div>
@@ -43,45 +41,35 @@
 
             <div class="browser">
                 <a href="//google.com/chrome/">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-chrome.png' %}
-                    <img src="{{ asset_url }}" alt="Chrome" />
-                    {% endimage %}
+                    <img src="{{ asset('build/images/128-chrome.png') }}" alt="Chrome" />
                     <span class="name">Chrome</span>
                 </a>
             </div>
 
             <div class="browser">
                 <a href="http://getfirefox.com">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-firefox.png' %}
-                    <img src="{{ asset_url }}" alt="Firefox" />
-                    {% endimage %}
+                    <img src="{{ asset('build/images/128-firefox.png') }}" alt="Firefox" />
                     <span class="name">Firefox</span>
                 </a>
             </div>
 
             <div class="browser">
                 <a href="http://opera.com">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-opera.png' %}
-                    <img src="{{ asset_url }}" alt="Opera" />
-                    {% endimage %}
+                    <img src="{{ asset('build/images/128-opera.png') }}" alt="Opera" />
                     <span class="name">Opera</span>
                 </a>
             </div>
 
             <div class="browser">
                 <a href="http://www.apple.com/safari">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-safari.png' %}
-                    <img src="{{ asset_url }}" alt="Safari" />
-                    {% endimage %}
+                    <img src="{{ asset('build/images/128-safari.png') }}" alt="Safari" />
                     <span class="name">Safari</span>
                 </a>
             </div>
 
             <div class="browser">
                 <a href="http://microsoft.com/ie">
-                    {% image '@SimplyTestableWebsiteBundle/Resources/assets/images/browser-icons/128-ie.png' %}
-                    <img src="{{ asset_url }}" alt="Internet Explorer" />
-                    {% endimage %}
+                    <img src="{{ asset('build/images/128-ie.png') }}" alt="Internet Explorer" />
                     <span class="name">IE9+</span>
                 </a>
             </div>
