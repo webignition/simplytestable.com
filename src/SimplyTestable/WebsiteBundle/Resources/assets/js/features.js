@@ -148,14 +148,34 @@ $(function() {
         }
     });
 
-    $('#upper-nav').affix({
-        offset: {
-            top: getAffixOffset()
-        }
+    // $('#upper-nav').affix({
+    //     offset: {
+    //         top: getAffixOffset()
+    //     }
+    // });
+
+    var myAffix = document.getElementById('upper-nav');
+
+    var theAffixInit = new Affix(myAffix, {
+        offsetTop: getAffixOffset()
     });
 
-    $('body').scrollspy({
-        target: '#upper-nav',
+    theAffixInit.update();
+
+    // $('body').scrollspy({
+    //     target: '#upper-nav',
+    //     offset: 340
+    // })
+
+    // the element we initialize ScrollSpy on
+    var myScrollSpyElement = document.getElementsByTagName('body')[0];
+
+    // let's give the initialization a JavaScript reference for the "target" option
+    var myScrollSpyTarget = document.getElementById('upper-nav');
+
+    // initialize the ScrollSpy for this element
+    var myScrollSpyInit = new ScrollSpy(myScrollSpyElement, {
+        target: myScrollSpyTarget,
         offset: 340
-    })
+    });
 });
