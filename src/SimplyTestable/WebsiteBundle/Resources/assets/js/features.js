@@ -1,4 +1,5 @@
 $(function() {
+    var upperNav = document.getElementById('upper-nav');
     var displayClasses = ['lg', 'md', 'sm', 'xs'];
 
     var deriveDisplaySizeClass = function () {
@@ -93,11 +94,7 @@ $(function() {
 
     var mostRecentlyClicked = null;
 
-    $('#upper-nav').on('affix.bs.affix', function (event) {
-        $('body').addClass('upper-nav-affix').removeClass('upper-nav-affix-top');
-    }).on('affix-top.bs.affix', function (event) {
-        $('body').removeClass('upper-nav-affix').addClass('upper-nav-affix-top');
-    }).on('activate.bs.scrollspy', function (event) {
+    $('#upper-nav').on('activate.bs.scrollspy', function (event) {
         if (mostRecentlyClicked == null) {
             return false;
         }
@@ -148,15 +145,7 @@ $(function() {
         }
     });
 
-    // $('#upper-nav').affix({
-    //     offset: {
-    //         top: getAffixOffset()
-    //     }
-    // });
-
-    var myAffix = document.getElementById('upper-nav');
-
-    var theAffixInit = new Affix(myAffix, {
+    var theAffixInit = new Affix(upperNav, {
         offsetTop: getAffixOffset()
     });
 
@@ -168,14 +157,11 @@ $(function() {
     // })
 
     // the element we initialize ScrollSpy on
-    var myScrollSpyElement = document.getElementsByTagName('body')[0];
-
-    // let's give the initialization a JavaScript reference for the "target" option
-    var myScrollSpyTarget = document.getElementById('upper-nav');
+    var myScrollSpyElement = document.body;
 
     // initialize the ScrollSpy for this element
     var myScrollSpyInit = new ScrollSpy(myScrollSpyElement, {
-        target: myScrollSpyTarget,
+        target: upperNav,
         offset: 340
     });
 });

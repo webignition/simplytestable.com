@@ -28,6 +28,8 @@ body {
 
     #upper-nav {
       margin-top: -120px;
+      background-image: url('../images/ls04.8.jpg');
+      background-position: 50% -632px;
 
       &.affix {
         top: 51px;
@@ -111,6 +113,14 @@ body {
         }
       }
 
+      .inner {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
       @media (min-width: 992px) {
         margin-top: -200px;
         background-color: rgba(255, 255, 255, 0.6);
@@ -149,19 +159,6 @@ body {
     }
 
     &.upper-nav-affix {
-      #upper-nav {
-        background-image: url('../images/ls04.8.jpg');
-        background-position: 50% -632px;
-
-        .inner {
-          background-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .container {
-          background-color: rgba(255, 255, 255, 0.2);
-        }
-      }
-
       #feature-section-first {
         margin-top: 60px;
 
