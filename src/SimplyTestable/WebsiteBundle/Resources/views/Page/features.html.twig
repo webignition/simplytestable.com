@@ -6,14 +6,6 @@
     <link rel="stylesheet" href="{{ asset('build/features.css') }}">
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-
-    {% javascripts '@SimplyTestableWebsiteBundle/Resources/assets/js/features.js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-
 {% block body_class %} splash{% endblock %}
 
 {% block body %}
@@ -99,11 +91,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div id="feature-section-first" class="feature-section feature-section-full">
+            <div id="one-click-full-site-testing" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="one-click-full-site-testing">One-click full-site automated testing</h2>
+                            <h2>One-click full-site automated testing</h2>
                         </div>
                     </div>
 
@@ -127,11 +119,11 @@
                 </div>
             </div>
 
-            <div id="fundamental-testing-section" class="feature-section feature-section-full">
+            <div id="fundamental-testing" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="fundamental-testing">Fundamental testing</h2>
+                            <h2>Fundamental testing</h2>
                         </div>
                     </div>
 
@@ -177,13 +169,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="feature-section-html-validation" class="feature-section feature-section-full">
-                <div class="feature">
+                <div class="feature" id="html-validation">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="html-validation">HTML5 validation</h2>
+                            <h2>HTML5 validation</h2>
                         </div>
                     </div>
 
@@ -212,13 +201,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="feature-section-css-validation" class="feature-section feature-section-full">
-                <div class="feature">
+                <div class="feature" id="css-validation">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="css-validation">CSS3 validation</h2>
+                            <h2>CSS3 validation</h2>
                         </div>
                     </div>
 
@@ -267,13 +253,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="feature-section-javascript-static-analysis" class="feature-section feature-section-full">
-                <div class="feature">
+                <div class="feature" id="javascript-static-analysis">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="javascript-static-analysis">JavaScript static analysis</h2>
+                            <h2>JavaScript static analysis</h2>
                         </div>
                     </div>
 
@@ -318,13 +301,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="feature-section-broken-link-checking" class="feature-section feature-section-full">
-                <div class="feature">
+                <div class="feature" id="broken-link-checking">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="broken-link-checking">Broken link checking</h2>
+                            <h2>Broken link checking</h2>
                         </div>
                     </div>
 
@@ -370,11 +350,11 @@
                 </div>
             </div>
 
-            <div id="feature-section-reporting" class="feature-section feature-section-full">
+            <div id="reporting" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="reporting">Reporting</h2>
+                            <h2>Reporting</h2>
                         </div>
                     </div>
 
@@ -401,11 +381,11 @@
                 </div>
             </div>
 
-            <div id="feature-section-team-collaboration" class="feature-section feature-section-full">
+            <div id="teams" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="teams">Team collaboration</h2>
+                            <h2>Team collaboration</h2>
                         </div>
                     </div>
 
@@ -451,11 +431,11 @@
                 </div>
             </div>
 
-            <div id="feature-section-history" class="feature-section feature-section-full">
+            <div id="history" class="feature-section feature-section-full">
                 <div class="feature">
                     <div class="row">
                         <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2">
-                            <h2 id="history">Searchable history</h2>
+                            <h2>Searchable history</h2>
                         </div>
                     </div>
 

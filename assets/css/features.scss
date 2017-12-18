@@ -137,7 +137,7 @@ body {
       }
     }
 
-    #feature-section-css-validation {
+    #css-validation {
       .fa {
         &.primary {
           font-size: 100px;
@@ -155,16 +155,6 @@ body {
       @media (min-width: 768px) and (max-width: 992px) {
         font-size: 90px;
         margin-top: -26px;
-      }
-    }
-
-    &.upper-nav-affix {
-      #feature-section-first {
-        margin-top: 60px;
-
-        @media (min-width: 992px) {
-          margin-top: 70px;
-        }
       }
     }
   }

@@ -12,6 +12,7 @@
     "jsdom": "^11.5.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "smooth-scroll": "^12.1.5",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^18.0.0",
     "tape": "^4.8.0",
