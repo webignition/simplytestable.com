@@ -20,6 +20,6 @@ function ready (fn) {
 
 ready(function () {
     if (document.body.classList.contains('home-index')) {
-        home();
+        home(document, 'scroll');
     }
 });
