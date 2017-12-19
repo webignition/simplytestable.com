@@ -12,16 +12,15 @@ const landingStripFixture = `<!DOCTYPE html>
                 </html>`;
 
 const callHomeFunction = function (scrollTop) {
-    var dom = new JSDOM(landingStripFixture);
-
-    var document = dom.window.document;
-    var landingStrip = document.getElementById('landing-strip');
+    const dom = new JSDOM(landingStripFixture);
+    const document = dom.window.document;
+    const landingStrip = document.getElementById('landing-strip');
 
     document.documentElement.scrollTop = scrollTop;
 
     home(document, 'click');
 
-    var event = document.createEvent('MouseEvent');
+    const event = document.createEvent('MouseEvent');
     event.initMouseEvent('click');
     document.dispatchEvent(event);
 
@@ -50,7 +49,7 @@ test('landing strip background image placement test', function (assert) {
         assert.equals(
             landingStripeBackgroundPositionY,
             fixture.expectedBackgroundPositionY,
-            '#landing-strip backgroundPositionY is -360px'
+            '#landing-strip backgroundPositionY is ' + fixture.expectedBackgroundPositionY
         );
     });
 
