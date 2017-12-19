@@ -1,16 +1,9 @@
 const test = require('tape');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const home = require('../../../assets/js/home');
-const dataProvider = require('./home.dataprovider');
-
-const landingStripFixture = `<!DOCTYPE html>
-                <html>
-                    <head></head>
-                    <body>
-                        <div id="landing-strip"></div>
-                    </body>
-                </html>`;
+const home = require('../../../../assets/js/home');
+const dataProvider = require('../fixtures/home.dataprovider');
+const landingStripFixture = require('../fixtures/landing-strip.html');
 
 const callHomeFunction = function (scrollTop) {
     const dom = new JSDOM(landingStripFixture);
