@@ -1,33 +1,33 @@
-<p class="heading hidden-md hidden-lg">{{ category.name }}</p>
+<h3 class="distinction-heading hidden-md hidden-lg">{{ category.name }}</h3>
 
-<ul class="item-list">
-    <li>
+<ul class="distinction-data-group">
+    <li class="distinction-data-item">
         {{ plan_distinctions.full_site_tests_per_site }}
         {% set plural_replacement = (plan_distinctions.full_site_tests_per_site.value != 1) ? 's' : '' %}
 
-        <span class="item hidden-md hidden-lg">
+        <span class="distinction-label hidden-md hidden-lg">
             {{ category.distinctions.full_site_tests_per_site.name.primary|replace({'%s': plural_replacement}) }}
             {{ category.distinctions.full_site_tests_per_site.name.secondary }}
         </span>
     </li>
-    <li>
+    <li class="distinction-data-item">
         {{ plan_distinctions.single_page_tests_per_page }}
         {% set plural_replacement = (plan_distinctions.single_page_tests_per_page.value != 1) ? 's' : '' %}
-        <span class="item hidden-md hidden-lg">
+        <span class="distinction-label hidden-md hidden-lg">
             {{ category.distinctions.single_page_tests_per_page.name.primary|replace({'%s': plural_replacement}) }}
             {{ category.distinctions.single_page_tests_per_page.name.secondary }}
         </span>
     </li>
-    <li>
+    <li class="distinction-data-item">
         {{ plan_distinctions.pages_examined_per_test }}
-        <span class="item hidden-md hidden-lg">{{ category.distinctions.pages_examined_per_test.name.primary }}</span>
+        <span class="distinction-label hidden-md hidden-lg">{{ category.distinctions.pages_examined_per_test.name.primary }}</span>
     </li>
-    <li {{ (plan_distinctions.credits_per_month.value is null ? 'class="not-applicable"' : '') }}>
+    <li class="distinction-data-item {% if plan_distinctions.credits_per_month.value is null %}not-applicable{% endif %}">
         {% if plan_distinctions.credits_per_month.value is null %}
-            <span>&mdash;</span><span class="item">&nbsp;</span>
+            <span>&mdash;</span>
         {% else %}
             <span>{{ plan_distinctions.credits_per_month }}</span>
-            <span class="item hidden-md hidden-lg">{{ category.distinctions.credits_per_month.name.primary }}</span>
+            <span class="distinction-label hidden-md hidden-lg">{{ category.distinctions.credits_per_month.name.primary }}</span>
         {% endif %}
     </li>
 </ul>

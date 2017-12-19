@@ -1,57 +1,49 @@
 {% extends 'SimplyTestableWebsiteBundle::base.html.twig' %}
 
-{% block stylesheets %}      
+{% block stylesheets %}
     {{ parent() }}
-    {% stylesheets    
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/content.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %} 
+    <link rel="stylesheet" href="{{ asset('build/content.css') }}">
 {% endblock %}
 
 {% block body_class %} content {{ parent() }}{% endblock %}
-{% block body_ltIE7_class %} content {{ parent() }}{% endblock %}
-{% block body_IE7_class %} content {{ parent() }}{% endblock %}
-{% block body_IE8_class %} content {{ parent() }}{% endblock %}
-{% block body_IE9_class %} content {{ parent() }}{% endblock %}
 
 {% block body %}
     <div id="landing-strip">
         <div class="container">
             <div class="row">
 
-                {% include 'SimplyTestableWebsiteBundle:Partials:logo.html.twig' %}  
+                {% include 'SimplyTestableWebsiteBundle:Partials:logo.html.twig' %}
 
                 <div class="col-lg-8 col-md-6 intro">
                     <div class="leader">
                         <h1>
                             {% block leader_heading %}Leader Heading{% endblock %}
                         </h1>
-                        <p>    
-                            {% block leader_strapline %}                                
-                                Save time and take the pain out of routine front-end web testing. One-click testing of your entire site.                                                           
-                            {% endblock %} 
-                        </p> 
+                        <p>
+                            {% block leader_strapline %}
+                                Save time and take the pain out of routine front-end web testing. One-click testing of your entire site.
+                            {% endblock %}
+                        </p>
                     </div>
                     <div class="content">
                         {% block intro_content %}
                             <p>
                                 Ut enim ad minim veniam,
                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>                              
+                            </p>
                             <p>
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                                 officia deserunt mollit anim id est laborum.
-                            </p>                                 
-                        {% endblock %}                             
-                    </div>                        
+                            </p>
+                        {% endblock %}
+                    </div>
                 </div>
                 {% block landing_additional %}
-                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">                     
-                    {% include 'SimplyTestableWebsiteBundle:Partials:landing-tweet.html.twig' %}                   
+                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:landing-tweet.html.twig' %}
                 </div>
-                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">                     
-                    {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}                           
+                <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">
+                    {% include 'SimplyTestableWebsiteBundle:Partials:start-new-test-form.html.twig' %}
                 </div>
                 {% endblock %}
             </div>
@@ -59,7 +51,7 @@
     </div>
 
     <div id="content">
-        <div class="container">   
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -89,12 +81,11 @@
                             {% block sidebar %}
                                 {% include 'SimplyTestableWebsiteBundle:Partials:about.html.twig' %}
                                 {% include 'SimplyTestableWebsiteBundle:Partials:newsletter.html.twig' %}
-                            {% endblock %}                   
-                        </div>                        
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
-            </div>                      
+            </div>
         </div>
-    </div>                
-
+    </div>
 {% endblock %}

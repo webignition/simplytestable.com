@@ -1,16 +1,12 @@
 {% extends 'SimplyTestableWebsiteBundle::content.html.twig' %}
 
-{% block stylesheets %}      
-{{ parent() }}
-{% stylesheets    
-    '@SimplyTestableWebsiteBundle/Resources/assets/css/errorpage.css'
-    filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}  
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/errorpage.css') }}">
 {% endblock %}
 
-{% block leader_strapline %}  
+{% block leader_strapline %}
 {% endblock %}
 
-{% block landing_additional %}  
+{% block landing_additional %}
 {% endblock %}

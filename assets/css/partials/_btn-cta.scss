@@ -1,0 +1,21 @@
+.btn-cta {
+  text-align: left;
+  position: relative;
+  width: 100%;
+
+  span {
+    display: block;
+  }
+
+  .byline {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  .fa {
+    position: absolute;
+    right: 10px;
+    font-size: 30px;
+    top: 15px;
+  }
+}

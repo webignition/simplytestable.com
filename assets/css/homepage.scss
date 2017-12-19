@@ -1,0 +1,114 @@
+body.home-index {
+  #landing-strip {
+    .container {
+      padding-top: 100px;
+      padding-bottom: 40px;
+
+      @media (min-width: 768px) {
+        padding-top: 140px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+
+  .feature-section-usage-reach {
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 30px;
+    }
+
+    .fa {
+      font-size: 120px;
+      text-align: right;
+      display: block;
+    }
+
+    .stacked {
+      .row {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  .feature-section-features {
+    h2 {
+      @media (min-width: 992px) and (max-width: 1200px) {
+        font-size: 22px;
+      }
+    }
+
+    .fa {
+      text-align: right;
+      display: block;
+      font-size: 40px;
+    }
+  }
+
+  .feature-section-full {
+    .feature {
+      margin-bottom: 40px;
+    }
+  }
+
+  .feature-section {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 60px;
+
+    .fa {
+      color: #848484;
+    }
+
+    .fundamental {
+      .fa {
+        font-size: 100px;
+        margin-top: 70px;
+      }
+    }
+  }
+
+  .feature-section-last {
+    border-bottom: none;
+  }
+
+  #ctas {
+    .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+
+      @media (min-width: 768px) {
+        width: auto;
+      }
+    }
+
+    .cta {
+      text-align: left;
+      position: relative;
+    }
+
+    .primary {
+      display: block;
+      white-space: normal;
+      margin-bottom: 6px;
+    }
+
+    .byline {
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    .fa {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 24px;
+    }
+
+    @media (min-width: 768px) {
+      margin-top: 20px;
+    }
+  }
+}

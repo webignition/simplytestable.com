@@ -53,8 +53,10 @@ free:
       custom_cookies: false
 personal:
   is_listed: true
+  name: "Personal"
   short_title: "Personal plan"
   long_title: "Features of a personal account"
+  sub_title: "For small-scale projects"
   price: 9
   distinctions:
     test_limitations:
@@ -80,8 +82,10 @@ personal:
       custom_cookies: true
 agency:
   is_listed: true
+  name: "Agency"
   short_title: "Agency plan"
   long_title: "Features of an agency account"
+  sub_title: "Great for small organisations"
   price: 19
   distinctions:
     test_limitations:
@@ -107,8 +111,10 @@ agency:
       custom_cookies: true
 business:
   is_listed: true
+  name: "Business"
   short_title: "Business plan"
   long_title: "Features of a business account"
+  sub_title: "Best value for professionals"
   price: 59
   distinctions:
     test_limitations:

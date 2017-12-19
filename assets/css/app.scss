@@ -1,0 +1,28 @@
+@import "modules/variables";
+@import "partials/logo";
+@import "partials/landing-strip";
+@import "partials/footer-announcements";
+@import "partials/start-new-test-form";
+@import "partials/footer-detail";
+@import "partials/iconified-section";
+@import "partials/btn-cta";
+
+body {
+  .navbar {
+    .container {
+      @import "partials/navbar";
+    }
+  }
+
+  &.not-logged-in {
+    .navbar {
+      @import "partials/navbar-not-logged-in";
+    }
+  }
+
+  &.logged-in {
+    .navbar {
+      @import "partials/navbar-logged-in";
+    }
+  }
+}

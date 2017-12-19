@@ -27,10 +27,20 @@ interface PlanInterface
     /**
      * @return string
      */
+    public function getName();
+
+    /**
+     * @return string
+     */
     public function getShortTitle();
 
     /**
      * @return string
      */
     public function getLongTitle();
+
+    /**
+     * @return string
+     */
+    public function getSubtitle();
 }

@@ -23,6 +23,3 @@ monolog:
         console:
             type:   console
             channels: [!event, !doctrine]
-
-assetic:
-    use_controller: true

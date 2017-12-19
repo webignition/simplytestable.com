@@ -19,7 +19,11 @@ class PageController extends CacheableController
         return $this->handleAction(
             '@SimplyTestableWebsite/Page/plans.html.twig',
             [
-                'plans' => $plansService->getPlans(),
+                'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
+                    'personal',
+                    'agency',
+                    'business',
+                ])),
             ]
         );
     }
@@ -70,12 +74,12 @@ class PageController extends CacheableController
      */
     private function handleAction($view, $additionalParameters = [])
     {
-        if ($this->hasResponse()) {
-            return $this->getResponse();
-        }
-
         if ($this->isOldIE()) {
             return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
+        if ($this->hasResponse()) {
+            return $this->getResponse();
         }
 
         return $this->render($view, $additionalParameters);
