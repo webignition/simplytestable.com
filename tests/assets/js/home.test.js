@@ -2,6 +2,7 @@ const test = require('tape');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const home = require('../../../assets/js/home');
+const dataProvider = require('./home.dataprovider');
 
 const landingStripFixture = `<!DOCTYPE html>
                 <html>
@@ -28,21 +29,6 @@ const callHomeFunction = function (scrollTop) {
 };
 
 test('landing strip background image placement test', function (assert) {
-    const dataProvider = [
-        {
-            'scrollTop': -100,
-            'expectedBackgroundPositionY': '-310px'
-        },
-        {
-            'scrollTop': 0,
-            'expectedBackgroundPositionY': '-310px'
-        },
-        {
-            'scrollTop': 100,
-            'expectedBackgroundPositionY': '-335px'
-        }
-    ];
-
     dataProvider.forEach(function (fixture) {
         const landingStripeBackgroundPositionY = callHomeFunction(fixture.scrollTop);
 
