@@ -2,10 +2,11 @@ body.home-index {
   #landing-strip {
     .container {
       padding-top: 100px;
-      padding-bottom: 200px;
+      padding-bottom: 40px;
 
       @media (min-width: 768px) {
         padding-top: 140px;
+        padding-bottom: 40px;
       }
     }
   }
@@ -63,7 +64,7 @@ body.home-index {
     .fundamental {
       .fa {
         font-size: 100px;
-        margin-top: -10px;
+        margin-top: 70px;
       }
     }
   }
@@ -73,9 +74,6 @@ body.home-index {
   }
 
   #ctas {
-    margin-top: -200px;
-    margin-bottom: 0;
-
     .btn {
       display: block;
       width: 100%;
@@ -110,8 +108,7 @@ body.home-index {
     }
 
     @media (min-width: 768px) {
-      margin-top: -160px;
-      margin-bottom: 140px;
+      margin-top: 20px;
     }
   }
 }
