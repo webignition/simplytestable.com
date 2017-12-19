@@ -10,8 +10,10 @@
     "eslint-plugin-standard": "^3.0.1",
     "faucet": "^0.0.1",
     "jsdom": "^11.5.1",
+    "matchmedia-polyfill": "^0.3.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "smooth-scroll": "^12.1.5",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^18.0.0",
     "tape": "^4.8.0",
@@ -21,6 +23,6 @@
     "stylelint": "./node_modules/stylelint/bin/stylelint.js --config .stylelintrc assets/css/",
     "eslint": "./node_modules/eslint/bin/eslint.js --config .eslintrc.js assets/js/",
     "lint": "./node_modules/stylelint/bin/stylelint.js --config .stylelintrc assets/css/ & ./node_modules/eslint/bin/eslint.js --config .eslintrc.js assets/js/",
-    "test": "./node_modules/tape/bin/tape tests/**/js/*.test.js | ./node_modules/faucet/bin/cmd.js"
+    "test": "./node_modules/tape/bin/tape tests/assets/js/unit/*.test.js | ./node_modules/faucet/bin/cmd.js"
   }
 }

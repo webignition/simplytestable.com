@@ -9,17 +9,46 @@ require('../images/browser-icons/256-ie.png');
 
 require('classlist-polyfill');
 let home = require('./home');
+let Features = require('./features');
+let DisplaySize = require('./display-size');
 
-function ready (fn) {
-    if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
-        fn();
-    } else {
-        document.addEventListener('DOMContentLoaded', fn);
-    }
-}
-
-ready(function () {
+const onDomContentLoaded = function () {
     if (document.body.classList.contains('home-index')) {
         home(document, 'scroll');
     }
-});
+
+    if (document.body.classList.contains('page-features')) {
+        let displaySize = new DisplaySize(window);
+
+        displaySize.set(displaySize.derive());
+
+        const scrollOffsets = {
+            'lg': 240,
+            'md': 240,
+            'sm': 160
+        };
+
+        const affixOffsets = {
+            'lg': 60,
+            'md': 60,
+            'sm': 60
+        };
+
+        const scrollSpyOffset = 240;
+        const features = new Features(
+            document.getElementById('upper-nav'),
+            document.getElementById('landing-strip'),
+            scrollSpyOffset,
+            scrollOffsets[displaySize.get()],
+            affixOffsets[displaySize.get()]
+        );
+
+        window.addEventListener('resize', function () {
+            displaySize.set(displaySize.derive());
+            features.setScrollOffset(scrollOffsets[displaySize.get()]);
+            features.setAffixOffset(affixOffsets[displaySize.get()]);
+        }, true);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', onDomContentLoaded);
