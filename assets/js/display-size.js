@@ -1,25 +1,32 @@
-const displaySize = {
-    'derive': function () {
-        const displayClassIds = ['lg', 'md', 'sm', 'xs'];
-        let currentDisplayClassId = null;
+require('matchmedia-polyfill');
+const breakpoints = require('./breakpoints');
 
-        displayClassIds.forEach(function (displayClassId) {
-            const current = document.getElementById(displayClassId);
-            const displayStyle = window.getComputedStyle(current, null).display;
+class DisplaySize {
+    constructor (window) {
+        this.window = window;
+    }
 
-            if (displayStyle !== 'none') {
-                currentDisplayClassId = displayClassId;
+    derive () {
+        let displaySizeName = 'xs';
+
+        Object.keys(breakpoints).forEach(function (key) {
+            let mediaQuery = breakpoints[key];
+
+            if (window.matchMedia(mediaQuery).matches) {
+                displaySizeName = key;
             }
         });
 
-        return currentDisplayClassId;
-    },
-    'set': function (sizeName) {
-        document.body.dataset.displaySizeName = sizeName;
-    },
-    'get': function () {
-        return document.body.dataset.displaySizeName;
+        return displaySizeName;
     }
-};
 
-module.exports = displaySize;
+    set (sizeName) {
+        this.window.document.body.dataset.displaySizeName = sizeName;
+    }
+
+    get () {
+        return this.window.document.body.dataset.displaySizeName;
+    }
+}
+
+module.exports = DisplaySize;

@@ -10,7 +10,7 @@ require('../images/browser-icons/256-ie.png');
 require('classlist-polyfill');
 let home = require('./home');
 let Features = require('./features');
-let displaySize = require('./display-size');
+let DisplaySize = require('./display-size');
 
 const onDomContentLoaded = function () {
     if (document.body.classList.contains('home-index')) {
@@ -18,6 +18,8 @@ const onDomContentLoaded = function () {
     }
 
     if (document.body.classList.contains('page-features')) {
+        let displaySize = new DisplaySize(window);
+
         displaySize.set(displaySize.derive());
 
         const scrollOffsets = {
