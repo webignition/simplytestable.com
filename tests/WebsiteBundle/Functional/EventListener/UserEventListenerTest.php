@@ -4,14 +4,14 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
-use SimplyTestable\WebsiteBundle\Model\User;
-use SimplyTestable\WebsiteBundle\Services\UserSerializerService;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use webignition\SimplyTestableUserModel\User;
+use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 class UserEventListenerTest extends AbstractWebTestCase
 {
@@ -32,7 +32,7 @@ class UserEventListenerTest extends AbstractWebTestCase
             $user = new User();
             $user->setUsername($requestUser);
 
-            $userSerializerService = $this->container->get(UserSerializerService::class);
+            $userSerializerService = $this->container->get(UserSerializer::class);
             $serializedUser = $userSerializerService->serializeToString($user);
 
             $requestCookies[UserService::USER_COOKIE_KEY] = $serializedUser;

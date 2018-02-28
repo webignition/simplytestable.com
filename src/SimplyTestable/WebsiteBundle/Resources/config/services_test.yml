@@ -3,7 +3,7 @@ services:
     public: true
     arguments:
       - '@session'
-      - '@SimplyTestable\WebsiteBundle\Services\UserSerializerService'
+      - '@webignition\SimplyTestableUserSerializer\UserSerializer'
 
   SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand:
     public: true

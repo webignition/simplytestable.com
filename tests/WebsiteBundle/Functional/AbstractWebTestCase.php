@@ -2,14 +2,14 @@
 
 namespace Tests\WebsiteBundle\Functional;
 
-use SimplyTestable\WebsiteBundle\Model\User;
-use SimplyTestable\WebsiteBundle\Services\UserSerializerService;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
+use webignition\SimplyTestableUserModel\User;
+use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 abstract class AbstractWebTestCase extends WebTestCase
 {
@@ -91,7 +91,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         }
 
         if ($this->hasUser()) {
-            $userSerializerService = $this->container->get(UserSerializerService::class);
+            $userSerializerService = $this->container->get(UserSerializer::class);
 
             $cookie = new Cookie(
                 'simplytestable-user',
