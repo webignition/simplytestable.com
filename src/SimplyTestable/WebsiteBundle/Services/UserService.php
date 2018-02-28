@@ -1,9 +1,10 @@
 <?php
 namespace SimplyTestable\WebsiteBundle\Services;
 
-use SimplyTestable\WebsiteBundle\Model\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use webignition\SimplyTestableUserModel\User;
+use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 class UserService
 {
@@ -18,20 +19,20 @@ class UserService
     private $session;
 
     /**
-     * @var UserSerializerService
+     * @var UserSerializer
      */
-    private $userSerializerService;
+    private $userSerializer;
 
     /**
      * @param Session $session
-     * @param UserSerializerService $userSerializerService
+     * @param UserSerializer $userSerializer
      */
     public function __construct(
         Session $session,
-        UserSerializerService $userSerializerService
+        UserSerializer $userSerializer
     ) {
         $this->session = $session;
-        $this->userSerializerService = $userSerializerService;
+        $this->userSerializer = $userSerializer;
     }
 
     /**
@@ -39,10 +40,7 @@ class UserService
      */
     public function getPublicUser()
     {
-        $user = new User();
-        $user->setUsername(static::PUBLIC_USER_USERNAME);
-        $user->setPassword(static::PUBLIC_USER_PASSWORD);
-        return $user;
+        return new User(static::PUBLIC_USER_USERNAME, static::PUBLIC_USER_PASSWORD);
     }
 
     /**
@@ -70,7 +68,7 @@ class UserService
      */
     public function setUser(User $user)
     {
-        $this->session->set('user', $this->userSerializerService->serialize($user));
+        $this->session->set('user', $this->userSerializer->serialize($user));
     }
 
     /**
@@ -82,7 +80,7 @@ class UserService
             $this->setUser($this->getPublicUser());
         }
 
-        return $this->userSerializerService->unserialize($this->session->get('user'));
+        return $this->userSerializer->deserialize($this->session->get('user'));
     }
 
     public function clearUser()
@@ -102,12 +100,14 @@ class UserService
             return;
         }
 
-        $user = $this->userSerializerService->unserializedFromString($request->cookies->get(self::USER_COOKIE_KEY));
+        $user = $this->userSerializer->deserializeFromString($request->cookies->get(self::USER_COOKIE_KEY));
 
         if (is_null($user)) {
             return;
         }
 
         $this->setUser($user);
+
+        return;
     }
 }

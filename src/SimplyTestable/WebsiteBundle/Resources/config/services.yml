@@ -26,8 +26,9 @@ services:
               - 'web_client'
               - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
 
-  SimplyTestable\WebsiteBundle\Services\UserSerializerService:
-      arguments: ['%secret%']
+  webignition\SimplyTestableUserSerializer\UserSerializer:
+    arguments:
+      - '%secret%'
 
   SimplyTestable\WebsiteBundle\Services\PlansService:
     class:  SimplyTestable\WebsiteBundle\Services\PlansService
