@@ -1,14 +1,17 @@
 <?php
+
 namespace SimplyTestable\WebsiteBundle\Services;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use webignition\SimplyTestableUserModel\User;
+use webignition\SimplyTestableUserSerializer\InvalidCipherTextException;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 class UserService
 {
     const USER_COOKIE_KEY = 'simplytestable-user';
+    const SESSION_USER_KEY = 'user';
 
     const PUBLIC_USER_USERNAME = 'public';
     const PUBLIC_USER_PASSWORD = 'public';
@@ -95,15 +98,30 @@ class UserService
      */
     public function setUserFromRequest(Request $request)
     {
-        if (!$request->cookies->has(self::USER_COOKIE_KEY)) {
-            $this->setUser($this->getPublicUser());
-            return;
+        $user = null;
+
+        if ($request->cookies->has(self::USER_COOKIE_KEY)) {
+            try {
+                $user = $this->userSerializer->deserializeFromString(
+                    $request->cookies->get(self::USER_COOKIE_KEY)
+                );
+            } catch (InvalidCipherTextException $invalidHmacException) {
+            }
         }
 
-        $user = $this->userSerializer->deserializeFromString($request->cookies->get(self::USER_COOKIE_KEY));
+        if (empty($user)) {
+            $sessionUser = $this->session->get(self::SESSION_USER_KEY);
 
-        if (is_null($user)) {
-            return;
+            if (!empty($sessionUser)) {
+                try {
+                    $user = $this->userSerializer->deserialize($sessionUser);
+                } catch (InvalidCipherTextException $invalidHmacException) {
+                }
+            }
+        }
+
+        if (empty($user)) {
+            $user = $this->getPublicUser();
         }
 
         $this->setUser($user);

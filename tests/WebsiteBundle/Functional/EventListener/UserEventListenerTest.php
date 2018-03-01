@@ -19,23 +19,26 @@ class UserEventListenerTest extends AbstractWebTestCase
      * @dataProvider onKernelControllerDataProvider
      *
      * @param int $requestType
-     * @param string $requestUser
+     * @param string $cookieUser
+     * @param string $sessionUser
      * @param string $expectedUser
      */
-    public function testOnKernelController($requestType, $requestUser, $expectedUser)
+    public function testOnKernelController($requestType, $cookieUser, $sessionUser, $expectedUser)
     {
         $userEventListener = $this->container->get('simplytestable.eventlistener.user');
+        $userSerializerService = $this->container->get(UserSerializer::class);
+        $session = $this->container->get('session');
 
         $requestCookies = [];
 
-        if (!empty($requestUser)) {
-            $user = new User();
-            $user->setUsername($requestUser);
+        if (!empty($cookieUser)) {
+            $user = new User($cookieUser, 'password');
+            $requestCookies[UserService::USER_COOKIE_KEY] = $userSerializerService->serializeToString($user);
+        }
 
-            $userSerializerService = $this->container->get(UserSerializer::class);
-            $serializedUser = $userSerializerService->serializeToString($user);
-
-            $requestCookies[UserService::USER_COOKIE_KEY] = $serializedUser;
+        if (!empty($sessionUser)) {
+            $user = new User($sessionUser, 'password');
+            $session->set(UserService::SESSION_USER_KEY, $userSerializerService->serialize($user));
         }
 
         /* @var KernelInterface $kernel */
@@ -70,17 +73,26 @@ class UserEventListenerTest extends AbstractWebTestCase
         return [
             'sub request' => [
                 'requestType' => HttpKernelInterface::SUB_REQUEST,
-                'requestUser' => null,
+                'cookieUser' => null,
+                'sessionUser' => null,
                 'expectedUser' => 'public',
             ],
             'no user' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestUser' => null,
+                'cookieUser' => null,
+                'sessionUser' => null,
                 'expectedUser' => 'public',
             ],
-            'has user' => [
+            'has user in cookie' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
-                'requestUser' => 'user@example.com',
+                'cookieUser' => 'user@example.com',
+                'sessionUser' => null,
+                'expectedUser' => 'user@example.com',
+            ],
+            'has user in session' => [
+                'requestType' => HttpKernelInterface::MASTER_REQUEST,
+                'cookieUser' => null,
+                'sessionUser' => 'user@example.com',
                 'expectedUser' => 'user@example.com',
             ],
         ];

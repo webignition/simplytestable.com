@@ -5,6 +5,7 @@ php:
   - 5.6
   - 7
   - 7.1
+  - 7.2
 
 env:
   - SYMFONY_ENV=test
@@ -36,7 +37,3 @@ script:
   - yarn test
   - yarn run encore production
   - composer ci
-
-matrix:
-  allow_failures:
-  - php: 7.1
