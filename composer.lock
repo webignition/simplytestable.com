@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "409881dcf81fabf859be9ccf864f0fc4",
+    "content-hash": "efeb1ef0fad4aed0660504f45decc539",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1731,16 +1731,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434"
+                "reference": "dc270d5fec418cc6ac983671dba5d80ffaffb142"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
-                "reference": "d539ccba2b4dce515de04f16b7ed7ae5b9eeb434",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/dc270d5fec418cc6ac983671dba5d80ffaffb142",
+                "reference": "dc270d5fec418cc6ac983671dba5d80ffaffb142",
                 "shasum": ""
             },
             "require": {
@@ -1772,7 +1772,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2018-01-11T05:54:03+00:00"
+            "time": "2018-02-28T22:10:01+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2552,16 +2552,16 @@
         },
         {
             "name": "webignition/simplytestable-user-serializer",
-            "version": "0.1",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/simplytestable-user-serializer.git",
-                "reference": "bfdf32be86791bfa8bac53cdcbd3de8f872f0cf0"
+                "reference": "23157d4e02d2a726ab0d4a8e1db67eb49235f0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/simplytestable-user-serializer/zipball/bfdf32be86791bfa8bac53cdcbd3de8f872f0cf0",
-                "reference": "bfdf32be86791bfa8bac53cdcbd3de8f872f0cf0",
+                "url": "https://api.github.com/repos/webignition/simplytestable-user-serializer/zipball/23157d4e02d2a726ab0d4a8e1db67eb49235f0fd",
+                "reference": "23157d4e02d2a726ab0d4a8e1db67eb49235f0fd",
                 "shasum": ""
             },
             "require": {
@@ -2591,7 +2591,7 @@
             ],
             "description": "Serializes a SimplyTestable user to a string",
             "homepage": "https://github.com/webignition/simplytestable-user-serializer",
-            "time": "2018-02-28T18:10:27+00:00"
+            "time": "2018-03-01T12:09:29+00:00"
         },
         {
             "name": "webignition/url",
