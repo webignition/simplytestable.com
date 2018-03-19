@@ -1,0 +1,8 @@
+# Define all commands as public to allow them to be retrieved from the container in functional tests
+services:
+  SimplyTestable\WebsiteBundle\Command\:
+      resource: '../../../Command'
+      public: true
+      autowire: true
+      autoconfigure: true
+      tags: ['console.command']

@@ -4,6 +4,7 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
+use SimplyTestable\WebsiteBundle\EventListener\UserEventListener;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -25,7 +26,7 @@ class UserEventListenerTest extends AbstractWebTestCase
      */
     public function testOnKernelController($requestType, $cookieUser, $sessionUser, $expectedUser)
     {
-        $userEventListener = $this->container->get('simplytestable.eventlistener.user');
+        $userEventListener = $this->container->get(UserEventListener::class);
         $userSerializerService = $this->container->get(UserSerializer::class);
         $session = $this->container->get('session');
 

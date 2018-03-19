@@ -1,16 +1,13 @@
 services:
-  simplytestable.eventlistener.cachedresponse:
-    class: SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener
-    arguments:
-      - '@SimplyTestable\WebsiteBundle\Services\UserService'
-      - '@SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService'
-      - '@logger'
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-  simplytestable.eventlistener.user:
-    class: SimplyTestable\WebsiteBundle\EventListener\UserEventListener
-    arguments:
-        - '@SimplyTestable\WebsiteBundle\Services\UserService'
+  SimplyTestable\WebsiteBundle\EventListener\UserEventListener:
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
