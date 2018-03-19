@@ -3,7 +3,7 @@
 namespace SimplyTestable\WebsiteBundle\Services;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use webignition\SimplyTestableUserModel\User;
 use webignition\SimplyTestableUserSerializer\InvalidCipherTextException;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
@@ -17,7 +17,7 @@ class UserService
     const PUBLIC_USER_PASSWORD = 'public';
 
     /**
-     * @var Session
+     * @var SessionInterface
      */
     private $session;
 
@@ -27,11 +27,11 @@ class UserService
     private $userSerializer;
 
     /**
-     * @param Session $session
+     * @param SessionInterface $session
      * @param UserSerializer $userSerializer
      */
     public function __construct(
-        Session $session,
+        SessionInterface $session,
         UserSerializer $userSerializer
     ) {
         $this->session = $session;
