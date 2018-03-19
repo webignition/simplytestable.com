@@ -1,7 +1,8 @@
 <?php
+
 namespace SimplyTestable\WebsiteBundle\Services;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 
@@ -10,7 +11,7 @@ class CacheValidatorHeadersService
     const ENTITY_NAME = 'SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders';
 
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     private $entityManager;
 
@@ -20,9 +21,9 @@ class CacheValidatorHeadersService
     private $entityRepository;
 
     /**
-     * @param EntityManager $entityManager
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
@@ -68,9 +69,12 @@ class CacheValidatorHeadersService
      */
     private function fetch($identifier)
     {
-        return $this->getEntityRepository()->findOneBy(array(
+        /* @var CacheValidatorHeaders $cacheValidatorHeaders */
+        $cacheValidatorHeaders = $this->getEntityRepository()->findOneBy([
             'identifier' => $identifier
-        ));
+        ]);
+
+        return $cacheValidatorHeaders;
     }
 
     /**
