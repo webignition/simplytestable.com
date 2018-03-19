@@ -1,0 +1,46 @@
+## Services that need to be public to allow them to be retrieved from the container in functional tests
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
+      arguments: ['%not_found_redirect_map%', '%base_url%']
+      calls:
+        - method: addRouter
+          arguments:
+              - 'local'
+              - '@router'
+        - method: addRouter
+          arguments:
+              - 'web_client'
+              - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
+
+  SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
+      arguments:
+        - "@=service('kernel').getRootDir()"
+        - "@=service('kernel').getCacheDir()"
+
+  SimplyTestable\WebsiteBundle\Services\PlansService:
+    arguments:
+      - '%plans%'
+      - '%plan_distinctions%'
+
+  webignition\SimplyTestableUserSerializer\UserSerializer:
+    arguments:
+      - '%secret%'
+
+  SimplyTestable\WebsiteBundle\Services\WebClientRouter:
+      arguments:
+        - '%web_client_url%'
+        - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
+        - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
+
+  SimplyTestable\WebsiteBundle\Services\ResourceLocator:
+
+  SimplyTestable\WebsiteBundle\Services\TestimonialService:
+
+  SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
+
+  SimplyTestable\WebsiteBundle\Services\UserService:

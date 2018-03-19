@@ -31,7 +31,6 @@ services:
       - '%secret%'
 
   SimplyTestable\WebsiteBundle\Services\PlansService:
-    class:  SimplyTestable\WebsiteBundle\Services\PlansService
     arguments:
       - '%plans%'
       - '%plan_distinctions%'

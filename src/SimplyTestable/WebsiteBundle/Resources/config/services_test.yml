@@ -1,34 +1,38 @@
-services:
-  SimplyTestable\WebsiteBundle\Services\UserService:
-    public: true
-    arguments:
-      - '@session'
-      - '@webignition\SimplyTestableUserSerializer\UserSerializer'
+imports:
+  - { resource: services_test/commands.yml }
+  - { resource: services_test/public.yml }
 
-  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand:
-    public: true
-    arguments:
-        - '@SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService'
-    tags:
-      - { name: console.command }
-
-  SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
-    public: true
-    arguments:
-        - '@router'
-        - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
-        - '@templating'
-        - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
-    tags:
-      - { name: console.command }
-
-  SimplyTestable\WebsiteBundle\Services\ResourceLocator:
-    public: true
-    arguments:
-      - "@kernel"
-
-  SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
-    public: true
-
-  SimplyTestable\WebsiteBundle\Services\TestimonialService:
-    public: true
+#services:
+#  SimplyTestable\WebsiteBundle\Services\UserService:
+#    public: true
+#    arguments:
+#      - '@session'
+#      - '@webignition\SimplyTestableUserSerializer\UserSerializer'
+#
+#  SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand:
+#    public: true
+#    arguments:
+#        - '@SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService'
+#    tags:
+#      - { name: console.command }
+#
+#  SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+#    public: true
+#    arguments:
+#        - '@router'
+#        - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
+#        - '@templating'
+#        - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
+#    tags:
+#      - { name: console.command }
+#
+#  SimplyTestable\WebsiteBundle\Services\ResourceLocator:
+#    public: true
+#    arguments:
+#      - "@kernel"
+#
+#  SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
+#    public: true
+#
+#  SimplyTestable\WebsiteBundle\Services\TestimonialService:
+#    public: true
