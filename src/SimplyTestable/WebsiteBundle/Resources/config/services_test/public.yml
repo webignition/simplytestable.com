@@ -5,6 +5,14 @@ services:
     autoconfigure: true
     public: true
 
+  SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+  SimplyTestable\WebsiteBundle\EventListener\UserEventListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
   SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
       arguments: ['%not_found_redirect_map%', '%base_url%']
       calls:
