@@ -34,18 +34,17 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
     public function redirectOutdatedBrowserDataProvider()
     {
         $urls = [
-//            '/',
-//            '/tms/',
-//            '/plans/',
-//            '/features/',
-//            '/roadmap/',
+            '/',
+            '/tms/',
+            '/plans/',
+            '/features/',
             '/account-benefits/',
-//            '/plans/demo/',
-//            '/plans/free/',
-//            '/plans/personal/',
-//            '/plans/agency/',
-//            '/plans/business/',
-//            '/plans/enterprise/',
+            '/plans/demo/',
+            '/plans/free/',
+            '/plans/personal/',
+            '/plans/agency/',
+            '/plans/business/',
+            '/plans/enterprise/',
         ];
 
         $sourceTestDataCollection = [
@@ -58,6 +57,32 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
                 'userAgentString' => 'Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)',
                 'expectedStatusCode' => 302,
                 'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+            ],
+            'IE7' => [
+                'userAgent' => 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+                'expectedStatusCode' => 302,
+                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+            ],
+            'IE8' => [
+                'userAgent' => 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)',
+                'expectedStatusCode' => 302,
+                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+            ],
+            'IE9' => [
+                'userAgent' => 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))',
+                'expectedStatusCode' => 302,
+                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+            ],
+            'IE10' => [
+                'userAgent' => 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
+                'expectedStatusCode' => 200,
+                'expectedResponseLocation' => null,
+            ],
+            'Chrome 64 Windows' => [
+                'userAgent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                    .'Chrome/64.0.3282.186 Safari/537.36',
+                'expectedStatusCode' => 200,
+                'expectedResponseLocation' => null,
             ],
         ];
 

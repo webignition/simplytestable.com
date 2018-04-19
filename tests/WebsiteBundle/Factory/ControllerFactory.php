@@ -9,7 +9,6 @@ use SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController;
 use SimplyTestable\WebsiteBundle\Controller\PageController;
 use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
-use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -108,7 +107,6 @@ class ControllerFactory
 
         $controller = new $className(
             $requestStack,
-            $this->container->get(UserAgentDetector::class),
             $this->container->get(TestimonialService::class),
             $this->container->get(UserService::class),
             $this->container->get(WebClientRouter::class),
