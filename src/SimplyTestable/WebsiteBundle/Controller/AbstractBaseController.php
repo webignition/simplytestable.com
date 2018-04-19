@@ -4,7 +4,6 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
-use SimplyTestable\WebsiteBundle\Services\UserAgentDetector;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -13,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment as TwigEnvironment;
+use webignition\IEDetector\IEDetector;
 
 abstract class AbstractBaseController
 {
@@ -20,11 +20,6 @@ abstract class AbstractBaseController
      * @var RequestStack
      */
     protected $requestStack;
-
-    /**
-     * @var UserAgentDetector
-     */
-    private $userAgentDetector;
 
     /**
      * @var TestimonialService
@@ -53,7 +48,6 @@ abstract class AbstractBaseController
 
     /**
      * @param RequestStack $requestStack
-     * @param UserAgentDetector $userAgentDetector
      * @param TestimonialService $testimonialService
      * @param UserService $userService
      * @param WebClientRouter $webClientRouter
@@ -62,7 +56,6 @@ abstract class AbstractBaseController
      */
     public function __construct(
         RequestStack $requestStack,
-        UserAgentDetector $userAgentDetector,
         TestimonialService $testimonialService,
         UserService $userService,
         WebClientRouter $webClientRouter,
@@ -70,7 +63,6 @@ abstract class AbstractBaseController
         RouterInterface $router
     ) {
         $this->requestStack = $requestStack;
-        $this->userAgentDetector = $userAgentDetector;
         $this->testimonialService = $testimonialService;
         $this->userService = $userService;
         $this->webClientRouter = $webClientRouter;
@@ -113,9 +105,11 @@ abstract class AbstractBaseController
     protected function isOldIE()
     {
         $currentRequest = $this->requestStack->getCurrentRequest();
-        $this->userAgentDetector->setUserAgentString($currentRequest->headers->get('user-agent'));
+        $userAgentString = $currentRequest->headers->get('user-agent');
 
-        return $this->userAgentDetector->isOldIE();
+        return IEDetector::isIE6($userAgentString) ||
+        IEDetector::isIE7($userAgentString) ||
+        IEDetector::isIE8($userAgentString);
     }
 
     /**
