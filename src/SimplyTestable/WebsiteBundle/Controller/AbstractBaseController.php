@@ -108,8 +108,9 @@ abstract class AbstractBaseController
         $userAgentString = $currentRequest->headers->get('user-agent');
 
         return IEDetector::isIE6($userAgentString) ||
-        IEDetector::isIE7($userAgentString) ||
-        IEDetector::isIE8($userAgentString);
+            IEDetector::isIE7($userAgentString) ||
+            IEDetector::isIE8($userAgentString) ||
+            IEDetector::isIE9($userAgentString);
     }
 
     /**
