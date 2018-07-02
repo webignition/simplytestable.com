@@ -2,9 +2,10 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
+use Postmark\Models\PostmarkException;
+use Postmark\PostmarkClient;
 use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
 use SimplyTestable\WebsiteBundle\Services\TestimonialService;
-use Swift_Mailer;
 use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +23,9 @@ class ExceptionController extends BaseExceptionController
     private $notFoundRedirectService;
 
     /**
-     * @var Swift_Mailer
+     * @var PostmarkClient
      */
-    private $mailer;
+    private $postmarkClient;
 
     /**
      * @var TestimonialService
@@ -35,19 +36,19 @@ class ExceptionController extends BaseExceptionController
      * @param bool $debug
      * @param TwigEnvironment $twig
      * @param NotFoundRedirectService $notFoundRedirectService
-     * @param Swift_Mailer $mailer
+     * @param PostmarkClient $postmarkClient
      * @param TestimonialService $testimonialService
      */
     public function __construct(
         $debug,
         TwigEnvironment $twig,
         NotFoundRedirectService $notFoundRedirectService,
-        Swift_Mailer $mailer,
+        PostmarkClient $postmarkClient,
         TestimonialService $testimonialService
     ) {
         parent::__construct($twig, $debug);
         $this->notFoundRedirectService = $notFoundRedirectService;
-        $this->mailer = $mailer;
+        $this->postmarkClient = $postmarkClient;
         $this->testimonialService = $testimonialService;
     }
 
@@ -153,24 +154,30 @@ class ExceptionController extends BaseExceptionController
      */
     private function sendDeveloperEmail(FlattenException $exception)
     {
-        $message = \Swift_Message::newInstance();
-
-        $message->setSubject(sprintf(
-            'Exception [%s,%s]',
+        $subject = sprintf(
+            'simplytestable.com Exception [%s,%s]',
             $exception->getCode(),
             $exception->getStatusCode()
-        ));
-        $message->setFrom('exceptions@simplytestable.com');
-        $message->setTo('jon@simplytestable.com');
+        );
 
-        $message->setBody($this->twig->render('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
+        $messageBody = $this->twig->render('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
             'status_code' => $exception->getStatusCode(),
             'status_text' => '"status text"',
             'exception' => $exception,
             'remote_addr' => $_SERVER['REMOTE_ADDR'],
             'user_agent' => $_SERVER['HTTP_USER_AGENT']
-        )));
+        ));
 
-        $this->mailer->send($message);
+        try {
+            $this->postmarkClient->sendEmail(
+                'robot@simplytestable.com',
+                'jon@simplytestable.com',
+                $subject,
+                null,
+                $messageBody
+            );
+        } catch (PostmarkException $postmarkException) {
+            // Intentionally do nothing
+        }
     }
 }

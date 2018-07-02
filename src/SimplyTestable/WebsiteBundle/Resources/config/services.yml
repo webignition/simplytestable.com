@@ -34,3 +34,7 @@ services:
     arguments:
       - '%plans%'
       - '%plan_distinctions%'
+
+  Postmark\PostmarkClient:
+    arguments:
+      - '%postmark_api_key%'
