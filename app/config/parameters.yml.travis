@@ -14,3 +14,4 @@ parameters:
     secret: SetThis!
     database_path: null
     simplytestable_session_savepath: /tmp
+    postmark_api_key: "postmark api key"
