@@ -3,8 +3,8 @@ services:
     class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
     public: true
     arguments:
-        $debug: '%kernel.debug%'
-        $twig: '@twig'
-        $notFoundRedirectService: '@SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService'
-        $mailer: "@mailer"
-        $testimonialService: '@SimplyTestable\WebsiteBundle\Services\TestimonialService'
+      - '%kernel.debug%'
+      - '@twig'
+      - '@SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService'
+      - '@Postmark\PostmarkClient'
+      - '@SimplyTestable\WebsiteBundle\Services\TestimonialService'
