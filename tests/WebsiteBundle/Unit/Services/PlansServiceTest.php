@@ -7,7 +7,7 @@ use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
 use SimplyTestable\WebsiteBundle\Services\PlansService;
 use Tests\WebsiteBundle\Utility\ConfigResourceLoader;
 
-class PlansServiceTest extends \PHPUnit_Framework_TestCase
+class PlansServiceTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var string[]
