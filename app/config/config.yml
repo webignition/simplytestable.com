@@ -4,6 +4,9 @@ imports:
     - { resource: services.yml }
     - { resource: "@SimplyTestableWebsiteBundle/Resources/config/services.yml" }
 
+parameters:
+    container.autowiring.strict_mode: true
+
 framework:
     #esi:             ~
     #translator:      { fallback: %locale% }
