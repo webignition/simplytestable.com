@@ -24,6 +24,12 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    SimplyTestable\WebsiteBundle\Command\:
+        resource: '../../src/SimplyTestable/WebsiteBundle/Command'
+        autowire: true
+        autoconfigure: true
+        tags: ['console.command']
+
     SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
