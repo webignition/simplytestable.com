@@ -1,8 +1,101 @@
-simply_testable_website:
-    resource: "@SimplyTestableWebsiteBundle/Resources/config/routing.yml"
-    prefix:   /
+home_index:
+    path:  /
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:home }
 
-# Internal routing configuration to handle ESI
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal
+page_plans:
+    path:  /plans/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:plans }
+
+page_features:
+    path:  /features/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:features }
+
+page_roadmap:
+    path: /roadmap/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: home_index
+        permanent: true
+
+page_accountbenefits:
+    path:  /account-benefits/
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:accountBenefits }
+
+plandetails_index:
+    path:  /plans/{name}/
+    defaults: { _controller: SimplyTestableWebsiteBundle:PlanDetails:index }
+
+outdatedbrowser_index:
+    path:  /outdated-browser/
+    defaults: { _controller: SimplyTestableWebsiteBundle:OutdatedBrowser:index }
+
+sign_out_submit:
+    path:  /signout/
+    defaults: { _controller: SimplyTestableWebsiteBundle:User:signOutSubmit }
+
+landingpage_tms:
+    path: /tms/
+    defaults: { _controller: SimplyTestableWebsiteBundle:LandingPage:index }
+
+redirect_limit_test_1:
+    path:  /redirect-limit-test/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_2
+        permanent: true
+
+redirect_limit_test_2:
+    path:  /redirect-limit-test/2/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_3
+        permanent: true
+
+redirect_limit_test_3:
+    path:  /redirect-limit-test/3/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_4
+        permanent: true
+
+redirect_limit_test_4:
+    path:  /redirect-limit-test/4/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_5
+        permanent: true
+
+redirect_limit_test_5:
+    path:  /redirect-limit-test/5/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_6
+        permanent: true
+
+redirect_limit_test_6:
+    path:  /redirect-limit-test/6/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_limit_test_7
+        permanent: true
+
+redirect_limit_test_7:
+    path:  /redirect-limit-test/7/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: roadmap
+        permanent: true
+
+redirect_loop_test_1:
+    path:  /redirect-loop-test/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_loop_test_2
+        permanent: true
+
+redirect_loop_test_2:
+    path:  /redirect-loop-test/2/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: redirect_loop_test_1
+        permanent: true
