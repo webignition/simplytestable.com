@@ -15,16 +15,4 @@ class OutdatedBrowserControllerTest extends AbstractWebTestCase
 
         $this->assertTrue($response->isSuccessful());
     }
-
-    public function testIndexActionHasResponse()
-    {
-        $response = new Response();
-
-        $controller = $this->container->get(OutdatedBrowserController::class);
-        $controller->setResponse($response);
-
-        $retrievedResponse = $controller->indexAction();
-
-        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
-    }
 }

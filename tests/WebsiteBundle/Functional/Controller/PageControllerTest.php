@@ -4,7 +4,6 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 
 use SimplyTestable\WebsiteBundle\Controller\PageController;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\WebsiteBundle\Factory\TestServiceProvider;
 
@@ -95,24 +94,6 @@ class PageControllerTest extends AbstractControllerTest
                 'url' => '/',
             ],
         ];
-    }
-
-    /**
-     * @dataProvider actionCallDataProvider
-     *
-     * @param callable $actionCall
-     */
-    public function testActionHasResponse(callable $actionCall)
-    {
-        $request = new Request();
-        $this->container->get('request_stack')->push($request);
-
-        $response = new Response();
-        $this->controller->setResponse($response);
-
-        $retrievedResponse = $actionCall($this->controller, $this->testServiceProvider);
-
-        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
     }
 
     /**

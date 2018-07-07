@@ -100,22 +100,6 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
         ];
     }
 
-    public function testIndexActionHasResponse()
-    {
-        $request = new Request();
-        $this->container->get('request_stack')->push($request);
-
-        $response = new Response();
-        $this->controller->setResponse($response);
-
-        $retrievedResponse = $this->controller->indexAction(
-            $this->testServiceProvider->getPlansService(),
-            'demo'
-        );
-
-        $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
-    }
-
     public function testIndexActionForOutdatedBrowser()
     {
         $request = new Request();

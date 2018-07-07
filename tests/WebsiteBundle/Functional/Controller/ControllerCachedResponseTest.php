@@ -14,6 +14,7 @@ class ControllerCachedResponseTest extends AbstractControllerTest
      * @dataProvider cachedResponseHandlingDataProvider
      *
      * @param string $url
+     * @param string $ifNoneMatchHeader
      * @param array $expectedCacheValidatorHeaderParameters
      */
     public function testCachedResponseHandling(
@@ -36,8 +37,6 @@ class ControllerCachedResponseTest extends AbstractControllerTest
                 'HTTP_IF_NONE_MATCH' => $ifNoneMatchHeader,
             ],
         ]);
-
-//        $this->getClientResponse()->getStatusCode();
 
         $this->assertEquals(304, $this->getClientResponse()->getStatusCode());
 
@@ -145,15 +144,5 @@ class ControllerCachedResponseTest extends AbstractControllerTest
                 ],
             ],
         ];
-    }
-
-    /**
-     * @param Crawler $crawler
-     *
-     * @return Crawler
-     */
-    private function getNavBar(Crawler $crawler)
-    {
-        return $crawler->filter('.navbar');
     }
 }
