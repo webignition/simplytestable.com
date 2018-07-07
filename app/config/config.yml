@@ -1,6 +1,0 @@
-imports:
-    - { resource: services.yml }
-
-sensio_framework_extra:
-    router:
-        annotations: false
