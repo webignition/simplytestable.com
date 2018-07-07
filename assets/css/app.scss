@@ -37,4 +37,8 @@ body {
   &.plandetails-index {
     @import "page/plan-details";
   }
+
+  &.page-features {
+    @import "page/features";
+  }
 }
