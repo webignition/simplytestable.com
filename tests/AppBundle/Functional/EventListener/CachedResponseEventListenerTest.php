@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\EventListener;
+namespace Tests\AppBundle\Functional\EventListener;
 
 use Mockery;
-use SimplyTestable\WebsiteBundle\Controller\PageController;
+use AppBundle\Controller\PageController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use AppBundle\EventListener\CachedResponseEventListener;
 use Symfony\Component\HttpFoundation\Request;

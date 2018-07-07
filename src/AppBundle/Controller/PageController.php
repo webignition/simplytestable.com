@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Controller;
+namespace AppBundle\Controller;
 
 use AppBundle\Services\DecoratedPlanFactory;
 use AppBundle\Services\PlansService;

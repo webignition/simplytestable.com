@@ -3,7 +3,7 @@
 namespace AppBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
+use AppBundle\Interfaces\Controller\Cacheable as CacheableController;
 use AppBundle\Model\CacheValidatorIdentifier;
 use AppBundle\Services\CacheableResponseFactory;
 use AppBundle\Services\CacheValidatorHeadersService;

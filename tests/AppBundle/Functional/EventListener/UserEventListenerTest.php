@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\AppBundle\Functional\Controller;
 
 use Mockery;
-use SimplyTestable\WebsiteBundle\Controller\PageController;
+use AppBundle\Controller\PageController;
 use AppBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;

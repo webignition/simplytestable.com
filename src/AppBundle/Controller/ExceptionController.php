@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Controller;
+namespace AppBundle\Controller;
 
 use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;

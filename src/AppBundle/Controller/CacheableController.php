@@ -1,8 +1,8 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Controller;
+namespace AppBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable;
+use AppBundle\Interfaces\Controller\Cacheable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

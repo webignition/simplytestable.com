@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\AppBundle\Functional\Controller;
 
 use Doctrine\ORM\EntityRepository;
-use SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController;
-use SimplyTestable\WebsiteBundle\Controller\PageController;
-use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
+use AppBundle\Controller\OutdatedBrowserController;
+use AppBundle\Controller\PageController;
+use AppBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

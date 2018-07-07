@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\AppBundle\Functional\Controller;
 
 use Symfony\Component\DomCrawler\Crawler;
 use Tests\WebsiteBundle\DataProvider\RouteDataProviderTrait;

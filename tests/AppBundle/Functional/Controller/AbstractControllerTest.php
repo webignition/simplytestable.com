@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Controller;
+namespace Tests\AppBundle\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;

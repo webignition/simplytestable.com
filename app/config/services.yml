@@ -19,8 +19,8 @@ services:
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    SimplyTestable\WebsiteBundle\Controller\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/Controller'
+    AppBundle\Controller\:
+        resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
 
@@ -43,8 +43,7 @@ services:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
 
-    SimplyTestable\WebsiteBundle\Controller\ExceptionController:
-      class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
+    AppBundle\Controller\ExceptionController:
       public: true
       arguments:
         $debug: '%kernel.debug%'

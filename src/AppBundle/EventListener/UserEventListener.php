@@ -2,7 +2,7 @@
 
 namespace AppBundle\EventListener;
 
-use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
+use AppBundle\Controller\AbstractBaseController;
 use AppBundle\Services\UserService;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
