@@ -1,6 +1,6 @@
 home_index:
     path:  /
-    defaults: { _controller: SimplyTestableWebsiteBundle:Home:index }
+    defaults: { _controller: SimplyTestableWebsiteBundle:Page:home }
 
 page_plans:
     path:  /plans/
