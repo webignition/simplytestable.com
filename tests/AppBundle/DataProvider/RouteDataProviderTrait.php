@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WebsiteBundle\DataProvider;
+namespace Tests\AppBundle\DataProvider;
 
 trait RouteDataProviderTrait
 {

@@ -5,7 +5,7 @@ namespace Tests\AppBundle\Unit\Services;
 use AppBundle\Model\Plan\DistinctionInterface;
 use AppBundle\Model\Plan\PlanInterface;
 use AppBundle\Services\PlansService;
-use Tests\WebsiteBundle\Utility\ConfigParameterResourceLoader;
+use Tests\AppBundle\Utility\ConfigParameterResourceLoader;
 
 class PlansServiceTest extends \PHPUnit\Framework\TestCase
 {

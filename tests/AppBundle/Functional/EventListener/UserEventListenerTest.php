@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 use webignition\SimplyTestableUserModel\User;
 
 class UserEventListenerTest extends AbstractWebTestCase

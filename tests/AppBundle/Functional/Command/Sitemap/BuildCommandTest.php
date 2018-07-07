@@ -5,7 +5,7 @@ namespace Tests\AppBundle\Functional\Command\Sitemap;
 use AppBundle\Command\Sitemap\BuildCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 class BuildCommandTest extends AbstractWebTestCase
 {

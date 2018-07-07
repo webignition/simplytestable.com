@@ -4,10 +4,10 @@ namespace Tests\AppBundle\Functional\Command\CacheValidator;
 
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Command\CacheValidator\ClearCommand;
-use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
+use AppBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 class ClearCommandTest extends AbstractWebTestCase
 {

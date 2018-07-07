@@ -4,13 +4,13 @@ namespace Tests\AppBundle\Functional\EventListener;
 
 use Mockery;
 use AppBundle\Controller\PageController;
-use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
+use AppBundle\Entity\CacheValidatorHeaders;
 use AppBundle\EventListener\CachedResponseEventListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 class CachedResponseEventListenerTest extends AbstractWebTestCase
 {

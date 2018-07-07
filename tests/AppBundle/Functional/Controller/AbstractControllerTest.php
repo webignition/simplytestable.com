@@ -3,7 +3,7 @@
 namespace Tests\AppBundle\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 abstract class AbstractControllerTest extends AbstractWebTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Services;
+namespace Tests\AppBundle\Functional\Services;
 
 use Tests\AppBundle\Functional\AbstractWebTestCase;
 

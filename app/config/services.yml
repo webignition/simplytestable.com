@@ -11,12 +11,6 @@ services:
         resource: '../../src/AppBundle/*'
         exclude: '../../src/AppBundle/{Entity,Repository}'
 
-    SimplyTestable\WebsiteBundle\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/*'
-        # you can exclude directories or files
-        # but if a service is unused, it's removed anyway
-        exclude: '../../src/SimplyTestable/WebsiteBundle/{Entity,Repository,Tests}'
-
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
     AppBundle\Controller\:

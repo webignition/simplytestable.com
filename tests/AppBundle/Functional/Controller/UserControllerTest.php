@@ -2,7 +2,7 @@
 
 namespace Tests\AppBundle\Functional\Controller;
 
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 class UserControllerTest extends AbstractWebTestCase
 {

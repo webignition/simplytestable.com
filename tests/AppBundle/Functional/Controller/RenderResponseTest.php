@@ -3,7 +3,7 @@
 namespace Tests\AppBundle\Functional\Controller;
 
 use Symfony\Component\DomCrawler\Crawler;
-use Tests\WebsiteBundle\DataProvider\RouteDataProviderTrait;
+use Tests\AppBundle\DataProvider\RouteDataProviderTrait;
 
 class RenderResponseTest extends AbstractControllerTest
 {

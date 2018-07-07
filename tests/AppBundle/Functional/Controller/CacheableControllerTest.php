@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use AppBundle\Controller\OutdatedBrowserController;
 use AppBundle\Controller\PageController;
 use AppBundle\Controller\PlanDetailsController;
-use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
+use AppBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\AppBundle\Factory\TestServiceProvider;

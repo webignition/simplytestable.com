@@ -4,12 +4,10 @@ namespace AppBundle\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
+use AppBundle\Entity\CacheValidatorHeaders;
 
 class CacheValidatorHeadersService
 {
-    const ENTITY_NAME = 'SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders';
-
     /**
      * @var EntityManagerInterface
      */
@@ -100,7 +98,7 @@ class CacheValidatorHeadersService
     public function getEntityRepository()
     {
         if (is_null($this->entityRepository)) {
-            $this->entityRepository = $this->entityManager->getRepository(self::ENTITY_NAME);
+            $this->entityRepository = $this->entityManager->getRepository(CacheValidatorHeaders::class);
         }
 
         return $this->entityRepository;
