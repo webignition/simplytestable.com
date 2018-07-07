@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block body_class %}{{ parent() }} page-plans {% endblock %}
+
 {% macro cta_button(plan_name, is_logged_in, web_client_urls) %}
     {% if is_logged_in %}
         <form method="post" action="{{ web_client_urls.plan_subscribe }}">
