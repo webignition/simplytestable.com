@@ -8,6 +8,7 @@ use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\WebsiteBundle\Factory\TestServiceProvider;
 use webignition\SimplyTestableUserModel\User;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
 
@@ -24,6 +25,11 @@ abstract class AbstractWebTestCase extends WebTestCase
     protected $container;
 
     /**
+     * @var TestServiceProvider
+     */
+    protected $testServiceProvider;
+
+    /**
      * {@inheritdoc}
      */
     protected function setUp()
@@ -32,6 +38,8 @@ abstract class AbstractWebTestCase extends WebTestCase
         $this->container = $this->client->getKernel()->getContainer();
 
         $this->container->get('doctrine')->getConnection()->beginTransaction();
+
+        $this->testServiceProvider = new TestServiceProvider($this->container);
     }
 
     /**
@@ -91,7 +99,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         }
 
         if ($this->hasUser()) {
-            $userSerializerService = $this->container->get(UserSerializer::class);
+            $userSerializerService = $this->container->get('test.' . strtolower(UserSerializer::class));
 
             $cookie = new Cookie(
                 'simplytestable-user',

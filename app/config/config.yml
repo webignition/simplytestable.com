@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters.yml" }
     - { resource: services.yml }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/services.yml" }
 
 parameters:
     container.autowiring.strict_mode: true

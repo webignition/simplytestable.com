@@ -6,10 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use SimplyTestable\WebsiteBundle\Controller\HomeController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\WebsiteBundle\Factory\ControllerFactory;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class HomeControllerTest extends AbstractControllerTest
 {
@@ -94,12 +91,9 @@ class HomeControllerTest extends AbstractControllerTest
 
     public function testIndexActionHasResponse()
     {
-        $request = new Request();
         $response = new Response();
 
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createHomeController($request);
+        $controller = $this->container->get(HomeController::class);
         $controller->setResponse($response);
 
         $retrievedResponse = $controller->indexAction();
@@ -110,9 +104,9 @@ class HomeControllerTest extends AbstractControllerTest
     public function testIndexActionForOutdatedBrowser()
     {
         $request = $this->createRequestForOutdatedBrowser();
+        $this->container->get('request_stack')->push($request);
 
-        $controllerFactory = new ControllerFactory($this->container);
-        $controller = $controllerFactory->createHomeController($request);
+        $controller = $this->container->get(HomeController::class);
 
         $response = $controller->indexAction();
 

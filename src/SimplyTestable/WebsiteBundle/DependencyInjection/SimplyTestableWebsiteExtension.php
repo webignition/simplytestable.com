@@ -29,7 +29,6 @@ class SimplyTestableWebsiteExtension extends Extension
         ]);
 
         $loader = new Loader\YamlFileLoader($container, $fileLocator);
-        $loader->load('services.yml');
 
         $planData = Yaml::parse(file_get_contents($fileLocator->locate('plans.yml')));
         $planDistinctionData = Yaml::parse(file_get_contents($fileLocator->locate('distinctions.yml')));

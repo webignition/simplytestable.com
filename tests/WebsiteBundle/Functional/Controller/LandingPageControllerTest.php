@@ -2,9 +2,7 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Tests\WebsiteBundle\Factory\ControllerFactory;
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use SimplyTestable\WebsiteBundle\Controller\LandingPageController;
 
 class LandingPageControllerTest extends AbstractControllerTest
 {
@@ -22,10 +20,9 @@ class LandingPageControllerTest extends AbstractControllerTest
     public function testIndexActionForOutdatedBrowser()
     {
         $request = $this->createRequestForOutdatedBrowser();
+        $this->container->get('request_stack')->push($request);
 
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createLandingPageController($request);
+        $controller = $this->container->get(LandingPageController::class);
 
         $response = $controller->indexAction();
 

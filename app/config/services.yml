@@ -1,12 +1,8 @@
 services:
     # default configuration for services in *this* file
     _defaults:
-        # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
         autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
         public: false
 
     # makes classes in src/AppBundle available to be used as services
@@ -24,7 +20,56 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    SimplyTestable\WebsiteBundle\Command\:
+        resource: '../../src/SimplyTestable/WebsiteBundle/Command'
+        autowire: true
+        autoconfigure: true
+        tags: ['console.command']
+
+    SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+    SimplyTestable\WebsiteBundle\EventListener\UserEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
+    SimplyTestable\WebsiteBundle\Controller\ExceptionController:
+      class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
+      public: true
+      arguments:
+        $debug: '%kernel.debug%'
+
+    SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
+        arguments:
+          - '%kernel.root_dir%'
+          - '%kernel.cache_dir%'
+
+    SimplyTestable\WebsiteBundle\Services\WebClientRouter:
+        arguments:
+          $baseUrl: '%web_client_url%'
+
+    SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
+        arguments: ['%not_found_redirect_map%', '%base_url%']
+        calls:
+          - method: addRouter
+            arguments:
+                - 'local'
+                - '@router'
+          - method: addRouter
+            arguments:
+                - 'web_client'
+                - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
+
+    webignition\SimplyTestableUserSerializer\UserSerializer:
+      arguments:
+        - '%secret%'
+
+    SimplyTestable\WebsiteBundle\Services\PlansService:
+      arguments:
+        - '%plans%'
+        - '%plan_distinctions%'
+
+    Postmark\PostmarkClient:
+      arguments:
+        - '%postmark_api_key%'

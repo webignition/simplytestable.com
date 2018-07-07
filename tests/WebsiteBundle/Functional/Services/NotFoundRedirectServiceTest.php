@@ -2,14 +2,13 @@
 
 namespace Tests\WebsiteBundle\Functional\Services;
 
-use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class NotFoundRedirectServiceTest extends AbstractWebTestCase
 {
     public function testGetRedirectFor()
     {
-        $notFoundRedirectService = $this->container->get(NotFoundRedirectService::class);
+        $notFoundRedirectService = $this->testServiceProvider->getNotFoundRedirectService();
 
         foreach ($this->getRedirectForDataProvider() as $testData) {
             $this->assertEquals(

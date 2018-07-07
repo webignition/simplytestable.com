@@ -2,7 +2,6 @@
 
 namespace Tests\WebsiteBundle\Functional\Services;
 
-use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class ResourceLocatorTest extends AbstractWebTestCase
@@ -15,7 +14,7 @@ class ResourceLocatorTest extends AbstractWebTestCase
      */
     public function testLocate($name, $expectedRelativeResourcePath)
     {
-        $resourceLocator = $this->container->get(ResourceLocator::class);
+        $resourceLocator = $this->testServiceProvider->getResourceLocator();
 
         $expectedAbsoluteResourcePath = str_replace(
             '/app',
