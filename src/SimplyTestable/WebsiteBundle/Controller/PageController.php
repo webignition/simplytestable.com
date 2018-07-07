@@ -10,6 +10,14 @@ use Symfony\Component\HttpFoundation\Response;
 class PageController extends CacheableController
 {
     /**
+     * @return Response
+     */
+    public function homeAction()
+    {
+        return $this->handleAction(':Page:home.html.twig');
+    }
+
+    /**
      * @param PlansService $plansService
      *
      * @return Response
