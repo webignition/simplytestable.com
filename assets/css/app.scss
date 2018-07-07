@@ -25,4 +25,40 @@ body {
       @import "partials/navbar-logged-in";
     }
   }
+
+  &.content {
+    @import "page/content";
+  }
+
+  &.splash {
+    @import "page/splash";
+  }
+
+  &.page-accountbenefits {
+    @import "page/account-benefits";
+  }
+
+  &.plandetails-index {
+    @import "page/plan-details";
+  }
+
+  &.page-features {
+    @import "page/features";
+  }
+
+  &.home-index {
+    @import "page/homepage";
+  }
+
+  &.error {
+    @import "page/errorpage";
+  }
+
+  &.page-plans {
+    @import "page/plans";
+  }
+
+  &.landingpage-tms {
+    @import "page/tms";
+  }
 }
