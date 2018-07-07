@@ -11,11 +11,9 @@ class BuildCommandTest extends AbstractWebTestCase
 {
     public function testRun()
     {
-        $applicationConfigurationService = $this->testServiceProvider->getApplicationConfigurationService();
-
         $sitemapPath = sprintf(
             '%s%s',
-            $applicationConfigurationService->getWebDir(),
+            $this->container->getParameter('kernel.project_dir') . '/web',
             BuildCommand::SITEMAP_RELATIVE_PATH
         );
 

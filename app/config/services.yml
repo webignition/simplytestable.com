@@ -45,14 +45,11 @@ services:
       arguments:
         $debug: '%kernel.debug%'
 
-    SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
-        arguments:
-          - '%kernel.root_dir%'
-          - '%kernel.cache_dir%'
-
     SimplyTestable\WebsiteBundle\Services\WebClientRouter:
         arguments:
           $baseUrl: '%web_client_url%'
+          $kernelRootDirectory: '%kernel.root_dir%'
+          $kernelCacheDirectory: '%kernel.cache_dir%'
 
     SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
         arguments: ['%not_found_redirect_map%', '%base_url%']

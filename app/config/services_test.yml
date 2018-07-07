@@ -43,19 +43,12 @@ services:
               - 'web_client'
               - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
 
-    test.simplytestable\websitebundle\services\applicationconfigurationservice:
-      class: SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService
-      arguments:
-        - '%kernel.root_dir%'
-        - '%kernel.cache_dir%'
-
-    test.simplytestable\websitebundle\services\resourcelocator:
-      class: SimplyTestable\WebsiteBundle\Services\ResourceLocator
-
     test.simplytestable\websitebundle\services\webclientrouter:
       class: SimplyTestable\WebsiteBundle\Services\WebClientRouter
       arguments:
         $baseUrl: '%web_client_url%'
+        $kernelRootDirectory: '%kernel.root_dir%'
+        $kernelCacheDirectory: '%kernel.cache_dir%'
 
     test.simplytestable\websitebundle\eventlistener\cachedresponseeventlistener:
       class: SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener
