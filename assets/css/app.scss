@@ -26,6 +26,10 @@ body {
     }
   }
 
+  &.content {
+    @import "page/content";
+  }
+
   &.page-accountbenefits {
     @import "page/account-benefits";
   }

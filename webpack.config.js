@@ -10,7 +10,6 @@ Encore
 
     // will create web/build/app.js and web/build/app.css
     .addEntry('app', './assets/js/app.js')
-    .addStyleEntry('content', './assets/css/content.scss')
     .addStyleEntry('plan-details', './assets/css/plan-details.scss')
     .addStyleEntry('features', './assets/css/features.scss')
     .addStyleEntry('homepage', './assets/css/homepage.scss')
