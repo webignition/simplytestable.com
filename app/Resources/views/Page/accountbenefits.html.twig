@@ -128,7 +128,7 @@
 
                             {% for distinction_group_id, distinction_group in distinctions %}
                                 {% set distinction_group_template_id = distinction_group_id|replace({'_': '-'}) %}
-                                {% set distinction_group_template = 'SimplyTestableWebsiteBundle:Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
+                                {% set distinction_group_template = ':Partials/account-benefits:' ~ distinction_group_template_id ~ '.html.twig' %}
 
                                 <div class="row data{% if loop.last %} final{% endif %} {% if loop.first %} first{% endif %}">
                                     {% for plan in plans %}

@@ -19,6 +19,6 @@ class HomeController extends CacheableController
             return $this->createRedirectToOutdatedBrowserResponse();
         }
 
-        return $this->render('@SimplyTestableWebsite/Home/index.html.twig');
+        return $this->render(':Home:index.html.twig');
     }
 }

@@ -17,7 +17,7 @@ class PageController extends CacheableController
     public function plansAction(PlansService $plansService)
     {
         return $this->handleAction(
-            '@SimplyTestableWebsite/Page/plans.html.twig',
+            ':Page:plans.html.twig',
             [
                 'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
                     'personal',
@@ -33,7 +33,7 @@ class PageController extends CacheableController
      */
     public function featuresAction()
     {
-        return $this->handleAction('@SimplyTestableWebsite/Page/features.html.twig');
+        return $this->handleAction(':Page:features.html.twig');
     }
 
     /**
@@ -44,7 +44,7 @@ class PageController extends CacheableController
     public function accountBenefitsAction(PlansService $plansService)
     {
         return $this->handleAction(
-            '@SimplyTestableWebsite/Page/accountbenefits.html.twig',
+            ':Page:accountbenefits.html.twig',
             [
                 'plans' => DecoratedPlanFactory::decorateCollection($plansService->getPlans([
                     'demo',

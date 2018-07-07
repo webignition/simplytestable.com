@@ -62,7 +62,7 @@ class PlanDetailsController extends CacheableController
         $plan = $plans[$name];
 
         return $this->render(
-            '@SimplyTestableWebsite/PlanDetails/' . $name . '.html.twig',
+            ':PlanDetails:' . $name . '.html.twig',
             [
                 'plans' => $plans,
                 'plan' => $plan,

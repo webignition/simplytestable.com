@@ -15,6 +15,6 @@ class OutdatedBrowserController extends CacheableController
             return $this->getResponse();
         }
 
-        return $this->render('@SimplyTestableWebsite/OutdatedBrowser/index.html.twig');
+        return $this->render(':OutdatedBrowser:index.html.twig');
     }
 }

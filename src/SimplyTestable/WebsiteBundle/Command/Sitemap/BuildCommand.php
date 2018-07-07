@@ -89,7 +89,7 @@ class BuildCommand extends Command
             ];
         }
 
-        $sitemapContent = $this->templating->render('SimplyTestableWebsiteBundle::sitemap.xml.twig', [
+        $sitemapContent = $this->templating->render('sitemap.xml.twig', [
             'urls' => $decoratedUrls,
         ]);
 
