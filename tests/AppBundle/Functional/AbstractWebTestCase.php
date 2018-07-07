@@ -5,7 +5,6 @@ namespace Tests\AppBundle\Functional;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\AppBundle\Factory\TestServiceProvider;
@@ -20,11 +19,6 @@ abstract class AbstractWebTestCase extends WebTestCase
     protected $client;
 
     /**
-     * @var ContainerInterface
-     */
-    protected $container;
-
-    /**
      * @var TestServiceProvider
      */
     protected $testServiceProvider;
@@ -35,11 +29,9 @@ abstract class AbstractWebTestCase extends WebTestCase
     protected function setUp()
     {
         $this->client = static::createClient();
-        $this->container = $this->client->getKernel()->getContainer();
+        $this->testServiceProvider = new TestServiceProvider(self::$container);
 
-        $this->container->get('doctrine')->getConnection()->beginTransaction();
-
-        $this->testServiceProvider = new TestServiceProvider($this->container);
+        self::$container->get('doctrine')->getConnection()->beginTransaction();
     }
 
     /**
@@ -99,7 +91,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         }
 
         if ($this->hasUser()) {
-            $userSerializerService = $this->container->get('test.' . strtolower(UserSerializer::class));
+            $userSerializerService = self::$container->get('test.' . strtolower(UserSerializer::class));
 
             $cookie = new Cookie(
                 'simplytestable-user',
@@ -151,9 +143,9 @@ abstract class AbstractWebTestCase extends WebTestCase
      */
     protected function tearDown()
     {
-        parent::tearDown();
+        self::$container->get('doctrine')->getConnection()->close();
 
-//        $this->container->get('doctrine')->getConnection()->close();
+        parent::tearDown();
 
         $refl = new \ReflectionObject($this);
         foreach ($refl->getProperties() as $prop) {

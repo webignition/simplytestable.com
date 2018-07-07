@@ -23,10 +23,10 @@ class CacheableControllerTest extends AbstractControllerTest
      */
     public function testSetControllerResponse($controllerClass, callable $actionCall)
     {
-        $controller = $this->container->get($controllerClass);
+        $controller = self::$container->get($controllerClass);
 
         $request = new Request();
-        $this->container->get('request_stack')->push($request);
+        self::$container->get('request_stack')->push($request);
 
         $response = new Response();
         $controller->setResponse($response);
@@ -132,7 +132,7 @@ class CacheableControllerTest extends AbstractControllerTest
         $ifNoneMatchHeader,
         array $expectedCacheValidatorHeaderParameters
     ) {
-        $entityManager = $this->container->get('doctrine.orm.entity_manager');
+        $entityManager = self::$container->get('doctrine.orm.entity_manager');
 
         /* @var EntityRepository $cacheValidatorHeadersEntityRepository */
         $cacheValidatorHeadersEntityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);

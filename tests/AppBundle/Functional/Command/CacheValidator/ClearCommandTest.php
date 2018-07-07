@@ -19,14 +19,14 @@ class ClearCommandTest extends AbstractWebTestCase
      */
     public function testRun($cacheValidatorHeadersCollection, $expectedReturnCode)
     {
-        $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
+        $entityManager = self::$container->get('doctrine.orm.default_entity_manager');
 
         /* @var EntityRepository $entityRepository */
         $entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
 
         $this->assertCount(0, $entityRepository->findAll());
 
-        $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
+        $entityManager = self::$container->get('doctrine.orm.default_entity_manager');
         foreach ($cacheValidatorHeadersCollection as $cacheValidatorHeaders) {
             $entityManager->persist($cacheValidatorHeaders);
             $entityManager->flush($cacheValidatorHeaders);
@@ -34,7 +34,7 @@ class ClearCommandTest extends AbstractWebTestCase
 
         $this->assertCount(count($cacheValidatorHeadersCollection), $entityRepository->findAll());
 
-        $command = $this->container->get(ClearCommand::class);
+        $command = self::$container->get(ClearCommand::class);
 
         $returnCode = $command->run(new ArrayInput([]), new NullOutput());
 
