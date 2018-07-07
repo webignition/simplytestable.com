@@ -99,18 +99,4 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
             ],
         ];
     }
-
-    public function testIndexActionForOutdatedBrowser()
-    {
-        $request = new Request();
-        $request->headers->set('user-agent', 'Mozilla/4.0 (MSIE 6.0; Windows NT 5.0)');
-        $this->container->get('request_stack')->push($request);
-
-        $response = $this->controller->indexAction(
-            $this->testServiceProvider->getPlansService(),
-            'demo'
-        );
-
-        $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
-    }
 }

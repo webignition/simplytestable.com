@@ -4,8 +4,6 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 
 use SimplyTestable\WebsiteBundle\Controller\PageController;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\HttpFoundation\Response;
-use Tests\WebsiteBundle\Factory\TestServiceProvider;
 
 class PageControllerTest extends AbstractControllerTest
 {
@@ -92,51 +90,6 @@ class PageControllerTest extends AbstractControllerTest
         return [
             'home' => [
                 'url' => '/',
-            ],
-        ];
-    }
-
-    /**
-     * @dataProvider actionCallDataProvider
-     *
-     * @param callable $actionCall
-     */
-    public function testActionForOutdatedBrowser(callable $actionCall)
-    {
-        $request = $this->createRequestForOutdatedBrowser();
-        $this->container->get('request_stack')->push($request);
-
-        /* @var Response $response */
-        $response = $actionCall($this->controller, $this->testServiceProvider);
-
-        $this->assertTrue($response->isRedirect('http://localhost/outdated-browser/'));
-    }
-
-    /**
-     * @return array
-     */
-    public function actionCallDataProvider()
-    {
-        return [
-            'homeAction' => [
-                'actionCall' => function (PageController $pageController) {
-                    return $pageController->homeAction();
-                }
-            ],
-            'plansAction' => [
-                'actionCall' => function (PageController $pageController, TestServiceProvider $testServiceProvider) {
-                    return $pageController->plansAction($testServiceProvider->getPlansService());
-                }
-            ],
-            'featuresAction' => [
-                'actionCall' => function (PageController $pageController) {
-                    return $pageController->featuresAction();
-                }
-            ],
-            'accountBenefitsAction' => [
-                'actionCall' => function (PageController $pageController, TestServiceProvider $testServiceProvider) {
-                    return $pageController->accountBenefitsAction($testServiceProvider->getPlansService());
-                }
             ],
         ];
     }

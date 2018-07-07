@@ -35,7 +35,6 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
     {
         $urls = [
             '/',
-            '/tms/',
             '/plans/',
             '/features/',
             '/account-benefits/',
@@ -45,6 +44,7 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
             '/plans/agency/',
             '/plans/business/',
             '/plans/enterprise/',
+            '/tms/',
         ];
 
         $sourceTestDataCollection = [
