@@ -20,3 +20,5 @@ parameters:
     database_name: myapp_test
     database_user: root
     database_password: null
+    base_url: http://local.simplytestable.com
+    web_client_url: http://web.client.simplytestable.com
