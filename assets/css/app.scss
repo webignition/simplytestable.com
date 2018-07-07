@@ -25,4 +25,8 @@ body {
       @import "partials/navbar-logged-in";
     }
   }
+
+  &.page-accountbenefits {
+    @import "page/account-benefits";
+  }
 }
