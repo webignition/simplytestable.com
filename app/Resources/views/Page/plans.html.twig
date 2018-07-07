@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body_class %}{{ parent() }} page-plans {% endblock %}
+{% block body_class %}{{ parent() }} plans {% endblock %}
 
 {% macro cta_button(plan_name, is_logged_in, web_client_urls) %}
     {% if is_logged_in %}
