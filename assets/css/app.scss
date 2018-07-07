@@ -53,4 +53,8 @@ body {
   &.error {
     @import "page/errorpage";
   }
+
+  &.page-plans {
+    @import "page/plans";
+  }
 }
