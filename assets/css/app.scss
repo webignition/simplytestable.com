@@ -49,4 +49,8 @@ body {
   &.home-index {
     @import "page/homepage";
   }
+
+  &.error {
+    @import "page/errorpage";
+  }
 }
