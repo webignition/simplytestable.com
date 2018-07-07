@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\WebsiteBundle\Unit\Services;
+namespace Tests\AppBundle\Unit\Services;
 
 use SimplyTestable\WebsiteBundle\Model\Plan\DistinctionInterface;
 use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
-use SimplyTestable\WebsiteBundle\Services\PlansService;
+use AppBundle\Services\PlansService;
 use Tests\WebsiteBundle\Utility\ConfigParameterResourceLoader;
 
 class PlansServiceTest extends \PHPUnit\Framework\TestCase

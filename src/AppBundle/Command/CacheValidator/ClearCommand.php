@@ -1,7 +1,8 @@
 <?php
+
 namespace AppBundle\Command\CacheValidator;
 
-use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
+use AppBundle\Services\CacheValidatorHeadersService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

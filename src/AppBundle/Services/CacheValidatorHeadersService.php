@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Services;
+namespace AppBundle\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;

@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Services;
+namespace AppBundle\Services;
 
 class PlanFeaturesService
 {

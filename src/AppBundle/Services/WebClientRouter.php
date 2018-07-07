@@ -1,5 +1,5 @@
 <?php
-namespace SimplyTestable\WebsiteBundle\Services;
+namespace AppBundle\Services;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpFoundation\Request;

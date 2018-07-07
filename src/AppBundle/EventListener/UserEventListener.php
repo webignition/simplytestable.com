@@ -1,9 +1,9 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\EventListener;
+namespace AppBundle\EventListener;
 
 use SimplyTestable\WebsiteBundle\Controller\AbstractBaseController;
-use SimplyTestable\WebsiteBundle\Services\UserService;
+use AppBundle\Services\UserService;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class UserEventListener

@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Services;
+namespace Tests\AppBundle\Functional\Services;
 
-use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
+use Tests\AppBundle\Functional\AbstractWebTestCase;
 
 class NotFoundRedirectServiceTest extends AbstractWebTestCase
 {

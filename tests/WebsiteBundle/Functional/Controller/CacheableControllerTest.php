@@ -9,7 +9,7 @@ use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\WebsiteBundle\Factory\TestServiceProvider;
+use Tests\AppBundle\Factory\TestServiceProvider;
 
 class CacheableControllerTest extends AbstractControllerTest
 {

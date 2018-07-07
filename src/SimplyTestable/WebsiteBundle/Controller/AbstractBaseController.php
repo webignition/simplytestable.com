@@ -2,10 +2,10 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
-use SimplyTestable\WebsiteBundle\Services\TestimonialService;
-use SimplyTestable\WebsiteBundle\Services\UserService;
-use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
+use AppBundle\Services\CacheableResponseFactory;
+use AppBundle\Services\TestimonialService;
+use AppBundle\Services\UserService;
+use AppBundle\Services\WebClientRouter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;

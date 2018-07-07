@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\WebsiteBundle\Factory;
+namespace Tests\AppBundle\Factory;
 
-use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
-use SimplyTestable\WebsiteBundle\EventListener\UserEventListener;
-use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
-use SimplyTestable\WebsiteBundle\Services\PlansService;
-use SimplyTestable\WebsiteBundle\Services\UserService;
-use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
+use AppBundle\EventListener\CachedResponseEventListener;
+use AppBundle\EventListener\UserEventListener;
+use AppBundle\Services\NotFoundRedirectService;
+use AppBundle\Services\PlansService;
+use AppBundle\Services\UserService;
+use AppBundle\Services\WebClientRouter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
 

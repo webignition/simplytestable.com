@@ -2,8 +2,8 @@
 
 namespace SimplyTestable\WebsiteBundle\Controller;
 
-use SimplyTestable\WebsiteBundle\Services\DecoratedPlanFactory;
-use SimplyTestable\WebsiteBundle\Services\PlansService;
+use AppBundle\Services\DecoratedPlanFactory;
+use AppBundle\Services\PlansService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 

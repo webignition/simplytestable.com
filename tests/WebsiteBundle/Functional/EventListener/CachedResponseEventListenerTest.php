@@ -5,7 +5,7 @@ namespace Tests\WebsiteBundle\Functional\EventListener;
 use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\PageController;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
-use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
+use AppBundle\EventListener\CachedResponseEventListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;

@@ -1,13 +1,13 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\EventListener;
+namespace AppBundle\EventListener;
 
 use Psr\Log\LoggerInterface;
 use SimplyTestable\WebsiteBundle\Interfaces\Controller\Cacheable as CacheableController;
 use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
-use SimplyTestable\WebsiteBundle\Services\CacheableResponseFactory;
-use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
-use SimplyTestable\WebsiteBundle\Services\UserService;
+use AppBundle\Services\CacheableResponseFactory;
+use AppBundle\Services\CacheValidatorHeadersService;
+use AppBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 

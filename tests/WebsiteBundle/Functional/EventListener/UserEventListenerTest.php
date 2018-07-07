@@ -4,7 +4,7 @@ namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Mockery;
 use SimplyTestable\WebsiteBundle\Controller\PageController;
-use SimplyTestable\WebsiteBundle\Services\UserService;
+use AppBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;

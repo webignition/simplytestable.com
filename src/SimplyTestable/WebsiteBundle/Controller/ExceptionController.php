@@ -4,8 +4,8 @@ namespace SimplyTestable\WebsiteBundle\Controller;
 
 use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
-use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
-use SimplyTestable\WebsiteBundle\Services\TestimonialService;
+use AppBundle\Services\NotFoundRedirectService;
+use AppBundle\Services\TestimonialService;
 use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
