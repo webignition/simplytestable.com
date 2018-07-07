@@ -1,0 +1,15 @@
+<div class="col-lg-5 col-md-6 col-sm-5">
+    {% include ':Partials/cta-buttons:sign-up-for-an-account.html.twig'
+        with {
+            'plan': plan,
+            'sign_up_url': web_client_urls.sign_up
+        }
+    only %}
+</div>
+<div class="col-lg-4 col-md-6 col-sm-5 additional">
+    {% include ':Partials/plan-details:additional-links.html.twig'
+        with {
+            'start_test_url': web_client_urls.start_test
+        }
+    only %}
+</div>

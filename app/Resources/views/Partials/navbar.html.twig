@@ -1,0 +1,79 @@
+{% set username_parts = user.username|split('@') %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="{{ path('home_index') }}">
+                SimplyTestable
+                {% if app.request.get('_route') != 'home_index' %}
+                    <span class="hidden-sm hidden-md">automated front-end web testing</span>
+                {% endif %}
+            </a>
+        </div>
+        <div id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="text">
+                    <a href="{{ web_client_urls.start_test }}">
+                        <i class="fa fa-tachometer"></i>
+                        {% if is_logged_in %}
+                            Dashboard
+                        {% else %}
+                            Demo <span class="hidden-sm hidden-md">dashboard</span> (try me)
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="text {% if app.request.get('_route') == 'page_features' %}active{% endif %}">
+                    <a href="{{ path('page_features') }}">
+                        <i class="fa fa-signal"></i> Features
+                    </a>
+                </li>
+                <li class="text {% if app.request.get('_route') == 'page_plans' %}active{% endif %}">
+                    <a href="{{ path('page_plans') }}">
+                        <i class="fa fa-calendar"></i> Pricing <span class="hidden-sm">and plans</span>
+                    </a>
+                </li>
+
+                {% if is_logged_in %}
+                    <li class="user-actions text">
+                        <p class="navbar-text spacer highlighted-spacer hidden-xs">&nbsp;</p>
+                        <a class="username" href="{{ web_client_urls.account }}">
+                            <i class="fa fa-user"></i> {{ username_parts[0] }}<span class="hidden-sm">@{{username_parts[1]}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <form class="navbar-form signout-form" method="post" action="{{ path('sign_out_submit') }}">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Sign out
+                                <i class="fa fa-caret-right"></i>
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="user-actions">
+                        <div>
+                            <p class="navbar-text spacer highlighted-spacer">&nbsp;</p>
+                            <a href="{{ web_client_urls.sign_in }}" class="btn btn-default btn-sm navbar-btn">
+                                <i class="fa fa-caret-right"></i> Sign in
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p class="navbar-text spacer hidden-xs">&nbsp;</p>
+                            <a href="{{ web_client_urls.sign_up }}" class="btn btn-default btn-sm navbar-btn">
+                                <i class="fa fa-user"></i> Create an account
+                            </a>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
