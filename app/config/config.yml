@@ -3,7 +3,6 @@ imports:
     - { resource: parameters/plan-distinctions.yml }
     - { resource: parameters/not-found-redirect-map.yml }
     - { resource: parameters.yml }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters.yml" }
     - { resource: services.yml }
 
 parameters:
