@@ -11,6 +11,11 @@ services:
         autoconfigure: true
         tags: ['console.command']
 
+    SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+      arguments:
+        $kernelRootDirectory: '%kernel.root_dir%'
+        $webDirectory: '%kernel.project_dir%/web/'
+
     test.webignition\simplytestableuserserializer\userserializer:
       class: webignition\SimplyTestableUserSerializer\UserSerializer
       arguments:

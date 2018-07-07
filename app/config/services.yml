@@ -26,6 +26,11 @@ services:
         autoconfigure: true
         tags: ['console.command']
 
+    SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+      arguments:
+        $kernelRootDirectory: '%kernel.root_dir%'
+        $webDirectory: '%kernel.project_dir%/web/'
+
     SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
