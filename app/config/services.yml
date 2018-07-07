@@ -1,12 +1,8 @@
 services:
     # default configuration for services in *this* file
     _defaults:
-        # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
         autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
         public: false
 
     # makes classes in src/AppBundle available to be used as services
@@ -42,11 +38,7 @@ services:
       class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
       public: true
       arguments:
-        - '%kernel.debug%'
-        - '@twig'
-        - '@SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService'
-        - '@Postmark\PostmarkClient'
-        - '@SimplyTestable\WebsiteBundle\Services\TestimonialService'
+        $debug: '%kernel.debug%'
 
     SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
         arguments:
@@ -55,9 +47,7 @@ services:
 
     SimplyTestable\WebsiteBundle\Services\WebClientRouter:
         arguments:
-          - '%web_client_url%'
-          - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
-          - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
+          $baseUrl: '%web_client_url%'
 
     SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
         arguments: ['%not_found_redirect_map%', '%base_url%']
