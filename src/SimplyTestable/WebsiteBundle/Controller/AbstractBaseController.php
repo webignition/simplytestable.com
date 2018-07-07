@@ -96,6 +96,8 @@ abstract class AbstractBaseController
             );
         }
 
+        var_dump($response->headers->get('etag'));
+
         return $response;
     }
 

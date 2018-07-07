@@ -2,14 +2,10 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use Doctrine\ORM\EntityRepository;
 use SimplyTestable\WebsiteBundle\Controller\PageController;
-use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
-use SimplyTestable\WebsiteBundle\Services\PlansService;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Factory\TestServiceProvider;
 
 class PageControllerTest extends AbstractControllerTest
@@ -29,56 +25,6 @@ class PageControllerTest extends AbstractControllerTest
         parent::setUp();
 
         $this->controller = $this->container->get(PageController::class);
-    }
-
-    /**
-     * @dataProvider cachedResponseHandlingDataProvider
-     *
-     * @param string $url
-     * @param array $expectedCacheValidatorHeaderParameters
-     */
-    public function testCachedResponseHandling($url, array $expectedCacheValidatorHeaderParameters)
-    {
-        $entityManager = $this->container->get('doctrine.orm.entity_manager');
-
-        /* @var EntityRepository $cacheValidatorHeadersEntityRepository */
-        $cacheValidatorHeadersEntityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
-
-        $this->setUser(
-            $this->createUser(self::USER_EMAIL)
-        );
-
-        $this->getCrawler([
-            'url' => $url,
-            'server' => [
-                'HTTP_IF_NONE_MATCH' => '"11bb9bf941ca9b19312cfaf3008a696d"',
-            ],
-        ]);
-
-        $this->assertEquals(304, $this->getClientResponse()->getStatusCode());
-
-        /* @var CacheValidatorHeaders $cacheValidatorHeaders */
-        $cacheValidatorHeaders = $cacheValidatorHeadersEntityRepository->findAll()[0];
-        $cacheValidatorIdentifier = $cacheValidatorHeaders->getIdentifier();
-
-        $this->assertArraySubset($expectedCacheValidatorHeaderParameters, $cacheValidatorIdentifier->getParameters());
-    }
-
-    /**
-     * @return array
-     */
-    public function cachedResponseHandlingDataProvider()
-    {
-        return [
-            'home' => [
-                'url' => '/',
-                'expectedCacheValidatorHeaderParameters' => [
-                    'route' => 'home_index',
-                    'user' => self::USER_EMAIL,
-                    'is_logged_in' => true,
-                ],
-            ],
-        ];
     }
 
     /**
