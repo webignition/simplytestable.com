@@ -64,19 +64,6 @@ class TestServiceProvider
     }
 
     /**
-     * @return ResourceLocator
-     */
-    public function getResourceLocator()
-    {
-        /* @var ResourceLocator $service */
-        $service = $this->container->get(
-            $this->createServiceNameFromServiceClass(ResourceLocator::class)
-        );
-
-        return $service;
-    }
-
-    /**
      * @return WebClientRouter
      */
     public function getWebClientRouter()

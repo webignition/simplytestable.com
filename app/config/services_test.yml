@@ -49,9 +49,6 @@ services:
         - '%kernel.root_dir%'
         - '%kernel.cache_dir%'
 
-    test.simplytestable\websitebundle\services\resourcelocator:
-      class: SimplyTestable\WebsiteBundle\Services\ResourceLocator
-
     test.simplytestable\websitebundle\services\webclientrouter:
       class: SimplyTestable\WebsiteBundle\Services\WebClientRouter
       arguments:
