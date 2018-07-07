@@ -38,7 +38,7 @@ sensio_framework_extra:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    exception_controller: SimplyTestableWebsiteBundle:Exception:show
+    exception_controller: AppBundle:Exception:show
 
 # Doctrine Configuration
 doctrine:

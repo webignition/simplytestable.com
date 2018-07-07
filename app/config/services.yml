@@ -7,51 +7,48 @@ services:
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    SimplyTestable\WebsiteBundle\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/*'
-        # you can exclude directories or files
-        # but if a service is unused, it's removed anyway
-        exclude: '../../src/SimplyTestable/WebsiteBundle/{Entity,Repository,Tests}'
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+        exclude: '../../src/AppBundle/{Entity,Repository}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    SimplyTestable\WebsiteBundle\Controller\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/Controller'
+    AppBundle\Controller\:
+        resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
 
-    SimplyTestable\WebsiteBundle\Command\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/Command'
+    AppBundle\Command\:
+        resource: '../../src/AppBundle/Command'
         autowire: true
         autoconfigure: true
         tags: ['console.command']
 
-    SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+    AppBundle\Command\Sitemap\BuildCommand:
       arguments:
         $kernelRootDirectory: '%kernel.root_dir%'
         $webDirectory: '%kernel.project_dir%/web/'
 
-    SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
+    AppBundle\EventListener\CachedResponseEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-    SimplyTestable\WebsiteBundle\EventListener\UserEventListener:
+    AppBundle\EventListener\UserEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
 
-    SimplyTestable\WebsiteBundle\Controller\ExceptionController:
-      class: SimplyTestable\WebsiteBundle\Controller\ExceptionController
+    AppBundle\Controller\ExceptionController:
       public: true
       arguments:
         $debug: '%kernel.debug%'
 
-    SimplyTestable\WebsiteBundle\Services\WebClientRouter:
+    AppBundle\Services\WebClientRouter:
         arguments:
           $baseUrl: '%web_client_url%'
           $kernelRootDirectory: '%kernel.root_dir%'
           $kernelCacheDirectory: '%kernel.cache_dir%'
 
-    SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
+    AppBundle\Services\NotFoundRedirectService:
         arguments: ['%not_found_redirect_map%', '%base_url%']
         calls:
           - method: addRouter
@@ -61,13 +58,13 @@ services:
           - method: addRouter
             arguments:
                 - 'web_client'
-                - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
+                - '@AppBundle\Services\WebClientRouter'
 
     webignition\SimplyTestableUserSerializer\UserSerializer:
       arguments:
         - '%secret%'
 
-    SimplyTestable\WebsiteBundle\Services\PlansService:
+    AppBundle\Services\PlansService:
       arguments:
         - '%plans%'
         - '%plan_distinctions%'

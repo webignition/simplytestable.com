@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Response;
+
+class LandingPageController extends AbstractBaseController
+{
+    const ONE_YEAR_IN_SECONDS = 31536000;
+
+    /**
+     * @var string[]
+     */
+    private $validCoupons = [
+        'TMS'
+    ];
+
+    /**
+     * @return Response
+     */
+    public function indexAction()
+    {
+        if ($this->isOldIE()) {
+            return $this->createRedirectToOutdatedBrowserResponse();
+        }
+
+        $response = $this->render(':Page:tms.html.twig');
+
+        if ($this->hasValidCoupon()) {
+            $cookie = new Cookie(
+                'simplytestable-coupon-code',
+                $this->getCouponFromRoute(),
+                time() + self::ONE_YEAR_IN_SECONDS,
+                '/',
+                '.simplytestable.com',
+                false,
+                true
+            );
+
+            $response->headers->setCookie($cookie);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @return bool
+     */
+    private function hasValidCoupon()
+    {
+        return in_array($this->getCouponFromRoute(), $this->validCoupons);
+    }
+
+    /**
+     * @return null|string
+     */
+    private function getCouponFromRoute()
+    {
+        $requestRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
+
+        return strtoupper(str_replace('landingpage_', '', $requestRoute));
+    }
+}
