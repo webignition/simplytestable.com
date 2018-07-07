@@ -32,12 +32,12 @@ class PageControllerTest extends AbstractControllerTest
     }
 
     /**
-     * @dataProvider fooDataProvider
+     * @dataProvider cachedResponseDataProvider
      *
      * @param string $url
      * @param array $expectedCacheValidatorHeaderParameters
      */
-    public function testEventListenerOrder($url, array $expectedCacheValidatorHeaderParameters)
+    public function testCachedResponseHandling($url, array $expectedCacheValidatorHeaderParameters)
     {
         $entityManager = $this->container->get('doctrine.orm.entity_manager');
 
@@ -67,7 +67,7 @@ class PageControllerTest extends AbstractControllerTest
     /**
      * @return array
      */
-    public function fooDataProvider()
+    public function cachedResponseHandlingDataProvider()
     {
         return [
             'home' => [
