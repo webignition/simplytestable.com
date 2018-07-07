@@ -16,7 +16,6 @@ before_install:
   - cp .travis.composer.config.json ~/.composer/config.json
   - mv app/config/parameters.yml.travis app/config/parameters.yml
   - mv --force app/config/config_travis.yml app/config/config_test.yml
-  - cp src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml.dist src/SimplyTestable/WebsiteBundle/Resources/config/parameters.yml
 
 install:
   - composer install --prefer-dist
