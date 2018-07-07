@@ -30,6 +30,10 @@ body {
     @import "page/content";
   }
 
+  &.splash {
+    @import "page/splash";
+  }
+
   &.page-accountbenefits {
     @import "page/account-benefits";
   }
@@ -40,5 +44,9 @@ body {
 
   &.page-features {
     @import "page/features";
+  }
+
+  &.home-index {
+    @import "page/homepage";
   }
 }

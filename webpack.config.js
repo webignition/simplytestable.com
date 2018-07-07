@@ -10,12 +10,10 @@ Encore
 
     // will create web/build/app.js and web/build/app.css
     .addEntry('app', './assets/js/app.js')
-    .addStyleEntry('homepage', './assets/css/homepage.scss')
     .addStyleEntry('errorpage', './assets/css/errorpage.scss')
     .addStyleEntry('plans', './assets/css/plans.scss')
     .addStyleEntry('tms', './assets/css/tms.scss')
     .addStyleEntry('outdated-browser', './assets/css/outdated-browser.scss')
-    .addStyleEntry('splash', './assets/css/splash.scss')
 
     // allow sass/scss files to be processed
     .enableSassLoader()
