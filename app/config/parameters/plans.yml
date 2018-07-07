@@ -1,0 +1,171 @@
+parameters:
+  plans:
+    demo:
+      is_listed: true
+      short_title: "Limited demo"
+      long_title: "Features of the limited demo"
+      price: 0
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: 1
+          single_page_tests_per_page: 1
+          pages_examined_per_test: 10
+          credits_per_month: ~
+        access_to_results:
+          results_available_for: "24 hours"
+          private_tests: false
+          read_only_reports: false
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: false
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: false
+          link_integrity_checking: false
+        advanced_options:
+          https_sites: false
+          http_authentication: false
+          custom_cookies: false
+    free:
+      is_listed: false
+      long_title: "Benefits of a free account"
+      price: 0
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: .inf
+          single_page_tests_per_page: .inf
+          pages_examined_per_test: 10
+          credits_per_month: 500
+        access_to_results:
+          results_available_for: "7 days"
+          private_tests: true
+          read_only_reports: true
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: true
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: true
+          link_integrity_checking: true
+        advanced_options:
+          https_sites: false
+          http_authentication: false
+          custom_cookies: false
+    personal:
+      is_listed: true
+      name: "Personal"
+      short_title: "Personal plan"
+      long_title: "Features of a personal account"
+      sub_title: "For small-scale projects"
+      price: 9
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: .inf
+          single_page_tests_per_page: .inf
+          pages_examined_per_test: 50
+          credits_per_month: 5000
+        access_to_results:
+          results_available_for: "7 days"
+          private_tests: true
+          read_only_reports: true
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: true
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: true
+          link_integrity_checking: true
+        advanced_options:
+          https_sites: true
+          http_authentication: true
+          custom_cookies: true
+    agency:
+      is_listed: true
+      name: "Agency"
+      short_title: "Agency plan"
+      long_title: "Features of an agency account"
+      sub_title: "Great for small organisations"
+      price: 19
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: .inf
+          single_page_tests_per_page: .inf
+          pages_examined_per_test: 250
+          credits_per_month: 20000
+        access_to_results:
+          results_available_for: "Forever"
+          private_tests: true
+          read_only_reports: true
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: true
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: true
+          link_integrity_checking: true
+        advanced_options:
+          https_sites: true
+          http_authentication: true
+          custom_cookies: true
+    business:
+      is_listed: true
+      name: "Business"
+      short_title: "Business plan"
+      long_title: "Features of a business account"
+      sub_title: "Best value for professionals"
+      price: 59
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: .inf
+          single_page_tests_per_page: .inf
+          pages_examined_per_test: 2500
+          credits_per_month: 100000
+        access_to_results:
+          results_available_for: "Forever"
+          private_tests: true
+          read_only_reports: true
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: true
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: true
+          link_integrity_checking: true
+        advanced_options:
+          https_sites: true
+          http_authentication: true
+          custom_cookies: true
+    enterprise:
+      is_listed: true
+      short_title: "Enterprise plans"
+      long_title: "Custom enterprise solutions"
+      price: null
+      distinctions:
+        test_limitations:
+          full_site_tests_per_site: .inf
+          single_page_tests_per_page: .inf
+          pages_examined_per_test: "10,000+"
+          credits_per_month: "100,000+"
+        access_to_results:
+          results_available_for: "Forever"
+          private_tests: true
+          read_only_reports: true
+        url_discovery:
+          discovery_via_sitemap: true
+          discovery_via_crawl: true
+        test_types:
+          html_validation: true
+          css_validation: true
+          js_static_analysis: true
+          link_integrity_checking: true
+        advanced_options:
+          https_sites: true
+          http_authentication: true
+          custom_cookies: true
+    premium:
+      plan_ids: [personal, agency, business]
