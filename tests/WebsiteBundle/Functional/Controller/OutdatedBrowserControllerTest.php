@@ -2,9 +2,8 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use SimplyTestable\WebsiteBundle\Controller\OutdatedBrowserController;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\WebsiteBundle\Factory\ControllerFactory;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class OutdatedBrowserControllerTest extends AbstractWebTestCase
@@ -19,12 +18,9 @@ class OutdatedBrowserControllerTest extends AbstractWebTestCase
 
     public function testIndexActionHasResponse()
     {
-        $request = new Request();
         $response = new Response();
 
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createOutdatedBrowserController($request);
+        $controller = $this->container->get(OutdatedBrowserController::class);
         $controller->setResponse($response);
 
         $retrievedResponse = $controller->indexAction();

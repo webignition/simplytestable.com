@@ -1,12 +1,8 @@
 services:
     # default configuration for services in *this* file
     _defaults:
-        # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
         autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
         public: true
 
     SimplyTestable\WebsiteBundle\Command\:
@@ -15,50 +11,56 @@ services:
         autoconfigure: true
         tags: ['console.command']
 
-    SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
-      tags:
-        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+    test.webignition\simplytestableuserserializer\userserializer:
+      class: webignition\SimplyTestableUserSerializer\UserSerializer
+      arguments:
+        - '%secret%'
 
-    SimplyTestable\WebsiteBundle\EventListener\UserEventListener:
-      tags:
-        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+    test.simplytestable\websitebundle\services\testimonialservice:
+      class: SimplyTestable\WebsiteBundle\Services\TestimonialService
 
-    SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
-        arguments: ['%not_found_redirect_map%', '%base_url%']
-        calls:
-          - method: addRouter
-            arguments:
-                - 'local'
-                - '@router'
-          - method: addRouter
-            arguments:
-                - 'web_client'
-                - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
-
-    SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
-        arguments:
-          - "@=service('kernel').getRootDir()"
-          - "@=service('kernel').getCacheDir()"
-
-    SimplyTestable\WebsiteBundle\Services\PlansService:
+    test.simplytestable\websitebundle\services\plansservice:
+      class: SimplyTestable\WebsiteBundle\Services\PlansService
       arguments:
         - '%plans%'
         - '%plan_distinctions%'
 
-    webignition\SimplyTestableUserSerializer\UserSerializer:
+    test.simplytestable\websitebundle\services\notfoundredirectservice:
+      class: SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService
+      arguments: ['%not_found_redirect_map%', '%base_url%']
+      calls:
+        - method: addRouter
+          arguments:
+              - 'local'
+              - '@router'
+        - method: addRouter
+          arguments:
+              - 'web_client'
+              - '@SimplyTestable\WebsiteBundle\Services\WebClientRouter'
+
+    test.simplytestable\websitebundle\services\applicationconfigurationservice:
+      class: SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService
       arguments:
-        - '%secret%'
+        - '%kernel.root_dir%'
+        - '%kernel.cache_dir%'
 
-    SimplyTestable\WebsiteBundle\Services\WebClientRouter:
-        arguments:
-          - '%web_client_url%'
-          - '@SimplyTestable\WebsiteBundle\Services\ResourceLocator'
-          - '@SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService'
+    test.simplytestable\websitebundle\services\resourcelocator:
+      class: SimplyTestable\WebsiteBundle\Services\ResourceLocator
 
-    SimplyTestable\WebsiteBundle\Services\ResourceLocator:
+    test.simplytestable\websitebundle\services\webclientrouter:
+      class: SimplyTestable\WebsiteBundle\Services\WebClientRouter
+      arguments:
+        $baseUrl: '%web_client_url%'
 
-    SimplyTestable\WebsiteBundle\Services\TestimonialService:
+    test.simplytestable\websitebundle\eventlistener\cachedresponseeventlistener:
+      class: SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-    SimplyTestable\WebsiteBundle\Services\UserAgentDetector:
+    test.simplytestable\websitebundle\eventlistener\usereventlistener:
+      class: SimplyTestable\WebsiteBundle\EventListener\UserEventListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
 
-    SimplyTestable\WebsiteBundle\Services\UserService:
+    test.simplytestable\websitebundle\services\userservice:
+      class: SimplyTestable\WebsiteBundle\Services\UserService

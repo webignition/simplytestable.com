@@ -2,7 +2,6 @@
 
 namespace Tests\WebsiteBundle\Functional\Services;
 
-use SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class ApplicationConfigurationServiceTest extends AbstractWebTestCase
@@ -13,7 +12,7 @@ class ApplicationConfigurationServiceTest extends AbstractWebTestCase
         $expectedRootDir = $projectRoot . '/app';
         $expectedWebDir = $projectRoot . '/web';
 
-        $applicationConfigurationService = $this->container->get(ApplicationConfigurationService::class);
+        $applicationConfigurationService = $this->testServiceProvider->getApplicationConfigurationService();
 
         $this->assertEquals($expectedRootDir, $applicationConfigurationService->getRootDir());
         $this->assertRegExp('/\/var\/cache\/test$/', $applicationConfigurationService->getCacheDir());

@@ -26,9 +26,10 @@ class UserEventListenerTest extends AbstractWebTestCase
      */
     public function testOnKernelController($requestType, $cookieUser, $sessionUser, $expectedUser)
     {
-        $userEventListener = $this->container->get(UserEventListener::class);
-        $userSerializerService = $this->container->get(UserSerializer::class);
+        $userEventListener = $this->testServiceProvider->getUserEventListener();
+        $userSerializerService = $this->testServiceProvider->getUserSerializer();
         $session = $this->container->get('session');
+        $userService = $this->testServiceProvider->getUserService();
 
         $requestCookies = [];
 
@@ -62,7 +63,7 @@ class UserEventListenerTest extends AbstractWebTestCase
 
         $this->assertEquals(
             $expectedUser,
-            $this->container->get(UserService::class)->getUser()->getUsername()
+            $userService->getUser()->getUsername()
         );
     }
 

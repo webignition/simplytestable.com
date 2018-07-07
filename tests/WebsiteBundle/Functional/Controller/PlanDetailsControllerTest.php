@@ -2,6 +2,7 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
+use SimplyTestable\WebsiteBundle\Controller\PlanDetailsController;
 use SimplyTestable\WebsiteBundle\Services\PlansService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +11,21 @@ use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class PlanDetailsControllerTest extends AbstractWebTestCase
 {
+    /**
+     * @var PlanDetailsController
+     */
+    private $controller;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->controller = $this->container->get(PlanDetailsController::class);
+    }
+
     /**
      * @dataProvider indexActionSuccessDataProvider
      *
@@ -87,15 +103,13 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
     public function testIndexActionHasResponse()
     {
         $request = new Request();
+        $this->container->get('request_stack')->push($request);
+
         $response = new Response();
+        $this->controller->setResponse($response);
 
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createPlanDetailsController($request);
-        $controller->setResponse($response);
-
-        $retrievedResponse = $controller->indexAction(
-            $this->container->get(PlansService::class),
+        $retrievedResponse = $this->controller->indexAction(
+            $this->testServiceProvider->getPlansService(),
             'demo'
         );
 
@@ -106,13 +120,10 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
     {
         $request = new Request();
         $request->headers->set('user-agent', 'Mozilla/4.0 (MSIE 6.0; Windows NT 5.0)');
+        $this->container->get('request_stack')->push($request);
 
-        $controllerFactory = new ControllerFactory($this->container);
-
-        $controller = $controllerFactory->createPlanDetailsController($request);
-
-        $response = $controller->indexAction(
-            $this->container->get(PlansService::class),
+        $response = $this->controller->indexAction(
+            $this->testServiceProvider->getPlansService(),
             'demo'
         );
 

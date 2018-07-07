@@ -2,14 +2,14 @@
 
 namespace Tests\WebsiteBundle\Functional\Services;
 
-use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class WebClientRouterTest extends AbstractWebTestCase
 {
     public function testGenerateAll()
     {
-        $webClientRouter = $this->container->get(WebClientRouter::class);
+        $webClientRouter = $this->testServiceProvider->getWebClientRouter();
+
         $this->assertEquals(
             [
                 'start_test' => 'http://web.client.simplytestable.com/',

@@ -13,9 +13,12 @@ class BuildCommandTest extends AbstractWebTestCase
 {
     public function testRun()
     {
+        $applicationConfigurationService = $this->testServiceProvider->getApplicationConfigurationService();
+        $resourceLocator = $this->testServiceProvider->getResourceLocator();
+
         $sitemapPath = sprintf(
             '%s%s',
-            $this->container->get(ApplicationConfigurationService::class)->getWebDir(),
+            $applicationConfigurationService->getWebDir(),
             BuildCommand::SITEMAP_RELATIVE_PATH
         );
 
@@ -31,8 +34,6 @@ class BuildCommandTest extends AbstractWebTestCase
 
         $this->assertEquals(0, $returnCode);
         $this->assertFileExists($sitemapPath);
-
-        $resourceLocator = $this->container->get(ResourceLocator::class);
 
         $urlRoutesSource = file_get_contents(
             $resourceLocator->locate(BuildCommand::SITEMAP_ROUTES_RESOURCE_NAME)
