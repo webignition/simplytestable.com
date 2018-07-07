@@ -15,7 +15,7 @@ class RenderSuccessResponseTest extends AbstractControllerTest
      *
      * @param string $url
      */
-    public function testCachedResponseIsReturned($url)
+    public function testResponseIsSuccessful($url)
     {
         $this->client->request('GET', $url);
         $response = $this->getClientResponse();
