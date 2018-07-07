@@ -3,8 +3,6 @@
 namespace Tests\WebsiteBundle\Functional\Command\Sitemap;
 
 use SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand;
-use SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService;
-use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
@@ -14,7 +12,6 @@ class BuildCommandTest extends AbstractWebTestCase
     public function testRun()
     {
         $applicationConfigurationService = $this->testServiceProvider->getApplicationConfigurationService();
-        $resourceLocator = $this->testServiceProvider->getResourceLocator();
 
         $sitemapPath = sprintf(
             '%s%s',
@@ -35,9 +32,14 @@ class BuildCommandTest extends AbstractWebTestCase
         $this->assertEquals(0, $returnCode);
         $this->assertFileExists($sitemapPath);
 
+        $urlRoutesSourcePath =
+            $this->container->getParameter('kernel.root_dir') .
+            BuildCommand::SITEMAP_ROUTES_RESOURCE_NAME;
+
         $urlRoutesSource = file_get_contents(
-            $resourceLocator->locate(BuildCommand::SITEMAP_ROUTES_RESOURCE_NAME)
+            $urlRoutesSourcePath
         );
+
         $urlRoutes = json_decode($urlRoutesSource, true);
 
         $sitemapContent = file_get_contents($sitemapPath);

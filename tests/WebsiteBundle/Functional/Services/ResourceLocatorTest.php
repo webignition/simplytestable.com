@@ -31,10 +31,10 @@ class ResourceLocatorTest extends AbstractWebTestCase
     public function locateDataProvider()
     {
         return [
-            'sitemap routes' => [
-                'name' => '@SimplyTestableWebsiteBundle/Resources/config/sitemap_routes.json',
+            'web client routing' => [
+                'name' => '@SimplyTestableWebsiteBundle/Resources/config/webclientrouting.yml',
                 'expectedRelativeResourcePath' =>
-                    'src/SimplyTestable/WebsiteBundle/Resources/config/sitemap_routes.json',
+                    'src/SimplyTestable/WebsiteBundle/Resources/config/webclientrouting.yml',
             ],
         ];
     }
