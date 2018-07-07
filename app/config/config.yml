@@ -2,22 +2,7 @@ imports:
     - { resource: services.yml }
 
 framework:
-    #esi:             ~
-    #translator:      { fallback: %locale% }
-    secret:          "%secret%"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
-    form:            ~
-    csrf_protection: ~
-    validation:      { enable_annotations: true }
-    templating:
-        engines: ['twig']
-    default_locale:  "%locale%"
     trusted_hosts:   ~
-    session:
-      cookie_domain: .simplytestable.com
-      save_path: "%simplytestable_session_savepath%"
     fragments:       ~
     http_method_override: true
     assets:
