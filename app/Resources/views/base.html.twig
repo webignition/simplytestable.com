@@ -3,7 +3,7 @@
 {% set route_body_class = app.request.get('_route') | replace({'_' : '-'})  %}
 {% set is_logged_in_body_class = (is_logged_in) ? 'logged-in' : 'not-logged-in' %}
 {% set body_attrs %}{% block body_attrs %}{% endblock %}{% endset %}
-{% set body_class %}{% block body_class %}[route_body_class, is_logged_in_body_class]|join(' '){% endblock %}{% endset %}
+{% set body_class %}{% block body_class %}{{ ([route_body_class, is_logged_in_body_class]|join(' ')) }}{% endblock %}{% endset %}
 
 <html lang="en" class="no-js">
     <head>

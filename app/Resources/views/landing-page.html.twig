@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body_class %} splash landing-page{% endblock %}
+{% block body_class %}{{ parent() }} splash landing-page{% endblock %}
 
 {% block body %}
     {% block landing_strip %}{% endblock %}
