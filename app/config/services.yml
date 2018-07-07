@@ -26,6 +26,11 @@ services:
         autoconfigure: true
         tags: ['console.command']
 
+    SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+      arguments:
+        $kernelRootDirectory: '%kernel.root_dir%'
+        $webDirectory: '%kernel.project_dir%/web/'
+
     SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
@@ -40,14 +45,11 @@ services:
       arguments:
         $debug: '%kernel.debug%'
 
-    SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
-        arguments:
-          - '%kernel.root_dir%'
-          - '%kernel.cache_dir%'
-
     SimplyTestable\WebsiteBundle\Services\WebClientRouter:
         arguments:
           $baseUrl: '%web_client_url%'
+          $kernelRootDirectory: '%kernel.root_dir%'
+          $kernelCacheDirectory: '%kernel.cache_dir%'
 
     SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService:
         arguments: ['%not_found_redirect_map%', '%base_url%']

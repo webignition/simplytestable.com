@@ -4,16 +4,16 @@ namespace Tests\WebsiteBundle\Utility;
 
 use Symfony\Component\Yaml\Yaml;
 
-class ConfigResourceLoader
+class ConfigParameterResourceLoader
 {
-    const BUNDLE_RESOURCE_CONFIG_PATH = '/../../../src/SimplyTestable/WebsiteBundle/Resources/config';
+    const BUNDLE_RESOURCE_CONFIG_PATH = '/../../../app/config/parameters';
 
     /**
      * @param string $relativePath
      *
      * @return mixed
      */
-    public static function load($relativePath)
+    public static function load($relativePath, $key)
     {
         $resourcePath = realpath(__DIR__ . self::BUNDLE_RESOURCE_CONFIG_PATH . $relativePath);
 
@@ -23,6 +23,8 @@ class ConfigResourceLoader
             );
         }
 
-        return Yaml::parse(file_get_contents($resourcePath));
+        $parameters = Yaml::parse(file_get_contents($resourcePath));
+
+        return $parameters['parameters'][$key];
     }
 }

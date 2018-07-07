@@ -1,7 +1,5 @@
 imports:
     - { resource: config.yml }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters.yml" }
-    - { resource: "@SimplyTestableWebsiteBundle/Resources/config/parameters_dev.yml" }
 
 framework:
     router:

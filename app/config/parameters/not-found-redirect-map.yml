@@ -1,0 +1,14 @@
+parameters:
+  not_found_redirect_map:
+    /index.php:
+      group: local
+      route: home_index
+    /signup.php:
+      group: web_client
+      route: sign_up
+    /signup:
+      group: web_client
+      route: sign_up
+    /register.php:
+      group: web_client
+      route: sign_up
