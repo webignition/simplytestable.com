@@ -10,7 +10,6 @@ Encore
 
     // will create web/build/app.js and web/build/app.css
     .addEntry('app', './assets/js/app.js')
-    .addStyleEntry('tms', './assets/css/tms.scss')
     .addStyleEntry('outdated-browser', './assets/css/outdated-browser.scss')
 
     // allow sass/scss files to be processed
