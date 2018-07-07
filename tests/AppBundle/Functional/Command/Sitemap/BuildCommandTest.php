@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Command\Sitemap;
+namespace Tests\AppBundle\Functional\Command\Sitemap;
 
-use SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand;
+use AppBundle\Command\Sitemap\BuildCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;

@@ -1,5 +1,5 @@
 <?php
-namespace SimplyTestable\WebsiteBundle\Command\CacheValidator;
+namespace AppBundle\Command\CacheValidator;
 
 use SimplyTestable\WebsiteBundle\Services\CacheValidatorHeadersService;
 use Symfony\Component\Console\Command\Command;

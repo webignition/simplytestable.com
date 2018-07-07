@@ -20,13 +20,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    SimplyTestable\WebsiteBundle\Command\:
-        resource: '../../src/SimplyTestable/WebsiteBundle/Command'
+    AppBundle\Command\:
+        resource: '../../src/AppBundle/Command'
         autowire: true
         autoconfigure: true
         tags: ['console.command']
 
-    SimplyTestable\WebsiteBundle\Command\Sitemap\BuildCommand:
+    AppBundle\Command\Sitemap\BuildCommand:
       arguments:
         $kernelRootDirectory: '%kernel.root_dir%'
         $webDirectory: '%kernel.project_dir%/web/'

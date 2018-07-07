@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\WebsiteBundle\Functional\Command\CacheValidator;
+namespace Tests\AppBundle\Functional\Command\CacheValidator;
 
 use Doctrine\ORM\EntityRepository;
-use SimplyTestable\WebsiteBundle\Command\CacheValidator\ClearCommand;
+use AppBundle\Command\CacheValidator\ClearCommand;
 use SimplyTestable\WebsiteBundle\Entity\CacheValidatorHeaders;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
