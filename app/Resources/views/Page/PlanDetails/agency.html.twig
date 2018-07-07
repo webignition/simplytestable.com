@@ -1,11 +1,9 @@
-{% extends ':PlanDetails:base.html.twig' %}
-
-{% block heading %}Features of an agency account{% endblock %}
+{% extends ':Page/PlanDetails:base.html.twig' %}
 
 {% block content %}
     <p>
         The agency account is our ideal subscription for small agencies at
-        &pound;{{ prices.agency }} per month.
+        {{ plan.price|raw }} per month.
     </p>
 
     <p>
@@ -38,19 +36,10 @@
 {% endblock %}
 
 {% block ctas %}
-    <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include ':Partials/cta-buttons:generic-anchor.html.twig'
-           with {
-                 'url': web_client_urls.sign_up ~ '?plan=' ~ plan,
-                 'label': 'View premium plan options',
-                 'byline':'30-day free trial. From &pound;' ~ prices.personal ~ ' per month.',
-                 'icon':'caret-right',
-                 'primary':true
-        } %}
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-5 additional">
-        <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
-        <a href="{{ path('page_accountbenefits') }}">Benefits of creating an account</a>
-        <a href="{{ path('page_plans') }}">Premium plan options</a>
-    </div>
+    {% include ':Partials/plan-details:premium-plan-ctas.html.twig'
+        with {
+            'plan': plan,
+            'web_client_urls': web_client_urls
+        }
+    only %}
 {% endblock %}
