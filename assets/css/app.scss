@@ -34,19 +34,19 @@ body {
     @import "page/splash";
   }
 
-  &.page-accountbenefits {
+  &.account-benefits {
     @import "page/account-benefits";
   }
 
-  &.plandetails-index {
+  &.plan-details {
     @import "page/plan-details";
   }
 
-  &.page-features {
+  &.features {
     @import "page/features";
   }
 
-  &.home-index {
+  &.home {
     @import "page/homepage";
   }
 
@@ -54,11 +54,11 @@ body {
     @import "page/errorpage";
   }
 
-  &.page-plans {
+  &.plans {
     @import "page/plans";
   }
 
-  &.landingpage-tms {
+  &.tms {
     @import "page/tms";
   }
 }

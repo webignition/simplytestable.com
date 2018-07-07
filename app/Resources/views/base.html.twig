@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+{% set is_logged_in_body_class = (is_logged_in) ? 'logged-in' : 'not-logged-in' %}
+{% set body_attrs %}{% block body_attrs %}{% endblock %}{% endset %}
+{% set body_class %}{% block body_class %}{{ is_logged_in_body_class }}{% endblock %}{% endset %}
+
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
@@ -34,19 +39,10 @@
         {% endblock %}
     </head>
 
-{% set route_body_class = app.request.get('_route') | replace({'_' : '-'})  %}
-{% set is_logged_in_body_class = (is_logged_in) ? 'logged-in' : 'not-logged-in' %}
-{% set body_class = [route_body_class, is_logged_in_body_class]|join(' ') %}
-{% set body_attrs %}{% block body_attrs %}{% endblock %}{% endset %}
-
-    <body class="{{ body_class }} {% block body_class %} {% endblock %}" {{ body_attrs }}>
-
-
-{% block navbar %}{% include ':Partials:navbar.html.twig' %}{% endblock %}
-
-{% block body %}{% endblock %}
-
-{% block footer %}{% include ':Partials:footer.html.twig' %}{% endblock %}
+    <body class="{{ body_class }}" {{ body_attrs }}>
+        {% block navbar %}{% include ':Partials:navbar.html.twig' %}{% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% include ':Partials:footer.html.twig' %}{% endblock %}
 
     <!-- ideally move all suitable JS here -->
     <script>
