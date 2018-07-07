@@ -33,4 +33,8 @@ body {
   &.page-accountbenefits {
     @import "page/account-benefits";
   }
+
+  &.plandetails-index {
+    @import "page/plan-details";
+  }
 }
