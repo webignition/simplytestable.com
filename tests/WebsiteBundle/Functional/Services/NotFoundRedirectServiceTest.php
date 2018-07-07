@@ -6,16 +6,20 @@ use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 
 class NotFoundRedirectServiceTest extends AbstractWebTestCase
 {
-    public function testGetRedirectFor()
+    /**
+     * @dataProvider getRedirectForDataProvider
+     *
+     * @param $url
+     * @param $expectedRedirectUrl
+     */
+    public function testGetRedirectFor($url, $expectedRedirectUrl)
     {
         $notFoundRedirectService = $this->testServiceProvider->getNotFoundRedirectService();
 
-        foreach ($this->getRedirectForDataProvider() as $testData) {
-            $this->assertEquals(
-                $testData['expectedRedirectUrl'],
-                $notFoundRedirectService->getRedirectFor($testData['url'])
-            );
-        }
+        $this->assertEquals(
+            $expectedRedirectUrl,
+            $notFoundRedirectService->getRedirectFor($url)
+        );
     }
 
     /**
