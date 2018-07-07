@@ -11,8 +11,11 @@ framework:
         cookie_domain: .simplytestable.com
         save_path: '%env(SESSION_SAVE_PATH)%'
 
+    assets:
+        json_manifest_path: '%kernel.project_dir%/web/build/manifest.json'
+
     #esi: true
-    #fragments: true
+    fragments: ~
     php_errors:
         log: true
 

@@ -188,6 +188,9 @@
     "squizlabs/php_codesniffer": {
         "version": "3.3.0"
     },
+    "symfony/asset": {
+        "version": "v4.1.1"
+    },
     "symfony/cache": {
         "version": "v4.1.1"
     },
