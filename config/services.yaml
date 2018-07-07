@@ -1,3 +1,8 @@
+imports:
+    - { resource: parameters/plans.yaml }
+    - { resource: parameters/plan-distinctions.yaml }
+    - { resource: parameters/not-found-redirect-map.yaml }
+
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
 
