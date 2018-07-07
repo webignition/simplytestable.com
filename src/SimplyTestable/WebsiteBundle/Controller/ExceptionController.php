@@ -119,7 +119,7 @@ class ExceptionController extends BaseExceptionController
 
         // For error pages, try to find a template for the specific HTTP status code and format
         if (!$showException) {
-            $template = sprintf('SimplyTestableWebsiteBundle:Exception:%s%s.%s.twig', $name, $code, $format);
+            $template = sprintf(':Exception:%s%s.%s.twig', $name, $code, $format);
             if ($this->templateExists($template)) {
                 return $template;
             }
@@ -160,7 +160,7 @@ class ExceptionController extends BaseExceptionController
             $exception->getStatusCode()
         );
 
-        $messageBody = $this->twig->render('SimplyTestableWebsiteBundle:Email:exception.txt.twig', array(
+        $messageBody = $this->twig->render(':Email:exception.txt.twig', array(
             'status_code' => $exception->getStatusCode(),
             'status_text' => '"status text"',
             'exception' => $exception,
