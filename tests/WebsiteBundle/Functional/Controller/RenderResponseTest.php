@@ -2,30 +2,30 @@
 
 namespace Tests\WebsiteBundle\Functional\Controller;
 
-use SimplyTestable\WebsiteBundle\Controller\PageController;
 use Symfony\Component\DomCrawler\Crawler;
+use Tests\WebsiteBundle\DataProvider\RouteDataProviderTrait;
 
-class PageControllerTest extends AbstractControllerTest
+class RenderResponseTest extends AbstractControllerTest
 {
+    use RouteDataProviderTrait;
+
     const USER_EMAIL = 'user@example.com';
 
     /**
-     * @var PageController
+     * @dataProvider routeDataProvider
+     *
+     * @param string $url
      */
-    private $controller;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
+    public function testResponseIsSuccessful($url)
     {
-        parent::setUp();
+        $this->client->request('GET', $url);
+        $response = $this->getClientResponse();
 
-        $this->controller = $this->container->get(PageController::class);
+        $this->assertTrue($response->isSuccessful());
     }
 
     /**
-     * @dataProvider routeDataProvider
+     * @dataProvider routesForPagesWithNavBarDataProvider
      *
      * @param string $url
      */
@@ -51,7 +51,7 @@ class PageControllerTest extends AbstractControllerTest
     }
 
     /**
-     * @dataProvider routeDataProvider
+     * @dataProvider routesForPagesWithNavBarDataProvider
      *
      * @param string $url
      */
@@ -85,13 +85,13 @@ class PageControllerTest extends AbstractControllerTest
     /**
      * @return array
      */
-    public function routeDataProvider()
+    public function routesForPagesWithNavBarDataProvider()
     {
-        return [
-            'home' => [
-                'url' => '/',
-            ],
-        ];
+        $routeData = $this->routeDataProvider();
+
+        unset($routeData['outdated-browser']);
+
+        return $routeData;
     }
 
     /**
