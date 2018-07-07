@@ -3,8 +3,7 @@
 namespace Tests\WebsiteBundle\Functional\Controller;
 
 use Mockery;
-use SimplyTestable\WebsiteBundle\Controller\HomeController;
-use SimplyTestable\WebsiteBundle\EventListener\UserEventListener;
+use SimplyTestable\WebsiteBundle\Controller\PageController;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -12,7 +11,6 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\WebsiteBundle\Functional\AbstractWebTestCase;
 use webignition\SimplyTestableUserModel\User;
-use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 class UserEventListenerTest extends AbstractWebTestCase
 {
@@ -45,11 +43,11 @@ class UserEventListenerTest extends AbstractWebTestCase
 
         /* @var KernelInterface $kernel */
         $kernel = Mockery::mock(HttpKernelInterface::class);
-        $controller = $this->container->get(HomeController::class);
+        $controller = $this->container->get(PageController::class);
         $request = new Request([], [], [], $requestCookies);
         $callable = [
             $controller,
-            'indexAction'
+            'homeAction'
         ];
 
         $filterControllerEvent = new FilterControllerEvent(
