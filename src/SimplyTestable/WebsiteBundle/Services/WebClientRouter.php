@@ -10,7 +10,6 @@ use Symfony\Component\Routing\RouterInterface;
 
 class WebClientRouter implements RouterInterface
 {
-    const BUNDLE_CONFIG_PATH = '@SimplyTestableWebsiteBundle/Resources/config';
     const ROUTING_RESOURCE = 'webclientrouting.yml';
     const ROUTE_NAME_START_TEST = 'start_test';
     const ROUTE_NAME_SIGN_IN = 'sign_in';
@@ -26,22 +25,20 @@ class WebClientRouter implements RouterInterface
 
     /**
      * @param string $baseUrl
-     * @param ResourceLocator $resourceLocator
-     * @param ApplicationConfigurationService $applicationConfigurationService
+     * @param string $kernelRootDirectory
+     * @param string $kernelCacheDirectory
      */
-    public function __construct(
-        $baseUrl,
-        ResourceLocator $resourceLocator,
-        ApplicationConfigurationService $applicationConfigurationService
-    ) {
-        $locator = new FileLocator($resourceLocator->locate(self::BUNDLE_CONFIG_PATH));
+    public function __construct($baseUrl, $kernelRootDirectory, $kernelCacheDirectory)
+    {
+        $locator = new FileLocator($kernelRootDirectory . '/config/config');
+
         $requestContext = new RequestContext();
         $requestContext->fromRequest(Request::createFromGlobals());
 
         $this->router = new Router(
             new YamlFileLoader($locator),
             self::ROUTING_RESOURCE,
-            ['cache_dir' => $applicationConfigurationService->getCacheDir()],
+            ['cache_dir' => $kernelCacheDirectory],
             $requestContext
         );
 
