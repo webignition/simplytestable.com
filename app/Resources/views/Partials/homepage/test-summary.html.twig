@@ -1,7 +1,0 @@
-{% set finished_states = ['completed', 'cancelled', 'failed-no-sitemap', 'rejected'] %}
-
-{% if test.state in finished_states %}
-{% include ':Partials/homepage:finished-test-summary.html.twig' %}
-{% else %}
-{% include ':Partials/homepage:current-test-summary.html.twig' %}
-{% endif %}
