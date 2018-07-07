@@ -3,7 +3,7 @@ namespace SimplyTestable\WebsiteBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use SimplyTestable\WebsiteBundle\Model\CacheValidatorIdentifier;
+use AppBundle\Model\CacheValidatorIdentifier;
 
 /**
  *

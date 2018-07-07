@@ -2,7 +2,7 @@
 
 namespace AppBundle\Services;
 
-use SimplyTestable\WebsiteBundle\Model\Testimonial;
+use AppBundle\Model\Testimonial;
 
 class TestimonialService
 {

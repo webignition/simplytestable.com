@@ -2,8 +2,8 @@
 
 namespace AppBundle\Services;
 
-use SimplyTestable\WebsiteBundle\Model\Plan\PlanDecorator;
-use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
+use AppBundle\Model\Plan\PlanDecorator;
+use AppBundle\Model\Plan\PlanInterface;
 
 class DecoratedPlanFactory
 {

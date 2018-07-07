@@ -2,8 +2,8 @@
 
 namespace Tests\AppBundle\Unit\Services;
 
-use SimplyTestable\WebsiteBundle\Model\Plan\DistinctionInterface;
-use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
+use AppBundle\Model\Plan\DistinctionInterface;
+use AppBundle\Model\Plan\PlanInterface;
 use AppBundle\Services\PlansService;
 use Tests\WebsiteBundle\Utility\ConfigParameterResourceLoader;
 

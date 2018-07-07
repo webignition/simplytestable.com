@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Model;
+namespace AppBundle\Model;
 
 class CacheValidatorIdentifier
 {

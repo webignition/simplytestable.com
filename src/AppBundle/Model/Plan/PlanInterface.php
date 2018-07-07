@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplyTestable\WebsiteBundle\Model\Plan;
+namespace AppBundle\Model\Plan;
 
 interface PlanInterface
 {

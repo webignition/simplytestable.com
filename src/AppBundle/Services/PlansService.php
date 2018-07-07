@@ -2,9 +2,9 @@
 
 namespace AppBundle\Services;
 
-use SimplyTestable\WebsiteBundle\Model\Plan\Plan;
-use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
-use SimplyTestable\WebsiteBundle\Model\Plan\PseudoPlan;
+use AppBundle\Model\Plan\Plan;
+use AppBundle\Model\Plan\PlanInterface;
+use AppBundle\Model\Plan\PseudoPlan;
 
 class PlansService
 {
