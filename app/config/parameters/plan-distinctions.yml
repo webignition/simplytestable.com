@@ -1,0 +1,84 @@
+parameters:
+  plan_distinctions:
+    test_limitations:
+      name: "Per-test limitations"
+      distinctions:
+        full_site_tests_per_site:
+          name:
+            primary: "Full-site test%s"
+            secondary: "per site"
+          icon: globe
+        single_page_tests_per_page:
+          name:
+            primary: "Single-page test%s"
+            secondary: "per page"
+          icon: circle-o
+        pages_examined_per_test:
+          name:
+            primary: "Pages examined"
+            secondary: "per test"
+          icon: cogs
+        credits_per_month:
+          name:
+            primary: "Credits per month"
+          icon: star
+    access_to_results:
+      name: "Access to results"
+      distinctions:
+        private_tests:
+          name:
+            primary: "Private tests"
+          icon: lock
+        results_available_for:
+          name:
+            primary: "Results available for"
+          icon: clock-o
+        read_only_reports:
+          name:
+            primary: "Read-only reports"
+          icon: eye
+    url_discovery:
+      name: "URL discovery"
+      distinctions:
+        discovery_via_sitemap:
+          name:
+            primary: "Discovery via sitemap"
+          icon: search
+        discovery_via_crawl:
+          name:
+            primary: "Discovery via crawling"
+          icon: bug
+    test_types:
+      name: "Test types"
+      distinctions:
+        html_validation:
+          name:
+            primary: "HTML validation"
+          icon: dot-circle-o
+        css_validation:
+          name:
+            primary: "CSS validation"
+          icon: dot-circle-o
+        js_static_analysis:
+          name:
+            primary: "JS static analysis"
+          icon: dot-circle-o
+        link_integrity_checking:
+          name:
+            primary: "Link integrity checking"
+          icon: dot-circle-o
+    advanced_options:
+      name: "Advanced options"
+      distinctions:
+        https_sites:
+          name:
+            primary: "HTTPS sites"
+          icon: lock
+        http_authentication:
+          name:
+            primary: "HTTP authentication"
+          icon: lock
+        custom_cookies:
+          name:
+            primary: "Custom cookies"
+          icon: sun-o

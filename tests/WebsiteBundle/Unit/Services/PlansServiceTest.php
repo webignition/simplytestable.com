@@ -5,7 +5,7 @@ namespace Tests\WebsiteBundle\Unit\Services;
 use SimplyTestable\WebsiteBundle\Model\Plan\DistinctionInterface;
 use SimplyTestable\WebsiteBundle\Model\Plan\PlanInterface;
 use SimplyTestable\WebsiteBundle\Services\PlansService;
-use Tests\WebsiteBundle\Utility\ConfigResourceLoader;
+use Tests\WebsiteBundle\Utility\ConfigParameterResourceLoader;
 
 class PlansServiceTest extends \PHPUnit\Framework\TestCase
 {
@@ -33,8 +33,8 @@ class PlansServiceTest extends \PHPUnit\Framework\TestCase
         parent::setUp();
 
         $this->plansService = new PlansService(
-            ConfigResourceLoader::load('/plans/plans.yml'),
-            ConfigResourceLoader::load('/plans/distinctions.yml')
+            ConfigParameterResourceLoader::load('/plans.yml', 'plans'),
+            ConfigParameterResourceLoader::load('/plan-distinctions.yml', 'plan_distinctions')
         );
     }
 
