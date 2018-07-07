@@ -13,7 +13,7 @@ class BuildCommandTest extends AbstractWebTestCase
     {
         $sitemapPath = sprintf(
             '%s%s',
-            $this->container->getParameter('kernel.project_dir') . '/web',
+            self::$container->getParameter('kernel.project_dir') . '/web',
             BuildCommand::SITEMAP_RELATIVE_PATH
         );
 
@@ -23,7 +23,7 @@ class BuildCommandTest extends AbstractWebTestCase
 
         $this->assertFileNotExists($sitemapPath);
 
-        $command = $this->container->get(BuildCommand::class);
+        $command = self::$container->get(BuildCommand::class);
 
         $returnCode = $command->run(new ArrayInput([]), new NullOutput());
 
@@ -31,7 +31,7 @@ class BuildCommandTest extends AbstractWebTestCase
         $this->assertFileExists($sitemapPath);
 
         $urlRoutesSourcePath =
-            $this->container->getParameter('kernel.root_dir') .
+            self::$container->getParameter('kernel.root_dir') .
             BuildCommand::SITEMAP_ROUTES_RESOURCE_NAME;
 
         $urlRoutesSource = file_get_contents(

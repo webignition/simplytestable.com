@@ -34,13 +34,13 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
         $expectedRequestHasCacheValidatorLastModifiedHeader,
         $expectedCacheValidatorHeadersCount
     ) {
-        $entityManager = $this->container->get('doctrine.orm.entity_manager');
+        $entityManager = self::$container->get('doctrine.orm.entity_manager');
         $entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
         $cachedResponseEventListener = $this->testServiceProvider->getCachedResponseEventListener();
 
         /* @var KernelInterface $kernel */
         $kernel = Mockery::mock(HttpKernelInterface::class);
-        $controller = $this->container->get(PageController::class);
+        $controller = self::$container->get(PageController::class);
         $request = new Request();
         $request->headers->add($requestHeaders);
         $callable = [

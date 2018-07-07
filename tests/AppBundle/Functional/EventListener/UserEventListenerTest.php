@@ -26,7 +26,7 @@ class UserEventListenerTest extends AbstractWebTestCase
     {
         $userEventListener = $this->testServiceProvider->getUserEventListener();
         $userSerializerService = $this->testServiceProvider->getUserSerializer();
-        $session = $this->container->get('session');
+        $session = self::$container->get('session');
         $userService = $this->testServiceProvider->getUserService();
 
         $requestCookies = [];
@@ -43,7 +43,7 @@ class UserEventListenerTest extends AbstractWebTestCase
 
         /* @var KernelInterface $kernel */
         $kernel = Mockery::mock(HttpKernelInterface::class);
-        $controller = $this->container->get(PageController::class);
+        $controller = self::$container->get(PageController::class);
         $request = new Request([], [], [], $requestCookies);
         $callable = [
             $controller,
