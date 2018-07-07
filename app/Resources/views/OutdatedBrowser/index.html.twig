@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/outdated-browser.css') }}">
+{% endblock %}
+
+{% block title %}OMG IE{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body_class %} outdated-browser {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div id="landing-strip">
+        <div class="container">
+            <div class="intro">
+                <div class="leader">
+                    <h1>
+                        Outdated Internet Explorer Browser
+                    </h1>
+
+                </div>
+                <div class="content">
+                    <p>
+                        You're using an old version of Internet Explorer.
+
+                        We don't intend to make <a href="{{ path('home_index') }}">Simply Testable</a> work with
+                        Internet Explorer less than version 10.
+                    </p>
+                </div>
+            </div>
+            <div  id="large-logo">
+                <img src="{{ asset('build/images/256-ie.png') }}" alt="" class="hidden-xs hidden-sm" />
+            </div>
+        </div>
+    </div>
+
+    <div id="outdated-browser-content">
+        <div class="container">
+            <h2>Try a more modern browser</h2>
+
+            <div class="browser">
+                <a href="//google.com/chrome/">
+                    <img src="{{ asset('build/images/128-chrome.png') }}" alt="Chrome" />
+                    <span class="name">Chrome</span>
+                </a>
+            </div>
+
+            <div class="browser">
+                <a href="http://getfirefox.com">
+                    <img src="{{ asset('build/images/128-firefox.png') }}" alt="Firefox" />
+                    <span class="name">Firefox</span>
+                </a>
+            </div>
+
+            <div class="browser">
+                <a href="http://opera.com">
+                    <img src="{{ asset('build/images/128-opera.png') }}" alt="Opera" />
+                    <span class="name">Opera</span>
+                </a>
+            </div>
+
+            <div class="browser">
+                <a href="http://www.apple.com/safari">
+                    <img src="{{ asset('build/images/128-safari.png') }}" alt="Safari" />
+                    <span class="name">Safari</span>
+                </a>
+            </div>
+
+            <div class="browser">
+                <a href="http://microsoft.com/ie">
+                    <img src="{{ asset('build/images/128-ie.png') }}" alt="Internet Explorer" />
+                    <span class="name">IE9+</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,7 +1,0 @@
-<div class="summary-container summary-figure {% if test.error_count > 0 %}error-container{% else %}success-container{% endif %}">
-    {% if test.error_count > 0 %}
-        <a href="{{test.results_url}}#?filter=with-errors#test-list"><span class="count">{{ test.error_count }}</span> <span class="stat-label">error{% if test.error_count != 1 %}s{% endif %}</span> <i class="fa fa-caret-right"></i></a>
-    {% else %}
-        <span class="anchor"><span class="count">{{ test.error_count }}</span> <span class="stat-label">errors</span></span>
-        {% endif %}            
-</div>

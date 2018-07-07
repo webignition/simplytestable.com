@@ -1,0 +1,49 @@
+{% extends ':PlanDetails:base.html.twig' %}
+
+{% block content %}
+    <p>
+        The business account is our standard professional account for larger
+        organisations at {{ plan.price|raw }} per month.
+    </p>
+
+    <p>
+        As with all accounts, your tests are private and can be accessed by you
+        only. You can choose to share a read-only report with others.
+    </p>
+
+    <p>
+        As an account holder you have access to all types of test offered: HTML
+        validation, CSS validation, JavaScript static analysis and link integrity
+        (broken link) checking.
+    </p>
+
+    <p>
+        As a premium account holder, you can access your tests results forever
+        and unlock the ability to test HTTPS sites, to test sites that use HTTP
+        authentication and to use custom cookies.
+    </p>
+
+    <p>
+        Each test created under an business account will examine up to the first {{ plan.distinctions.test_limitations.pages_examined_per_test }}
+        pages discovered.
+    </p>
+
+    <p>
+        A business account offers {{ plan.distinctions.test_limitations.credits_per_month }} credits per month. A single test against
+        a single URL requires 1 credit.
+    </p>
+
+    <p>
+        <a href="mailto:&#101;&#110;&#116;&#101;&#114;&#112;&#114;&#105;&#115;&#101;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;">Ask about our enterprise solutions</a> if you need to test larger sites
+        or if you need greater than {{ plan.distinctions.test_limitations.credits_per_month }} credits per month.
+    </p>
+{% endblock %}
+
+{% block ctas %}
+    {% include ':Partials/plan-details:premium-plan-ctas.html.twig'
+        with {
+            'plan': plan,
+            'web_client_urls': web_client_urls
+        }
+    only %}
+{% endblock %}

@@ -1,0 +1,7 @@
+<div class="row" id="recent-site-tests-list">
+    {% for test in tests %}
+        <div class="site col-md-4" data-test-id="{{ test.id }}" data-state="{{ test.state }}">
+            {% include ':Partials/homepage:test-summary.html.twig' %}
+        </div>
+    {% endfor %}
+</div>

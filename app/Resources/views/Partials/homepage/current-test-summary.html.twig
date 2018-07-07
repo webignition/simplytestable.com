@@ -1,0 +1,31 @@
+{% set queued_count = test.task_count_by_state.queued + attribute(test.task_count_by_state, 'queued-for-assignment') %}
+{% set in_progress_count =  attribute(test.task_count_by_state, 'in-progress') %}
+{% set finished_count = test.task_count_by_state.completed
+                      + test.task_count_by_state.cancelled
+                      + attribute(test.task_count_by_state, 'awaiting-cancellation')
+                    + attribute(test.task_count_by_state, 'failed-no-retry-available')
+                    + attribute(test.task_count_by_state, 'failed-retry-available')
+                    + attribute(test.task_count_by_state, 'failed-retry-limit-reached')
+                    + test.task_count_by_state.skipped %}
+
+<div class="job-in-progress state-{{ test.state }} {% if test_list is defined and test_list.requiresresults(test.test) %}requires-results{% endif %}">
+    {% include ':Partials/homepage/test/summary:header.html.twig' with {'action_url': test.progress_url, 'cta_label': 'Live progress'} %}
+
+    <div class="row progress-row">
+        <div class="col-md-12">
+            <div class="progress" data-completion-percent="{{ test.completion_percent }}">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ test.completion_percent }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ test.completion_percent }}%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row queue-stats">
+        <div class="col-md-12">
+            <span class="queued">{{ queued_count }}</span> queued,
+            <span class="in-progress">{{in_progress_count }}</span> in progress,
+            <span class="finished">{{ finished_count }}</span> finished
+        </div>
+    </div>
+
+    {% include ':Partials/homepage/test/summary:url-count-task-count-stats.html.twig' %}
+</div>
