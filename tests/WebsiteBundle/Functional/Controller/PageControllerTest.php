@@ -32,7 +32,7 @@ class PageControllerTest extends AbstractControllerTest
     }
 
     /**
-     * @dataProvider cachedResponseDataProvider
+     * @dataProvider cachedResponseHandlingDataProvider
      *
      * @param string $url
      * @param array $expectedCacheValidatorHeaderParameters
