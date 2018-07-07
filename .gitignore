@@ -9,3 +9,12 @@ vendor
 !var/logs/.gitkeep
 /build/
 /node_modules/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
