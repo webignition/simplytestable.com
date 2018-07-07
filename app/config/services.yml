@@ -45,11 +45,6 @@ services:
       arguments:
         $debug: '%kernel.debug%'
 
-    SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService:
-        arguments:
-          - '%kernel.root_dir%'
-          - '%kernel.cache_dir%'
-
     SimplyTestable\WebsiteBundle\Services\WebClientRouter:
         arguments:
           $baseUrl: '%web_client_url%'

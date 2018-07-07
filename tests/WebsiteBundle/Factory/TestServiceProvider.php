@@ -4,10 +4,8 @@ namespace Tests\WebsiteBundle\Factory;
 
 use SimplyTestable\WebsiteBundle\EventListener\CachedResponseEventListener;
 use SimplyTestable\WebsiteBundle\EventListener\UserEventListener;
-use SimplyTestable\WebsiteBundle\Services\ApplicationConfigurationService;
 use SimplyTestable\WebsiteBundle\Services\NotFoundRedirectService;
 use SimplyTestable\WebsiteBundle\Services\PlansService;
-use SimplyTestable\WebsiteBundle\Services\ResourceLocator;
 use SimplyTestable\WebsiteBundle\Services\UserService;
 use SimplyTestable\WebsiteBundle\Services\WebClientRouter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -46,19 +44,6 @@ class TestServiceProvider
     {
         /* @var NotFoundRedirectService $service */
         $service = $this->container->get($this->createServiceNameFromServiceClass(NotFoundRedirectService::class));
-
-        return $service;
-    }
-
-    /**
-     * @return ApplicationConfigurationService
-     */
-    public function getApplicationConfigurationService()
-    {
-        /* @var ApplicationConfigurationService $service */
-        $service = $this->container->get(
-            $this->createServiceNameFromServiceClass(ApplicationConfigurationService::class)
-        );
 
         return $service;
     }
