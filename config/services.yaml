@@ -71,7 +71,7 @@ services:
     AppBundle\Services\WebClientRouter:
         arguments:
           $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
-          $kernelRootDirectory: '%kernel.root_dir%'
+          $kernelProjectDirectory: '%kernel.project_dir%'
           $kernelCacheDirectory: '%kernel.cache_dir%'
 
     AppBundle\Services\NotFoundRedirectService:
