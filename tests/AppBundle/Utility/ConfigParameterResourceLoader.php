@@ -6,10 +6,11 @@ use Symfony\Component\Yaml\Yaml;
 
 class ConfigParameterResourceLoader
 {
-    const BUNDLE_RESOURCE_CONFIG_PATH = '/../../../app/config/parameters';
+    const BUNDLE_RESOURCE_CONFIG_PATH = '/../../../config/parameters';
 
     /**
      * @param string $relativePath
+     * @param string $key
      *
      * @return mixed
      */

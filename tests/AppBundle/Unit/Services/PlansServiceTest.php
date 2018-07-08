@@ -33,8 +33,8 @@ class PlansServiceTest extends \PHPUnit\Framework\TestCase
         parent::setUp();
 
         $this->plansService = new PlansService(
-            ConfigParameterResourceLoader::load('/plans.yml', 'plans'),
-            ConfigParameterResourceLoader::load('/plan-distinctions.yml', 'plan_distinctions')
+            ConfigParameterResourceLoader::load('/plans.yaml', 'plans'),
+            ConfigParameterResourceLoader::load('/plan-distinctions.yaml', 'plan_distinctions')
         );
     }
 
