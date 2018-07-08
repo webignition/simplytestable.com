@@ -1,0 +1,4 @@
+/ads.txt
+/wp-login.php
+/restore.zip
+/restore.tar.gz
