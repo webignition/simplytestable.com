@@ -1,0 +1,38 @@
+services:
+  _defaults:
+      autowire: true
+      autoconfigure: true
+      public: true
+
+  test.appbundle\services\webclientrouter:
+    class: AppBundle\Services\WebClientRouter
+    arguments:
+      $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
+      $kernelRootDirectory: '%kernel.root_dir%'
+      $kernelCacheDirectory: '%kernel.cache_dir%'
+
+  test.appbundle\services\notfoundredirectservice:
+    class: AppBundle\Services\NotFoundRedirectService
+    arguments:
+      - '%not_found_redirect_map%'
+      - '%env(resolve:BASE_URL)%'
+    calls:
+      - method: addRouter
+        arguments:
+            - 'local'
+            - '@router'
+      - method: addRouter
+        arguments:
+            - 'web_client'
+            - '@AppBundle\Services\WebClientRouter'
+
+  test.appbundle\services\plansservice:
+    class: AppBundle\Services\PlansService
+    arguments:
+      - '%plans%'
+      - '%plan_distinctions%'
+
+  test.webignition\simplytestableuserserializer\userserializer:
+    class: webignition\SimplyTestableUserSerializer\UserSerializer
+    arguments:
+      - '%kernel.secret%'
