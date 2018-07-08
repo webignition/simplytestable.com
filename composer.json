@@ -43,14 +43,12 @@
     },
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle",
             "App\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\AppBundle\\": "tests/AppBundle",
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\Src\\": "tests/Src"
         }
     },
     "replace": {
