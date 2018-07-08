@@ -19,7 +19,7 @@ class CacheableResponseFactory
         }
 
         $response->setPublic();
-        $response->setEtag($request->headers->get('x-cache-validator-etag'));
+        $response->setEtag($request->headers->get('x-cache-validator-etag'), true);
         $response->setLastModified(new \DateTime($request->headers->get('x-cache-validator-lastmodified')));
         $response->headers->addCacheControlDirective('must-revalidate', true);
 
