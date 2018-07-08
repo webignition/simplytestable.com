@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Src\Functional\Controller;
+namespace App\Tests\Src\Functional\Controller;
 
-use Tests\Src\Functional\AbstractWebTestCase;
+use App\Tests\Src\Functional\AbstractWebTestCase;
 
 class PlanDetailsControllerTest extends AbstractWebTestCase
 {

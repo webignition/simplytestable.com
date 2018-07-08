@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Src\Functional\EventListener;
+namespace App\Tests\Src\Functional\EventListener;
 
 use Mockery;
 use App\Controller\PageController;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Tests\Src\Functional\AbstractWebTestCase;
+use App\Tests\Src\Functional\AbstractWebTestCase;
 
 class CachedResponseEventListenerTest extends AbstractWebTestCase
 {

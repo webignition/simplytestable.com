@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Src\Functional\Controller;
+namespace App\Tests\Src\Functional\Controller;
 
 use Doctrine\ORM\EntityRepository;
 use App\Controller\OutdatedBrowserController;
@@ -9,7 +9,7 @@ use App\Controller\PlanDetailsController;
 use App\Entity\CacheValidatorHeaders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\Src\Factory\TestServiceProvider;
+use App\Tests\Src\Factory\TestServiceProvider;
 
 class CacheableControllerTest extends AbstractControllerTest
 {

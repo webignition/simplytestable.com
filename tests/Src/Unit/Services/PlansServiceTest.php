@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Src\Unit\Services;
+namespace App\Tests\Src\Unit\Services;
 
 use App\Model\Plan\DistinctionInterface;
 use App\Model\Plan\PlanInterface;
 use App\Services\PlansService;
-use Tests\Src\Utility\ConfigParameterResourceLoader;
+use App\Tests\Src\Utility\ConfigParameterResourceLoader;
 
 class PlansServiceTest extends \PHPUnit\Framework\TestCase
 {

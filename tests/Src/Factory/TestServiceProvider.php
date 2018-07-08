@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Src\Factory;
+namespace App\Tests\Src\Factory;
 
 use App\EventListener\CachedResponseEventListener;
 use App\EventListener\UserEventListener;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Src\Functional\Command\Sitemap;
+namespace App\Tests\Src\Functional\Command\Sitemap;
 
 use App\Command\Sitemap\BuildCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Tests\Src\Functional\AbstractWebTestCase;
+use App\Tests\Src\Functional\AbstractWebTestCase;
 
 class BuildCommandTest extends AbstractWebTestCase
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Src\Functional;
+namespace App\Tests\Src\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\Src\Factory\TestServiceProvider;
+use App\Tests\Src\Factory\TestServiceProvider;
 use webignition\SimplyTestableUserModel\User;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
 

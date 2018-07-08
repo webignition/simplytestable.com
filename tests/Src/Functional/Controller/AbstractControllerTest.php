@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Src\Functional\Controller;
+namespace App\Tests\Src\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Tests\Src\Functional\AbstractWebTestCase;
+use App\Tests\Src\Functional\AbstractWebTestCase;
 
 abstract class AbstractControllerTest extends AbstractWebTestCase
 {

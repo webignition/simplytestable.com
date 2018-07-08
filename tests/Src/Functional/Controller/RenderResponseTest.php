@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Src\Functional\Controller;
+namespace App\Tests\Src\Functional\Controller;
 
 use Symfony\Component\DomCrawler\Crawler;
-use Tests\Src\DataProvider\RouteDataProviderTrait;
+use App\Tests\Src\DataProvider\RouteDataProviderTrait;
 
 class RenderResponseTest extends AbstractControllerTest
 {

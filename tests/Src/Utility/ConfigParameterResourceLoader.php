@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Src\Utility;
+namespace App\Tests\Src\Utility;
 
 use Symfony\Component\Yaml\Yaml;
 
