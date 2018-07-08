@@ -58,7 +58,7 @@ services:
     AppBundle\Command\Sitemap\BuildCommand:
       arguments:
         $kernelRootDirectory: '%kernel.root_dir%'
-        $webDirectory: '%kernel.project_dir%/web/'
+        $webDirectory: '%kernel.project_dir%/public/'
 
     AppBundle\EventListener\CachedResponseEventListener:
       tags:
