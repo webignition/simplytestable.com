@@ -18,14 +18,14 @@ before_install:
 
 install:
   - composer install --prefer-dist
-  - php bin/console doctrine:database:create
-  - php bin/console doctrine:migrations:migrate --no-interaction
+  - ./bin/console doctrine:database:create
+  - ./bin/console doctrine:migrations:migrate --no-interaction
   - composer config --global process-timeout 2000
   - yarn install
 
 before_script:
-  - php bin/console --env=test cache:clear --no-warmup
-  - php bin/console --env=test cache:warmup
+  - ./bin/console --env=test cache:clear --no-warmup
+  - ./bin/console --env=test cache:warmup
 
 script:
   - yarn lint
