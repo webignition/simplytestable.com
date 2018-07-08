@@ -2,7 +2,7 @@ web/bundles/
 vendor
 /.idea
 /app/config/parameters.yml
-/web/sitemap.xml
+public/sitemap.xml
 /var/*
 !/var/logs
 /var/logs/*

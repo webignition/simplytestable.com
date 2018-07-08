@@ -6,12 +6,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Templating\EngineInterface;
 use Twig_Environment;
 
 class BuildCommand extends Command
 {
-    const SITEMAP_ROUTES_RESOURCE_NAME = '/config/config/sitemap_routes.json';
+    const SITEMAP_ROUTES_RESOURCE_NAME = '/config/resources/sitemap_routes.json';
     const SITEMAP_RELATIVE_PATH = '/sitemap.xml';
 
     /**
@@ -22,7 +21,7 @@ class BuildCommand extends Command
     /**
      * @var string
      */
-    private $kernelRootDirectory;
+    private $kernelProjectDirectory;
 
     /**
      * @var string
@@ -35,14 +34,14 @@ class BuildCommand extends Command
     private $twig;
 
     /**
-     * @param string $kernelRootDirectory
+     * @param string $kernelProjectDirectory
      * @param string $webDirectory
      * @param RouterInterface $router
      * @param Twig_Environment $twig
      * @param string|null $name
      */
     public function __construct(
-        $kernelRootDirectory,
+        $kernelProjectDirectory,
         $webDirectory,
         RouterInterface $router,
         Twig_Environment $twig,
@@ -50,7 +49,7 @@ class BuildCommand extends Command
     ) {
         parent::__construct($name);
 
-        $this->kernelRootDirectory = $kernelRootDirectory;
+        $this->kernelProjectDirectory = $kernelProjectDirectory;
         $this->webDirectory = $webDirectory;
 
         $this->router = $router;
@@ -110,7 +109,7 @@ class BuildCommand extends Command
         $urls = [];
 
         $routes = json_decode(
-            file_get_contents($this->kernelRootDirectory . self::SITEMAP_ROUTES_RESOURCE_NAME),
+            file_get_contents($this->kernelProjectDirectory . self::SITEMAP_ROUTES_RESOURCE_NAME),
             true
         );
 
