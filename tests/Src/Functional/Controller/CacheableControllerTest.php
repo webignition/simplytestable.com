@@ -165,7 +165,7 @@ class CacheableControllerTest extends AbstractControllerTest
         return [
             'home' => [
                 'url' => '/',
-                'ifNoneMatchHeader' => '"11bb9bf941ca9b19312cfaf3008a696d"',
+                'ifNoneMatchHeader' => 'W/"11bb9bf941ca9b19312cfaf3008a696d"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'home_index',
                     'user' => self::USER_EMAIL,
@@ -174,7 +174,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans' => [
                 'url' => '/plans/',
-                'ifNoneMatchHeader' => '"70b5eedf6f8f90c8728d76d37df743e1"',
+                'ifNoneMatchHeader' => 'W/"70b5eedf6f8f90c8728d76d37df743e1"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'page_plans',
                     'user' => self::USER_EMAIL,
@@ -183,7 +183,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'features' => [
                 'url' => '/features/',
-                'ifNoneMatchHeader' => '"4cf900a15c1402509dd0717639c26c7a"',
+                'ifNoneMatchHeader' => 'W/"4cf900a15c1402509dd0717639c26c7a"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'page_features',
                     'user' => self::USER_EMAIL,
@@ -192,7 +192,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'account-benefits' => [
                 'url' => '/account-benefits/',
-                'ifNoneMatchHeader' => '"516745ab81f74641ae7206c7c051aeeb"',
+                'ifNoneMatchHeader' => 'W/"516745ab81f74641ae7206c7c051aeeb"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'page_accountbenefits',
                     'user' => self::USER_EMAIL,
@@ -201,7 +201,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans/demo' => [
                 'url' => '/plans/demo/',
-                'ifNoneMatchHeader' => '"0f9e707c19e7d73ac5835c5cd771a5c8"',
+                'ifNoneMatchHeader' => 'W/"0f9e707c19e7d73ac5835c5cd771a5c8"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'plandetails_index',
                     'user' => self::USER_EMAIL,
@@ -210,7 +210,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans/personal' => [
                 'url' => '/plans/personal/',
-                'ifNoneMatchHeader' => '"0f9e707c19e7d73ac5835c5cd771a5c8"',
+                'ifNoneMatchHeader' => 'W/"0f9e707c19e7d73ac5835c5cd771a5c8"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'plandetails_index',
                     'user' => self::USER_EMAIL,
@@ -219,7 +219,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans/agency' => [
                 'url' => '/plans/agency/',
-                'ifNoneMatchHeader' => '"0f9e707c19e7d73ac5835c5cd771a5c8"',
+                'ifNoneMatchHeader' => 'W/"0f9e707c19e7d73ac5835c5cd771a5c8"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'plandetails_index',
                     'user' => self::USER_EMAIL,
@@ -228,7 +228,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans/business' => [
                 'url' => '/plans/business/',
-                'ifNoneMatchHeader' => '"0f9e707c19e7d73ac5835c5cd771a5c8"',
+                'ifNoneMatchHeader' => 'W/"0f9e707c19e7d73ac5835c5cd771a5c8"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'plandetails_index',
                     'user' => self::USER_EMAIL,
@@ -237,7 +237,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'plans/enterprise' => [
                 'url' => '/plans/enterprise/',
-                'ifNoneMatchHeader' => '"0f9e707c19e7d73ac5835c5cd771a5c8"',
+                'ifNoneMatchHeader' => 'W/"0f9e707c19e7d73ac5835c5cd771a5c8"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'plandetails_index',
                     'user' => self::USER_EMAIL,
@@ -246,7 +246,7 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'outdated-browser' => [
                 'url' => '/outdated-browser/',
-                'ifNoneMatchHeader' => '"994c1c6eae47fe7463e26604b196feb0"',
+                'ifNoneMatchHeader' => 'W/"994c1c6eae47fe7463e26604b196feb0"',
                 'expectedCacheValidatorHeaderParameters' => [
                     'route' => 'outdatedbrowser_index',
                     'user' => self::USER_EMAIL,
