@@ -20,7 +20,7 @@ class Version20120831091608CreateCacheValidatorHeaders extends AbstractMigration
             'Migration can only be executed safely on \'mysql\'.'
         );
 
-        $this->addSql("
+        $this->addSql(<<<EOL
           CREATE TABLE CacheValidatorHeaders (
               id INT AUTO_INCREMENT NOT NULL,
               identifier VARCHAR(255) NOT NULL,
@@ -28,7 +28,8 @@ class Version20120831091608CreateCacheValidatorHeaders extends AbstractMigration
               PRIMARY KEY(id),
               UNIQUE INDEX identifier_idx (identifier)
           )
-          DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE = InnoDB"
+          DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE = InnoDB
+EOL
         );
     }
 
