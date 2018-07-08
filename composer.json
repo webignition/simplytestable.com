@@ -16,6 +16,7 @@
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
         "symfony/monolog-bundle": "^3.1.0",
+        "symfony/profiler-pack": "^1.0",
         "symfony/twig-bundle": "^4.0",
         "symfony/yaml": "^4.0",
         "webignition/php-ie-detector": ">=0.2,<1",
