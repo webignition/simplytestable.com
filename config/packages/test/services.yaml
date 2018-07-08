@@ -36,3 +36,16 @@ services:
     class: webignition\SimplyTestableUserSerializer\UserSerializer
     arguments:
       - '%kernel.secret%'
+
+  test.appbundle\eventlistener\cachedresponseeventlistener:
+    class: AppBundle\EventListener\CachedResponseEventListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+  test.appbundle\eventlistener\usereventlistener:
+    class: AppBundle\EventListener\UserEventListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
+  test.appbundle\services\userservice:
+    class: AppBundle\Services\UserService
