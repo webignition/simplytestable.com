@@ -91,3 +91,7 @@ services:
     App\Services\NotFoundIgnoreList:
         arguments:
           $kernelProjectDirectory: '%kernel.project_dir%'
+
+    App\Cache\WebClientRouterCacheWarmer:
+        tags:
+            - { name: kernel.cache_warmer, priority: 0 }
