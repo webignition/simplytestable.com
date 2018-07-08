@@ -14,8 +14,7 @@ cache:
 before_install:
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
-  - mv app/config/parameters.yml.travis app/config/parameters.yml
-  - mv --force app/config/config_travis.yml app/config/config_test.yml
+  - mv --force phpunit.travis-ci.xml phpunit.xml.dist
 
 install:
   - composer install --prefer-dist
