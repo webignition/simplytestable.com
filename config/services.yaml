@@ -33,3 +33,70 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Migrated service config
+    AppBundle\:
+        resource: '../src/AppBundle/*'
+        exclude: '../src/AppBundle/{Entity,Repository}'
+
+    AppBundle\Controller\:
+        resource: '../src/AppBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    AppBundle\Controller\ExceptionController:
+      public: true
+      arguments:
+        $debug: '%kernel.debug%'
+
+    AppBundle\Command\:
+        resource: '../src/AppBundle/Command'
+        autowire: true
+        autoconfigure: true
+        tags: ['console.command']
+
+    AppBundle\Command\Sitemap\BuildCommand:
+      arguments:
+        $kernelRootDirectory: '%kernel.root_dir%'
+        $webDirectory: '%kernel.project_dir%/web/'
+
+    AppBundle\EventListener\CachedResponseEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+    AppBundle\EventListener\UserEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
+    AppBundle\Services\WebClientRouter:
+        arguments:
+          $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
+          $kernelRootDirectory: '%kernel.root_dir%'
+          $kernelCacheDirectory: '%kernel.cache_dir%'
+
+    AppBundle\Services\NotFoundRedirectService:
+        arguments:
+          - '%not_found_redirect_map%'
+          - '%env(resolve:BASE_URL)%'
+        calls:
+          - method: addRouter
+            arguments:
+                - 'local'
+                - '@router'
+          - method: addRouter
+            arguments:
+                - 'web_client'
+                - '@AppBundle\Services\WebClientRouter'
+
+    webignition\SimplyTestableUserSerializer\UserSerializer:
+      arguments:
+        - '%kernel.secret%'
+
+    AppBundle\Services\PlansService:
+      arguments:
+        - '%plans%'
+        - '%plan_distinctions%'
+
+    Postmark\PostmarkClient:
+      arguments:
+        - '%env(resolve:POSTMARK_API_KEY)%'

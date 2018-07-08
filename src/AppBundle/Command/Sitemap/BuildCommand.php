@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Templating\EngineInterface;
+use Twig_Environment;
 
 class BuildCommand extends Command
 {
@@ -29,22 +30,22 @@ class BuildCommand extends Command
     private $webDirectory;
 
     /**
-     * @var EngineInterface
+     * @var Twig_Environment
      */
-    private $templating;
+    private $twig;
 
     /**
      * @param string $kernelRootDirectory
      * @param string $webDirectory
      * @param RouterInterface $router
-     * @param EngineInterface $templating
+     * @param Twig_Environment $twig
      * @param string|null $name
      */
     public function __construct(
         $kernelRootDirectory,
         $webDirectory,
         RouterInterface $router,
-        EngineInterface $templating,
+        Twig_Environment $twig,
         $name = null
     ) {
         parent::__construct($name);
@@ -53,7 +54,7 @@ class BuildCommand extends Command
         $this->webDirectory = $webDirectory;
 
         $this->router = $router;
-        $this->templating = $templating;
+        $this->twig = $twig;
 
         $routerContext = $this->router->getContext();
         $routerContext->setHost('simplytestable.com');
@@ -91,7 +92,7 @@ class BuildCommand extends Command
             ];
         }
 
-        $sitemapContent = $this->templating->render('sitemap.xml.twig', [
+        $sitemapContent = $this->twig->render('sitemap.xml.twig', [
             'urls' => $decoratedUrls,
         ]);
 
