@@ -17,6 +17,7 @@ before_install:
   - rm phpunit.xml.dist
   - mv phpunit.travis-ci.xml phpunit.xml.dist
   - mv .env.travis-ci .env
+  - mysql -e 'CREATE DATABASE myapp_test;'
 
 install:
   - composer install --prefer-dist
