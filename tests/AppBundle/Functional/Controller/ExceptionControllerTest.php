@@ -14,15 +14,13 @@ class ExceptionControllerTest extends AbstractWebTestCase
      */
     public function testShowAction($url, $expectedResponseStatusCode)
     {
-        $this->assertTrue(true);
+        $this->getCrawler([
+            'url' => $url,
+        ]);
 
-//        $this->getCrawler([
-//            'url' => $url,
-//        ]);
-//
-//        $response = $this->getClientResponse();
-//
-//        $this->assertEquals($expectedResponseStatusCode, $response->getStatusCode());
+        $response = $this->getClientResponse();
+
+        $this->assertEquals($expectedResponseStatusCode, $response->getStatusCode());
     }
 
     /**
