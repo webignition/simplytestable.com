@@ -116,7 +116,7 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
             'etag match' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
                 'requestHeaders' => [
-                    'if_none_match' => '"c7523ad91c65550c4d532abe6ac86a7f"',
+                    'if_none_match' => 'W/"c7523ad91c65550c4d532abe6ac86a7f"',
                 ],
                 'expectedResponseIsNull' => false,
                 'expectedResponseStatusCode' => 304,
@@ -127,7 +127,7 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
             'etag match with accept header' => [
                 'requestType' => HttpKernelInterface::MASTER_REQUEST,
                 'requestHeaders' => [
-                    'if_none_match' => '"05584d722c9e31c6c4bcfa004529b8f9"',
+                    'if_none_match' => 'W/"05584d722c9e31c6c4bcfa004529b8f9"',
                     'accept' => 'foo',
                 ],
                 'expectedResponseIsNull' => false,
