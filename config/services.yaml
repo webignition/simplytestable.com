@@ -23,7 +23,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php,AppBundle}'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -31,50 +31,37 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-
-    # Migrated service config
-    AppBundle\:
-        resource: '../src/AppBundle/*'
-        exclude: '../src/AppBundle/{Entity,Repository}'
-
-    AppBundle\Controller\:
-        resource: '../src/AppBundle/Controller'
-        public: true
-        tags: ['controller.service_arguments']
-
-    AppBundle\Controller\ExceptionController:
+    App\Controller\ExceptionController:
       public: true
       arguments:
         $debug: '%kernel.debug%'
 
-    AppBundle\Command\:
-        resource: '../src/AppBundle/Command'
+    App\Command\:
+        resource: '../src/Command'
         autowire: true
         autoconfigure: true
         tags: ['console.command']
 
-    AppBundle\Command\Sitemap\BuildCommand:
+    App\Command\Sitemap\BuildCommand:
       arguments:
         $kernelProjectDirectory: '%kernel.project_dir%'
         $webDirectory: '%kernel.project_dir%/public/'
 
-    AppBundle\EventListener\CachedResponseEventListener:
+    App\EventListener\CachedResponseEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-    AppBundle\EventListener\UserEventListener:
+    App\EventListener\UserEventListener:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
 
-    AppBundle\Services\WebClientRouter:
+    App\Services\WebClientRouter:
         arguments:
           $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
           $kernelProjectDirectory: '%kernel.project_dir%'
           $kernelCacheDirectory: '%kernel.cache_dir%'
 
-    AppBundle\Services\NotFoundRedirectService:
+    App\Services\NotFoundRedirectService:
         arguments:
           - '%not_found_redirect_map%'
           - '%env(resolve:BASE_URL)%'
@@ -86,13 +73,13 @@ services:
           - method: addRouter
             arguments:
                 - 'web_client'
-                - '@AppBundle\Services\WebClientRouter'
+                - '@App\Services\WebClientRouter'
 
     webignition\SimplyTestableUserSerializer\UserSerializer:
       arguments:
         - '%kernel.secret%'
 
-    AppBundle\Services\PlansService:
+    App\Services\PlansService:
       arguments:
         - '%plans%'
         - '%plan_distinctions%'
