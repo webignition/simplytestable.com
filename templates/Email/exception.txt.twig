@@ -6,7 +6,7 @@
 
 {% for i, e in exception.toarray %}
 [{{ i + 1 }}] {{ e.class }}: {{ e.message }}
-{% include ':Email:traces.txt.twig' with { 'exception': e } only %}
+{% include 'Email/traces.txt.twig' with { 'exception': e } only %}
 
 {% endfor %}
 {% endautoescape %}

@@ -29,7 +29,7 @@
                                         </p>
                                     </div>
 
-                                    {% include ':Partials/account-benefits:display-xs-sm-account-options.html.twig'
+                                    {% include 'Partials/account-benefits/display-xs-sm-account-options.html.twig'
                                         with {
                                             'plan': plans.demo,
                                             'distinctions': distinctions
@@ -55,7 +55,7 @@
                                         </p>
                                     </div>
 
-                                    {%  include ':Partials/account-benefits:display-xs-sm-account-options.html.twig'
+                                    {%  include 'Partials/account-benefits/display-xs-sm-account-options.html.twig'
                                         with {
                                             'plan': plans.premium,
                                             'distinctions': distinctions
@@ -97,7 +97,7 @@
                                         {% endif %}
 
                                         <li {% if class_attr != '' %}class="{{ class_attr }}"{% endif %}>
-                                            {% include ':Partials/account-benefits:feature-name.html.twig'
+                                            {% include 'Partials/account-benefits/feature-name.html.twig'
                                                 with {
                                                 'name': distinction.name
                                             } only

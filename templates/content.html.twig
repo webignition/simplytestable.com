@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
 
-                {% include ':Partials:logo.html.twig' %}
+                {% include 'Partials/logo.html.twig' %}
 
                 <div class="col-lg-8 col-md-6 intro">
                     <div class="leader">
@@ -35,10 +35,10 @@
                 </div>
                 {% block landing_additional %}
                 <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">
-                    {% include ':Partials:landing-tweet.html.twig' %}
+                    {% include 'Partials/landing-tweet.html.twig' %}
                 </div>
                 <div class="col-lg-4 col-md-6 hidden-sm hidden-xs">
-                    {% include ':Partials:start-new-test-form.html.twig' %}
+                    {% include 'Partials/start-new-test-form.html.twig' %}
                 </div>
                 {% endblock %}
             </div>
@@ -74,8 +74,8 @@
                         </div>
                         <div class="col-md-4 sidebar">
                             {% block sidebar %}
-                                {% include ':Partials:about.html.twig' %}
-                                {% include ':Partials:newsletter.html.twig' %}
+                                {% include 'Partials/about.html.twig' %}
+                                {% include 'Partials/newsletter.html.twig' %}
                             {% endblock %}
                         </div>
                     </div>

@@ -8,7 +8,7 @@
         {{ plan_distinctions.results_available_for }}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.private_tests.value,
                 'name':category.distinctions.private_tests.name.primary
@@ -16,7 +16,7 @@
         %}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.read_only_reports.value,
                 'name':category.distinctions.read_only_reports.name.primary

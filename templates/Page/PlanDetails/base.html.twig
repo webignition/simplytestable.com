@@ -35,7 +35,7 @@
                 <div class="row ctas">
                     {% block ctas %}
                         <div class="col-lg-4 col-md-5 col-sm-4">
-                            {% include ':Partials/cta-buttons:create-account.html.twig' %}
+                            {% include 'Partials/cta-buttons/create-account.html.twig' %}
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 additional">
                             <a href="{{ web_client_urls.start_test }}">Try a demo now</a>
@@ -63,7 +63,7 @@
                                         </td>
                                         <td {% if plan_distinction.value is null %}class="not-applicable"{% endif %}>
                                             {% if plan_distinction.bool %}
-                                                {% include ':Partials:boolean-icon.html.twig'
+                                                {% include 'Partials/boolean-icon.html.twig'
                                                     with {
                                                         'is_set': plan_distinction.value
                                                     } only

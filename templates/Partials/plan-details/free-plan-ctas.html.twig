@@ -1,5 +1,5 @@
 <div class="col-lg-5 col-md-6 col-sm-5">
-    {% include ':Partials/cta-buttons:generic-anchor.html.twig'
+    {% include 'Partials/cta-buttons/generic-anchor.html.twig'
         with {
             'url': path('page_plans'),
             'label': 'See plans and pricing',
@@ -10,7 +10,7 @@
     only %}
 </div>
 <div class="col-lg-4 col-md-6 col-sm-5 additional">
-    {% include ':Partials/plan-details:additional-links.html.twig'
+    {% include 'Partials/plan-details/additional-links.html.twig'
         with {
             'start_test_url': web_client_urls.start_test
         }

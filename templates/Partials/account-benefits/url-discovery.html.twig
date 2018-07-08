@@ -2,7 +2,7 @@
 
 <ul class="distinction-data-group">
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.discovery_via_sitemap.value,
                 'name':category.distinctions.discovery_via_sitemap.name.primary
@@ -10,7 +10,7 @@
         %}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.discovery_via_crawl.value,
                 'name':category.distinctions.discovery_via_crawl.name.primary

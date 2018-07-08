@@ -39,7 +39,7 @@
 
 {% block ctas %}
     <div class="col-lg-5 col-md-6 col-sm-5">
-        {% include ':Partials/cta-buttons:generic-anchor.html.twig'
+        {% include 'Partials/cta-buttons/generic-anchor.html.twig'
            with {
                  'url': web_client_urls.sign_up ~ '?plan=' ~ plan,
                  'label': 'View premium plan options',

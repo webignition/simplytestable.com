@@ -40,9 +40,9 @@
     </head>
 
     <body class="{{ body_class }}" {{ body_attrs }}>
-        {% block navbar %}{% include ':Partials:navbar.html.twig' %}{% endblock %}
+        {% block navbar %}{% include 'Partials/navbar.html.twig' %}{% endblock %}
         {% block body %}{% endblock %}
-        {% block footer %}{% include ':Partials:footer.html.twig' %}{% endblock %}
+        {% block footer %}{% include 'Partials/footer.html.twig' %}{% endblock %}
 
     <!-- ideally move all suitable JS here -->
     <script>

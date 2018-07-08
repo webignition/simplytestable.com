@@ -2,7 +2,7 @@
 
 <ul class="distinction-data-group">
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.html_validation.value,
                 'name':category.distinctions.html_validation.name.primary
@@ -10,7 +10,7 @@
         %}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.css_validation.value,
                 'name':category.distinctions.css_validation.name.primary
@@ -18,7 +18,7 @@
         %}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.js_static_analysis.value,
                 'name':category.distinctions.js_static_analysis.name.primary
@@ -26,7 +26,7 @@
         %}
     </li>
     <li class="distinction-data-item">
-        {% include ':Partials:boolean-icon.html.twig'
+        {% include 'Partials/boolean-icon.html.twig'
             with {
                 'is_set': plan_distinctions.link_integrity_checking.value,
                 'name':category.distinctions.link_integrity_checking.name.primary
