@@ -1,0 +1,101 @@
+home_index:
+    path:  /
+    defaults: { _controller: App\Controller\PageController::homeAction }
+
+page_plans:
+    path:  /plans/
+    defaults: { _controller: App\Controller\PageController::plansAction }
+
+page_features:
+    path:  /features/
+    defaults: { _controller: App\Controller\PageController::featuresAction }
+
+page_roadmap:
+    path: /roadmap/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: home_index
+        permanent: true
+
+page_accountbenefits:
+    path:  /account-benefits/
+    defaults: { _controller: App\Controller\PageController::accountBenefitsAction }
+
+plandetails_index:
+    path:  /plans/{name}/
+    defaults: { _controller: App\Controller\PlanDetailsController::indexAction }
+
+outdatedbrowser_index:
+    path:  /outdated-browser/
+    defaults: { _controller: App\Controller\OutdatedBrowserController::indexAction }
+
+sign_out_submit:
+    path:  /signout/
+    defaults: { _controller: App\Controller\UserController::signOutSubmitAction }
+
+landingpage_tms:
+    path: /tms/
+    defaults: { _controller: App\Controller\LandingPageController::indexAction }
+
+redirect_limit_test_1:
+    path:  /redirect-limit-test/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_2
+        permanent: true
+
+redirect_limit_test_2:
+    path:  /redirect-limit-test/2/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_3
+        permanent: true
+
+redirect_limit_test_3:
+    path:  /redirect-limit-test/3/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_4
+        permanent: true
+
+redirect_limit_test_4:
+    path:  /redirect-limit-test/4/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_5
+        permanent: true
+
+redirect_limit_test_5:
+    path:  /redirect-limit-test/5/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_6
+        permanent: true
+
+redirect_limit_test_6:
+    path:  /redirect-limit-test/6/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_limit_test_7
+        permanent: true
+
+redirect_limit_test_7:
+    path:  /redirect-limit-test/7/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: roadmap
+        permanent: true
+
+redirect_loop_test_1:
+    path:  /redirect-loop-test/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_loop_test_2
+        permanent: true
+
+redirect_loop_test_2:
+    path:  /redirect-loop-test/2/
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+        route: redirect_loop_test_1
+        permanent: true

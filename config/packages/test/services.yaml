@@ -1,0 +1,51 @@
+services:
+  _defaults:
+      autowire: true
+      autoconfigure: true
+      public: true
+
+  test.app\services\webclientrouter:
+    class: App\Services\WebClientRouter
+    arguments:
+      $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
+      $kernelProjectDirectory: '%kernel.project_dir%'
+      $kernelCacheDirectory: '%kernel.cache_dir%'
+
+  test.app\services\notfoundredirectservice:
+    class: App\Services\NotFoundRedirectService
+    arguments:
+      - '%not_found_redirect_map%'
+      - '%env(resolve:BASE_URL)%'
+    calls:
+      - method: addRouter
+        arguments:
+            - 'local'
+            - '@router'
+      - method: addRouter
+        arguments:
+            - 'web_client'
+            - '@App\Services\WebClientRouter'
+
+  test.app\services\plansservice:
+    class: App\Services\PlansService
+    arguments:
+      - '%plans%'
+      - '%plan_distinctions%'
+
+  test.webignition\simplytestableuserserializer\userserializer:
+    class: webignition\SimplyTestableUserSerializer\UserSerializer
+    arguments:
+      - '%kernel.secret%'
+
+  test.app\eventlistener\cachedresponseeventlistener:
+    class: App\EventListener\CachedResponseEventListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+  test.app\eventlistener\usereventlistener:
+    class: App\EventListener\UserEventListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
+  test.app\services\userservice:
+    class: App\Services\UserService

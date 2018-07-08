@@ -2,10 +2,26 @@ web/bundles/
 vendor
 /.idea
 /app/config/parameters.yml
-/web/sitemap.xml
+public/sitemap.xml
 /var/*
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep
 /build/
 /node_modules/
+
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

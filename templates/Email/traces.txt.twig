@@ -1,0 +1,9 @@
+{% autoescape false %}
+Traces:
+{% if exception.trace|length %}
+{% for trace in exception.trace %}
+{% include 'Email/trace.txt.twig' with { 'trace': trace } only %}
+
+{% endfor %}
+{% endif %}
+{% endautoescape %}

@@ -1,5 +1,0 @@
-/* TEAM */
-	Founder:Jon Cram
-	Contact: jon [at] simplytestable.com
-	Twitter: @simplytestable
-	From: Cardiff, UK

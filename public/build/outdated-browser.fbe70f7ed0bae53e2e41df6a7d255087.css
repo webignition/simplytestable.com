@@ -1,0 +1,46 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+.container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#landing-strip {
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+#landing-strip .intro {
+  float: left;
+  width: 500px;
+}
+
+#landing-strip p {
+  font-size: 26px;
+  line-height: 34px;
+}
+
+#ie-logo-large {
+  float: left;
+  width: 289px;
+}
+
+.browser {
+  float: left;
+  width: 156px;
+  text-align: center;
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvY3NzL291dGRhdGVkLWJyb3dzZXIuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0NBQ0Q7O0FBRUQ7O0VBRUU7Q0FDRDs7QUFFRDtFQUNFO0VBQ0E7RUFDQTtDQUNEOztBQUVEO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtDQUNEOztBQUNDO0VBQ0U7RUFDQTtDQUVIOztBQVhEO0VBYUk7RUFDQTtDQUVIOztBQUVEO0VBQ0U7RUFDQTtDQUNEOztBQUVEO0VBQ0U7RUFDQTtFQUNBO0NBQ0QiLCJmaWxlIjoib3V0ZGF0ZWQtYnJvd3Nlci5mYmU3MGY3ZWQwYmFlNTNlMmU0MWRmNmE3ZDI1NTA4Ny5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgZm9udC1mYW1pbHk6ICdIZWx2ZXRpY2EgTmV1ZScsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7XG59XG5cbmgxLFxuaDIge1xuICBmb250LXdlaWdodDogbm9ybWFsO1xufVxuXG4uY29udGFpbmVyIHtcbiAgd2lkdGg6IDgwMHB4O1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuXG4jbGFuZGluZy1zdHJpcCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGRkO1xuICBwYWRkaW5nLXRvcDogNDBweDtcbiAgcGFkZGluZy1ib3R0b206IDQwcHg7XG4gIG1hcmdpbi1ib3R0b206IDQwcHg7XG5cbiAgLmludHJvIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICB3aWR0aDogNTAwcHg7XG4gIH1cblxuICBwIHtcbiAgICBmb250LXNpemU6IDI2cHg7XG4gICAgbGluZS1oZWlnaHQ6IDM0cHg7XG4gIH1cbn1cblxuI2llLWxvZ28tbGFyZ2Uge1xuICBmbG9hdDogbGVmdDtcbiAgd2lkdGg6IDI4OXB4O1xufVxuXG4uYnJvd3NlciB7XG4gIGZsb2F0OiBsZWZ0O1xuICB3aWR0aDogMTU2cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC4vYXNzZXRzL2Nzcy9vdXRkYXRlZC1icm93c2VyLnNjc3MiXSwic291cmNlUm9vdCI6IiJ9*/

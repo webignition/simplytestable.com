@@ -1,0 +1,71 @@
+{% extends 'Page/PlanDetails/base.html.twig' %}
+
+{% block heading %}Features of the limited demo{% endblock %}
+
+{% block content %}
+    <p>
+        A free demo is available to everyone - just visit the
+        <a href="{{ web_client_urls.start_test }}">test dashboard</a>
+        without signing in.
+    </p>
+
+    <p>
+        The demo offers many of the features you would find if you had an account
+        but is limited in the breadth of use.
+    </p>
+
+    <p>
+        You can carry out 1 full-site test per site and 1 single-page test
+        per page. This limit is not present if you create an account.
+    </p>
+
+    <p>
+        All demo tests are public as standard. They can be viewed by anyone
+        and are always to be found in the <a href="{{web_client_urls.history}}">demo account test history</a>.
+    </p>
+
+    <p>
+        Pages to be tested will be discovered by examining a site's XML sitemap
+        or news feed (RSS/Atom).
+    </p>
+
+    <p>
+        Sites with no sitemap or news need cannot be tested through the free demo.
+        A free or premium account allows a site to be crawled to discover pages
+        to test.
+    </p>
+
+    <p>
+        Each full-site demo test will examine up to the first
+        {{ plan.distinctions.test_limitations.pages_examined_per_test }}
+        pages discovered. A premium account is required for testing larger sites.
+    </p>
+
+    <p>
+        Results can be accessed for up to
+        {{ plan.distinctions.access_to_results.results_available_for }}
+        only. An account is required to claim and view older demo test results.
+    </p>
+
+    <p>
+        Demo tests can carry out HTML validation and
+        CSS validation tests. An account is required to carry out JavaScript
+        static analysis and link integrity (broken
+        link) checks.
+    </p>
+
+    <p>
+        Demo tests cannot be carried out against HTTPS sites,
+        are not able to use HTTP authentication and are not able to set custom
+        cookies. A premium account is required to use these features.
+    </p>
+
+{% endblock %}
+
+{% block ctas %}
+    {% include 'Partials/plan-details/free-plan-ctas.html.twig'
+        with {
+            'web_client_urls': web_client_urls
+        }
+    only %}
+{% endblock %}

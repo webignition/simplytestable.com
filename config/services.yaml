@@ -1,0 +1,89 @@
+imports:
+    - { resource: parameters/plans.yaml }
+    - { resource: parameters/plan-distinctions.yaml }
+    - { resource: parameters/not-found-redirect-map.yaml }
+
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Controller\ExceptionController:
+      public: true
+      arguments:
+        $debug: '%kernel.debug%'
+
+    App\Command\:
+        resource: '../src/Command'
+        autowire: true
+        autoconfigure: true
+        tags: ['console.command']
+
+    App\Command\Sitemap\BuildCommand:
+      arguments:
+        $kernelProjectDirectory: '%kernel.project_dir%'
+        $webDirectory: '%kernel.project_dir%/public/'
+
+    App\EventListener\CachedResponseEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
+
+    App\EventListener\UserEventListener:
+      tags:
+        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
+
+    App\Services\WebClientRouter:
+        arguments:
+          $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
+          $kernelProjectDirectory: '%kernel.project_dir%'
+          $kernelCacheDirectory: '%kernel.cache_dir%'
+
+    App\Services\NotFoundRedirectService:
+        arguments:
+          - '%not_found_redirect_map%'
+          - '%env(resolve:BASE_URL)%'
+        calls:
+          - method: addRouter
+            arguments:
+                - 'local'
+                - '@router'
+          - method: addRouter
+            arguments:
+                - 'web_client'
+                - '@App\Services\WebClientRouter'
+
+    webignition\SimplyTestableUserSerializer\UserSerializer:
+      arguments:
+        - '%kernel.secret%'
+
+    App\Services\PlansService:
+      arguments:
+        - '%plans%'
+        - '%plan_distinctions%'
+
+    Postmark\PostmarkClient:
+      arguments:
+        - '%env(resolve:POSTMARK_API_KEY)%'

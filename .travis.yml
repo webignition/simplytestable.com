@@ -14,19 +14,20 @@ cache:
 before_install:
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
-  - mv app/config/parameters.yml.travis app/config/parameters.yml
-  - mv --force app/config/config_travis.yml app/config/config_test.yml
+  - rm phpunit.xml.dist
+  - mv phpunit.travis-ci.xml phpunit.xml.dist
+  - mv .env.travis-ci .env
 
 install:
   - composer install --prefer-dist
-  - php bin/console doctrine:database:create
-  - php bin/console doctrine:migrations:migrate --no-interaction
+  - ./bin/console doctrine:database:create
+  - ./bin/console doctrine:migrations:migrate --no-interaction
   - composer config --global process-timeout 2000
   - yarn install
 
 before_script:
-  - php bin/console --env=test cache:clear --no-warmup
-  - php bin/console --env=test cache:warmup
+  - ./bin/console --env=test cache:clear --no-warmup
+  - ./bin/console --env=test cache:warmup
 
 script:
   - yarn lint
