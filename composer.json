@@ -60,7 +60,8 @@
     },
     "scripts": {
         "auto-scripts": {
-
+            "cache:clear": "symfony-cmd",
+            "simplytestable:cachevalidator:clear": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
