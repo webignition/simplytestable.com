@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Services;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 
-class WebClientRouter implements RouterInterface
+class WebClientRouter implements RouterInterface, WarmableInterface
 {
     const ROUTING_RESOURCE = 'webclientrouting.yaml';
     const ROUTE_NAME_START_TEST = 'start_test';
@@ -106,5 +108,21 @@ class WebClientRouter implements RouterInterface
     public function match($pathinfo)
     {
         return $this->match($pathinfo);
+    }
+
+    /**
+     * Warms up the cache.
+     *
+     * @param string $cacheDir The cache directory
+     */
+    public function warmUp($cacheDir)
+    {
+        $currentDir = $this->router->getOption('cache_dir');
+
+        $this->router->setOption('cache_dir', $cacheDir);
+        $this->router->getMatcher();
+        $this->router->getGenerator();
+
+        $this->router->setOption('cache_dir', $currentDir);
     }
 }
