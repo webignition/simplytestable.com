@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\NotFoundIgnoreList;
 use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
 use App\Services\NotFoundRedirectService;
@@ -33,23 +34,31 @@ class ExceptionController extends BaseExceptionController
     private $testimonialService;
 
     /**
+     * @var NotFoundIgnoreList
+     */
+    private $notFoundIgnoreList;
+
+    /**
      * @param bool $debug
      * @param TwigEnvironment $twig
      * @param NotFoundRedirectService $notFoundRedirectService
      * @param PostmarkClient $postmarkClient
      * @param TestimonialService $testimonialService
+     * @param NotFoundIgnoreList $notFoundIgnoreList
      */
     public function __construct(
         $debug,
         TwigEnvironment $twig,
         NotFoundRedirectService $notFoundRedirectService,
         PostmarkClient $postmarkClient,
-        TestimonialService $testimonialService
+        TestimonialService $testimonialService,
+        NotFoundIgnoreList $notFoundIgnoreList
     ) {
         parent::__construct($twig, $debug);
         $this->notFoundRedirectService = $notFoundRedirectService;
         $this->postmarkClient = $postmarkClient;
         $this->testimonialService = $testimonialService;
+        $this->notFoundIgnoreList = $notFoundIgnoreList;
     }
 
     /**
@@ -77,7 +86,7 @@ class ExceptionController extends BaseExceptionController
             );
         }
 
-        if (!$this->debug) {
+        if ($this->shouldSendDeveloperEmail($request, $exception)) {
             $this->sendDeveloperEmail($exception);
         }
 
@@ -100,6 +109,29 @@ class ExceptionController extends BaseExceptionController
             ),
             Response::HTTP_NOT_FOUND
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param FlattenException $exception
+     *
+     * @return bool
+     */
+    private function shouldSendDeveloperEmail(Request $request, FlattenException $exception)
+    {
+        if ($this->debug) {
+            return false;
+        }
+
+        if ($exception->getStatusCode() !== 404) {
+            return true;
+        }
+
+        if (in_array($request->getPathInfo(), $this->notFoundIgnoreList->get())) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
