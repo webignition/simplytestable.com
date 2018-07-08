@@ -4,15 +4,15 @@ services:
       autoconfigure: true
       public: true
 
-  test.appbundle\services\webclientrouter:
-    class: AppBundle\Services\WebClientRouter
+  test.app\services\webclientrouter:
+    class: App\Services\WebClientRouter
     arguments:
       $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
       $kernelProjectDirectory: '%kernel.project_dir%'
       $kernelCacheDirectory: '%kernel.cache_dir%'
 
-  test.appbundle\services\notfoundredirectservice:
-    class: AppBundle\Services\NotFoundRedirectService
+  test.app\services\notfoundredirectservice:
+    class: App\Services\NotFoundRedirectService
     arguments:
       - '%not_found_redirect_map%'
       - '%env(resolve:BASE_URL)%'
@@ -24,10 +24,10 @@ services:
       - method: addRouter
         arguments:
             - 'web_client'
-            - '@AppBundle\Services\WebClientRouter'
+            - '@App\Services\WebClientRouter'
 
-  test.appbundle\services\plansservice:
-    class: AppBundle\Services\PlansService
+  test.app\services\plansservice:
+    class: App\Services\PlansService
     arguments:
       - '%plans%'
       - '%plan_distinctions%'
@@ -37,15 +37,15 @@ services:
     arguments:
       - '%kernel.secret%'
 
-  test.appbundle\eventlistener\cachedresponseeventlistener:
-    class: AppBundle\EventListener\CachedResponseEventListener
+  test.app\eventlistener\cachedresponseeventlistener:
+    class: App\EventListener\CachedResponseEventListener
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-  test.appbundle\eventlistener\usereventlistener:
-    class: AppBundle\EventListener\UserEventListener
+  test.app\eventlistener\usereventlistener:
+    class: App\EventListener\UserEventListener
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
 
-  test.appbundle\services\userservice:
-    class: AppBundle\Services\UserService
+  test.app\services\userservice:
+    class: App\Services\UserService

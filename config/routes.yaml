@@ -1,14 +1,14 @@
 home_index:
     path:  /
-    defaults: { _controller: AppBundle\Controller\PageController::homeAction }
+    defaults: { _controller: App\Controller\PageController::homeAction }
 
 page_plans:
     path:  /plans/
-    defaults: { _controller: AppBundle\Controller\PageController::plansAction }
+    defaults: { _controller: App\Controller\PageController::plansAction }
 
 page_features:
     path:  /features/
-    defaults: { _controller: AppBundle\Controller\PageController::featuresAction }
+    defaults: { _controller: App\Controller\PageController::featuresAction }
 
 page_roadmap:
     path: /roadmap/
@@ -19,23 +19,23 @@ page_roadmap:
 
 page_accountbenefits:
     path:  /account-benefits/
-    defaults: { _controller: AppBundle\Controller\PageController::accountBenefitsAction }
+    defaults: { _controller: App\Controller\PageController::accountBenefitsAction }
 
 plandetails_index:
     path:  /plans/{name}/
-    defaults: { _controller: AppBundle\Controller\PlanDetailsController::indexAction }
+    defaults: { _controller: App\Controller\PlanDetailsController::indexAction }
 
 outdatedbrowser_index:
     path:  /outdated-browser/
-    defaults: { _controller: AppBundle\Controller\OutdatedBrowserController::indexAction }
+    defaults: { _controller: App\Controller\OutdatedBrowserController::indexAction }
 
 sign_out_submit:
     path:  /signout/
-    defaults: { _controller: AppBundle\Controller\UserController::signOutSubmitAction }
+    defaults: { _controller: App\Controller\UserController::signOutSubmitAction }
 
 landingpage_tms:
     path: /tms/
-    defaults: { _controller: AppBundle\Controller\LandingPageController::indexAction }
+    defaults: { _controller: App\Controller\LandingPageController::indexAction }
 
 redirect_limit_test_1:
     path:  /redirect-limit-test/
