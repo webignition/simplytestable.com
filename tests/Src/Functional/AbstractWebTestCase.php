@@ -84,7 +84,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         }
 
         if ($this->hasUser()) {
-            $userSerializerService = self::$container->get('test.' . strtolower(UserSerializer::class));
+            $userSerializerService = self::$container->get(UserSerializer::class);
 
             $cookie = new Cookie(
                 'simplytestable-user',
