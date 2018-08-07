@@ -18,7 +18,6 @@ before_install:
   - rm phpunit.xml.dist
   - mv phpunit.travis-ci.xml phpunit.xml.dist
   - mv .env.travis-ci .env
-  - node -v
 
 install:
   - composer install --prefer-dist
