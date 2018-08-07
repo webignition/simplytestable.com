@@ -3,6 +3,8 @@ sudo: false
 language: php
 php:
   - 7.2
+node_js:
+  - "9"
 
 env:
   - SYMFONY_ENV=test
