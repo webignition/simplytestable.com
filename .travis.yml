@@ -1,10 +1,8 @@
-sudo: false
+sudo: true
 
 language: php
 php:
   - 7.2
-node_js:
-  - "9"
 
 env:
   - SYMFONY_ENV=test
@@ -14,6 +12,7 @@ cache:
     - $HOME/.composer/cache/files
 
 before_install:
+  - sudo apt-get install -y nodejs
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
   - rm phpunit.xml.dist
