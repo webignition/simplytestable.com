@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
-use App\Tests\Src\Factory\TestServiceProvider;
 use webignition\SimplyTestableUserModel\User;
 use webignition\SimplyTestableUserSerializer\UserSerializer;
 
@@ -19,17 +18,11 @@ abstract class AbstractWebTestCase extends WebTestCase
     protected $client;
 
     /**
-     * @var TestServiceProvider
-     */
-    protected $testServiceProvider;
-
-    /**
      * {@inheritdoc}
      */
     protected function setUp()
     {
         $this->client = static::createClient();
-        $this->testServiceProvider = new TestServiceProvider(self::$container);
 
         self::$container->get('doctrine')->getConnection()->beginTransaction();
     }

@@ -2,13 +2,14 @@
 
 namespace App\Tests\Src\Functional\Services;
 
+use App\Services\WebClientRouter;
 use App\Tests\Src\Functional\AbstractWebTestCase;
 
 class WebClientRouterTest extends AbstractWebTestCase
 {
     public function testGenerateAll()
     {
-        $webClientRouter = $this->testServiceProvider->getWebClientRouter();
+        $webClientRouter = self::$container->get(WebClientRouter::class);
 
         $this->assertEquals(
             [

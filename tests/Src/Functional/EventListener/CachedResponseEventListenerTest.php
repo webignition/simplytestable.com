@@ -36,7 +36,7 @@ class CachedResponseEventListenerTest extends AbstractWebTestCase
     ) {
         $entityManager = self::$container->get('doctrine.orm.entity_manager');
         $entityRepository = $entityManager->getRepository(CacheValidatorHeaders::class);
-        $cachedResponseEventListener = $this->testServiceProvider->getCachedResponseEventListener();
+        $cachedResponseEventListener = self::$container->get(CachedResponseEventListener::class);
 
         /* @var KernelInterface $kernel */
         $kernel = Mockery::mock(HttpKernelInterface::class);
