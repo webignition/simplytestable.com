@@ -2,6 +2,7 @@
 
 namespace App\Tests\Src\Functional\Controller;
 
+use App\EventListener\UserEventListener;
 use Mockery;
 use App\Controller\PageController;
 use App\Services\UserService;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use App\Tests\Src\Functional\AbstractWebTestCase;
 use webignition\SimplyTestableUserModel\User;
+use webignition\SimplyTestableUserSerializer\UserSerializer;
 
 class UserEventListenerTest extends AbstractWebTestCase
 {
@@ -24,10 +26,10 @@ class UserEventListenerTest extends AbstractWebTestCase
      */
     public function testOnKernelController($requestType, $cookieUser, $sessionUser, $expectedUser)
     {
-        $userEventListener = $this->testServiceProvider->getUserEventListener();
-        $userSerializerService = $this->testServiceProvider->getUserSerializer();
+        $userEventListener = self::$container->get(UserEventListener::class);
+        $userSerializerService = self::$container->get(UserSerializer::class);
         $session = self::$container->get('session');
-        $userService = $this->testServiceProvider->getUserService();
+        $userService = self::$container->get(UserService::class);
 
         $requestCookies = [];
 

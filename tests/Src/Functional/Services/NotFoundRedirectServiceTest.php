@@ -2,6 +2,7 @@
 
 namespace App\Tests\Src\Functional\Services;
 
+use App\Services\NotFoundRedirectService;
 use App\Tests\Src\Functional\AbstractWebTestCase;
 
 class NotFoundRedirectServiceTest extends AbstractWebTestCase
@@ -14,7 +15,7 @@ class NotFoundRedirectServiceTest extends AbstractWebTestCase
      */
     public function testGetRedirectFor($url, $expectedRedirectUrl)
     {
-        $notFoundRedirectService = $this->testServiceProvider->getNotFoundRedirectService();
+        $notFoundRedirectService = self::$container->get(NotFoundRedirectService::class);
 
         $this->assertEquals(
             $expectedRedirectUrl,

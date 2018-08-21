@@ -2,6 +2,7 @@
 
 namespace App\Tests\Src\Functional\Controller;
 
+use App\Services\PlansService;
 use Doctrine\ORM\EntityRepository;
 use App\Controller\OutdatedBrowserController;
 use App\Controller\PageController;
@@ -9,11 +10,22 @@ use App\Controller\PlanDetailsController;
 use App\Entity\CacheValidatorHeaders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Tests\Src\Factory\TestServiceProvider;
 
 class CacheableControllerTest extends AbstractControllerTest
 {
     const USER_EMAIL = 'user@example.com';
+
+    /**
+     * @var PlansService
+     */
+    private $plansService;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->plansService = self::$container->get(PlansService::class);
+    }
 
     /**
      * @dataProvider actionCallDataProvider
@@ -31,7 +43,7 @@ class CacheableControllerTest extends AbstractControllerTest
         $response = new Response();
         $controller->setResponse($response);
 
-        $retrievedResponse = $actionCall($controller, $this->testServiceProvider);
+        $retrievedResponse = $actionCall($controller);
 
         $this->assertEquals(spl_object_hash($response), spl_object_hash($retrievedResponse));
     }
@@ -50,8 +62,8 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'Page:plans' => [
                 'controllerClass' => PageController::class,
-                'actionCall' => function (PageController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->plansAction($testServiceProvider->getPlansService());
+                'actionCall' => function (PageController $controller) {
+                    return $controller->plansAction(self::$container->get(PlansService::class));
                 }
             ],
             'Page:features' => [
@@ -62,53 +74,38 @@ class CacheableControllerTest extends AbstractControllerTest
             ],
             'Page:accountBenefits' => [
                 'controllerClass' => PageController::class,
-                'actionCall' => function (PageController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->accountBenefitsAction($testServiceProvider->getPlansService());
+                'actionCall' => function (PageController $controller) {
+                    return $controller->accountBenefitsAction(self::$container->get(PlansService::class));
                 }
             ],
             'PlanDetails:index/demo' => [
                 'controllerClass' => PlanDetailsController::class,
-                'actionCall' => function (PlanDetailsController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->indexAction(
-                        $testServiceProvider->getPlansService(),
-                        'demo'
-                    );
+                'actionCall' => function (PlanDetailsController $controller) {
+                    return $controller->indexAction(self::$container->get(PlansService::class), 'demo');
                 }
             ],
             'PlanDetails:index/personal' => [
                 'controllerClass' => PlanDetailsController::class,
-                'actionCall' => function (PlanDetailsController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->indexAction(
-                        $testServiceProvider->getPlansService(),
-                        'personal'
-                    );
+                'actionCall' => function (PlanDetailsController $controller) {
+                    return $controller->indexAction(self::$container->get(PlansService::class), 'personal');
                 }
             ],
             'PlanDetails:index/agency' => [
                 'controllerClass' => PlanDetailsController::class,
-                'actionCall' => function (PlanDetailsController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->indexAction(
-                        $testServiceProvider->getPlansService(),
-                        'agency'
-                    );
+                'actionCall' => function (PlanDetailsController $controller) {
+                    return $controller->indexAction(self::$container->get(PlansService::class), 'agency');
                 }
             ],
             'PlanDetails:index/business' => [
                 'controllerClass' => PlanDetailsController::class,
-                'actionCall' => function (PlanDetailsController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->indexAction(
-                        $testServiceProvider->getPlansService(),
-                        'business'
-                    );
+                'actionCall' => function (PlanDetailsController $controller) {
+                    return $controller->indexAction(self::$container->get(PlansService::class), 'business');
                 }
             ],
             'PlanDetails:index/enterprise' => [
                 'controllerClass' => PlanDetailsController::class,
-                'actionCall' => function (PlanDetailsController $controller, TestServiceProvider $testServiceProvider) {
-                    return $controller->indexAction(
-                        $testServiceProvider->getPlansService(),
-                        'enterprise'
-                    );
+                'actionCall' => function (PlanDetailsController $controller) {
+                    return $controller->indexAction(self::$container->get(PlansService::class), 'enterprise');
                 }
             ],
             'OutdatedBrowser:index' => [
