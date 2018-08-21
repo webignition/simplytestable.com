@@ -51,10 +51,6 @@ services:
       tags:
         - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 20 }
 
-    App\EventListener\UserEventListener:
-      tags:
-        - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 25 }
-
     App\Services\WebClientRouter:
         arguments:
           $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
@@ -95,3 +91,5 @@ services:
     App\Cache\WebClientRouterCacheWarmer:
         tags:
             - { name: kernel.cache_warmer, priority: 0 }
+
+    webignition\SimplyTestableUserHydrator\UserHydrator:
