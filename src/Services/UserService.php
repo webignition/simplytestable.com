@@ -13,9 +13,6 @@ class UserService
     const USER_COOKIE_KEY = 'simplytestable-user';
     const SESSION_USER_KEY = 'user';
 
-    const PUBLIC_USER_USERNAME = 'public';
-    const PUBLIC_USER_PASSWORD = 'public';
-
     /**
      * @var SessionInterface
      */
@@ -39,31 +36,11 @@ class UserService
     }
 
     /**
-     * @return User
-     */
-    public function getPublicUser()
-    {
-        return new User(static::PUBLIC_USER_USERNAME, static::PUBLIC_USER_PASSWORD);
-    }
-
-    /**
-     * @param User $user
-     * @return boolean
-     */
-    public function isPublicUser(User $user)
-    {
-        $comparatorUser = new User();
-        $comparatorUser->setUsername(strtolower($user->getUsername()));
-
-        return $this->getPublicUser()->equals($comparatorUser);
-    }
-
-    /**
      * @return boolean
      */
     public function isLoggedIn()
     {
-        return !$this->isPublicUser($this->getUser());
+        return false === SystemUserService::isPublicUser($this->getUser());
     }
 
     /**
@@ -80,7 +57,7 @@ class UserService
     public function getUser()
     {
         if (is_null($this->session->get('user'))) {
-            $this->setUser($this->getPublicUser());
+            $this->setUser(SystemUserService::getPublicUser());
         }
 
         return $this->userSerializer->deserialize($this->session->get('user'));
@@ -121,7 +98,7 @@ class UserService
         }
 
         if (empty($user)) {
-            $user = $this->getPublicUser();
+            $user = SystemUserService::getPublicUser();
         }
 
         $this->setUser($user);
