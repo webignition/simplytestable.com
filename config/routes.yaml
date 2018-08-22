@@ -106,3 +106,10 @@ redirect_enterprise:
     defaults:
         path: /plans/enterprise
         permanent: true
+
+redirect_personal:
+    path: /personal
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/personal
+        permanent: true
