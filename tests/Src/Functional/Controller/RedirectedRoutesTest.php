@@ -47,6 +47,10 @@ class RedirectedRoutesTest extends AbstractWebTestCase
                 'path' => '/free',
                 'expectedRedirectUrl' => 'http://localhost/plans/free'
             ],
+            '/legal/privacy' => [
+                'path' => '/legal/privacy',
+                'expectedRedirectUrl' => 'https://help.simplytestable.com/legal/privacy/'
+            ],
         ];
     }
 }
