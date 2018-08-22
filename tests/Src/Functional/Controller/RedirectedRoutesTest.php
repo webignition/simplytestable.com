@@ -39,6 +39,10 @@ class RedirectedRoutesTest extends AbstractWebTestCase
                 'path' => '/enterprise',
                 'expectedRedirectUrl' => 'http://localhost/plans/enterprise'
             ],
+            '/personal' => [
+                'path' => '/personal',
+                'expectedRedirectUrl' => 'http://localhost/plans/personal'
+            ],
         ];
     }
 }
