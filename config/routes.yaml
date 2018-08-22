@@ -100,6 +100,13 @@ redirect_loop_test_2:
         route: redirect_loop_test_1
         permanent: true
 
+redirect_demo_plan:
+    path: /demo
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/demo
+        permanent: true
+
 redirect_free_plan:
     path: /free
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction

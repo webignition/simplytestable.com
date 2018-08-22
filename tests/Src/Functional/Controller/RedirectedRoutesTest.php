@@ -35,6 +35,10 @@ class RedirectedRoutesTest extends AbstractWebTestCase
     public function redirectedRouteDataProvider()
     {
         return [
+            '/demo' => [
+                'path' => '/demo',
+                'expectedRedirectUrl' => 'http://localhost/plans/demo'
+            ],
             '/free' => [
                 'path' => '/free',
                 'expectedRedirectUrl' => 'http://localhost/plans/free'
