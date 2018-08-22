@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Debug\Exception\FlattenException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Twig\Environment as TwigEnvironment;
 use webignition\Url\Url;
@@ -87,7 +88,11 @@ class ExceptionController extends BaseExceptionController
         }
 
         if ($this->shouldSendDeveloperEmail($request, $exception)) {
-            $this->sendDeveloperEmail($exception);
+            if ($exception->getClass() === NotFoundHttpException::class) {
+                $this->sendDeveloperHttpNotFoundExceptionEmail($exception);
+            } else {
+                $this->sendGenericDeveloperEmail($exception);
+            }
         }
 
         $currentContent = $this->getAndCleanOutputBuffering($request->headers->get('X-Php-Ob-Level', -1));
@@ -181,25 +186,40 @@ class ExceptionController extends BaseExceptionController
         return $urlObject->isProtocolRelative();
     }
 
-    /**
-     * @param FlattenException $exception
-     */
-    private function sendDeveloperEmail(FlattenException $exception)
+    private function sendGenericDeveloperEmail(FlattenException $exception)
     {
         $subject = sprintf(
-            'simplytestable.com Exception [%s,%s]',
-            $exception->getCode(),
+            'simplytestable.com Exception [%s]',
             $exception->getStatusCode()
         );
 
-        $messageBody = $this->twig->render('Email/exception.txt.twig', array(
+        $messageBody = $this->twig->render('Email/generic-exception.txt.twig', [
             'status_code' => $exception->getStatusCode(),
-            'status_text' => '"status text"',
             'exception' => $exception,
             'remote_addr' => $_SERVER['REMOTE_ADDR'],
             'user_agent' => $_SERVER['HTTP_USER_AGENT']
-        ));
+        ]);
 
+        $this->sendDeveloperEmail($subject, $messageBody);
+    }
+
+    private function sendDeveloperHttpNotFoundExceptionEmail(FlattenException $exception)
+    {
+        $subject = sprintf(
+            'simplytestable.com NotFoundHttpException [%s]',
+            trim(str_replace(['No route found for', '"'], '', $exception->getMessage()))
+        );
+
+        $messageBody = $this->twig->render('Email/not-found-http-exception.txt.twig', [
+            'remote_addr' => $_SERVER['REMOTE_ADDR'],
+            'user_agent' => $_SERVER['HTTP_USER_AGENT']
+        ]);
+
+        $this->sendDeveloperEmail($subject, $messageBody);
+    }
+
+    private function sendDeveloperEmail(string $subject, string $messageBody)
+    {
         try {
             $this->postmarkClient->sendEmail(
                 'robot@simplytestable.com',
