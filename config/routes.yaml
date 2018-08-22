@@ -100,25 +100,39 @@ redirect_loop_test_2:
         route: redirect_loop_test_1
         permanent: true
 
-redirect_enterprise:
-    path: /enterprise
+redirect_free_plan:
+    path: /free
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
-        path: /plans/enterprise
+        path: /plans/free
         permanent: true
 
-redirect_personal:
+redirect_personal_plan:
     path: /personal
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
         path: /plans/personal
         permanent: true
 
-redirect_free:
-    path: /free
+redirect_agency_plan:
+    path: /agency
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
-        path: /plans/free
+        path: /plans/agency
+        permanent: true
+
+redirect_business_plan:
+    path: /business
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/business
+        permanent: true
+
+redirect_enterprise_plan:
+    path: /enterprise
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/enterprise
         permanent: true
 
 redirect_legal_privacy:
