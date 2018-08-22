@@ -113,3 +113,10 @@ redirect_personal:
     defaults:
         path: /plans/personal
         permanent: true
+
+redirect_free:
+    path: /free
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/free
+        permanent: true
