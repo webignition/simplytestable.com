@@ -127,3 +127,10 @@ redirect_legal_privacy:
     defaults:
         path: 'https://help.simplytestable.com/legal/privacy/'
         permanent: true
+
+redirect_legal_terms_of_service:
+    path: /legal/terms-of-service
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://help.simplytestable.com/legal/terms-of-service/'
+        permanent: true
