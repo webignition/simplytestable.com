@@ -120,3 +120,10 @@ redirect_free:
     defaults:
         path: /plans/free
         permanent: true
+
+redirect_legal_privacy:
+    path: /legal/privacy
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://help.simplytestable.com/legal/privacy/'
+        permanent: true
