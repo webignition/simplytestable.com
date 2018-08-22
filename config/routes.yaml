@@ -99,3 +99,10 @@ redirect_loop_test_2:
         _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
         route: redirect_loop_test_1
         permanent: true
+
+redirect_enterprise:
+    path: /enterprise
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/enterprise
+        permanent: true
