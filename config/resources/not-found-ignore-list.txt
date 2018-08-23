@@ -2,3 +2,4 @@
 /wp-login.php
 /restore.zip
 /restore.tar.gz
+/googled598fc9ed069ea4d.html
