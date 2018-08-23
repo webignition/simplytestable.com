@@ -54,6 +54,12 @@ services:
       tags:
       - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 20 }
 
+    App\EventListener\NotFoundResourceRedirectEventListener:
+      tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 21 }
+      arguments:
+        $assetManifestPath: '%kernel.project_dir%/public/build/manifest.json'
+
     App\Services\WebClientRouter:
         arguments:
           $baseUrl: '%env(resolve:WEB_CLIENT_URL)%'
