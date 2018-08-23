@@ -29,14 +29,6 @@ class ExceptionControllerTest extends AbstractWebTestCase
     public function showActionDataProvider()
     {
         return [
-            '404 has redirect' => [
-                'url' => '/signup.php',
-                'expectedResponseStatusCode' => 302,
-            ],
-            '404 app_dev.php has redirect' => [
-                'url' => '/app_dev.php/signup.php',
-                'expectedResponseStatusCode' => 302,
-            ],
             '404 no redirect' => [
                 'url' => '/foo',
                 'expectedResponseStatusCode' => 404,

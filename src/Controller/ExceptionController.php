@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Services\NotFoundIgnoreList;
 use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
-use App\Services\NotFoundRedirectService;
 use App\Services\TestimonialService;
 use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -19,11 +18,6 @@ use webignition\Url\Url;
 
 class ExceptionController extends BaseExceptionController
 {
-    /**
-     * @var NotFoundRedirectService
-     */
-    private $notFoundRedirectService;
-
     /**
      * @var PostmarkClient
      */
@@ -42,7 +36,6 @@ class ExceptionController extends BaseExceptionController
     /**
      * @param bool $debug
      * @param TwigEnvironment $twig
-     * @param NotFoundRedirectService $notFoundRedirectService
      * @param PostmarkClient $postmarkClient
      * @param TestimonialService $testimonialService
      * @param NotFoundIgnoreList $notFoundIgnoreList
@@ -50,13 +43,12 @@ class ExceptionController extends BaseExceptionController
     public function __construct(
         $debug,
         TwigEnvironment $twig,
-        NotFoundRedirectService $notFoundRedirectService,
         PostmarkClient $postmarkClient,
         TestimonialService $testimonialService,
         NotFoundIgnoreList $notFoundIgnoreList
     ) {
         parent::__construct($twig, $debug);
-        $this->notFoundRedirectService = $notFoundRedirectService;
+
         $this->postmarkClient = $postmarkClient;
         $this->testimonialService = $testimonialService;
         $this->notFoundIgnoreList = $notFoundIgnoreList;
@@ -72,18 +64,11 @@ class ExceptionController extends BaseExceptionController
     public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null)
     {
         $requestUri = $request->getRequestUri();
-        $redirectUrl = $this->notFoundRedirectService->getRedirectFor($requestUri);
-
-        if (!empty($redirectUrl)) {
-            return new RedirectResponse($redirectUrl);
-        }
-
-        $normalisedRequestUrl = preg_replace('/^\/app_dev.php/', '', $requestUri);
         $isNotFoundException = $exception->getStatusCode() == Response::HTTP_NOT_FOUND;
 
-        if ($isNotFoundException && $this->isProtocolRelativeRequestUrl($normalisedRequestUrl)) {
+        if ($isNotFoundException && $this->isProtocolRelativeRequestUrl($requestUri)) {
             return new RedirectResponse(
-                'http:' . $normalisedRequestUrl
+                'http:' . $requestUri
             );
         }
 
