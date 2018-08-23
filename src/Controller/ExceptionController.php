@@ -7,14 +7,12 @@ use Postmark\Models\PostmarkException;
 use Postmark\PostmarkClient;
 use App\Services\TestimonialService;
 use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Twig\Environment as TwigEnvironment;
-use webignition\Url\Url;
 
 class ExceptionController extends BaseExceptionController
 {
@@ -63,15 +61,6 @@ class ExceptionController extends BaseExceptionController
      */
     public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null)
     {
-        $requestUri = $request->getRequestUri();
-        $isNotFoundException = $exception->getStatusCode() == Response::HTTP_NOT_FOUND;
-
-        if ($isNotFoundException && $this->isProtocolRelativeRequestUrl($requestUri)) {
-            return new RedirectResponse(
-                'http:' . $requestUri
-            );
-        }
-
         if ($this->shouldSendDeveloperEmail($request, $exception)) {
             if ($exception->getClass() === NotFoundHttpException::class) {
                 $this->sendDeveloperHttpNotFoundExceptionEmail($exception);
@@ -93,7 +82,7 @@ class ExceptionController extends BaseExceptionController
                     'exception'      => $exception,
                     'logger'         => $logger,
                     'currentContent' => $currentContent,
-                    'requestUri' => $requestUri,
+                    'requestUri' => $request->getRequestUri(),
                     'testimonial' => $this->testimonialService->getRandom()
                 )
             ),
@@ -157,18 +146,6 @@ class ExceptionController extends BaseExceptionController
         $request->setRequestFormat('html');
 
         return sprintf('@Twig/Exception/%s.html.twig', $showException ? 'exception_full' : $name);
-    }
-
-    /**
-     * @param string $url
-     *
-     * @return bool
-     */
-    private function isProtocolRelativeRequestUrl($url)
-    {
-        $urlObject = new Url($url);
-
-        return $urlObject->isProtocolRelative();
     }
 
     private function sendGenericDeveloperEmail(FlattenException $exception)
