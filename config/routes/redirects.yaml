@@ -1,0 +1,83 @@
+redirect_demo_plan:
+    path: /demo
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/demo
+        permanent: true
+
+redirect_free_plan:
+    path: /free
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/free
+        permanent: true
+
+redirect_personal_plan:
+    path: /personal
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/personal
+        permanent: true
+
+redirect_agency_plan:
+    path: /agency
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/agency
+        permanent: true
+
+redirect_business_plan:
+    path: /business
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/business
+        permanent: true
+
+redirect_enterprise_plan:
+    path: /enterprise
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /plans/enterprise
+        permanent: true
+
+redirect_legal_privacy:
+    path: /legal/privacy
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://help.simplytestable.com/legal/privacy/'
+        permanent: true
+
+redirect_legal_terms_of_service:
+    path: /legal/terms-of-service
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://help.simplytestable.com/legal/terms-of-service/'
+        permanent: true
+
+redirect_index_dot_php:
+    path: /index.php
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: home_index
+        permanent: true
+
+redirect_signup_dot_php:
+    path: /signup.php
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://gears.simplytestable.com/signup/'
+        permanent: true
+
+redirect_signup:
+    path: /signup
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://gears.simplytestable.com/signup/'
+        permanent: true
+
+redirect_register_dot_php:
+    path: /register.php
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://gears.simplytestable.com/signup/'
+        permanent: true
