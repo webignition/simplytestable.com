@@ -21,10 +21,6 @@ class LandingPageController extends AbstractBaseController
      */
     public function indexAction()
     {
-        if ($this->isOldIE()) {
-            return $this->createRedirectToOutdatedBrowserResponse();
-        }
-
         $response = $this->render('Page/tms.html.twig');
 
         if ($this->hasValidCoupon()) {

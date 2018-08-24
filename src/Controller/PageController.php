@@ -82,10 +82,6 @@ class PageController extends CacheableController
      */
     private function handleAction($view, $additionalParameters = [])
     {
-        if ($this->isOldIE()) {
-            return $this->createRedirectToOutdatedBrowserResponse();
-        }
-
         if ($this->hasResponse()) {
             return $this->getResponse();
         }

@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment as TwigEnvironment;
-use webignition\IEDetector\IEDetector;
 
 abstract class AbstractBaseController
 {
@@ -97,20 +96,6 @@ abstract class AbstractBaseController
         }
 
         return $response;
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isOldIE()
-    {
-        $currentRequest = $this->requestStack->getCurrentRequest();
-        $userAgentString = $currentRequest->headers->get('user-agent');
-
-        return IEDetector::isIE6($userAgentString) ||
-            IEDetector::isIE7($userAgentString) ||
-            IEDetector::isIE8($userAgentString) ||
-            IEDetector::isIE9($userAgentString);
     }
 
     /**
