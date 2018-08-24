@@ -39,10 +39,6 @@ class PlanDetailsController extends CacheableController
             return $this->getResponse();
         }
 
-        if ($this->isOldIE()) {
-            return $this->createRedirectToOutdatedBrowserResponse();
-        }
-
         $name = strtolower($name);
 
         $isAllowedPlanName = in_array($name, $this->allowedPlanNames);

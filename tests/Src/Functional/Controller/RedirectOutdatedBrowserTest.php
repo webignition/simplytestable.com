@@ -56,22 +56,22 @@ class RedirectOutdatedBrowserTest extends AbstractWebTestCase
             'IE6' => [
                 'userAgentString' => 'Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)',
                 'expectedStatusCode' => 302,
-                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+                'expectedResponseLocation' => '/outdated-browser/',
             ],
             'IE7' => [
                 'userAgent' => 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
                 'expectedStatusCode' => 302,
-                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+                'expectedResponseLocation' => '/outdated-browser/',
             ],
             'IE8' => [
                 'userAgent' => 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)',
                 'expectedStatusCode' => 302,
-                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+                'expectedResponseLocation' => '/outdated-browser/',
             ],
             'IE9' => [
                 'userAgent' => 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))',
                 'expectedStatusCode' => 302,
-                'expectedResponseLocation' => 'http://localhost/outdated-browser/',
+                'expectedResponseLocation' => '/outdated-browser/',
             ],
             'IE10' => [
                 'userAgent' => 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
