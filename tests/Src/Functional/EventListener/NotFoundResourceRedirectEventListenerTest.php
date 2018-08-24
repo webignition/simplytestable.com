@@ -65,23 +65,13 @@ class NotFoundResourceRedirectEventListenerTest extends AbstractWebTestCase
         ];
     }
 
-    public function testOnKernelExceptionResponseIsSetForCssResource()
-    {
-        $this->assertOnKernelExceptionResponseIsSet(
-            '/build/app.foo.css',
-            $this->getLatestResourcePath(NotFoundResourceRedirectEventListener::CSS_ASSET_KEY)
-        );
-    }
-
-    public function testOnKernelExceptionResponseIsSetForJsResource()
-    {
-        $this->assertOnKernelExceptionResponseIsSet(
-            '/build/app.foo.js',
-            $this->getLatestResourcePath(NotFoundResourceRedirectEventListener::JS_ASSET_KEY)
-        );
-    }
-
-    private function assertOnKernelExceptionResponseIsSet($requestUrl, $expectedRedirectUrl)
+    /**
+     * @dataProvider onKernelExceptionResponseIsSetDataProvider
+     *
+     * @param string $requestUrl
+     * @param string $expectedRedirectUrl
+     */
+    public function testOnKernelExceptionResponseIsSet(string $requestUrl, string $expectedRedirectUrl)
     {
         $event = $this->createGetResponseForExceptionEvent(
             new Request([], [], [], [], [], [
@@ -104,9 +94,44 @@ class NotFoundResourceRedirectEventListenerTest extends AbstractWebTestCase
         );
     }
 
+    /**
+     * @return array
+     */
+    public function onKernelExceptionResponseIsSetDataProvider()
+    {
+        $latestCssResourceUrl = $this->getLatestResourcePath(NotFoundResourceRedirectEventListener::CSS_ASSET_KEY);
+        $latestJsResourceUrl = $this->getLatestResourcePath(NotFoundResourceRedirectEventListener::JS_ASSET_KEY);
+
+        return [
+            'outdated app-level css' => [
+                'requestUrl' => '/build/app.foo.css',
+                'expectedRedirectUrl' => $latestCssResourceUrl,
+            ],
+            'outdated app-level js' => [
+                'requestUrl' => '/build/app.foo.js',
+                'expectedRedirectUrl' => $latestJsResourceUrl,
+            ],
+            'page-level css' => [
+                'requestUrl' => '/build/homepage.foo.css',
+                'expectedRedirectUrl' => $latestCssResourceUrl,
+            ],
+            'page-level js' => [
+                'requestUrl' => '/build/homepage.foo.js',
+                'expectedRedirectUrl' => $latestJsResourceUrl,
+            ],
+        ];
+    }
+
+    /**
+     * @param string $assetKey
+     *
+     * @return string
+     */
     private function getLatestResourcePath(string $assetKey)
     {
-        $manifestPath = self::$container->getParameter('kernel.project_dir') . '/public/build/manifest.json';
+        $projectDirectory = __DIR__ . '/../../../..';
+
+        $manifestPath = $projectDirectory . '/public/build/manifest.json';
 
         $manifest = json_decode(file_get_contents($manifestPath), true);
 
