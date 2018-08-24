@@ -74,6 +74,11 @@ class PageController
         );
     }
 
+    public function contactAction(): Respsonse
+    {
+        return $this->handleAction('Page/contact.html.twig');
+    }
+
     public function outdatedBrowserAction(): Response
     {
         return $this->handleAction('Page/outdated-browser.html.twig');

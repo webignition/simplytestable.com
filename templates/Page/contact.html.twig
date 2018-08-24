@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class %}{{ parent() }} contact{% endblock %}
+
+{% block body %}
+<div id="landing-strip">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="main-heading">Need to ask a question? Tell us something?</h1>
+
+                <ul class="email-address-list">
+                    <li class="email-address-list_item">
+                        <span class="email-address_label">General questions</span>
+                        <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;">
+                            &#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;
+                        </a>
+                    </li>
+                    <li class="email-address-list_item">
+                        <span class="email-address_label">Jon Cram (Founder)</span>
+                        <a href="mailto:&#106;&#111;&#110;&#064;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#097;&#098;&#108;&#101;&#046;&#099;&#111;&#109;">
+                            &#106;&#111;&#110;&#064;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#097;&#098;&#108;&#101;&#046;&#099;&#111;&#109;
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h2 class="heading">
+                Send a message right now
+            </h2>
+
+            <form method="post" action="/foo">
+                <div class="row contact-form_row">
+                    <label class="col-sm-12 contact-form_label" for="contact-form_email">Email address</label>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="contact-form_email">
+                        <p class="contact-form_data-notification">
+                            Your email address will be used only to let us reply to you. It won't be sold to, or
+                            shared with, anyone else.
+                        </p>
+                    </div>
+                </div>
+                <div class="row contact-form_row">
+                    <label class="col-sm-12 contact-form_label" for="contact-form_message">What did you want to say?</label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control contact-form_message"
+                                  id="contact-form_message"
+                                  rows="6"
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 contact-form-button-container">
+                    <button type="submit" class="btn btn-primary btn-block contact-form-button">
+                        Send message <i class="fa fa-caret-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

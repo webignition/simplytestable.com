@@ -61,4 +61,8 @@ body {
   &.tms {
     @import "page/tms";
   }
+
+  &.contact {
+    @import "page/contact";
+  }
 }
