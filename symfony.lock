@@ -350,6 +350,9 @@
     "webignition/php-ie-detector": {
         "version": "0.2"
     },
+    "webignition/simplytestable-pagecache-bundle": {
+        "version": "0.1"
+    },
     "webignition/simplytestable-user-hydrator": {
         "version": "0.1"
     },
