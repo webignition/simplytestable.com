@@ -11,6 +11,8 @@ use webignition\IEDetector\IEDetector;
 
 class IEFilteredRequestListener
 {
+    const OUTDATED_BROWSER_PAGE_ROUTE = 'outdatedbrowser';
+
     /**
      * @var RouterInterface
      */
@@ -43,6 +45,10 @@ class IEFilteredRequestListener
             return;
         }
 
+        if (self::OUTDATED_BROWSER_PAGE_ROUTE === $request->attributes->get('_route')) {
+            return;
+        }
+
         $userAgentString = $request->headers->get('user-agent');
         if (empty($userAgentString)) {
             $userAgentString = $request->server->get('HTTP_USER_AGENT');
@@ -64,7 +70,7 @@ class IEFilteredRequestListener
                 $userAgentString
             ));
 
-            $event->setResponse(new RedirectResponse($this->router->generate('outdatedbrowser_index')));
+            $event->setResponse(new RedirectResponse($this->router->generate(self::OUTDATED_BROWSER_PAGE_ROUTE)));
         }
     }
 }

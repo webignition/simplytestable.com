@@ -13,6 +13,6 @@ class UserControllerTest extends AbstractWebTestCase
         ]);
         $response = $this->getClientResponse();
 
-        $this->assertTrue($response->isRedirect('http://localhost/'));
+        $this->assertTrue($response->isRedirect('/'));
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Tests\Src\Functional\Controller;
 
 use App\Tests\Src\Functional\AbstractWebTestCase;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class PlanDetailsControllerTest extends AbstractWebTestCase
 {
@@ -15,9 +17,12 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
     public function testIndexActionRedirect($url, $expectedRedirectLocation)
     {
         $this->client->request('GET', $url);
+
+        /* @var RedirectResponse $response */
         $response = $this->getClientResponse();
 
-        $this->assertTrue($response->isRedirect($expectedRedirectLocation));
+        $this->assertInstanceOf(RedirectResponse::class, $response);
+        $this->assertEquals(Response::HTTP_FOUND, $response->getStatusCode());
     }
 
     /**
@@ -28,11 +33,11 @@ class PlanDetailsControllerTest extends AbstractWebTestCase
         return [
             'invalid plan' => [
                 'url' => '/plans/foo/',
-                'expectedRedirectLocation' => 'http://localhost/plans/'
+                'expectedRedirectLocation' => '/plans/'
             ],
             'premium => agency' => [
                 'url' => '/plans/premium/',
-                'expectedRedirectLocation' => 'http://localhost/plans/agency/'
+                'expectedRedirectLocation' => '/plans/agency/'
             ],
         ];
     }
