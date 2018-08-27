@@ -115,8 +115,16 @@ class NotFoundResourceRedirectEventListenerTest extends AbstractWebTestCase
                 'requestUrl' => '/build/homepage.foo.css',
                 'expectedRedirectUrl' => $latestCssResourceUrl,
             ],
+            'page-level css, realistic' => [
+                'requestUrl' => '/build/plan-details.be752083e5af7edeb372ed94790eac5d.css',
+                'expectedRedirectUrl' => $latestCssResourceUrl,
+            ],
             'page-level js' => [
                 'requestUrl' => '/build/homepage.foo.js',
+                'expectedRedirectUrl' => $latestJsResourceUrl,
+            ],
+            'page-level js, realistic' => [
+                'requestUrl' => '/build/plan-details.be752083e5af7edeb372ed94790eac5d.js',
                 'expectedRedirectUrl' => $latestJsResourceUrl,
             ],
         ];

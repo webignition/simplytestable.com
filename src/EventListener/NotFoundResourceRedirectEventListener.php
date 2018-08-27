@@ -8,8 +8,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class NotFoundResourceRedirectEventListener
 {
-    const CSS_ASSET_PATH_PATTERN = '/^\/build\/[a-z]+\..*\.css$/';
-    const JS_ASSET_PATH_PATTERN = '/^\/build\/[a-z]+\..*\.js/';
+    const CSS_ASSET_PATH_PATTERN = '/^\/build\/.*\.css$/';
+    const JS_ASSET_PATH_PATTERN = '/^\/build\/.*\.js/';
     const CSS_ASSET_KEY = 'build/app.css';
     const JS_ASSET_KEY = 'build/app.js';
 
