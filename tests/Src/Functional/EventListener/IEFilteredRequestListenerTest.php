@@ -61,7 +61,10 @@ class IEFilteredRequestListenerTest extends AbstractWebTestCase
         $response = $this->client->getResponse();
 
         $this->assertInstanceOf(RedirectResponse::class, $response);
-        $this->assertEquals($router->generate('outdatedbrowser_index'), $response->getTargetUrl());
+        $this->assertEquals(
+            $router->generate(IEFilteredRequestListener::OUTDATED_BROWSER_PAGE_ROUTE),
+            $response->getTargetUrl()
+        );
     }
 
     /**
@@ -88,7 +91,10 @@ class IEFilteredRequestListenerTest extends AbstractWebTestCase
             $response = $event->getResponse();
 
             $this->assertInstanceOf(RedirectResponse::class, $response);
-            $this->assertEquals($router->generate('outdatedbrowser_index'), $response->getTargetUrl());
+            $this->assertEquals(
+                $router->generate(IEFilteredRequestListener::OUTDATED_BROWSER_PAGE_ROUTE),
+                $response->getTargetUrl()
+            );
         } else {
             $this->assertTrue(true);
         }

@@ -4,18 +4,15 @@ namespace App\Controller;
 
 use App\Services\UserService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
-class UserController extends AbstractBaseController
+class UserController
 {
-    /**
-     * @return RedirectResponse
-     */
-    public function signOutSubmitAction()
+    public function signOutSubmitAction(UserService $userService, RouterInterface $router): RedirectResponse
     {
-        $this->userService->clearUser();
+        $userService->clearUser();
 
-        $response = $this->redirect('home_index');
+        $response = new RedirectResponse($router->generate('home_index'));
         $response->headers->clearCookie(UserService::USER_COOKIE_KEY, '/', '.simplytestable.com');
 
         return $response;

@@ -1,28 +1,43 @@
 <?php
+
 namespace App\Services;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use SimplyTestable\PageCacheBundle\Services\CacheableResponseFactory as BaseCacheableResponseFactory;
 
 class CacheableResponseFactory
 {
     /**
-     * @param Request $request
-     * @param Response|null $response
-     *
-     * @return Response
+     * @var BaseCacheableResponseFactory
      */
-    public static function createCacheableResponse(Request $request, Response $response = null)
+    private $baseCacheableResponseFactory;
+
+    /**
+     * @var UserService
+     */
+    private $userService;
+
+    public function __construct(
+        BaseCacheableResponseFactory $baseCacheableResponseFactory,
+        UserService $userService
+    ) {
+        $this->baseCacheableResponseFactory = $baseCacheableResponseFactory;
+        $this->userService = $userService;
+    }
+
+    public function createResponse(Request $request, array $parameters): Response
     {
-        if (is_null($response)) {
-            $response = new Response();
-        }
+        $user = $this->userService->getUser();
 
-        $response->setPublic();
-        $response->setEtag($request->headers->get('x-cache-validator-etag'), true);
-        $response->setLastModified(new \DateTime($request->headers->get('x-cache-validator-lastmodified')));
-        $response->headers->addCacheControlDirective('must-revalidate', true);
+        $userParameters = [
+            'user' => $user->getUsername(),
+            'is_logged_in' => $this->userService->isLoggedIn(),
+        ];
 
-        return $response;
+        return $this->baseCacheableResponseFactory->createResponse(
+            $request,
+            array_merge($userParameters, $parameters)
+        );
     }
 }

@@ -2,27 +2,46 @@
 
 namespace App\Controller;
 
+use App\Services\CacheableResponseFactory;
 use App\Services\DecoratedPlanFactory;
 use App\Services\PlansService;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Services\ViewRenderService;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
-class PageController extends CacheableController
+class PageController
 {
     /**
-     * @return Response
+     * @var RequestStack
      */
-    public function homeAction()
+    private $requestStack;
+
+    /**
+     * @var CacheableResponseFactory
+     */
+    private $cacheableResponseFactory;
+
+    /**
+     * @var ViewRenderService
+     */
+    private $viewRenderService;
+
+    public function __construct(
+        RequestStack $requestStack,
+        CacheableResponseFactory $cacheableResponseFactory,
+        ViewRenderService $viewRenderService
+    ) {
+        $this->requestStack = $requestStack;
+        $this->cacheableResponseFactory = $cacheableResponseFactory;
+        $this->viewRenderService = $viewRenderService;
+    }
+
+    public function homeAction(): Response
     {
         return $this->handleAction('Page/home.html.twig');
     }
 
-    /**
-     * @param PlansService $plansService
-     *
-     * @return Response
-     */
-    public function plansAction(PlansService $plansService)
+    public function plansAction(PlansService $plansService): Response
     {
         return $this->handleAction(
             'Page/plans.html.twig',
@@ -36,20 +55,12 @@ class PageController extends CacheableController
         );
     }
 
-    /**
-     * @return Response
-     */
-    public function featuresAction()
+    public function featuresAction(): Response
     {
         return $this->handleAction('Page/features.html.twig');
     }
 
-    /**
-     * @param PlansService $plansService
-     *
-     * @return Response
-     */
-    public function accountBenefitsAction(PlansService $plansService)
+    public function accountBenefitsAction(PlansService $plansService): Response
     {
         return $this->handleAction(
             'Page/accountbenefits.html.twig',
@@ -63,29 +74,26 @@ class PageController extends CacheableController
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getCacheValidatorParameters($action)
+    public function outdatedBrowserAction(): Response
     {
-        switch ($action) {
-            default:
-                return [];
-        }
+        return $this->handleAction('Page/outdated-browser.html.twig');
     }
 
-    /**
-     * @param string $view
-     * @param array $additionalParameters
-     *
-     * @return RedirectResponse|Response
-     */
-    private function handleAction($view, $additionalParameters = [])
+    private function handleAction(string $view, array $viewParameters = []): Response
     {
-        if ($this->hasResponse()) {
-            return $this->getResponse();
+        $request = $this->requestStack->getCurrentRequest();
+        $response = $this->cacheableResponseFactory->createResponse($request, []);
+
+        if (Response::HTTP_NOT_MODIFIED === $response->getStatusCode()) {
+            return $response;
         }
 
-        return $this->render($view, $additionalParameters);
+        $response = $this->viewRenderService->renderResponseWithDefaultViewParameters(
+            $view,
+            $viewParameters,
+            $response
+        );
+
+        return $response;
     }
 }
