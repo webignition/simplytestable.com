@@ -74,7 +74,7 @@ class PageController
         );
     }
 
-    public function contactAction(): Respsonse
+    public function contactAction(): Response
     {
         return $this->handleAction('Page/contact.html.twig');
     }
