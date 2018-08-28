@@ -79,14 +79,6 @@ services:
         - '%plans%'
         - '%plan_distinctions%'
 
-    Postmark\PostmarkClient:
-      arguments:
-        - '%env(resolve:POSTMARK_API_KEY)%'
-
-    App\Services\NotFoundIgnoreList:
-        arguments:
-          $kernelProjectDirectory: '%kernel.project_dir%'
-
     App\Cache\WebClientRouterCacheWarmer:
         tags:
             - { name: kernel.cache_warmer, priority: 0 }
