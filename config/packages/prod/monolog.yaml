@@ -1,5 +1,10 @@
 monolog:
     handlers:
+        loggly:
+            type: loggly
+            token: '%env(LOGGLY_CUSTOMER_TOKEN)%'
+            level: error
+            tag: symfony-app
         main:
             type: fingers_crossed
             action_level: error

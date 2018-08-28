@@ -368,9 +368,6 @@
     "webmozart/assert": {
         "version": "1.3.0"
     },
-    "wildbit/postmark-php": {
-        "version": "2.5.0"
-    },
     "xrstf/ip-utils": {
         "version": "v1.0.0"
     },
