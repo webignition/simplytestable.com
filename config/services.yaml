@@ -50,15 +50,19 @@ services:
       tags:
       - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 25 }
 
-    App\EventListener\ProtocolRelativeRequestRedirectEventListener:
+    App\EventListener\NotFoundResourceRedirectEventListener:
+      tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 25 }
+      arguments:
+        $assetManifestPath: '%kernel.project_dir%/public/build/manifest.json'
+
+    App\EventListener\ExceptionLoggerEventListener:
       tags:
       - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 20 }
 
-    App\EventListener\NotFoundResourceRedirectEventListener:
+    App\EventListener\ProtocolRelativeRequestRedirectEventListener:
       tags:
-      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 21 }
-      arguments:
-        $assetManifestPath: '%kernel.project_dir%/public/build/manifest.json'
+      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 20 }
 
     App\Services\WebClientRouter:
         arguments:
