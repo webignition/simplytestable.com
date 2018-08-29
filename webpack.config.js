@@ -27,8 +27,20 @@ Encore
     .enableBuildNotifications()
 
     // create hashed filenames (e.g. app.abc123.css)
-    .enableVersioning()
-;
+    .enableVersioning();
+
+let config = Encore.getWebpackConfig();
+
+config.module.rules.push({
+    test: /bootstrap\.native/,
+    use: {
+        loader: 'bootstrap.native-loader',
+        options: {
+            only: ['alert'],
+            bsVersion: 3
+        }
+    }
+});
 
 // export the final configuration
 module.exports = Encore.getWebpackConfig();
