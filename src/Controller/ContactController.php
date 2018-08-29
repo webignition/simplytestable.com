@@ -7,6 +7,7 @@ use App\Services\RequestFactory\ContactRequestFactory;
 use App\Services\ViewRenderService;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use Postmark\PostmarkClient;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,8 +86,10 @@ class ContactController
         return $response;
     }
 
-    public function sendAction(CsrfTokenManagerInterface $csrfTokenManager): RedirectResponse
-    {
+    public function sendAction(
+        CsrfTokenManagerInterface $csrfTokenManager,
+        PostmarkClient $postmarkClient
+    ): RedirectResponse {
         $contactRequest = $this->contactRequestFactory->create();
 
         if (false === $csrfTokenManager->isTokenValid($contactRequest->getCsrfToken())) {
@@ -136,7 +139,15 @@ class ContactController
             return $this->createRedirectResponse($contactRequest->asArray());
         }
 
-        // Send
+        $message = sprintf("From: %s\n\n%s", $contactRequest->getEmail(), $contactRequest->getMessage());
+
+        $postmarkClient->sendEmail(
+            'robot@simplytestable.com',
+            'support@simplytestable.com',
+            'simplytestable.com contact form submission from ' . $contactRequest->getEmail(),
+            null,
+            $message
+        );
 
         $this->flashBag->set(
             self::FLASH_BAG_SEND_STATE_KEY,
