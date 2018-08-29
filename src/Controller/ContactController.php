@@ -132,10 +132,7 @@ class ContactController
             $message
         );
 
-        $this->flashBag->set(
-            self::FLASH_BAG_SEND_STATE_KEY,
-            self::FLASH_BAG_SEND_STATE_SUCCESS
-        );
+        $this->setContactRequestSubmission(ContactRequestSubmission::STATE_SUCCESS);
 
         return $this->createRedirectResponse();
     }
@@ -156,7 +153,7 @@ class ContactController
         return ContactRequestSubmission::fromArray(json_decode($contactRequestSubmissionJson, true));
     }
 
-    private function setContactRequestSubmission(string $state, ?string $errorField, ?string $errorState)
+    private function setContactRequestSubmission(string $state, ?string $errorField = null, ?string $errorState = null)
     {
         $this->flashBag->set('contact-request-submission', json_encode(new ContactRequestSubmission(
             $state,

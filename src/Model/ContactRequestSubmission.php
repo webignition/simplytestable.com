@@ -24,7 +24,7 @@ class ContactRequestSubmission implements \JsonSerializable
      */
     private $errorState;
 
-    public function __construct(string $state, ?string $errorField, ?string $errorState)
+    public function __construct(string $state, ?string $errorField = null, ?string $errorState = null)
     {
         $this->state = $state;
         $this->errorField = $errorField;
@@ -41,12 +41,12 @@ class ContactRequestSubmission implements \JsonSerializable
         return self::STATE_ERROR === $this->state;
     }
 
-    public function getErrorField(): string
+    public function getErrorField(): ?string
     {
         return $this->errorField;
     }
 
-    public function getErrorState(): string
+    public function getErrorState(): ?string
     {
         return $this->errorState;
     }
