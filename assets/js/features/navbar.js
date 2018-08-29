@@ -1,4 +1,4 @@
-const NavBarItem = require('./features-navbar-item');
+const NavBarItem = require('./navbar-item');
 
 class FeaturesNavBar {
     /**

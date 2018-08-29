@@ -1,6 +1,6 @@
-const FeaturesNavBar = require('./features-navbar');
-const FeaturesScrollSpy = require('./features-scrollspy');
-const ScrollTo = require('./scroll-to');
+const FeaturesNavBar = require('../features/navbar');
+const FeaturesScrollSpy = require('../features/scrollspy');
+const ScrollTo = require('../scroll-to');
 
 class Features {
     constructor (navBarElement, landingStripElement, scrollSpyOffset, scrollOffset, affixOffset) {
