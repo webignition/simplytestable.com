@@ -23,7 +23,7 @@ const createMatchMediaMock = function (matchesData) {
     };
 };
 
-test('derive()', function (assert) {
+test('DisplaySize.derive()', function (assert) {
     let dom = new JSDOM(htmlFixture);
 
     global.window = dom.window;
@@ -49,7 +49,7 @@ test('derive()', function (assert) {
     assert.end();
 });
 
-test('set(), get()', function (assert) {
+test('DisplaySize.set(), DisplaySize.get()', function (assert) {
     let dom = new JSDOM(htmlFixture);
 
     global.window = dom.window;

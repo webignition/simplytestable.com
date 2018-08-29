@@ -21,7 +21,7 @@ const callHomeFunction = function (scrollTop) {
     return landingStrip.style.backgroundPositionY;
 };
 
-test('landing strip background image placement test', function (assert) {
+test('home landing strip background image placement test', function (assert) {
     dataProvider.forEach(function (fixture) {
         const landingStripeBackgroundPositionY = callHomeFunction(fixture.scrollTop);
 
