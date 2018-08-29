@@ -3,25 +3,29 @@
 {% set alert_view_parameters = {} %}
 {% set alert_field_selector = null %}
 
-{% if send_message == 'email-empty' %}
+{% set state = contact_request_submission.state %}
+{% set error_field = contact_request_submission.errorField %}
+{% set error_state = contact_request_submission.errorState %}
+
+{% if state == 'success' %}
+    {% set alert_type = 'success' %}
+    {% set alert_view = 'Partials/contact/alert/content/success.html.twig' %}
+{% endif %}
+
+{% if state == 'error' and error_field == 'email' and error_state == 'empty' %}
     {% set alert_field_selector = 'email' %}
     {% set alert_view = 'Partials/contact/alert/content/email-empty.html.twig' %}
 {% endif %}
 
-{% if send_message == 'email-invalid' %}
+{% if state == 'error' and error_field == 'email' and error_state == 'invalid' %}
     {% set alert_field_selector = 'email' %}
     {% set alert_view_parameters = {email: email} %}
     {% set alert_view = 'Partials/contact/alert/content/email-invalid.html.twig' %}
 {% endif %}
 
-{% if send_message == 'message-empty' %}
+{% if state == 'error' and error_field == 'message' and error_state == 'empty' %}
     {% set alert_field_selector = 'message' %}
     {% set alert_view = 'Partials/contact/alert/content/message-empty.html.twig' %}
-{% endif %}
-
-{% if send_state == 'success' %}
-    {% set alert_type = 'success' %}
-    {% set alert_view = 'Partials/contact/alert/content/success.html.twig' %}
 {% endif %}
 
 {% if alert_view is not null %}

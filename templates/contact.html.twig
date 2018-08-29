@@ -35,11 +35,12 @@
                 Send a message right now
             </h2>
 
-            {% include 'Partials/contact/alert/alerts.html.twig' with {
-                send_state: send_state,
-                send_message: send_message,
-                email: contact_request.email
-            } only %}
+            {% if contact_request_submission %}
+                {% include 'Partials/contact/alert/alerts.html.twig' with {
+                    contact_request_submission: contact_request_submission,
+                    email: contact_request.email
+                } only %}
+            {% endif %}
 
             <form method="post" action="{{ path('contact_send') }}" class="js-form-button-spinner" novalidate>
                 <div class="row contact-form_row">
@@ -47,9 +48,10 @@
                     <div class="col-sm-12">
                         <input type="email"
                                class="form-control"
-                               id="contact-form_email"
+                               id="email"
                                name="email"
                                value="{{ contact_request.email }}"
+                               {% if selected_field == 'email' %}data-focused{% endif %}
                         >
                         <p class="contact-form_data-notification">
                             Your email address will be used only to let us reply to you. It won't be sold to, or
@@ -61,9 +63,10 @@
                     <label class="col-sm-12 contact-form_label" for="contact-form_message">What did you want to say?</label>
                     <div class="col-sm-12">
                         <textarea class="form-control contact-form_message"
-                                  id="contact-form_message"
+                                  id="message"
                                   rows="6"
                                   name="message"
+                                  {% if selected_field == 'message' %}data-focused{% endif %}
                         >{{ contact_request.message }}</textarea>
                     </div>
                 </div>

@@ -12,8 +12,16 @@ let Home = require('./page/home');
 let Features = require('./page/features');
 let DisplaySize = require('./display-size');
 let formButtonSpinner = require('./form-button-spinner');
+let formFieldFocuser = require('./form-field-focuser');
+let AlertFactory = require('./services/alert-factory');
 
 const onDomContentLoaded = function () {
+    let focusedField = document.querySelector('[data-focused]');
+
+    if (focusedField) {
+        formFieldFocuser(focusedField);
+    }
+
     [].forEach.call(document.querySelectorAll('.js-form-button-spinner'), function (formElement) {
         formButtonSpinner(formElement);
     });
@@ -55,6 +63,10 @@ const onDomContentLoaded = function () {
             features.setAffixOffset(affixOffsets[displaySize.get()]);
         }, true);
     }
+
+    [].forEach.call(document.querySelectorAll('.alert'), function (alertElement) {
+        AlertFactory.createFromElement(alertElement);
+    });
 };
 
 document.addEventListener('DOMContentLoaded', onDomContentLoaded);
