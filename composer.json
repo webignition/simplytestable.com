@@ -29,7 +29,8 @@
         "webignition/simplytestable-user-hydrator": "^0.1",
         "webignition/simplytestable-user-model": ">=0.1,<1",
         "webignition/simplytestable-user-serializer": ">=1.1,<2",
-        "webignition/url": ">=1.0,<2.0"
+        "webignition/url": ">=1.0,<2.0",
+        "wildbit/postmark-php": "^2.6"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
