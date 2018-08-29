@@ -81,3 +81,10 @@ redirect_register_dot_php:
     defaults:
         path: 'https://gears.simplytestable.com/signup/'
         permanent: true
+
+redirect_mailto_link_to_contact_page:
+    path: /mailto:support@simplytestable.com
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: contact_render
+        permanent: true
