@@ -51,6 +51,7 @@
                                id="email"
                                name="email"
                                value="{{ contact_request.email }}"
+                               {% if is_logged_in %}disabled{% endif %}
                                {% if selected_field == 'email' %}data-focused{% endif %}
                         >
                         <p class="contact-form_data-notification">
