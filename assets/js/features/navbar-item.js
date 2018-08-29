@@ -1,4 +1,4 @@
-const ScrollTo = require('./scroll-to');
+const ScrollTo = require('../scroll-to');
 
 class FeaturesNavBarItem {
     /**
