@@ -65,6 +65,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "egulias/email-validator": {
+        "version": "2.1.5"
+    },
     "etechnika/idna-convert": {
         "version": "1.0.3"
     },
@@ -310,6 +313,12 @@
             "version": "4.0",
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
+    },
+    "symfony/security-core": {
+        "version": "v4.1.4"
+    },
+    "symfony/security-csrf": {
+        "version": "v4.1.4"
     },
     "symfony/stopwatch": {
         "version": "v4.1.1"

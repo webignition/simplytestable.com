@@ -35,11 +35,22 @@
                 Send a message right now
             </h2>
 
-            <form method="post" action="/foo">
+            {% include 'Partials/contact/alert/alerts.html.twig' with {
+                send_state: send_state,
+                send_message: send_message,
+                email: contact_request.email
+            } only %}
+
+            <form method="post" action="{{ path('contact_send') }}" novalidate>
                 <div class="row contact-form_row">
                     <label class="col-sm-12 contact-form_label" for="contact-form_email">Email address</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="contact-form_email">
+                        <input type="email"
+                               class="form-control"
+                               id="contact-form_email"
+                               name="email"
+                               value="{{ contact_request.email }}"
+                        >
                         <p class="contact-form_data-notification">
                             Your email address will be used only to let us reply to you. It won't be sold to, or
                             shared with, anyone else.
@@ -52,10 +63,13 @@
                         <textarea class="form-control contact-form_message"
                                   id="contact-form_message"
                                   rows="6"
-                        ></textarea>
+                                  name="message"
+                        >{{ contact_request.message }}</textarea>
                     </div>
                 </div>
                 <div class="col-sm-12 contact-form-button-container">
+                    <input type="hidden" name="token" value="{{ csrf_token('contact-send') }}" />
+
                     <button type="submit" class="btn btn-primary btn-block contact-form-button">
                         Send message <i class="fa fa-caret-right"></i>
                     </button>

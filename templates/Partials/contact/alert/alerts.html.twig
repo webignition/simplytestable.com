@@ -1,0 +1,34 @@
+{% set alert_type = 'error' %}
+{% set alert_view = null %}
+{% set alert_view_parameters = {} %}
+{% set alert_field_selector = null %}
+
+{% if send_message == 'email-empty' %}
+    {% set alert_field_selector = 'email' %}
+    {% set alert_view = 'Partials/contact/alert/content/email-empty.html.twig' %}
+{% endif %}
+
+{% if send_message == 'email-invalid' %}
+    {% set alert_field_selector = 'email' %}
+    {% set alert_view_parameters = {email: email} %}
+    {% set alert_view = 'Partials/contact/alert/content/email-invalid.html.twig' %}
+{% endif %}
+
+{% if send_message == 'message-empty' %}
+    {% set alert_field_selector = 'message' %}
+    {% set alert_view = 'Partials/contact/alert/content/message-empty.html.twig' %}
+{% endif %}
+
+{% if send_state == 'success' %}
+    {% set alert_type = 'success' %}
+    {% set alert_view = 'Partials/contact/alert/content/success.html.twig' %}
+{% endif %}
+
+{% if alert_view is not null %}
+    {% include 'Partials/alert.html.twig' with {
+        type: alert_type,
+        field_selector: alert_field_selector,
+        view: alert_view,
+        view_parameters: alert_view_parameters
+    } only %}
+{% endif %}

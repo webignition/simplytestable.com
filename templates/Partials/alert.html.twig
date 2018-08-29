@@ -1,0 +1,27 @@
+{% set alert_type_map = {
+    'error': 'danger',
+    'success': 'success',
+    'info': 'info',
+} %}
+
+{% set alert_type = alert_type_map[type] %}
+{% set dismissable = dismissable is defined ? dismissable : true %}
+{% set wrap_in_container = wrap_in_container is defined ? wrap_in_container : false %}
+{% set alert_classes = alert_classes is defined ? alert_classes : '' %}
+
+<div class="alert alert-{{ alert_type }} fade in {{ alert_classes }}"
+     {% if field_selector is defined %}data-for="{{ field_selector }}"{% endif %}
+     role="alert">
+    {% if dismissable %}<button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>{% endif %}
+
+    {% if wrap_in_container %}<div class="container">{% endif %}
+
+    {% if view is defined %}
+        {% set view_parameters = view_parameters is defined ? view_parameters : {} %}
+        {% include view with view_parameters only %}
+    {% else %}
+        {{ content|raw }}
+    {% endif %}
+
+    {% if wrap_in_container %}</div>{% endif %}
+</div>
