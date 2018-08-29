@@ -15,6 +15,7 @@
         <env name="BASE_URL" value="http://local.simplytestable.com"/>
         <env name="WEB_CLIENT_URL" value="http://web.client.simplytestable.com"/>
         <env name="LOGGLY_CUSTOMER_TOKEN" value="loggly-customer-token"/>
+        <env name="POSTMARK_API_KEY" value="postmark-api-key"/>
 
         <!-- ###+ doctrine/doctrine-bundle ### -->
         <!-- Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url -->
