@@ -8,13 +8,14 @@ require('../images/browser-icons/128-safari.png');
 require('../images/browser-icons/256-ie.png');
 
 require('classlist-polyfill');
-let home = require('./home');
+let Home = require('./page/home');
 let Features = require('./features');
 let DisplaySize = require('./display-size');
 
 const onDomContentLoaded = function () {
-    if (document.body.classList.contains('home-index')) {
-        home(document, 'scroll');
+    if (document.body.classList.contains('home')) {
+        let home = new Home(document, 'scroll');
+        home.init();
     }
 
     if (document.body.classList.contains('page-features')) {
