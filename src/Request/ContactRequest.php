@@ -4,7 +4,7 @@ namespace App\Request;
 
 use Symfony\Component\Security\Csrf\CsrfToken;
 
-class ContactRequest
+class ContactRequest implements \JsonSerializable
 {
     const PARAMETER_EMAIL = 'email';
     const PARAMETER_MESSAGE = 'message';
@@ -53,5 +53,10 @@ class ContactRequest
             self::PARAMETER_EMAIL => $this->email,
             self::PARAMETER_MESSAGE => $this->message,
         ];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->asArray();
     }
 }

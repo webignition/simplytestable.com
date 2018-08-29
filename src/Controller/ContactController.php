@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\ContactRequestSubmission;
+use App\Request\ContactRequest;
 use App\Services\CacheableResponseFactory;
 use App\Services\RequestFactory\ContactRequestFactory;
 use App\Services\ViewRenderService;
@@ -20,11 +22,10 @@ class ContactController
     const FLASH_BAG_SEND_STATE_KEY = 'state';
     const FLASH_BAG_SEND_STATE_ERROR = 'error';
     const FLASH_BAG_SEND_STATE_SUCCESS = 'success';
-    const FLASH_BAG_SEND_MESSAGE_KEY = 'message';
-    const FLASH_BAG_SEND_MESSAGE_EMAIL_EMPTY = 'email-empty';
-    const FLASH_BAG_SEND_MESSAGE_EMAIL_INVALID = 'email-invalid';
-    const FLASH_BAG_SEND_MESSAGE_MESSAGE_EMPTY = 'message-empty';
-
+    const FLASH_BAG_SEND_ERROR_STATE_KEY = 'error-state';
+    const FLASH_BAG_SEND_ERROR_FIELD_KEY = 'error-field';
+    const FLASH_BAG_SEND_STATE_EMPTY = 'empty';
+    const FLASH_BAG_SEND_STATE_INVALID = 'invalid';
 
     /**
      * @var FlashBagInterface
@@ -57,17 +58,15 @@ class ContactController
         ViewRenderService $viewRenderService
     ): Response {
         $contactRequest = $this->contactRequestFactory->create();
+        $contactRequestSubmission = $this->getContactRequestSubmission();
 
-        $sendState = $this->getFlashValue(self::FLASH_BAG_SEND_STATE_KEY);
-        $sendMessage = $this->getFlashValue(self::FLASH_BAG_SEND_MESSAGE_KEY);
+        $viewParameters = [
+            'contact_request_submission' => $contactRequestSubmission,
+            'contact_request' => $contactRequest,
+            'selected_field' => $this->getSelectedField($contactRequest, $contactRequestSubmission),
+        ];
 
-        $response = $cacheableResponseFactory->createResponse($request, array_merge(
-            $contactRequest->asArray(),
-            [
-                'send_state' => $sendState,
-                'send_message' => $sendMessage,
-            ]
-        ));
+        $response = $cacheableResponseFactory->createResponse($request, $viewParameters);
 
         if (Response::HTTP_NOT_MODIFIED === $response->getStatusCode()) {
             return $response;
@@ -75,11 +74,7 @@ class ContactController
 
         $response = $viewRenderService->renderResponseWithDefaultViewParameters(
             'contact.html.twig',
-            [
-                'send_state' => $sendState,
-                'send_message' => $sendMessage,
-                'contact_request' => $contactRequest,
-            ],
+            $viewParameters,
             $response
         );
 
@@ -97,14 +92,10 @@ class ContactController
         }
 
         if (empty($contactRequest->getEmail())) {
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_STATE_KEY,
-                self::FLASH_BAG_SEND_STATE_ERROR
-            );
-
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_MESSAGE_KEY,
-                self::FLASH_BAG_SEND_MESSAGE_EMAIL_EMPTY
+            $this->setContactRequestSubmission(
+                ContactRequestSubmission::STATE_ERROR,
+                ContactRequest::PARAMETER_EMAIL,
+                ContactRequestSubmission::ERROR_STATE_EMPTY
             );
 
             return $this->createRedirectResponse($contactRequest->asArray());
@@ -112,28 +103,20 @@ class ContactController
 
         $emailValidator = new EmailValidator();
         if (!$emailValidator->isValid($contactRequest->getEmail(), new RFCValidation())) {
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_STATE_KEY,
-                self::FLASH_BAG_SEND_STATE_ERROR
-            );
-
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_MESSAGE_KEY,
-                self::FLASH_BAG_SEND_MESSAGE_EMAIL_INVALID
+            $this->setContactRequestSubmission(
+                ContactRequestSubmission::STATE_ERROR,
+                ContactRequest::PARAMETER_EMAIL,
+                ContactRequestSubmission::ERROR_STATE_INVALID
             );
 
             return $this->createRedirectResponse($contactRequest->asArray());
         }
 
         if (empty($contactRequest->getMessage())) {
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_STATE_KEY,
-                self::FLASH_BAG_SEND_STATE_ERROR
-            );
-
-            $this->flashBag->set(
-                self::FLASH_BAG_SEND_MESSAGE_KEY,
-                self::FLASH_BAG_SEND_MESSAGE_MESSAGE_EMPTY
+            $this->setContactRequestSubmission(
+                ContactRequestSubmission::STATE_ERROR,
+                ContactRequest::PARAMETER_MESSAGE,
+                ContactRequestSubmission::ERROR_STATE_EMPTY
             );
 
             return $this->createRedirectResponse($contactRequest->asArray());
@@ -162,12 +145,38 @@ class ContactController
         return new RedirectResponse($this->router->generate('contact_render', array_filter($params)));
     }
 
-    private function getFlashValue(string $key): string
+    private function getContactRequestSubmission(): ?ContactRequestSubmission
     {
-        if (!$this->flashBag->has($key)) {
-            return '';
+        if (!$this->flashBag->has('contact-request-submission')) {
+            return null;
         }
 
-        return $this->flashBag->get($key)[0];
+        $contactRequestSubmissionJson = $this->flashBag->get('contact-request-submission')[0];
+
+        return ContactRequestSubmission::fromArray(json_decode($contactRequestSubmissionJson, true));
+    }
+
+    private function setContactRequestSubmission(string $state, ?string $errorField, ?string $errorState)
+    {
+        $this->flashBag->set('contact-request-submission', json_encode(new ContactRequestSubmission(
+            $state,
+            $errorField,
+            $errorState
+        )));
+    }
+
+    private function getSelectedField(
+        ContactRequest $contactRequest,
+        ?ContactRequestSubmission $contactRequestSubmission
+    ): string {
+        if ($contactRequestSubmission && $contactRequestSubmission->isError()) {
+            return $contactRequestSubmission->getErrorField();
+        }
+
+        if (empty($contactRequest->getEmail())) {
+            return ContactRequest::PARAMETER_EMAIL;
+        }
+
+        return $contactRequest::PARAMETER_MESSAGE;
     }
 }
