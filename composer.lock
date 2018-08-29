@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48400dfb7ba345c54a082bd5bc0176d0",
+    "content-hash": "df7ebc338834bb5b704dc4edd5821d54",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4257,16 +4257,16 @@
         },
         {
             "name": "webignition/simplytestable-pagecache-bundle",
-            "version": "0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/simplytestable-pagecache-bundle.git",
-                "reference": "545e4b92988ccf5a04fe250333e58ed4052cca8b"
+                "reference": "9f2d2e8315e9c3861b561b894abec6756f4e36f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/simplytestable-pagecache-bundle/zipball/545e4b92988ccf5a04fe250333e58ed4052cca8b",
-                "reference": "545e4b92988ccf5a04fe250333e58ed4052cca8b",
+                "url": "https://api.github.com/repos/webignition/simplytestable-pagecache-bundle/zipball/9f2d2e8315e9c3861b561b894abec6756f4e36f9",
+                "reference": "9f2d2e8315e9c3861b561b894abec6756f4e36f9",
                 "shasum": ""
             },
             "require": {
@@ -4291,7 +4291,16 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-08-27T15:16:15+00:00"
+            "description": "Symfony 4 bundle for creating/validating cacheable responses",
+            "homepage": "https://github.com/webignition/simplytestable-pagecache-bundle",
+            "keywords": [
+                "cache",
+                "http",
+                "response",
+                "symfony",
+                "symfony4"
+            ],
+            "time": "2018-08-29T16:38:43+00:00"
         },
         {
             "name": "webignition/simplytestable-user-hydrator",
