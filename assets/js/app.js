@@ -11,8 +11,13 @@ require('classlist-polyfill');
 let Home = require('./page/home');
 let Features = require('./page/features');
 let DisplaySize = require('./display-size');
+let formButtonSpinner = require('./form-button-spinner');
 
 const onDomContentLoaded = function () {
+    [].forEach.call(document.querySelectorAll('.js-form-button-spinner'), function (formElement) {
+        formButtonSpinner(formElement);
+    });
+
     if (document.body.classList.contains('home')) {
         let home = new Home(document, 'scroll');
         home.init();

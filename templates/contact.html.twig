@@ -41,7 +41,7 @@
                 email: contact_request.email
             } only %}
 
-            <form method="post" action="{{ path('contact_send') }}" novalidate>
+            <form method="post" action="{{ path('contact_send') }}" class="js-form-button-spinner" novalidate>
                 <div class="row contact-form_row">
                     <label class="col-sm-12 contact-form_label" for="contact-form_email">Email address</label>
                     <div class="col-sm-12">
@@ -71,7 +71,7 @@
                     <input type="hidden" name="token" value="{{ csrf_token('contact-send') }}" />
 
                     <button type="submit" class="btn btn-primary btn-block contact-form-button">
-                        Send message <i class="fa fa-caret-right"></i>
+                        Send message <i class="fa fa-fw fa-caret-right"></i>
                     </button>
                 </div>
             </form>
