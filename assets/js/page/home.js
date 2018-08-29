@@ -12,7 +12,7 @@ class Home {
 
     init () {
         this.document.addEventListener(this.eventName, () => {
-            let offset = (Math.max(document.documentElement.scrollTop, document.body.scrollTop)) / 4;
+            let offset = (Math.max(this.document.documentElement.scrollTop, this.document.body.scrollTop)) / 4;
             let updated = offset * -1 - this.initialOffset;
 
             this.landingStrip.style.backgroundPositionY = updated + 'px';
