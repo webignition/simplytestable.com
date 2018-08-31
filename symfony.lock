@@ -65,6 +65,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "egulias/email-validator": {
+        "version": "2.1.5"
+    },
     "etechnika/idna-convert": {
         "version": "1.0.3"
     },
@@ -311,6 +314,12 @@
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
     },
+    "symfony/security-core": {
+        "version": "v4.1.4"
+    },
+    "symfony/security-csrf": {
+        "version": "v4.1.4"
+    },
     "symfony/stopwatch": {
         "version": "v4.1.1"
     },
@@ -367,6 +376,9 @@
     },
     "webmozart/assert": {
         "version": "1.3.0"
+    },
+    "wildbit/postmark-php": {
+        "version": "2.6.0"
     },
     "xrstf/ip-utils": {
         "version": "v1.0.0"

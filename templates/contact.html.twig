@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class %}{{ parent() }} contact{% endblock %}
+
+{% block body %}
+<div id="landing-strip">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="main-heading">Need to ask a question? Tell us something?</h1>
+
+                <ul class="email-address-list">
+                    <li class="email-address-list_item">
+                        <span class="email-address_label">General questions</span>
+                        <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;">
+                            &#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#97;&#98;&#108;&#101;&#46;&#99;&#111;&#109;
+                        </a>
+                    </li>
+                    <li class="email-address-list_item">
+                        <span class="email-address_label">Jon Cram (Founder)</span>
+                        <a href="mailto:&#106;&#111;&#110;&#064;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#097;&#098;&#108;&#101;&#046;&#099;&#111;&#109;">
+                            &#106;&#111;&#110;&#064;&#115;&#105;&#109;&#112;&#108;&#121;&#116;&#101;&#115;&#116;&#097;&#098;&#108;&#101;&#046;&#099;&#111;&#109;
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h2 class="heading">
+                Send a message right now
+            </h2>
+
+            {% if contact_request_submission %}
+                {% include 'Partials/contact/alert/alerts.html.twig' with {
+                    contact_request_submission: contact_request_submission,
+                    email: contact_request.email
+                } only %}
+            {% endif %}
+
+            <form method="post" action="{{ path('contact_send') }}" class="js-form-button-spinner" novalidate>
+                <div class="row contact-form_row">
+                    <label class="col-sm-12 contact-form_label" for="contact-form_email">Email address</label>
+                    <div class="col-sm-12">
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               value="{{ contact_request.email }}"
+                               {% if is_logged_in %}disabled{% endif %}
+                               {% if selected_field == 'email' %}data-focused{% endif %}
+                        >
+                        <p class="contact-form_data-notification">
+                            Your email address will be used only to let us reply to you. It won't be sold to, or
+                            shared with, anyone else.
+                        </p>
+                    </div>
+                </div>
+                <div class="row contact-form_row">
+                    <label class="col-sm-12 contact-form_label" for="contact-form_message">What did you want to say?</label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control contact-form_message"
+                                  id="message"
+                                  rows="6"
+                                  name="message"
+                                  {% if selected_field == 'message' %}data-focused{% endif %}
+                        >{{ contact_request.message }}</textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 contact-form-button-container">
+                    <input type="hidden" name="token" value="{{ csrf_token('contact-send') }}" />
+
+                    <button type="submit" class="btn btn-primary btn-block contact-form-button">
+                        Send message <i class="fa fa-fw fa-caret-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

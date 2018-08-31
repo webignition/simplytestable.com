@@ -84,3 +84,7 @@ services:
             - { name: kernel.cache_warmer, priority: 0 }
 
     webignition\SimplyTestableUserHydrator\UserHydrator:
+
+    Postmark\PostmarkClient:
+      arguments:
+      - '%env(POSTMARK_API_KEY)%'
