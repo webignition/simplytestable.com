@@ -67,6 +67,10 @@ class RedirectedRoutesTest extends AbstractWebTestCase
                 'path' => '/legal/terms-of-service',
                 'expectedRedirectUrl' => 'https://help.simplytestable.com/legal/terms-of-service/'
             ],
+            '/blog' => [
+                'path' => '/blog',
+                'expectedRedirectUrl' => 'https://blog.simplytestable.com/'
+            ],
         ];
     }
 }
