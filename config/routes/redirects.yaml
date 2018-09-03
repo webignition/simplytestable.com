@@ -88,3 +88,10 @@ redirect_mailto_link_to_contact_page:
     defaults:
         route: contact_render
         permanent: true
+
+blog:
+    path: /blog
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: 'https://blog.simplytestable.com/'
+        permanent: true
