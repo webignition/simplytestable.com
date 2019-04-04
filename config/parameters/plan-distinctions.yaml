@@ -25,14 +25,14 @@ parameters:
     access_to_results:
       name: "Access to results"
       distinctions:
-        private_tests:
-          name:
-            primary: "Private tests"
-          icon: lock
         results_available_for:
           name:
             primary: "Results available for"
           icon: clock-o
+        private_tests:
+          name:
+            primary: "Private tests"
+          icon: lock
         read_only_reports:
           name:
             primary: "Read-only reports"
