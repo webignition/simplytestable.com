@@ -20,7 +20,6 @@ public/sitemap.xml
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/framework-bundle ###
-/.env
 /public/bundles/
 /var/
 /vendor/
@@ -30,3 +29,5 @@ public/sitemap.xml
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+.env*local
