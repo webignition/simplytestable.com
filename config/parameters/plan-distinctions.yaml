@@ -59,10 +59,6 @@ parameters:
           name:
             primary: "CSS validation"
           icon: dot-circle-o
-        js_static_analysis:
-          name:
-            primary: "JS static analysis"
-          icon: dot-circle-o
         link_integrity_checking:
           name:
             primary: "Link integrity checking"
