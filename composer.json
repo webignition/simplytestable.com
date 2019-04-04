@@ -11,18 +11,18 @@
         "doctrine/orm": "^2.6",
         "egulias/email-validator": "^2.1",
         "sensio/framework-extra-bundle": "^5.0.0",
-        "symfony/asset": "^4.1",
-        "symfony/browser-kit": "^4.1",
-        "symfony/console": "^4.1",
-        "symfony/css-selector": "^4.1",
-        "symfony/dotenv": "^4.1",
+        "symfony/asset": "^4.2",
+        "symfony/browser-kit": "^4.2",
+        "symfony/console": "^4.2",
+        "symfony/css-selector": "^4.2",
+        "symfony/dotenv": "^4.2",
         "symfony/flex": "^1.0",
-        "symfony/framework-bundle": "^4.1",
+        "symfony/framework-bundle": "^4.2",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/profiler-pack": "^1.0",
-        "symfony/security-csrf": "^4.1",
-        "symfony/twig-bundle": "^4.1",
-        "symfony/yaml": "^4.1",
+        "symfony/security-csrf": "^4.2",
+        "symfony/twig-bundle": "^4.2",
+        "symfony/yaml": "^4.2",
         "webignition/php-ie-detector": ">=0.2,<1",
         "webignition/simplytestable-pagecache-bundle": "^0.2",
         "webignition/simplytestable-user-hydrator": "^0.1",
@@ -89,7 +89,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "4.1.*"
+            "require": "4.2.*"
         }
     }
 }
