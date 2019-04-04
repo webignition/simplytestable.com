@@ -155,6 +155,9 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
+    "ralouphie/getallheaders": {
+        "version": "2.0.5"
+    },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
     },
@@ -220,6 +223,9 @@
             "version": "3.3",
             "ref": "e3868d2f4a5104f19f844fe551099a00c6562527"
         }
+    },
+    "symfony/contracts": {
+        "version": "v1.0.2"
     },
     "symfony/css-selector": {
         "version": "v4.1.1"
@@ -338,6 +344,9 @@
     "symfony/var-dumper": {
         "version": "v4.1.1"
     },
+    "symfony/var-exporter": {
+        "version": "v4.2.5"
+    },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
         "recipe": {
@@ -364,6 +373,9 @@
     },
     "webignition/simplytestable-user-hydrator": {
         "version": "0.1"
+    },
+    "webignition/simplytestable-user-interface": {
+        "version": "0.2"
     },
     "webignition/simplytestable-user-model": {
         "version": "0.1"
