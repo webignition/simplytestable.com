@@ -10,7 +10,7 @@
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="KERNEL_CLASS" value="App\Kernel" />
-        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+<!--        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />-->
 
         <env name="BASE_URL" value="http://local.simplytestable.com"/>
         <env name="WEB_CLIENT_URL" value="http://web.client.simplytestable.com"/>

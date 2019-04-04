@@ -47,14 +47,12 @@ class LandingPageController
             $response
         );
 
-        $cookie = new Cookie(
+        $cookie = Cookie::create(
             'simplytestable-coupon-code',
             $coupon,
             time() + self::ONE_YEAR_IN_SECONDS,
             '/',
-            '.simplytestable.com',
-            false,
-            true
+            '.simplytestable.com'
         );
 
         $response->headers->setCookie($cookie);
