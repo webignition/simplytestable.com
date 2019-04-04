@@ -1,11 +1,17 @@
-sudo: false
-
 language: php
 php:
-  - 7.2
+  - "7.2"
 
 env:
-  - SYMFONY_ENV=test NODE_VERSION="10.8.0"
+  global:
+    - APP_ENV=test
+    - NODE_VERSION="10.8.0"
+    - DATABASE_URL=mysql://root:@localhost:3306/myapp_test
+    - APP_SECRET=Secret!
+    - BASE_URL=http://local.simplytestable.com
+    - WEB_CLIENT_URL=http://web.client.simplytestable.com
+    - LOGGLY_CUSTOMER_TOKEN=loggly-customer-token
+    - POSTMARK_API_KEY=postmark-api-key
 
 cache:
   directories:
@@ -15,9 +21,6 @@ before_install:
   - nvm install $NODE_VERSION
   - composer self-update
   - cp .travis.composer.config.json ~/.composer/config.json
-  - rm phpunit.xml.dist
-  - mv phpunit.travis-ci.xml phpunit.xml.dist
-  - mv .env.travis-ci .env
 
 install:
   - composer install --prefer-dist
