@@ -28,6 +28,12 @@
     {% set alert_view = 'Partials/contact/alert/content/message-empty.html.twig' %}
 {% endif %}
 
+{% if state == 'error' and error_field == 'client-ip' %}
+    {% set alert_type = 'info' %}
+    {% set alert_view_parameters = {ip: error_state} %}
+    {% set alert_view = 'Partials/contact/alert/content/untrustworthy-ip.html.twig' %}
+{% endif %}
+
 {% if alert_view is not null %}
     {% include 'Partials/alert.html.twig' with {
         type: alert_type,
