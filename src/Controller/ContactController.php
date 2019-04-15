@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use webignition\SfsClient\Client as SfsClient;
+use webignition\SfsResultAnalyser\Analyser as SfsResultAnalyser;
+use webignition\SfsResultInterfaces\ResultInterface;
 
 class ContactController
 {
@@ -89,8 +92,11 @@ class ContactController
     }
 
     public function sendAction(
+        Request $request,
         CsrfTokenManagerInterface $csrfTokenManager,
-        PostmarkClient $postmarkClient
+        PostmarkClient $postmarkClient,
+        SfsClient $sfsClient,
+        SfsResultAnalyser $sfsResultAnalyser
     ): RedirectResponse {
         $contactRequest = $this->contactRequestFactory->create();
 
@@ -131,6 +137,21 @@ class ContactController
             );
 
             return $this->createRedirectResponse($contactRequest->asArray());
+        }
+
+        $clientIp = $request->getClientIp();
+        if (is_string($clientIp)) {
+            $sfsResult = $sfsClient->queryIp($request->getClientIp());
+
+            if ($sfsResult instanceof ResultInterface && $sfsResultAnalyser->isUntrustworthy($sfsResult)) {
+                $this->setContactRequestSubmission(
+                    ContactRequestSubmission::STATE_ERROR,
+                    'client-ip',
+                    $clientIp
+                );
+
+                return $this->createRedirectResponse($contactRequest->asArray());
+            }
         }
 
         $message = sprintf("From: %s\n\n%s", $contactRequest->getEmail(), $contactRequest->getMessage());
