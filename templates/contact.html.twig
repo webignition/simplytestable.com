@@ -43,6 +43,14 @@
             {% endif %}
 
             <form method="post" action="{{ path('contact_send') }}" class="js-form-button-spinner" novalidate>
+                <input type="checkbox"
+                       name="hp"
+                       value="1"
+                       style="display:none !important"
+                       tabindex="-1"
+                       autocomplete="off"
+                >
+
                 <div class="row contact-form_row">
                     <label class="col-sm-12 contact-form_label" for="contact-form_email">Email address</label>
                     <div class="col-sm-12">
