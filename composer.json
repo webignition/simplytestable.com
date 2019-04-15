@@ -24,6 +24,7 @@
         "symfony/twig-bundle": "^4.2",
         "symfony/yaml": "^4.2",
         "webignition/php-ie-detector": ">=0.2,<1",
+        "webignition/sfs-querier": ">=0.1,<1",
         "webignition/simplytestable-pagecache-bundle": "^0.2",
         "webignition/simplytestable-user-hydrator": "^0.1",
         "webignition/simplytestable-user-model": ">=0.1,<1",

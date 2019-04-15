@@ -450,6 +450,24 @@
     "webignition/php-ie-detector": {
         "version": "0.2"
     },
+    "webignition/sfs-client": {
+        "version": "0.2"
+    },
+    "webignition/sfs-querier": {
+        "version": "0.1"
+    },
+    "webignition/sfs-result-analyser": {
+        "version": "0.1"
+    },
+    "webignition/sfs-result-factory": {
+        "version": "0.2"
+    },
+    "webignition/sfs-result-interfaces": {
+        "version": "0.5"
+    },
+    "webignition/sfs-result-models": {
+        "version": "0.4"
+    },
     "webignition/simplytestable-pagecache-bundle": {
         "version": "0.2"
     },

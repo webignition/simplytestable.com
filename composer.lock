@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ff88c23b7616b1dde1e24d735f21eba",
+    "content-hash": "8c4d7c0bbaf63e29950b6f98f11df4ea",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4395,6 +4395,296 @@
                 "user-agent"
             ],
             "time": "2018-04-19T16:58:09+00:00"
+        },
+        {
+            "name": "webignition/sfs-client",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-client.git",
+                "reference": "a2d25019b1dee01214e797bfd69d70d9e0c109d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-client/zipball/a2d25019b1dee01214e797bfd69d70d9e0c109d5",
+                "reference": "a2d25019b1dee01214e797bfd69d70d9e0c109d5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.3",
+                "php": ">=7.2.0",
+                "psr/http-message": "^1.0",
+                "webignition/sfs-result-factory": ">=0.1,<1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.5",
+                "phpunit/phpunit": "^8.1",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SfsClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "HTTP client for querying api.stopforumspam.com",
+            "homepage": "https://github.com/webignition/sfs-client",
+            "keywords": [
+                "client",
+                "forum",
+                "spam",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-12T15:22:18+00:00"
+        },
+        {
+            "name": "webignition/sfs-querier",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-querier.git",
+                "reference": "780815d81816a14dee01614b0ed6b8433c128f6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-querier/zipball/780815d81816a14dee01614b0ed6b8433c128f6b",
+                "reference": "780815d81816a14dee01614b0ed6b8433c128f6b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "webignition/sfs-client": ">=0.2,<1",
+                "webignition/sfs-result-analyser": ">=0.1,<1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "Meta package for querying api.stopforumspam.com and providing help analysing/understanding results",
+            "homepage": "https://github.com/webignition/sfs-querier",
+            "keywords": [
+                "analyser",
+                "analyzer",
+                "client",
+                "querier",
+                "query",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-12T15:53:54+00:00"
+        },
+        {
+            "name": "webignition/sfs-result-analyser",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-result-analyser.git",
+                "reference": "0ae1ec48cdd62626e09f45535e2f698ce2aa4ec1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-result-analyser/zipball/0ae1ec48cdd62626e09f45535e2f698ce2aa4ec1",
+                "reference": "0ae1ec48cdd62626e09f45535e2f698ce2aa4ec1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "webignition/sfs-result-interfaces": ">=0.5,<1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.5",
+                "phpunit/phpunit": "^8.1",
+                "squizlabs/php_codesniffer": "^3",
+                "webignition/sfs-result-factory": ">=0.1,<1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SfsResultAnalyser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "Analyses results from api.stopforumspam.com, helps you figure out what to do",
+            "homepage": "https://github.com/webignition/sfs-result-analyser",
+            "keywords": [
+                "analyser",
+                "analyzer",
+                "result",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-12T12:01:52+00:00"
+        },
+        {
+            "name": "webignition/sfs-result-factory",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-result-factory.git",
+                "reference": "3b2e7ee0d0b55763a1dba01665c2991c19cf94fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-result-factory/zipball/3b2e7ee0d0b55763a1dba01665c2991c19cf94fb",
+                "reference": "3b2e7ee0d0b55763a1dba01665c2991c19cf94fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "webignition/sfs-result-models": ">=0.4,<1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.5",
+                "phpunit/phpunit": "^8.1",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SfsResultFactory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "Factory to create result objects from api.stopforumspam.com responses",
+            "homepage": "https://github.com/webignition/sfs-result-factory",
+            "keywords": [
+                "factory",
+                "forum",
+                "result",
+                "spam",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-11T14:08:58+00:00"
+        },
+        {
+            "name": "webignition/sfs-result-interfaces",
+            "version": "0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-result-interfaces.git",
+                "reference": "9f8fddc70a9af1c2d307609a1d876d5fa2162d73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-result-interfaces/zipball/9f8fddc70a9af1c2d307609a1d876d5fa2162d73",
+                "reference": "9f8fddc70a9af1c2d307609a1d876d5fa2162d73",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SfsResultInterfaces\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "PHP interfaces for models for results from querying api.stopforumspam.com",
+            "homepage": "https://github.com/webignition/sfs-result-interfaces",
+            "keywords": [
+                "forum",
+                "spam",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-11T13:15:32+00:00"
+        },
+        {
+            "name": "webignition/sfs-result-models",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/sfs-result-models.git",
+                "reference": "08f4bb579c17015d4066dc627674bf6db9f0d9e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/sfs-result-models/zipball/08f4bb579c17015d4066dc627674bf6db9f0d9e6",
+                "reference": "08f4bb579c17015d4066dc627674bf6db9f0d9e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "webignition/sfs-result-interfaces": ">=0.5,<1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.11.5",
+                "phpstan/phpstan-mockery": "^0.11.0",
+                "phpunit/phpunit": "^8.1",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SfsResultModels\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "webignition@gmail.com"
+                }
+            ],
+            "description": "PHP models for results from querying api.stopforumspam.com",
+            "homepage": "https://github.com/webignition/sfs-result-models",
+            "keywords": [
+                "forum",
+                "spam",
+                "stopforumspam.com"
+            ],
+            "time": "2019-04-11T13:48:21+00:00"
         },
         {
             "name": "webignition/simplytestable-pagecache-bundle",
