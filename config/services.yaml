@@ -88,3 +88,7 @@ services:
     Postmark\PostmarkClient:
       arguments:
       - '%env(POSTMARK_API_KEY)%'
+
+    webignition\SfsClient\Client:
+
+    webignition\SfsResultAnalyser\Analyser:
