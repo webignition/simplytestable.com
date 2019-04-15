@@ -73,6 +73,13 @@
                 </div>
                 <div class="col-sm-12 contact-form-button-container">
                     <input type="hidden" name="token" value="{{ csrf_token('contact-send') }}" />
+                    <input type="checkbox"
+                           name="hp"
+                           value="1"
+                           style="display:none !important"
+                           tabindex="-1"
+                           autocomplete="off"
+                    >
 
                     <button type="submit" class="btn btn-primary btn-block contact-form-button">
                         Send message <i class="fa fa-fw fa-caret-right"></i>
