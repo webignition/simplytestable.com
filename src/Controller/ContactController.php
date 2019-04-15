@@ -55,9 +55,12 @@ class ContactController
     public function renderAction(
         Request $request,
         CacheableResponseFactory $cacheableResponseFactory,
-        ViewRenderService $viewRenderService
+        ViewRenderService $viewRenderService,
+        CsrfTokenManagerInterface $csrfTokenManager
     ): Response {
-        $contactRequest = $this->contactRequestFactory->create();
+        $csrfToken = $csrfTokenManager->getToken(ContactRequest::CSRF_TOKEN_ID);
+
+        $contactRequest = $this->contactRequestFactory->create($csrfToken);
         $contactRequestSubmission = $this->getContactRequestSubmission();
 
         $viewParameters = [
@@ -66,7 +69,9 @@ class ContactController
             'selected_field' => $this->getSelectedField($contactRequest, $contactRequestSubmission),
         ];
 
-        $response = $cacheableResponseFactory->createResponse($request, $viewParameters);
+        $response = $cacheableResponseFactory->createResponse($request, [
+            'cache_key' => (string) json_encode($viewParameters),
+        ]);
 
         if (Response::HTTP_NOT_MODIFIED === $response->getStatusCode()) {
             return $response;

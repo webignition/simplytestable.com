@@ -7,6 +7,7 @@ use App\Services\UserService;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Csrf\CsrfToken;
 
 class ContactRequestFactory
 {
@@ -31,7 +32,7 @@ class ContactRequestFactory
         $this->userService = $userService;
     }
 
-    public function create(): ContactRequest
+    public function create(?CsrfToken $csrfToken = null): ContactRequest
     {
         $email = $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_EMAIL);
 
@@ -40,10 +41,14 @@ class ContactRequestFactory
             $email = $user->getUsername();
         }
 
+        $csrfTokenValue = null === $csrfToken
+            ? $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_CSRF_TOKEN)
+            : $csrfToken->getValue();
+
         return new ContactRequest(
             $email,
             $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_MESSAGE),
-            $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_CSRF_TOKEN)
+            $csrfTokenValue
         );
     }
 

@@ -53,6 +53,7 @@ class ContactRequest implements \JsonSerializable
         return [
             self::PARAMETER_EMAIL => $this->email,
             self::PARAMETER_MESSAGE => $this->message,
+            self::PARAMETER_CSRF_TOKEN => $this->csrfToken->getValue(),
         ];
     }
 
