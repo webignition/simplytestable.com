@@ -9,6 +9,7 @@ class ContactRequest implements \JsonSerializable
     const PARAMETER_EMAIL = 'email';
     const PARAMETER_MESSAGE = 'message';
     const PARAMETER_CSRF_TOKEN = 'token';
+    const CSRF_TOKEN_ID = 'contact-send';
 
     /**
      * @var string
@@ -29,7 +30,7 @@ class ContactRequest implements \JsonSerializable
     {
         $this->email = $email;
         $this->message = $message;
-        $this->csrfToken = new CsrfToken('contact-send', $csrfToken);
+        $this->csrfToken = new CsrfToken(self::CSRF_TOKEN_ID, $csrfToken);
     }
 
     public function getEmail(): string
@@ -52,6 +53,7 @@ class ContactRequest implements \JsonSerializable
         return [
             self::PARAMETER_EMAIL => $this->email,
             self::PARAMETER_MESSAGE => $this->message,
+            self::PARAMETER_CSRF_TOKEN => $this->csrfToken->getValue(),
         ];
     }
 
