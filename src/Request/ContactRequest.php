@@ -10,27 +10,19 @@ class ContactRequest implements \JsonSerializable
     const PARAMETER_MESSAGE = 'message';
     const PARAMETER_CSRF_TOKEN = 'token';
     const CSRF_TOKEN_ID = 'contact-send';
+    const PARAMETER_HONEYPOT = 'hp';
 
-    /**
-     * @var string
-     */
     private $email;
-
-    /**
-     * @var string
-     */
     private $message;
-
-    /**
-     * @var CsrfToken
-     */
     private $csrfToken;
+    private $isHoneypotSelected;
 
-    public function __construct(string $email, string $message, string $csrfToken)
+    public function __construct(string $email, string $message, string $csrfToken, bool $isHoneypotSelected)
     {
         $this->email = $email;
         $this->message = $message;
         $this->csrfToken = new CsrfToken(self::CSRF_TOKEN_ID, $csrfToken);
+        $this->isHoneypotSelected = $isHoneypotSelected;
     }
 
     public function getEmail(): string
@@ -46,6 +38,11 @@ class ContactRequest implements \JsonSerializable
     public function getCsrfToken(): CsrfToken
     {
         return $this->csrfToken;
+    }
+
+    public function isHoneypotSelected(): bool
+    {
+        return $this->isHoneypotSelected;
     }
 
     public function asArray(): array

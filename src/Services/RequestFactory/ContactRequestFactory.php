@@ -41,6 +41,9 @@ class ContactRequestFactory
             $email = $user->getUsername();
         }
 
+        $honeypotValue = $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_HONEYPOT);
+        $isHoneypotSelected = null !== $honeypotValue && !empty($honeypotValue) && (bool) $honeypotValue === true;
+
         $csrfTokenValue = null === $csrfToken
             ? $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_CSRF_TOKEN)
             : $csrfToken->getValue();
@@ -48,7 +51,8 @@ class ContactRequestFactory
         return new ContactRequest(
             $email,
             $this->getStringValueFromRequestParameters(ContactRequest::PARAMETER_MESSAGE),
-            $csrfTokenValue
+            $csrfTokenValue,
+            $isHoneypotSelected
         );
     }
 

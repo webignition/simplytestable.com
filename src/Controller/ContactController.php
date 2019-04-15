@@ -92,6 +92,10 @@ class ContactController
     ): RedirectResponse {
         $contactRequest = $this->contactRequestFactory->create();
 
+        if ($contactRequest->isHoneypotSelected()) {
+            return $this->createRedirectResponse();
+        }
+
         if (false === $csrfTokenManager->isTokenValid($contactRequest->getCsrfToken())) {
             return $this->createRedirectResponse();
         }
