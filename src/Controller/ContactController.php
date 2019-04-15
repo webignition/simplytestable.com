@@ -70,7 +70,9 @@ class ContactController
         ];
 
         $response = $cacheableResponseFactory->createResponse($request, [
-            'cache_key' => (string) json_encode($viewParameters),
+            'cache_key' => (string) json_encode(array_merge($viewParameters, [
+                'csrf_token' => (string) $csrfToken,
+            ])),
         ]);
 
         if (Response::HTTP_NOT_MODIFIED === $response->getStatusCode()) {
